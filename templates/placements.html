@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Placements & Alumni Record - Maurya Technical Private Limited{% endblock %}
+
+{% block extra_css %}
+<!-- SimpleLightbox CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
+<style>
+    .placement-poster-card {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(168, 27, 27, 0.12);
+        background: #ffffff;
+        border: 2px solid #f3e5f5;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        height: 100%;
+    }
+    .placement-poster-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 16px 36px rgba(168, 27, 27, 0.22);
+        border-color: var(--primary-red);
+    }
+    .placement-poster-img-wrap {
+        position: relative;
+        overflow: hidden;
+        background-color: #fdfbf7;
+        cursor: pointer;
+    }
+    .placement-poster-img-wrap img {
+        width: 100%;
+        height: 380px;
+        object-fit: contain;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        padding: 10px;
+    }
+    .placement-poster-img-wrap:hover img {
+        transform: scale(1.05);
+    }
+    .placement-overlay-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(168, 27, 27, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        color: #ffffff;
+        font-size: 32px;
+    }
+    .placement-poster-img-wrap:hover .placement-overlay-icon {
+        opacity: 1;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Placements Hero Banner -->
+<div class="bg-danger text-white py-5" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bold"><i class="fas fa-trophy me-2 text-warning"></i> Official Placements & Success Stories</h1>
+        <p class="lead">Congratulations to Maurya Technical Students Placed in Top Tech MNCs & Software Enterprise Companies</p>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+    <div class="section-heading-wrapper mb-5">
+        <h2 class="section-title">Maurya Technical Placed Alumni Showcase</h2>
+        <p class="text-muted fs-6"><i class="fas fa-search-plus me-1 text-danger"></i> Click any Placement Poster to view full-screen Lightbox Banner</p>
+    </div>
+
+    <!-- Placement Posters Showcase Grid with SimpleLightbox -->
+    <div class="row g-4 justify-content-center">
+        {% for p in placements %}
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="placement-poster-card">
+                <a href="{{ p.student_image_url }}" class="placement-lightbox-link placement-poster-img-wrap d-block" data-title="Congratulations {{ p.student_name }} - Placed at {{ p.company_name }} | Maurya Technical Private Limited Alambagh Lucknow">
+                    <img src="{{ p.student_image_url }}" alt="Congratulations {{ p.student_name }} Placed at {{ p.company_name }}">
+                    <div class="placement-overlay-icon"><i class="fas fa-search-plus"></i></div>
+                </a>
+                <div class="p-4 text-center border-top">
+                    <span class="badge bg-danger px-3 py-2 fs-6 mb-2 rounded-pill"><i class="fas fa-check-circle me-1"></i> PLACED!</span>
+                    <h4 class="student-name fw-bold mb-1">{{ p.student_name }}</h4>
+                    <p class="student-company fw-bold text-danger fs-5 mb-1">{{ p.company_name }}</p>
+                    <small class="text-muted d-block mb-2">{{ p.course_taken }}</small>
+                    <span class="student-package bg-warning text-dark fw-bold px-3 py-1 rounded-pill">{{ p.package }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Call to Action Banner -->
+    <div class="mt-5 p-5 bg-light rounded-4 shadow-sm text-center border-start border-5 border-danger" data-aos="zoom-in">
+        <h3 class="fw-bold text-dark mb-2">Want to get placed in top software companies?</h3>
+        <p class="text-muted mb-4 fs-5">Join 45 Days / 6 Months Industrial Training in Python with Django, Full Stack & Data Analytics at Maurya Technical Private Limited, Alambagh Lucknow.</p>
+        <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20enroll%20for%20placement%20training" target="_blank" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow me-3">
+            <i class="fab fa-whatsapp me-2"></i> WhatsApp Support (+91 88878 39689)
+        </a>
+        <a href="{% url 'registration' %}" class="btn btn-danger btn-lg fw-bold px-5 py-3 shadow">
+            <i class="fas fa-user-plus me-2"></i> Register Online Now
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- SimpleLightbox JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var placementLightbox = new SimpleLightbox('.placement-lightbox-link', {
+            captionsData: 'data-title',
+            captionDelay: 200,
+            showCounter: true,
+            enableKeyboard: true,
+            close: true,
+            closeText: '×',
+            navText: ['‹', '›'],
+            animationSpeed: 250,
+            fadeSpeed: 250
+        });
+        console.log("SimpleLightbox initialized on placements.html");
+    });
+</script>
+{% endblock %}

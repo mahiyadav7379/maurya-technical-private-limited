@@ -1,0 +1,67 @@
+{% load static %}
+<!-- Main Navbar -->
+<nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <div class="container-fluid px-4">
+        <!-- Logo & Brand Title -->
+        <a class="navbar-brand brand-logo-link" href="{% url 'home' %}">
+            <img src="{% static 'images/maurya_official_logo.png' %}?v=2026" alt="Maurya Technical Logo" class="brand-navbar-logo">
+            <div class="brand-text-container">
+                <div class="brand-title-wrap">
+                    <span class="brand-title-maurya">MAURYA</span>
+                    <span class="brand-title-tech">TECHNICAL</span>
+                </div>
+                <div class="brand-subtitle-wrap">
+                    <span class="brand-badge-pvt">PVT. LTD.</span>
+                    <span class="brand-subtext-badge">ALAMBAGH, LUCKNOW</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbarNav" aria-controls="mainNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu Links -->
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbarNav">
+            <ul class="navbar-nav align-items-center gap-1">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'branches' %}active{% endif %}" href="{% url 'branches' %}">OUR BRANCHES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'trainings' or request.resolver_match.url_name == 'course_detail' %}active{% endif %}" href="{% url 'trainings' %}">TRAININGS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'web_design' %}active{% endif %}" href="{% url 'web_design' %}">WEB DESIGN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'registration' %}active{% endif %}" href="{% url 'registration' %}">REGISTRATION</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">GALLERY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'placements' %}active{% endif %}" href="{% url 'placements' %}">PLACEMENTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'job_fair' or request.resolver_match.url_name == 'verify_certificate' %}active{% endif %}" href="{% url 'job_fair' %}">JOB FAIR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">CONTACT US</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'blogs' or request.resolver_match.url_name == 'blog_detail' or request.resolver_match.url_name == 'projects' %}active{% endif %}" href="{% url 'blogs' %}">OUR PROJECTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'services' %}">OUR SERVICES</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

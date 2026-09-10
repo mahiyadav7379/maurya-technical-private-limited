@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Student Portal Login - Maurya Technical{% endblock %}
+
+{% block content %}
+<div class="bg-dark text-white py-5">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bold"><i class="fas fa-user-lock me-2 text-warning"></i> Student & Trainee Portal</h1>
+        <p class="lead">Access your training curriculum, attendance, and project submissions</p>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex align-items-center gap-3">
+                        <img src="{% static 'images/maurya_official_logo.png' %}?v=2026" alt="Maurya Technical Logo" style="height: 52px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));">
+                        <div class="text-start">
+                            <div class="brand-title-wrap">
+                                <span class="brand-title-maurya">MAURYA</span>
+                                <span class="brand-title-tech">TECHNICAL</span>
+                            </div>
+                            <span class="brand-subtext-badge d-block mt-1">STUDENT PORTAL &bull; LUCKNOW</span>
+                        </div>
+                    </div>
+                </div>
+                <form method="POST" action="{% url 'student_login' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Student Roll / Registration No.</label>
+                        <input type="text" name="username" class="form-control form-control-lg" placeholder="e.g. MT2026-884" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Password</label>
+                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg fw-bold w-100 py-3 shadow">
+                        <i class="fas fa-sign-in-alt me-2"></i> Login to Portal
+                    </button>
+                </form>
+                <div class="text-center mt-4">
+                    <small class="text-muted">Need help with login? Contact student support at <a href="tel:+919198483820">+91 9198483820</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

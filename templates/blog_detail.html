@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }} - Maurya Technical Blog{% endblock %}
+
+{% block content %}
+<div class="bg-dark text-white py-5">
+    <div class="container px-4">
+        <h1 class="fw-bold">{{ post.title }}</h1>
+        <p class="lead opacity-75">Published by {{ post.author }} on {{ post.created_at|date:"F d, Y" }}</p>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+    <div class="row g-5">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+                <p class="fs-5 text-dark fw-bold mb-4">{{ post.summary }}</p>
+                <div class="blog-content">
+                    {{ post.content|linebreaks }}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <h4 class="fw-bold mb-3">Recent Posts</h4>
+            <div class="list-group list-group-flush rounded-4 overflow-hidden border">
+                {% for recent in recent_posts %}
+                <a href="{% url 'blog_detail' recent.slug %}" class="list-group-item list-group-item-action p-3">
+                    <h6 class="fw-bold mb-1">{{ recent.title }}</h6>
+                    <small class="text-muted">{{ recent.created_at|date:"M d, Y" }}</small>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

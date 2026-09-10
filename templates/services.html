@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Software Services & Solutions - Maurya Technical{% endblock %}
+
+{% block content %}
+<div class="py-5 text-white" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bold"><i class="fas fa-laptop-code text-warning me-2"></i> Our Software Services</h1>
+        <p class="lead">We design & build custom web applications, mobile apps & enterprise software</p>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 text-center">
+                <div class="feature-icon-box mb-3 text-white" style="background-color: var(--primary-red);"><i class="fas fa-globe"></i></div>
+                <h4 class="fw-bold mb-2">Web Application Development</h4>
+                <p class="text-muted">Custom Django, React, MERN & PHP web development for businesses and institutions.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 text-center">
+                <div class="feature-icon-box bg-success mb-3"><i class="fas fa-mobile-alt"></i></div>
+                <h4 class="fw-bold mb-2">Mobile App Development</h4>
+                <p class="text-muted">Android & iOS cross-platform mobile apps using Flutter and React Native.</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 text-center">
+                <div class="feature-icon-box bg-warning text-dark mb-3"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h4 class="fw-bold mb-2">Corporate & College Training</h4>
+                <p class="text-muted">Faculty development programs, campus workshops, and customized tech training.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

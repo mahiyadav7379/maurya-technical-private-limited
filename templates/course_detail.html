@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ course.title }} - Maurya Technical Private Limited{% endblock %}
+
+{% block content %}
+<!-- Course Hero Banner -->
+<div class="py-5 text-white" style="background: linear-gradient(135deg, #121824 0%, #1f2937 50%, #500707 100%);">
+    <div class="container px-4">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white-50 text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'web_design' %}" class="text-white-50 text-decoration-none">Design Solutions</a></li>
+                <li class="breadcrumb-item active text-warning" aria-current="page">{{ course.title }}</li>
+            </ol>
+        </nav>
+
+        <span class="badge bg-warning text-dark fw-bold px-3 py-2 mb-2 rounded-pill shadow-sm">
+            <i class="fas fa-shield-alt text-danger me-1"></i> Government Registered Design Service Provider &amp; Training Institute
+        </span>
+        <h1 class="display-5 fw-bold text-white mb-2">{{ course.title }}</h1>
+        <p class="lead text-white-50 mb-3">
+            <span class="badge bg-danger me-2">{{ course.badge_text }}</span>
+            <i class="fas fa-folder me-1 text-warning"></i> Category: {{ course.category }} &nbsp;|&nbsp; 
+            <i class="fas fa-clock me-1 text-warning"></i> Duration: {{ course.get_duration_display }}
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="{% url 'registration' %}?course={{ course.title|urlencode }}" class="btn btn-warning btn-lg fw-bold text-dark px-4 shadow">
+                <i class="fas fa-edit me-2"></i> Register for this Course
+            </a>
+            <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20{{ course.title|urlencode }}" target="_blank" class="btn btn-success btn-lg fw-bold shadow">
+                <i class="fab fa-whatsapp me-2"></i> WhatsApp Counselor Desk
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+    <div class="row g-5">
+        <!-- Left Content Area -->
+        <div class="col-lg-8" data-aos="fade-right">
+            <!-- Course Overview -->
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                <h3 class="fw-bold text-dark mb-3"><i class="fas fa-info-circle text-danger me-2"></i> Course Overview</h3>
+                <p class="fs-6 text-muted lh-base">{{ course.short_description }}</p>
+                {% if course.full_description %}
+                <p class="fs-6 text-muted lh-base mb-0">{{ course.full_description }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Key Features & Learning Outcomes -->
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                <h4 class="fw-bold text-dark mb-3"><i class="fas fa-check-double text-success me-2"></i> Key Highlights &amp; Learning Outcomes</h4>
+                <div class="row g-2">
+                    {% for feature in course.get_features_list %}
+                    <div class="col-md-6">
+                        <div class="p-2 px-3 rounded-3 bg-light border d-flex align-items-center h-100">
+                            <i class="fas fa-check-circle text-success me-2 flex-shrink-0"></i>
+                            <span class="small fw-semibold text-dark">{{ feature }}</span>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12">
+                        <p class="text-muted small">Live Projects, Practical Hands-On Training, Industry Mentors &amp; ISO Certification.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Comprehensive Syllabus & Modules -->
+            {% if syllabus_modules %}
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h4 class="fw-bold text-dark mb-0"><i class="fas fa-book-reader text-danger me-2"></i> Curriculum &amp; Modules</h4>
+                    <span class="badge bg-danger">8 Comprehensive Modules</span>
+                </div>
+                <div class="accordion" id="syllabusAccordion">
+                    {% for mod in syllabus_modules %}
+                    <div class="accordion-item border rounded-3 mb-2 overflow-hidden shadow-sm">
+                        <h2 class="accordion-header" id="headingMod{{ forloop.counter }}">
+                            <button class="accordion-button {% if not forloop.first %}collapsed{% endif %} fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMod{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapseMod{{ forloop.counter }}">
+                                <span class="badge bg-danger me-2">Module {{ mod.num }}</span>
+                                <span>{{ mod.title }}</span>
+                            </button>
+                        </h2>
+                        <div id="collapseMod{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="headingMod{{ forloop.counter }}" data-bs-parent="#syllabusAccordion">
+                            <div class="accordion-body bg-light p-3 small text-muted">
+                                {{ mod.desc }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Tools & Technologies Covered -->
+            {% if tools_list %}
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                <h4 class="fw-bold text-dark mb-3"><i class="fas fa-tools text-primary me-2"></i> Tools &amp; Technologies Covered</h4>
+                <div class="d-flex flex-wrap gap-2">
+                    {% for tool in tools_list %}
+                    <span class="badge bg-light text-dark border p-2 px-3 fs-6 rounded-pill">
+                        <i class="fas fa-check text-danger me-1"></i> {{ tool }}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Live Projects Covered -->
+            {% if projects_list %}
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                <h4 class="fw-bold text-dark mb-3"><i class="fas fa-laptop-code text-warning me-2"></i> Live Real-World Capstone Projects</h4>
+                <div class="row g-3">
+                    {% for proj in projects_list %}
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light rounded-3 border h-100">
+                            <h6 class="fw-bold text-danger mb-1"><i class="fas fa-project-diagram me-1"></i> {{ proj.name }}</h6>
+                            <p class="small text-muted mb-0">{{ proj.desc }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Bottom Action CTA -->
+            <div class="p-4 rounded-4 text-white shadow" style="background: linear-gradient(135deg, #A81B1B 0%, #7A0C0C 100%);">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <h4 class="fw-bold text-warning mb-1">Ready to start your practical training?</h4>
+                        <p class="mb-0 text-white-50 small">Limited seats per batch for personalized projector lab guidance.</p>
+                    </div>
+                    <a href="{% url 'registration' %}?course={{ course.title|urlencode }}" class="btn btn-warning btn-lg fw-bold text-dark shadow">
+                        Enroll Now &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar Area -->
+        <div class="col-lg-4" data-aos="fade-left">
+            <!-- Batch Quick Summary Card -->
+            <div class="card border-0 shadow rounded-4 p-4 mb-4 border-top border-4 border-danger sticky-top" style="top: 90px;">
+                <h5 class="fw-bold text-dark mb-3"><i class="fas fa-certificate text-danger me-2"></i> Batch Information</h5>
+                <ul class="list-unstyled mb-4">
+                    <li class="py-2 border-bottom d-flex justify-content-between">
+                        <span class="text-muted"><i class="fas fa-clock text-danger me-2"></i> Duration:</span>
+                        <strong class="text-dark">{{ course.get_duration_display }}</strong>
+                    </li>
+                    <li class="py-2 border-bottom d-flex justify-content-between align-items-center bg-light px-2 rounded-2 my-1">
+                        <span class="text-muted"><i class="fas fa-calendar-day text-danger me-2"></i> 45 Days Fee:</span>
+                        <strong class="text-success fs-6">{{ course.fee_45_days|default:"₹4,000" }}</strong>
+                    </li>
+                    <li class="py-2 border-bottom d-flex justify-content-between align-items-center bg-light px-2 rounded-2 my-1">
+                        <span class="text-muted"><i class="fas fa-calendar-alt text-danger me-2"></i> 6 Months Fee:</span>
+                        <strong class="text-danger fs-6">{{ course.fee_6_months|default:"₹18,000" }}</strong>
+                    </li>
+                    <li class="py-2 border-bottom d-flex justify-content-between">
+                        <span class="text-muted"><i class="fas fa-chalkboard-teacher text-warning me-2"></i> Mode:</span>
+                        <strong class="text-dark">Classroom &amp; Live Online</strong>
+                    </li>
+                    <li class="py-2 border-bottom d-flex justify-content-between">
+                        <span class="text-muted"><i class="fas fa-award text-success me-2"></i> Certification:</span>
+                        <strong class="text-success">Govt. Registered ISO</strong>
+                    </li>
+                    <li class="py-2 border-bottom d-flex justify-content-between">
+                        <span class="text-muted"><i class="fas fa-briefcase text-primary me-2"></i> Placement:</span>
+                        <strong class="text-dark">100% Assistance</strong>
+                    </li>
+                    <li class="py-2 border-bottom d-flex justify-content-between">
+                        <span class="text-muted"><i class="fas fa-map-marker-alt text-danger me-2"></i> Campus:</span>
+                        <strong class="text-dark">Alambagh, Lucknow</strong>
+                    </li>
+                </ul>
+
+                <div class="d-grid gap-2">
+                    <a href="{% url 'registration' %}?course={{ course.title|urlencode }}" class="btn btn-danger btn-lg fw-bold shadow">
+                        <i class="fas fa-user-plus me-1"></i> Enroll in this Batch
+                    </a>
+                    <a href="https://wa.me/918887839689?text=Hello%20Director%20Office,%20I%20want%20inquiry%20for%20{{ course.title|urlencode }}" target="_blank" class="btn btn-success fw-bold">
+                        <i class="fab fa-whatsapp me-1"></i> WhatsApp Inquiry
+                    </a>
+                    <a href="tel:+918887839689" class="btn btn-outline-dark fw-bold">
+                        <i class="fas fa-phone-alt me-1"></i> Call Office (+91 88878 39689)
+                    </a>
+                </div>
+
+                <hr class="my-4">
+
+                <!-- Related Design Programs -->
+                <h6 class="fw-bold text-dark mb-3"><i class="fas fa-graduation-cap text-danger me-2"></i> Other Design Solutions</h6>
+                <div class="d-flex flex-column gap-2">
+                    {% for rc in related_courses %}
+                    <a href="{% url 'course_detail' rc.slug %}" class="p-2 rounded-3 border bg-light text-decoration-none d-flex align-items-center justify-content-between">
+                        <small class="fw-bold text-dark">{{ rc.title|truncatechars:28 }}</small>
+                        <i class="fas fa-chevron-right text-danger small"></i>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

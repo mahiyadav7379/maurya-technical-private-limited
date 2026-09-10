@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Our Developed Projects - Maurya Technical Private Limited{% endblock %}
+
+{% block content %}
+<!-- Projects Hero Banner -->
+<div class="py-5 text-white" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-4 text-center">
+        <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-3">
+            <i class="fas fa-code-branch me-1"></i> INDUSTRY STANDARD SOFTWARE & RESEARCH
+        </span>
+        <h1 class="fw-bold display-5 mb-2">
+            <i class="fas fa-laptop-code text-warning me-2"></i> Our Developed Projects
+        </h1>
+        <p class="lead mb-3 opacity-90">
+            Real-Time Enterprise Applications, Web Portals & AI Systems Developed by Maurya Technical Private Limited & Trainees
+        </p>
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
+            <span class="badge bg-dark px-3 py-2 rounded-pill"><i class="fas fa-check-circle text-success me-1"></i> Live Production Ready</span>
+            <span class="badge bg-dark px-3 py-2 rounded-pill"><i class="fas fa-shield-alt text-warning me-1"></i> 100% Client Deployed</span>
+            <span class="badge bg-dark px-3 py-2 rounded-pill"><i class="fas fa-users text-info me-1"></i> Trainee Hands-On Experience</span>
+        </div>
+    </div>
+</div>
+
+<!-- Projects Showcase Section -->
+<div class="container py-5 px-4">
+    <!-- Intro Header -->
+    <div class="section-heading-wrapper mb-5" data-aos="fade-up">
+        <h2 class="section-title">Developed Software & Live Industrial Projects</h2>
+        <p class="text-muted fs-6">Explore the high-performance applications architected and deployed by our engineering team and trainees at Alambagh, Lucknow</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Project 1: Hospital & Healthcare ERP -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 project-showcase-card">
+                <div class="position-relative">
+                    <img src="{% static 'images/project_1_healthcare_erp.jpg' %}" alt="Hospital & Healthcare Management ERP" class="card-img-top project-card-img">
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-heartbeat me-1"></i> Healthcare ERP
+                    </span>
+                    <span class="badge bg-success position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-check-circle me-1"></i> Live In Production
+                    </span>
+                </div>
+                <div class="card-body p-4">
+                    <h4 class="fw-bold text-dark mb-2">Hospital & Healthcare Management ERP System</h4>
+                    <p class="text-muted small mb-3">
+                        A full-fledged medical enterprise solution handling OPD/IPD patient registration, electronic health records (EHR), pathology test workflows, doctor appointments, and integrated pharmacy billing.
+                    </p>
+                    <div class="mb-3">
+                        <h6 class="fw-bold text-danger small mb-2"><i class="fas fa-layer-group me-1"></i> Key Features:</h6>
+                        <ul class="list-unstyled small text-muted mb-0">
+                            <li><i class="fas fa-check text-success me-2"></i> Real-time bed allocation and doctor schedule management</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Automated prescription generation & pathology report tracking</li>
+                            <li><i class="fas fa-check text-success me-2"></i> GST-compliant medical billing & insurance claim processing</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 pt-2 border-top">
+                        <span class="badge bg-light text-dark border">Python 3.12</span>
+                        <span class="badge bg-light text-dark border">Django 5</span>
+                        <span class="badge bg-light text-dark border">PostgreSQL</span>
+                        <span class="badge bg-light text-dark border">Bootstrap 5</span>
+                        <span class="badge bg-light text-dark border">REST APIs</span>
+                    </div>
+                </div>
+                <div class="card-footer bg-white border-0 px-4 pb-4 pt-0 d-flex justify-content-between align-items-center">
+                    <small class="text-muted"><i class="fas fa-building me-1 text-danger"></i> Maurya Technical Lucknow</small>
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20the%20Healthcare%20ERP%20Project" target="_blank" class="btn btn-outline-danger btn-sm fw-bold">
+                        <i class="fab fa-whatsapp me-1"></i> Inquire Project Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2: E-Commerce Platform -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 project-showcase-card">
+                <div class="position-relative">
+                    <img src="{% static 'images/project_2_ecommerce_platform.jpg' %}" alt="Next-Gen E-Commerce & Marketplace" class="card-img-top project-card-img">
+                    <span class="badge bg-primary position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-shopping-cart me-1"></i> E-Commerce Platform
+                    </span>
+                    <span class="badge bg-success position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-check-circle me-1"></i> Payment Gateway Integrated
+                    </span>
+                </div>
+                <div class="card-body p-4">
+                    <h4 class="fw-bold text-dark mb-2">Next-Gen Multi-Vendor E-Commerce Platform</h4>
+                    <p class="text-muted small mb-3">
+                        Modern high-volume e-commerce marketplace featuring multi-seller inventory management, real-time order tracking, automated customer invoices, and secured payment gateway integrations.
+                    </p>
+                    <div class="mb-3">
+                        <h6 class="fw-bold text-danger small mb-2"><i class="fas fa-layer-group me-1"></i> Key Features:</h6>
+                        <ul class="list-unstyled small text-muted mb-0">
+                            <li><i class="fas fa-check text-success me-2"></i> Razorpay & UPI online payment integration with instant webhooks</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Advanced product filtering, wishlist & customer review system</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Vendor analytics dashboard with sales revenue visual charts</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 pt-2 border-top">
+                        <span class="badge bg-light text-dark border">Django REST</span>
+                        <span class="badge bg-light text-dark border">React.js</span>
+                        <span class="badge bg-light text-dark border">Tailwind CSS</span>
+                        <span class="badge bg-light text-dark border">Razorpay API</span>
+                        <span class="badge bg-light text-dark border">Redis & Celery</span>
+                    </div>
+                </div>
+                <div class="card-footer bg-white border-0 px-4 pb-4 pt-0 d-flex justify-content-between align-items-center">
+                    <small class="text-muted"><i class="fas fa-building me-1 text-danger"></i> Maurya Technical Lucknow</small>
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20the%20E-Commerce%20Platform%20Project" target="_blank" class="btn btn-outline-danger btn-sm fw-bold">
+                        <i class="fab fa-whatsapp me-1"></i> Inquire Project Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3: AI Exam & Assessment Portal -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 project-showcase-card">
+                <div class="position-relative">
+                    <img src="{% static 'images/project_3_ai_exam_portal.jpg' %}" alt="AI-Powered Examination & Assessment Portal" class="card-img-top project-card-img">
+                    <span class="badge bg-dark position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-brain me-1 text-warning"></i> AI & EdTech Portal
+                    </span>
+                    <span class="badge bg-success position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-check-circle me-1"></i> AI Proctoring Active
+                    </span>
+                </div>
+                <div class="card-body p-4">
+                    <h4 class="fw-bold text-dark mb-2">AI-Powered Examination & Assessment Portal</h4>
+                    <p class="text-muted small mb-3">
+                        Intelligent EdTech assessment engine built with Python and AI computer vision. Features live webcam proctoring, face mismatch detection, tab-switch monitoring, and automated scorecard generation.
+                    </p>
+                    <div class="mb-3">
+                        <h6 class="fw-bold text-danger small mb-2"><i class="fas fa-layer-group me-1"></i> Key Features:</h6>
+                        <ul class="list-unstyled small text-muted mb-0">
+                            <li><i class="fas fa-check text-success me-2"></i> Real-time AI face verification & multiple-person detection</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Randomized question bank with countdown timers and auto-submit</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Instant verified certification with unique verifiable QR codes</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 pt-2 border-top">
+                        <span class="badge bg-light text-dark border">Python AI</span>
+                        <span class="badge bg-light text-dark border">OpenCV</span>
+                        <span class="badge bg-light text-dark border">Django</span>
+                        <span class="badge bg-light text-dark border">WebSockets</span>
+                        <span class="badge bg-light text-dark border">PostgreSQL</span>
+                    </div>
+                </div>
+                <div class="card-footer bg-white border-0 px-4 pb-4 pt-0 d-flex justify-content-between align-items-center">
+                    <small class="text-muted"><i class="fas fa-building me-1 text-danger"></i> Maurya Technical Lucknow</small>
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20the%20AI%20Assessment%20Portal%20Project" target="_blank" class="btn btn-outline-danger btn-sm fw-bold">
+                        <i class="fab fa-whatsapp me-1"></i> Inquire Project Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4: Corporate HRMS & Payroll Automation -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 project-showcase-card">
+                <div class="position-relative">
+                    <img src="{% static 'images/project_4_hrms_payroll.jpg' %}" alt="Corporate HRMS & Payroll Automation" class="card-img-top project-card-img">
+                    <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-user-check me-1"></i> Enterprise HRMS
+                    </span>
+                    <span class="badge bg-success position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-check-circle me-1"></i> Corporate Deployed
+                    </span>
+                </div>
+                <div class="card-body p-4">
+                    <h4 class="fw-bold text-dark mb-2">Corporate HRMS & Payroll Automation System</h4>
+                    <p class="text-muted small mb-3">
+                        Enterprise human resource management software streamlining biometric attendance sync, automated leave approval hierarchies, statutory PF/ESI calculations, and one-click salary slip generation.
+                    </p>
+                    <div class="mb-3">
+                        <h6 class="fw-bold text-danger small mb-2"><i class="fas fa-layer-group me-1"></i> Key Features:</h6>
+                        <ul class="list-unstyled small text-muted mb-0">
+                            <li><i class="fas fa-check text-success me-2"></i> Employee self-service portal with PDF salary slip downloads</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Multi-level manager approval workflow for leave & reimbursement</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Biometric device API sync for real-time check-in/check-out</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 pt-2 border-top">
+                        <span class="badge bg-light text-dark border">Python & Django</span>
+                        <span class="badge bg-light text-dark border">Chart.js</span>
+                        <span class="badge bg-light text-dark border">PDFKit / WeasyPrint</span>
+                        <span class="badge bg-light text-dark border">REST API</span>
+                        <span class="badge bg-light text-dark border">MySQL</span>
+                    </div>
+                </div>
+                <div class="card-footer bg-white border-0 px-4 pb-4 pt-0 d-flex justify-content-between align-items-center">
+                    <small class="text-muted"><i class="fas fa-building me-1 text-danger"></i> Maurya Technical Lucknow</small>
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20the%20Corporate%20HRMS%20Project" target="_blank" class="btn btn-outline-danger btn-sm fw-bold">
+                        <i class="fab fa-whatsapp me-1"></i> Inquire Project Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call To Action Box -->
+    <div class="mt-5 p-5 bg-dark text-white rounded-4 shadow text-center position-relative overflow-hidden" data-aos="zoom-in">
+        <h3 class="fw-bold text-warning mb-2">Want to Build Real-World Projects Like These?</h3>
+        <p class="text-light opacity-75 mb-4 fs-6">
+            Join Maurya Technical Private Limited (Alambagh, Lucknow) Winter & Summer Industrial Training 2026. Work directly on live client deployments and build your own software project portfolio!
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{% url 'registration' %}" class="btn btn-warning btn-lg fw-bold text-dark px-4 py-3 shadow">
+                <i class="fas fa-laptop-code me-2"></i> Join Project Training 2026
+            </a>
+            <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20about%20Live%20Project%20Training" target="_blank" class="btn btn-success btn-lg fw-bold px-4 py-3 shadow">
+                <i class="fab fa-whatsapp me-2"></i> WhatsApp Project Inquiries
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

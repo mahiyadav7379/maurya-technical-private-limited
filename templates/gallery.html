@@ -1,0 +1,395 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Photo & Event Gallery - Maurya Technical Private Limited{% endblock %}
+
+{% block extra_css %}
+<!-- SimpleLightbox CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
+<style>
+    .gallery-img-wrap {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px 12px 0 0;
+        cursor: pointer;
+    }
+    .gallery-img-wrap img {
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        height: 270px;
+        object-fit: cover;
+        object-position: top center;
+        width: 100%;
+    }
+    .gallery-img-wrap:hover img {
+        transform: scale(1.08);
+    }
+    .gallery-overlay-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(168, 27, 27, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        color: #ffffff;
+        font-size: 28px;
+    }
+    .gallery-img-wrap:hover .gallery-overlay-icon {
+        opacity: 1;
+    }
+    .sl-wrapper .sl-close, .sl-wrapper .sl-navigation button {
+        color: #ffffff !important;
+    }
+    .sl-wrapper .sl-image img {
+        border: 4px solid var(--gold-accent);
+        border-radius: 8px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="bg-danger text-white py-5" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bold"><i class="fas fa-camera-retro me-2 text-warning"></i> Photo & Event Gallery</h1>
+        <p class="lead">Glimpses of Foundation Day 2026, Award Ceremonies, Trainee Celebrations & Outings at Maurya Technical Private Limited, Alambagh Lucknow</p>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+    <!-- Section Filter Title -->
+    <div class="section-heading-wrapper mb-5">
+        <h2 class="section-title">Maurya Technical Moments & Honors (20 Highlights)</h2>
+        <p class="text-muted fs-6"><i class="fas fa-search-plus me-1 text-danger"></i> Click any photo below to open full-screen Lightbox Gallery Viewer</p>
+    </div>
+
+    <!-- 20 Photo Grid Showcase with SimpleLightbox -->
+    <div class="row g-4 gallery-container">
+        
+        <!-- Photo 1 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_1.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Foundation Day Trophy & Honor Award 2026 - Maurya Technical Alambagh Lucknow">
+                    <img src="{% static 'images/maurya_event_1.jpg' %}" alt="Foundation Day Trophy & Honor Award 2026">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-danger mb-2">Foundation Day 2026</span>
+                    <h5 class="fw-bold text-dark">Trophy & Honor Award</h5>
+                    <p class="small text-muted mb-0">Award presentation at Maurya Technical Private Limited, Alambagh Lucknow.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_2.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Faculty & Trainees Mall Outing - Maurya Technical">
+                    <img src="{% static 'images/maurya_event_2.jpg' %}" alt="Faculty & Trainees Mall Outing">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-warning text-dark mb-2">Student Outing</span>
+                    <h5 class="fw-bold text-dark">Faculty & Trainees Outing</h5>
+                    <p class="small text-muted mb-0">Industrial batch celebration trip and mall outing with faculty.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_3.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Certificate of Appreciation Distribution - Python Django Training">
+                    <img src="{% static 'images/maurya_event_3.jpg' %}" alt="Certificate of Appreciation Distribution">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-danger mb-2">Award Ceremony</span>
+                    <h5 class="fw-bold text-dark">Certificate of Appreciation</h5>
+                    <p class="small text-muted mb-0">Honoring top performers in Python & Web Development training.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_4.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Director Award Presentation Ceremony - Maurya Technical">
+                    <img src="{% static 'images/maurya_event_4.jpg' %}" alt="Director Award Presentation Ceremony">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-primary mb-2">Certificate Distribution</span>
+                    <h5 class="fw-bold text-dark">Director Award Presentation</h5>
+                    <p class="small text-muted mb-0">Directors awarding project completion certificates to trainees.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_5.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Official Apprenticeship Certificate Award - Maurya Technical">
+                    <img src="{% static 'images/maurya_event_5.jpg' %}" alt="Official Apprenticeship Certificate Award">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-success mb-2">Industrial Certification</span>
+                    <h5 class="fw-bold text-dark">Apprenticeship Award</h5>
+                    <p class="small text-muted mb-0">Official apprenticeship credentials presented to successful graduates.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_6.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Foundation Day Excellence Honor 2026">
+                    <img src="{% static 'images/maurya_event_6.jpg' %}" alt="Foundation Day Excellence Honor 2026">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-danger mb-2">Foundation Day 2026</span>
+                    <h5 class="fw-bold text-dark">Foundation Day Honor</h5>
+                    <p class="small text-muted mb-0">Student receiving excellence trophy from Maurya Technical Director.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 7 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_7.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Mentor Excellence Honor Award - Maurya Technical">
+                    <img src="{% static 'images/maurya_event_7.jpg' %}" alt="Mentor Excellence Honor Award">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-warning text-dark mb-2">Mentor Award</span>
+                    <h5 class="fw-bold text-dark">Mentor Excellence Honor</h5>
+                    <p class="small text-muted mb-0">Recognizing outstanding faculty and project mentorship at Maurya Technical.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 8 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_8.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Farewell & Industrial Training Batch Ceremony 2026">
+                    <img src="{% static 'images/maurya_event_8.jpg' %}" alt="Farewell & Industrial Training Batch Ceremony 2026">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-danger mb-2">Farewell 2026</span>
+                    <h5 class="fw-bold text-dark">Farewell Honor Ceremony</h5>
+                    <p class="small text-muted mb-0">Celebrating journey & success of outgoing industrial training batch.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 9 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_9.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Outstanding Trainee Award - Python Django Web Dev">
+                    <img src="{% static 'images/maurya_event_9.jpg' %}" alt="Outstanding Trainee Award">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-primary mb-2">Performance Award</span>
+                    <h5 class="fw-bold text-dark">Outstanding Trainee Award</h5>
+                    <p class="small text-muted mb-0">Awarding high achievers in Python with Django & Full Stack Web Dev.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 10 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_10.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Maurya Technical Celebration Stage 2026">
+                    <img src="{% static 'images/maurya_event_10.jpg' %}" alt="Maurya Technical Celebration Stage 2026">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-success mb-2">Maurya Technical Stage</span>
+                    <h5 class="fw-bold text-dark">Annual Celebration</h5>
+                    <p class="small text-muted mb-0">Celebrating achievements together at Maurya Technical Alambagh Lucknow.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 11 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_11.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Trophy Honor Presentation - Maurya Technical Leadership">
+                    <img src="{% static 'images/maurya_event_11.jpg' %}" alt="Trophy Honor Presentation">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-danger mb-2">Excellence Award</span>
+                    <h5 class="fw-bold text-dark">Trophy Honor Presentation</h5>
+                    <p class="small text-muted mb-0">Student receiving trophy from Maurya Technical Leadership.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 12 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_12.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Special Achievement Award - Project Practicals">
+                    <img src="{% static 'images/maurya_event_12.jpg' %}" alt="Special Achievement Award">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-warning text-dark mb-2">Achievement Award</span>
+                    <h5 class="fw-bold text-dark">Special Achievement Award</h5>
+                    <p class="small text-muted mb-0">Recognizing top performance in project practicals.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 13 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_13.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Foundation Day Felicitation - Alambagh Lucknow Center">
+                    <img src="{% static 'images/maurya_event_13.jpg' %}" alt="Foundation Day Felicitation">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-danger mb-2">Felicitation 2026</span>
+                    <h5 class="fw-bold text-dark">Foundation Day Felicitation</h5>
+                    <p class="small text-muted mb-0">Felicitation of outstanding trainees at Alambagh Lucknow center.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 14 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_14.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Student Merit Trophy - Web Development Project Execution">
+                    <img src="{% static 'images/maurya_event_14.jpg' %}" alt="Student Merit Trophy">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-primary mb-2">Merit Trophy</span>
+                    <h5 class="fw-bold text-dark">Student Merit Trophy</h5>
+                    <p class="small text-muted mb-0">Awarded for best Web Development project execution.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 15 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_15.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Industrial Trainee Honor Presentation">
+                    <img src="{% static 'images/maurya_event_15.jpg' %}" alt="Industrial Trainee Honor Presentation">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-success mb-2">Trainee Honor</span>
+                    <h5 class="fw-bold text-dark">Industrial Trainee Honor</h5>
+                    <p class="small text-muted mb-0">Presentation of merit memento to industrial trainee.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 16 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_16.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Foundation Day Traditional Welcome & Floral Greeting Ceremony - Maurya Technical">
+                    <img src="{% static 'images/maurya_event_16.jpg' %}" alt="Foundation Day Traditional Welcome & Floral Greeting">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-danger mb-2">Welcome Ceremony 2026</span>
+                    <h5 class="fw-bold text-dark">Traditional Floral Welcome</h5>
+                    <p class="small text-muted mb-0">Floral greeting & welcome ceremony at Foundation Day 2026, Alambagh Lucknow.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 17 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_17.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Director's Trophy of Excellence Presentation - Founder & Director Vivek Kushawaha">
+                    <img src="{% static 'images/maurya_event_17.jpg' %}" alt="Director's Trophy of Excellence Presentation">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-warning text-dark mb-2">Excellence Trophy</span>
+                    <h5 class="fw-bold text-dark">Trophy of Excellence Presentation</h5>
+                    <p class="small text-muted mb-0">Founder & Director Vivek Kushawaha presenting excellence award trophy at Foundation Day.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 18 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_18.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Foundation Day Merit Trophy Presentation - Maurya Technical">
+                    <img src="{% static 'images/maurya_event_18.jpg' %}" alt="Foundation Day Merit Trophy Presentation">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-primary mb-2">Merit Trophy 2026</span>
+                    <h5 class="fw-bold text-dark">Merit & Leadership Trophy</h5>
+                    <p class="small text-muted mb-0">Honoring top trainee achievement and dedicated project performance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 19 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_19.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Summer Internship Industrial Certificate & Medal Distribution">
+                    <img src="{% static 'images/maurya_event_19.jpg' %}" alt="Summer Internship Certificate & Medal Distribution">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-success mb-2">Certificate & Medal</span>
+                    <h5 class="fw-bold text-dark">Internship Certificate & Medal</h5>
+                    <p class="small text-muted mb-0">Presentation of Summer Internship Industrial Certificate and medal by Director & faculty.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 20 -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                <a href="{% static 'images/maurya_event_20.jpg' %}" class="gallery-lightbox-link gallery-img-wrap" data-title="Industrial Training Certification & Farewell 2026">
+                    <img src="{% static 'images/maurya_event_20.jpg' %}" alt="Industrial Training Certification & Farewell 2026">
+                    <div class="gallery-overlay-icon"><i class="fas fa-expand"></i></div>
+                </a>
+                <div class="card-body p-4 text-center">
+                    <span class="badge bg-danger mb-2">Farewell & Certification</span>
+                    <h5 class="fw-bold text-dark">Industrial Training Farewell</h5>
+                    <p class="small text-muted mb-0">Congratulating trainees on successful completion of industrial training program.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- SimpleLightbox JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var galleryLightbox = new SimpleLightbox('.gallery-lightbox-link', {
+            captionsData: 'data-title',
+            captionDelay: 200,
+            showCounter: true,
+            enableKeyboard: true,
+            close: true,
+            closeText: '×',
+            navText: ['‹', '›'],
+            animationSpeed: 250,
+            fadeSpeed: 250
+        });
+        console.log("SimpleLightbox initialized on gallery.html");
+    });
+</script>
+{% endblock %}

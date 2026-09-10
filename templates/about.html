@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Maurya Technical Private Limited{% endblock %}
+
+{% block content %}
+<!-- About Hero Banner -->
+<div class="bg-danger text-white py-5" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bold"><i class="fas fa-building text-warning me-2"></i> About Maurya Technical Private Limited</h1>
+        <p class="lead">Registered under Ministry of Corporate Affairs | Alambagh, Lucknow</p>
+    </div>
+</div>
+
+<!-- Main About Company Section -->
+<div class="container py-5 px-4">
+    <div class="row g-5 align-items-center mb-5">
+        <!-- Left Text Content -->
+        <div class="col-lg-6">
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 rounded-pill shadow-sm">
+                <i class="fas fa-shield-alt text-danger me-1"></i> Government Registered Design Service Provider &amp; Training Institute
+            </span>
+            <h2 class="fw-bold text-dark mb-3">The industry offers complete design solutions across:</h2>
+            <p class="text-muted fs-6">
+                <strong>Maurya Technical Private Limited</strong> (Alambagh Lucknow) is an ISO-certified enterprise delivering complete design solutions and industry-standard training across <strong>Web Design, Machine Design, Circuit Design, Building Design, Interior Design, Textile Design, and Fashion Design</strong>.
+            </p>
+            <p class="text-muted fs-6">
+                We specialize in <strong>Internship, Apprenticeship, Placement, and Multi-Disciplinary Design Services</strong> for B.Tech, Diploma, BCA, MCA, and M.Tech candidates. Our modern Alambagh campus features executive conference halls, director suites, and state-of-the-art practical design labs equipped with high-speed fiber internet and live project servers.
+            </p>
+
+            <div class="row g-3 mt-3">
+                <div class="col-sm-6">
+                    <div class="p-3 bg-light rounded-3 border-start border-4 border-danger shadow-sm">
+                        <h6 class="fw-bold text-dark mb-1"><i class="fas fa-laptop-code text-danger me-2"></i> Practical Labs</h6>
+                        <small class="text-muted">High-Tech Projector Coding Labs</small>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="p-3 bg-light rounded-3 border-start border-4 border-warning shadow-sm">
+                        <h6 class="fw-bold text-dark mb-1"><i class="fas fa-briefcase text-warning me-2"></i> 100% Placement</h6>
+                        <small class="text-muted">500+ Active Corporate Hiring Partners</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20your%20company" target="_blank" class="btn btn-success btn-lg fw-bold me-3 shadow">
+                    <i class="fab fa-whatsapp me-2"></i> WhatsApp Support (+91 88878 39689)
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-danger btn-lg fw-bold">
+                    Contact Office &rarr;
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Side: Official Office & Building Infrastructure Image -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger">
+                <img src="{% static 'images/maurya_building_office.png' %}" alt="Maurya Technical Private Limited Building & Infrastructure" class="img-fluid w-100" style="object-fit: cover;">
+                <div class="card-body bg-dark text-white p-3 text-center">
+                    <h6 class="fw-bold mb-1 text-warning"><i class="fas fa-door-open me-2"></i> Maurya Technical Private Limited Campus</h6>
+                    <small class="text-muted">Alambagh Lucknow • Executive Office, Conference Rooms & High-Tech Labs</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Founder & Director Leadership Section -->
+    <div class="row g-5 align-items-center mb-5 p-4 rounded-4 director-section border shadow-sm">
+        <div class="col-lg-5 text-center">
+            <div class="director-card shadow-lg mx-auto" style="max-width: 380px;">
+                <img src="{% static 'images/director_vivek_kushawaha.png' %}" alt="Vivek Kushawaha - Founder & Director" class="img-fluid w-100">
+                <div class="p-3 bg-white text-center border-top">
+                    <h5 class="fw-bold mb-1 text-dark">Vivek Kushawaha</h5>
+                    <p class="text-danger fw-bold small mb-2">Founder & Director &bull; Maurya Technical Pvt. Ltd.</p>
+                    <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-sm fw-bold px-3">
+                        <i class="fab fa-linkedin me-1"></i> LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <span class="badge bg-danger text-white fw-bold px-3 py-2 mb-2 rounded-pill">
+                <i class="fas fa-crown text-warning me-1"></i> FOUNDER & DIRECTOR'S DESK
+            </span>
+            <h2 class="fw-bold text-dark mb-1">Vivek Kushawaha</h2>
+            <p class="text-danger fw-bold fs-5 mb-3">Founder & Director &bull; Maurya Technical Private Limited, Lucknow</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge bg-danger p-2 px-3 rounded-pill">Founder & Director</span>
+                <span class="badge bg-primary p-2 px-3 rounded-pill">Assistant Professor</span>
+                <span class="badge bg-dark p-2 px-3 rounded-pill">Dean Student Welfare & HOD (Electrical)</span>
+                <span class="badge bg-secondary p-2 px-3 rounded-pill">MGIMT Lucknow (AKTU Affiliated)</span>
+            </div>
+            <div class="director-quote-box mb-4">
+                <p class="mb-0 text-dark fst-italic">
+                    "Under our leadership, Maurya Technical Private Limited is committed to delivering world-class technical education, live project development experience, and 100% placement assurance to all engineering and diploma students across Uttar Pradesh and India."
+                </p>
+            </div>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin fw-bold px-4 py-2 shadow-sm">
+                    <i class="fab fa-linkedin me-2"></i> Company LinkedIn
+                </a>
+                <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram fw-bold px-4 py-2 shadow-sm">
+                    <i class="fab fa-instagram me-2"></i> Company Instagram
+                </a>
+                <a href="https://wa.me/918887839689" target="_blank" class="btn btn-success fw-bold px-4 py-2 shadow-sm">
+                    <i class="fab fa-whatsapp me-2"></i> WhatsApp Desk
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company HR Leadership Section -->
+    <div class="row g-5 align-items-center mb-5 p-4 rounded-4 director-section border shadow-sm flex-lg-row-reverse" data-aos="fade-up">
+        <div class="col-lg-5 text-center">
+            <div class="director-card shadow-lg mx-auto" style="max-width: 400px;">
+                <img src="{% static 'images/hr_head_kirti_kushwaha.jpg' %}?v=2026" alt="Kirti Kushwaha - HR Head" class="img-fluid w-100 rounded-top" style="object-fit: cover;">
+                <div class="p-3 bg-white text-center border-top">
+                    <h5 class="fw-bold mb-1 text-dark">Kirti Kushwaha</h5>
+                    <p class="text-danger fw-bold small mb-2">HR Head &bull; Maurya Technical Pvt. Ltd.</p>
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20connect%20with%20HR%20Desk" target="_blank" class="btn btn-success btn-sm fw-bold px-3">
+                        <i class="fab fa-whatsapp me-1"></i> Contact HR Desk
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <span class="badge bg-danger text-white fw-bold px-3 py-2 mb-2 rounded-pill">
+                <i class="fas fa-user-tie text-warning me-1"></i> HR HEAD
+            </span>
+            <h2 class="fw-bold text-dark mb-1">Kirti Kushwaha</h2>
+            <p class="text-danger fw-bold fs-5 mb-3">HR Head &bull; Maurya Technical Private Limited, Lucknow</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge bg-danger p-2 px-3 rounded-pill">Company HR</span>
+                <span class="badge bg-dark p-2 px-3 rounded-pill">Talent Acquisition Head</span>
+                <span class="badge bg-primary p-2 px-3 rounded-pill">Campus Placement Coordinator</span>
+            </div>
+            <div class="director-quote-box mb-4">
+                <p class="mb-0 text-dark fst-italic">
+                    "At Maurya Technical Private Limited, our HR department is actively dedicated to guiding students through technical recruitment, coordinating mega Job Fair drives, and ensuring smooth career transitions into leading IT corporations."
+                </p>
+            </div>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20connect%20with%20HR%20Desk" target="_blank" class="btn btn-success fw-bold px-4 py-2 shadow-sm">
+                    <i class="fab fa-whatsapp me-2"></i> HR WhatsApp Support
+                </a>
+                <a href="{% url 'job_fair' %}" class="btn btn-warning fw-bold text-dark px-4 py-2 shadow-sm">
+                    <i class="fas fa-briefcase me-2"></i> View Job Fair Highlights
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Infrastructure Features Grid -->
+    <div class="section-heading-wrapper mb-4">
+        <h2 class="section-title">Why Choose Maurya Technical?</h2>
+        <p class="text-muted">World-class infrastructure and industry-focused software education</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100 feature-mini-card">
+                <div class="feature-icon-box bg-danger mb-3"><i class="fas fa-building"></i></div>
+                <h5 class="fw-bold mb-2">Corporate Campus</h5>
+                <p class="text-muted small">Modern building located at Alambagh Lucknow with executive facilities.</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100 feature-mini-card">
+                <div class="feature-icon-box bg-warning text-dark mb-3"><i class="fas fa-desktop"></i></div>
+                <h5 class="fw-bold mb-2">Practical Computer Labs</h5>
+                <p class="text-muted small">Individual systems with high-speed internet and projectors for live coding.</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100 feature-mini-card">
+                <div class="feature-icon-box bg-success mb-3"><i class="fas fa-user-graduate"></i></div>
+                <h5 class="fw-bold mb-2">Expert Mentorship</h5>
+                <p class="text-muted small">Active software engineers guiding trainees on real client projects.</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100 feature-mini-card">
+                <div class="feature-icon-box bg-dark mb-3"><i class="fas fa-award"></i></div>
+                <h5 class="fw-bold mb-2">ISO Certification</h5>
+                <p class="text-muted small">Official Govt/ISO certificates with instant online verification.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

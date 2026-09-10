@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us - Maurya Technical Lucknow{% endblock %}
+
+{% block content %}
+<div class="py-5 text-white" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bold"><i class="fas fa-envelope-open-text text-warning me-2"></i> Contact Maurya Technical</h1>
+        <p class="lead">Have questions about courses, admissions, or branch locations? Get in touch!</p>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+    <div class="row g-5">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+                <h3 class="fw-bold mb-4">Send Us a Message</h3>
+                <form method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Full Name</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Email Address</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Mobile Phone</label>
+                        {{ form.phone }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Subject</label>
+                        {{ form.subject }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Message</label>
+                        {{ form.message }}
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-lg fw-bold text-dark w-100 py-3">
+                        <i class="fas fa-paper-plane me-2"></i> Submit Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <h3 class="fw-bold mb-4">Head Office Address</h3>
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                <h5><i class="fas fa-map-marker-alt text-danger me-2"></i> Lucknow Center</h5>
+                <p class="text-muted">Hazratganj / Alambagh Main Road, Near Metro Station, Lucknow, Uttar Pradesh - 226001</p>
+                <p class="fw-bold mb-1" style="color: var(--primary-red);"><i class="fas fa-phone-alt me-2"></i> +91 88878 39689 / +91 9198483820</p>
+                <p class="text-muted mb-3"><i class="fas fa-envelope me-2"></i> info@mauryatechnical.com</p>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="https://wa.me/918887839689" target="_blank" class="btn btn-success btn-sm fw-bold"><i class="fab fa-whatsapp me-1"></i> WhatsApp</a>
+                    <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-sm fw-bold"><i class="fab fa-instagram me-1"></i> Instagram</a>
+                    <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-sm fw-bold"><i class="fab fa-linkedin me-1"></i> LinkedIn</a>
+                    <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" class="btn btn-danger btn-sm fw-bold"><i class="fab fa-youtube me-1"></i> YouTube</a>
+                </div>
+            </div>
+
+            <!-- Google Map Embed Placeholder -->
+            <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113911.32837267156!2d80.86055375535359!3d26.848622992850917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

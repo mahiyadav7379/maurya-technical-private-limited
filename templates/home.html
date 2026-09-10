@@ -1,0 +1,853 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Maurya Technical Private Limited | Alambagh Lucknow{% endblock %}
+
+{% block content %}
+
+<!-- Best IT Training & Campus Overview Hero Section -->
+<section class="py-5 bg-white">
+    <div class="container px-4">
+        <div class="row g-5 align-items-center">
+            <!-- Left Text Content -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <span class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 rounded-pill shadow-sm">
+                    <i class="fas fa-shield-alt text-danger me-1"></i> Government Registered Design Service Provider &amp; Training Institute
+                </span>
+                <h2 class="fw-bold text-dark mb-3" style="letter-spacing: -0.5px; line-height: 1.25;">
+                    The industry offers complete design solutions across:
+                </h2>
+                <p class="text-muted fs-6 mb-3">
+                    <strong>Maurya Technical Private Limited</strong> (Alambagh Lucknow) is an ISO-certified leader delivering industry-grade design solutions, technical project consultation, and professional practical training across multi-disciplinary engineering and creative domains:
+                </p>
+
+                <!-- 7 Design Solutions Accordion Showcase -->
+                <div class="accordion design-solutions-accordion mb-4" id="designSolutionsAccordion">
+                    
+                    <!-- 1. Web Design -->
+                    <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden active-design-item">
+                        <h2 class="accordion-header" id="headingWebDesign">
+                            <button class="accordion-button fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWebDesign" aria-expanded="true" aria-controls="collapseWebDesign">
+                                <span class="badge bg-danger p-2 me-2 rounded-circle"><i class="fas fa-globe text-white"></i></span>
+                                <span class="fs-6">1. Web Design</span>
+                                <span class="badge bg-warning text-dark ms-2 small">Featured</span>
+                            </button>
+                        </h2>
+                        <div id="collapseWebDesign" class="accordion-collapse collapse show" aria-labelledby="headingWebDesign" data-bs-parent="#designSolutionsAccordion">
+                            <div class="accordion-body bg-light p-3">
+                                <!-- Fees Box -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between p-2 px-3 rounded-3 bg-white border mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div>
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-day text-danger me-1"></i> 45 Days Training</small>
+                                            <span class="fs-6 fw-bold text-success">₹4,000</span>
+                                        </div>
+                                        <div class="border-start ps-3">
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-alt text-danger me-1"></i> 6 Months Training</small>
+                                            <span class="fs-6 fw-bold text-danger">₹18,000</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning text-dark">ISO Govt. Registered</span>
+                                </div>
+
+                                <p class="small text-muted mb-2"><strong>Subjects Covered:</strong> Click on any subject below to open its dedicated webpage:</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <a href="{% url 'course_detail' 'python-web-design' %}" class="badge bg-danger text-white text-decoration-none p-2 fs-6 shadow-sm"><i class="fab fa-python text-warning me-1"></i> Python Web Design (Click to Open &rarr;)</a>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-code text-primary me-1"></i> HTML5 &amp; CSS3</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fab fa-js text-warning me-1"></i> JavaScript</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fab fa-bootstrap text-purple me-1"></i> Bootstrap 5</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-server text-success me-1"></i> Django Framework</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-database text-info me-1"></i> Database (SQLite/PostgreSQL)</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                    <a href="{% url 'course_detail' 'python-web-design' %}" class="btn btn-sm btn-danger fw-bold shadow-sm">
+                                        <i class="fab fa-python me-1"></i> Open Python Web Design Webpage &rarr;
+                                    </a>
+                                    <a href="{% url 'web_design' %}" class="btn btn-sm btn-outline-dark fw-bold">
+                                        All Web Design Tracks &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Machine Design -->
+                    <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
+                        <h2 class="accordion-header" id="headingMachineDesign">
+                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMachineDesign" aria-expanded="false" aria-controls="collapseMachineDesign">
+                                <span class="badge bg-secondary p-2 me-2 rounded-circle"><i class="fas fa-cogs text-white"></i></span>
+                                <span class="fs-6">2. ⚙️ Machine Design</span>
+                            </button>
+                        </h2>
+                        <div id="collapseMachineDesign" class="accordion-collapse collapse" aria-labelledby="headingMachineDesign" data-bs-parent="#designSolutionsAccordion">
+                            <div class="accordion-body bg-light p-3">
+                                <!-- Fees Box -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between p-2 px-3 rounded-3 bg-white border mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div>
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-day text-danger me-1"></i> 45 Days Training</small>
+                                            <span class="fs-6 fw-bold text-success">₹4,000</span>
+                                        </div>
+                                        <div class="border-start ps-3">
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-alt text-danger me-1"></i> 6 Months Training</small>
+                                            <span class="fs-6 fw-bold text-danger">₹18,000</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-secondary text-white">Mechanical CAD</span>
+                                </div>
+
+                                <p class="small text-muted mb-2"><strong>Subjects Covered:</strong></p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-pencil-ruler text-danger me-1"></i> Engineering Drawing</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-drafting-compass text-danger me-1"></i> AutoCAD</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-cube text-danger me-1"></i> SolidWorks</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-bezier-curve text-danger me-1"></i> CATIA</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-shapes text-danger me-1"></i> 3D Modeling</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-vector-square text-danger me-1"></i> 2D Drafting</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-cogs text-danger me-1"></i> Machine Components &amp; Assembly</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-tools text-danger me-1"></i> Mechanical Design Basics</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                    <a href="{% url 'course_detail' 'machine-design' %}" class="btn btn-sm btn-danger fw-bold shadow-sm">
+                                        Open Machine Design Webpage &rarr;
+                                    </a>
+                                    <a href="{% url 'registration' %}?course=Machine+Design" class="btn btn-sm btn-outline-danger fw-bold">Enroll in Batch</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Circuit Design -->
+                    <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
+                        <h2 class="accordion-header" id="headingCircuitDesign">
+                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCircuitDesign" aria-expanded="false" aria-controls="collapseCircuitDesign">
+                                <span class="badge bg-warning text-dark p-2 me-2 rounded-circle"><i class="fas fa-microchip"></i></span>
+                                <span class="fs-6">3. 🔌 Circuit Design</span>
+                            </button>
+                        </h2>
+                        <div id="collapseCircuitDesign" class="accordion-collapse collapse" aria-labelledby="headingCircuitDesign" data-bs-parent="#designSolutionsAccordion">
+                            <div class="accordion-body bg-light p-3">
+                                <!-- Fees Box -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between p-2 px-3 rounded-3 bg-white border mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div>
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-day text-danger me-1"></i> 45 Days Training</small>
+                                            <span class="fs-6 fw-bold text-success">₹4,000</span>
+                                        </div>
+                                        <div class="border-start ps-3">
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-alt text-danger me-1"></i> 6 Months Training</small>
+                                            <span class="fs-6 fw-bold text-danger">₹18,000</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning text-dark">Electronics CAD</span>
+                                </div>
+
+                                <p class="small text-muted mb-2"><strong>Subjects Covered:</strong></p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-bolt text-warning me-1"></i> Basic Electronics</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-plug text-warning me-1"></i> Electrical Circuit Basics</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-microchip text-warning me-1"></i> PCB Design</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-wave-square text-warning me-1"></i> Circuit Simulation</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-laptop-code text-warning me-1"></i> Arduino Basics</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-network-wired text-warning me-1"></i> Embedded System Basics</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-desktop text-warning me-1"></i> Proteus</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-project-diagram text-warning me-1"></i> KiCad / EasyEDA</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                    <a href="{% url 'course_detail' 'circuit-design' %}" class="btn btn-sm btn-danger fw-bold shadow-sm">
+                                        Open Circuit Design Webpage &rarr;
+                                    </a>
+                                    <a href="{% url 'registration' %}?course=Circuit+Design" class="btn btn-sm btn-outline-danger fw-bold">Enroll in Batch</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Building Design -->
+                    <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
+                        <h2 class="accordion-header" id="headingBuildingDesign">
+                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBuildingDesign" aria-expanded="false" aria-controls="collapseBuildingDesign">
+                                <span class="badge bg-info text-white p-2 me-2 rounded-circle"><i class="fas fa-city"></i></span>
+                                <span class="fs-6">4. 🏢 Building Design</span>
+                            </button>
+                        </h2>
+                        <div id="collapseBuildingDesign" class="accordion-collapse collapse" aria-labelledby="headingBuildingDesign" data-bs-parent="#designSolutionsAccordion">
+                            <div class="accordion-body bg-light p-3">
+                                <!-- Fees Box -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between p-2 px-3 rounded-3 bg-white border mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div>
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-day text-danger me-1"></i> 45 Days Training</small>
+                                            <span class="fs-6 fw-bold text-success">₹4,000</span>
+                                        </div>
+                                        <div class="border-start ps-3">
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-alt text-danger me-1"></i> 6 Months Training</small>
+                                            <span class="fs-6 fw-bold text-danger">₹18,000</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-info text-white">Civil BIM CAD</span>
+                                </div>
+
+                                <p class="small text-muted mb-2"><strong>Subjects Covered:</strong></p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-ruler-combined text-info me-1"></i> Architectural Drawing</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-drafting-compass text-info me-1"></i> AutoCAD</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-th-large text-info me-1"></i> 2D Floor Plan</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-building text-info me-1"></i> 3D Building Modeling</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-cubes text-info me-1"></i> Revit</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-pencil-alt text-info me-1"></i> SketchUp</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-map-marked-alt text-info me-1"></i> Building Planning</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-columns text-info me-1"></i> Structural Drawing Basics</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                    <a href="{% url 'course_detail' 'building-design' %}" class="btn btn-sm btn-danger fw-bold shadow-sm">
+                                        Open Building Design Webpage &rarr;
+                                    </a>
+                                    <a href="{% url 'registration' %}?course=Building+Design" class="btn btn-sm btn-outline-danger fw-bold">Enroll in Batch</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Interior Design -->
+                    <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
+                        <h2 class="accordion-header" id="headingInteriorDesign">
+                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInteriorDesign" aria-expanded="false" aria-controls="collapseInteriorDesign">
+                                <span class="badge bg-success text-white p-2 me-2 rounded-circle"><i class="fas fa-couch"></i></span>
+                                <span class="fs-6">5. 🏠 Interior Design</span>
+                            </button>
+                        </h2>
+                        <div id="collapseInteriorDesign" class="accordion-collapse collapse" aria-labelledby="headingInteriorDesign" data-bs-parent="#designSolutionsAccordion">
+                            <div class="accordion-body bg-light p-3">
+                                <!-- Fees Box -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between p-2 px-3 rounded-3 bg-white border mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div>
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-day text-danger me-1"></i> 45 Days Training</small>
+                                            <span class="fs-6 fw-bold text-success">₹4,000</span>
+                                        </div>
+                                        <div class="border-start ps-3">
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-alt text-danger me-1"></i> 6 Months Training</small>
+                                            <span class="fs-6 fw-bold text-danger">₹18,000</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-success text-white">Interior Architecture</span>
+                                </div>
+
+                                <p class="small text-muted mb-2"><strong>Subjects Covered:</strong></p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-expand-arrows-alt text-success me-1"></i> Space Planning</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-chair text-success me-1"></i> Furniture Layout</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-drafting-compass text-success me-1"></i> AutoCAD</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-cube text-success me-1"></i> SketchUp</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-layer-group text-success me-1"></i> 3D Interior Modeling</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-sun text-success me-1"></i> V-Ray / Rendering</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-palette text-success me-1"></i> Material &amp; Color Selection</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-lightbulb text-success me-1"></i> Lighting Design</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                    <a href="{% url 'course_detail' 'interior-design' %}" class="btn btn-sm btn-danger fw-bold shadow-sm">
+                                        Open Interior Design Webpage &rarr;
+                                    </a>
+                                    <a href="{% url 'registration' %}?course=Interior+Design" class="btn btn-sm btn-outline-danger fw-bold">Enroll in Batch</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Textile Design -->
+                    <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
+                        <h2 class="accordion-header" id="headingTextileDesign">
+                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTextileDesign" aria-expanded="false" aria-controls="collapseTextileDesign">
+                                <span class="badge bg-dark text-white p-2 me-2 rounded-circle"><i class="fas fa-scroll"></i></span>
+                                <span class="fs-6">6. 👗 Textile Design</span>
+                            </button>
+                        </h2>
+                        <div id="collapseTextileDesign" class="accordion-collapse collapse" aria-labelledby="headingTextileDesign" data-bs-parent="#designSolutionsAccordion">
+                            <div class="accordion-body bg-light p-3">
+                                <!-- Fees Box -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between p-2 px-3 rounded-3 bg-white border mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div>
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-day text-danger me-1"></i> 45 Days Training</small>
+                                            <span class="fs-6 fw-bold text-success">₹4,000</span>
+                                        </div>
+                                        <div class="border-start ps-3">
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-alt text-danger me-1"></i> 6 Months Training</small>
+                                            <span class="fs-6 fw-bold text-danger">₹18,000</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-dark text-white">Textile Technology</span>
+                                </div>
+
+                                <p class="small text-muted mb-2"><strong>Subjects Covered:</strong></p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-scroll text-dark me-1"></i> Textile Designing Basics</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-cloth text-dark me-1"></i> Fabric Design</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-cut text-dark me-1"></i> Pattern Making</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-paint-brush text-dark me-1"></i> Surface Design</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-print text-dark me-1"></i> Digital Textile Printing</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-image text-dark me-1"></i> Photoshop</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-pen-nib text-dark me-1"></i> CorelDRAW</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-palette text-dark me-1"></i> Color &amp; Pattern Development</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                    <a href="{% url 'course_detail' 'textile-design' %}" class="btn btn-sm btn-danger fw-bold shadow-sm">
+                                        Open Textile Design Webpage &rarr;
+                                    </a>
+                                    <a href="{% url 'registration' %}?course=Textile+Design" class="btn btn-sm btn-outline-danger fw-bold">Enroll in Batch</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Fashion Design -->
+                    <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
+                        <h2 class="accordion-header" id="headingFashionDesign">
+                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFashionDesign" aria-expanded="false" aria-controls="collapseFashionDesign">
+                                <span class="badge bg-primary text-white p-2 me-2 rounded-circle"><i class="fas fa-tshirt"></i></span>
+                                <span class="fs-6">7. 👚 Fashion Design</span>
+                            </button>
+                        </h2>
+                        <div id="collapseFashionDesign" class="accordion-collapse collapse" aria-labelledby="headingFashionDesign" data-bs-parent="#designSolutionsAccordion">
+                            <div class="accordion-body bg-light p-3">
+                                <!-- Fees Box -->
+                                <div class="d-flex flex-wrap align-items-center justify-content-between p-2 px-3 rounded-3 bg-white border mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div>
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-day text-danger me-1"></i> 45 Days Training</small>
+                                            <span class="fs-6 fw-bold text-success">₹4,000</span>
+                                        </div>
+                                        <div class="border-start ps-3">
+                                            <small class="text-muted d-block fw-semibold"><i class="fas fa-calendar-alt text-danger me-1"></i> 6 Months Training</small>
+                                            <span class="fs-6 fw-bold text-danger">₹18,000</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-primary text-white">Fashion CAD</span>
+                                </div>
+
+                                <p class="small text-muted mb-2"><strong>Subjects Covered:</strong></p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-female text-primary me-1"></i> Fashion Illustration</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-tshirt text-primary me-1"></i> Garment Designing</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-cut text-primary me-1"></i> Pattern Making</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-user-ninja text-primary me-1"></i> Draping</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-scroll text-primary me-1"></i> Textile &amp; Fabric Knowledge</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-desktop text-primary me-1"></i> CorelDRAW / Photoshop</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-laptop text-primary me-1"></i> Fashion CAD</span>
+                                    <span class="badge bg-white text-dark border p-2"><i class="fas fa-vest text-primary me-1"></i> Apparel Design</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                    <a href="{% url 'course_detail' 'fashion-design' %}" class="btn btn-sm btn-danger fw-bold shadow-sm">
+                                        Open Fashion Design Webpage &rarr;
+                                    </a>
+                                    <a href="{% url 'registration' %}?course=Fashion+Design" class="btn btn-sm btn-outline-danger fw-bold">Enroll in Batch</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20your%20Design%20Solutions%20and%20Python%20Web%20Design" target="_blank" class="btn btn-success btn-lg fw-bold shadow">
+                        <i class="fab fa-whatsapp me-2"></i> WhatsApp (+91 88878 39689)
+                    </a>
+                    <a href="{% url 'course_detail' 'python-web-design' %}" class="btn btn-danger btn-lg fw-bold shadow">
+                        <i class="fab fa-python me-2"></i> Python Web Design Page &rarr;
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-dark btn-lg fw-bold">
+                        Contact Office
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side: Official Office & Building Infrastructure Image -->
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger">
+                    <img src="{% static 'images/maurya_building_office.png' %}" alt="Maurya Technical Private Limited Building & Infrastructure" class="img-fluid w-100" style="object-fit: cover;">
+                    <div class="card-body bg-dark text-white p-3 text-center">
+                        <h6 class="fw-bold mb-0 text-warning"><i class="fas fa-door-open me-2"></i> Maurya Technical Private Limited Campus</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Updates Marquee Ticker -->
+<div class="ticker-container">
+    <div class="ticker-label">
+        <i class="fas fa-bullhorn me-1"></i> LATEST UPDATES
+    </div>
+    <div class="ticker-content">
+        Admissions Open for Winter & Summer Industrial Training 2026 at Maurya Technical Private Limited (Alambagh Lucknow) &nbsp;&bull;&nbsp; 
+        Under the Leadership of Founder & Director Vivek Kushawaha &nbsp;&bull;&nbsp; 
+        Follow Us on Instagram: @maurya_technical_pvt_ltd &nbsp;&bull;&nbsp; 
+        Connect on LinkedIn: Maurya Technical Private Limited &nbsp;&bull;&nbsp; 
+        Congratulations Annu Singh, Kanti Pal & Saloni Katara Placed at NIVRAJ & Vartax Global Technologies &nbsp;&bull;&nbsp; 
+        Subscribe Our Official YouTube: @maurya_technical_lucknow &nbsp;&bull;&nbsp; 
+        WhatsApp Direct Desk: +91 88878 39689!
+    </div>
+</div>
+
+<!-- Founder & Director Leadership Showcase Section -->
+<section class="py-5 director-section" id="director-section">
+    <div class="container px-4">
+        <div class="row align-items-center g-5">
+            <!-- Left Side: Director Official Poster Card -->
+            <div class="col-lg-5 text-center" data-aos="fade-right">
+                <div class="director-card-wrapper mx-auto" style="max-width: 440px;">
+                    <div class="director-card position-relative shadow-lg">
+                        <div class="position-absolute top-0 start-0 m-3 z-3">
+                            <span class="badge bg-danger shadow-sm px-3 py-2 rounded-pill fw-bold">
+                                <i class="fas fa-crown text-warning me-1"></i> Founder & Director
+                            </span>
+                        </div>
+                        <img src="{% static 'images/director_vivek_kushawaha.png' %}" alt="Vivek Kushawaha - Founder & Director, Maurya Technical Private Limited" class="director-img">
+                        <div class="p-3 bg-white border-top text-center">
+                            <h5 class="fw-bold text-dark mb-1">Vivek Kushawaha</h5>
+                            <p class="text-danger fw-bold small mb-2">Founder & Director &bull; Maurya Technical Private Limited</p>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-sm fw-bold px-3 shadow-sm">
+                                    <i class="fab fa-linkedin me-1"></i> LinkedIn
+                                </a>
+                                <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-sm fw-bold px-3 shadow-sm">
+                                    <i class="fab fa-instagram me-1"></i> Instagram
+                                </a>
+                                <a href="https://wa.me/918887839689?text=Hello%20Director%20Sir%20/%20Maurya%20Technical,%20I%20want%20to%20know%20about%20industrial%20training" target="_blank" class="btn btn-success btn-sm fw-bold px-3 shadow-sm">
+                                    <i class="fab fa-whatsapp me-1"></i> Desk
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Leadership Vision, Credentials & Message -->
+            <div class="col-lg-7" data-aos="fade-left">
+                <div class="ps-lg-3">
+                    <div class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 rounded-pill">
+                        <i class="fas fa-user-tie me-1"></i> LEADERSHIP & FOUNDER'S DESK
+                    </div>
+                    <h2 class="display-6 fw-bold text-dark mb-2">Meet Our Founder & Director</h2>
+                    <h3 class="fw-bold text-danger mb-3">Vivek Kushawaha</h3>
+
+                    <!-- Designations & Roles Badges -->
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="badge bg-danger p-2 px-3 fs-6 rounded-pill">
+                            <i class="fas fa-briefcase me-1"></i> Founder & Director &bull; Maurya Technical Pvt. Ltd.
+                        </span>
+                        <span class="badge bg-primary p-2 px-3 fs-6 rounded-pill">
+                            <i class="fas fa-chalkboard-teacher me-1"></i> Assistant Professor
+                        </span>
+                        <span class="badge bg-dark p-2 px-3 fs-6 rounded-pill">
+                            <i class="fas fa-user-graduate me-1"></i> Dean Student Welfare & HOD (Electrical Engg.)
+                        </span>
+                        <span class="badge bg-secondary p-2 px-3 fs-6 rounded-pill">
+                            <i class="fas fa-university me-1"></i> M.G. Institute of Management & Technology, Lucknow (AKTU)
+                        </span>
+                    </div>
+
+                    <!-- Director's Vision Quote Box -->
+                    <div class="director-quote-box mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-quote-left text-danger fs-3 me-3 mt-1"></i>
+                            <div>
+                                <p class="mb-0 text-dark fw-medium fs-6 lh-base">
+                                    "Our core commitment at Maurya Technical Private Limited is to transform ambitious technical students into industry-ready software engineers. Through rigorous hands-on live projects, an advanced curriculum in Python, Django, Web Development & AI, and direct mentorship from industry directors, we ensure our graduates secure premier careers in top IT enterprises."
+                                </p>
+                                <div class="mt-2 text-end">
+                                    <strong class="text-danger">&mdash; Vivek Kushawaha</strong>, <small class="text-muted">Founder & Director</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 Strategic Pillars Grid -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <div class="director-credential-pill">
+                                <div class="d-flex align-items-center mb-1">
+                                    <div class="badge bg-danger rounded-circle p-2 me-2"><i class="fas fa-university text-white"></i></div>
+                                    <h6 class="fw-bold mb-0 text-dark">AKTU Academic Affiliation</h6>
+                                </div>
+                                <small class="text-muted">Dean Student Welfare & Head of Department at MGIMT Lucknow</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="director-credential-pill">
+                                <div class="d-flex align-items-center mb-1">
+                                    <div class="badge bg-warning rounded-circle p-2 me-2 text-dark"><i class="fas fa-laptop-code"></i></div>
+                                    <h6 class="fw-bold mb-0 text-dark">Live Industrial Training</h6>
+                                </div>
+                                <small class="text-muted">Direct practical training on real-time enterprise software stacks</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="director-credential-pill">
+                                <div class="d-flex align-items-center mb-1">
+                                    <div class="badge bg-success rounded-circle p-2 me-2"><i class="fas fa-users-cog text-white"></i></div>
+                                    <h6 class="fw-bold mb-0 text-dark">5000+ Students Mentored</h6>
+                                </div>
+                                <small class="text-muted">Empowering B.Tech, Diploma, BCA, MCA & M.Tech candidates</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="director-credential-pill">
+                                <div class="d-flex align-items-center mb-1">
+                                    <div class="badge bg-primary rounded-circle p-2 me-2"><i class="fas fa-award text-white"></i></div>
+                                    <h6 class="fw-bold mb-0 text-dark">Assured Placement Support</h6>
+                                </div>
+                                <small class="text-muted">500+ active software company recruiting partners across India</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons with LinkedIn & Instagram Links -->
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-lg fw-bold px-4 py-3 shadow">
+                            <i class="fab fa-linkedin fs-5 me-2"></i> Company on LinkedIn
+                        </a>
+                        <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-lg fw-bold px-4 py-3 shadow">
+                            <i class="fab fa-instagram fs-5 me-2"></i> Company on Instagram
+                        </a>
+                        <a href="https://wa.me/918887839689?text=Hello%20Vivek%20Sir%20/%20Maurya%20Technical,%20I%20am%20interested%20in%20joining%20the%20upcoming%20training%20batch" target="_blank" class="btn btn-success btn-lg fw-bold px-4 py-3 shadow">
+                            <i class="fab fa-whatsapp fs-5 me-2"></i> WhatsApp Director Office
+                        </a>
+                        <a href="{% url 'registration' %}" class="btn btn-outline-danger btn-lg fw-bold px-4 py-3 shadow-sm">
+                            <i class="fas fa-user-plus me-2"></i> Register for 2026 Batch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Real Photo Gallery & Celebrations Showcase -->
+<section class="py-5 bg-white">
+    <div class="container px-4">
+        <div class="section-heading-wrapper" data-aos="fade-up">
+            <h2 class="section-title">Foundation Day & Student Celebrations</h2>
+            <p class="text-muted fs-6">Glimpses of Award Ceremonies, Certificate Distribution & Outings at Maurya Technical Private Limited, Alambagh Lucknow</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Event Photo 1 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                    <img src="{% static 'images/maurya_event_1.jpg' %}" alt="Foundation Day Trophy Award" class="card-img-top" style="height: 250px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <span class="badge bg-danger mb-2">Foundation Day 2026</span>
+                        <h5 class="fw-bold text-dark">Trophy & Honor Award</h5>
+                        <p class="small text-muted mb-0">Recognizing outstanding student projects & performance at Maurya Technical Alambagh Lucknow.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Photo 2 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                    <img src="{% static 'images/maurya_event_2.jpg' %}" alt="Student Outing & Faculty Group Photo" class="card-img-top" style="height: 250px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <span class="badge bg-warning text-dark mb-2">Student Life & Outings</span>
+                        <h5 class="fw-bold text-dark">Faculty & Trainees Outing</h5>
+                        <p class="small text-muted mb-0">Fun industrial trips and celebrations organized for all training batches.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Photo 3 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
+                    <img src="{% static 'images/maurya_event_3.jpg' %}" alt="Certificate of Appreciation Distribution" class="card-img-top" style="height: 250px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <span class="badge bg-danger mb-2">Certificate Distribution</span>
+                        <h5 class="fw-bold text-dark">Certificate of Appreciation</h5>
+                        <p class="small text-muted mb-0">Honoring successful completion of Python Django & Industrial Training.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Placement Showcase Section with Real Posters -->
+<section class="py-5 bg-light">
+    <div class="container px-4">
+        <div class="section-heading-wrapper" data-aos="fade-up">
+            <h2 class="section-title">Recent Placement Success</h2>
+            <p class="text-muted fs-6">Proud Maurya Technical Trainees Selected in Software MNCs</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Placement Poster 1 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100 border-top border-4 border-danger">
+                    <img src="{% static 'images/placement_annu_singh.png' %}" alt="Congratulations Annu Singh Placed at NIVRAJ Software Solutions" class="card-img-top p-2" style="height: 360px; object-fit: contain; background: #fff;">
+                    <div class="card-body p-3 text-center border-top">
+                        <span class="badge bg-danger mb-1 fs-6">PLACED!</span>
+                        <h5 class="fw-bold text-dark mb-0">Annu Singh</h5>
+                        <p class="text-danger fw-bold mb-1">NIVRAJ Software Solutions (P) Ltd.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placement Poster 2 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100 border-top border-4 border-danger">
+                    <img src="{% static 'images/placement_kanti_pal.png' %}" alt="Congratulations Kanti Pal Placed at Vartax Global Technologies" class="card-img-top p-2" style="height: 360px; object-fit: contain; background: #fff;">
+                    <div class="card-body p-3 text-center border-top">
+                        <span class="badge bg-danger mb-1 fs-6">PLACED!</span>
+                        <h5 class="fw-bold text-dark mb-0">Kanti Pal</h5>
+                        <p class="text-danger fw-bold mb-1">Vartax Global Technologies Pvt. Ltd.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placement Poster 3 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100 border-top border-4 border-danger">
+                    <img src="{% static 'images/placement_saloni_katara.png' %}" alt="Congratulations Saloni Katara Placed at Vartax Global Technologies" class="card-img-top p-2" style="height: 360px; object-fit: contain; background: #fff;">
+                    <div class="card-body p-3 text-center border-top">
+                        <span class="badge bg-danger mb-1 fs-6">PLACED!</span>
+                        <h5 class="fw-bold text-dark mb-0">Saloni Katara</h5>
+                        <p class="text-danger fw-bold mb-1">Vartax Global Technologies Pvt. Ltd.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'placements' %}" class="btn btn-danger btn-lg fw-bold px-5 py-3 shadow">
+                View All Placements & Lightbox Gallery &rarr;
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming & Ongoing Training Batches -->
+<section class="py-5 bg-white">
+    <div class="container px-4">
+        <div class="section-heading-wrapper" data-aos="fade-up">
+            <h2 class="section-title">Upcoming & Ongoing Training Batches</h2>
+            <p class="text-muted fs-6">100% Job Oriented Industrial Training Programs</p>
+        </div>
+
+        <div class="row g-4">
+            {% for course in courses %}
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="batch-card">
+                    <div class="batch-poster">
+                        <div>
+                            <span class="poster-header-badge">{{ course.badge_text }}</span>
+                            <h3 class="poster-title text-white mt-2">{{ course.title }}</h3>
+                        </div>
+                        <div>
+                            <p class="small text-white-50 mb-2">{{ course.category }}</p>
+                            <span class="poster-duration-badge">{{ course.get_duration_display }}</span>
+                        </div>
+                    </div>
+                    <div class="batch-card-body">
+                        <p class="small text-muted mb-3">{{ course.short_description|truncatewords:15 }}</p>
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                            <span class="badge bg-success"><i class="fas fa-check-circle me-1"></i> Live Project</span>
+                            <a href="{% url 'registration' %}?course={{ course.title|urlencode }}" class="btn btn-sm btn-outline-danger fw-bold">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'trainings' %}" class="btn btn-outline-danger btn-lg fw-bold px-4">
+                View All Batches & Courses <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Our Developed Projects Showcase Section -->
+<section class="py-5 bg-light" id="our-projects-section">
+    <div class="container px-4">
+        <div class="section-heading-wrapper" data-aos="fade-up">
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-2">
+                <i class="fas fa-laptop-code me-1"></i> LIVE INDUSTRY PORTFOLIO
+            </span>
+            <h2 class="section-title">Our Developed Projects</h2>
+            <p class="text-muted fs-6">Enterprise Software Solutions & Live Applications Developed by Maurya Technical Private Limited & Trainees</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Project 1: Healthcare ERP -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 project-showcase-card">
+                    <div class="position-relative">
+                        <img src="{% static 'images/project_1_healthcare_erp.jpg' %}" alt="Healthcare ERP" class="card-img-top" style="height: 190px; object-fit: cover;">
+                        <span class="badge bg-danger position-absolute top-0 end-0 m-2 px-2 py-1 rounded-pill small">Healthcare</span>
+                    </div>
+                    <div class="card-body p-3">
+                        <span class="badge bg-success mb-2 small"><i class="fas fa-check-circle me-1"></i> Live Production</span>
+                        <h6 class="fw-bold text-dark mb-1">Healthcare Management ERP</h6>
+                        <p class="small text-muted mb-2">OPD/IPD patient records, pathology labs & automated billing engine.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-light text-dark border small">Python</span>
+                            <span class="badge bg-light text-dark border small">Django</span>
+                            <span class="badge bg-light text-dark border small">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: E-Commerce Platform -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 project-showcase-card">
+                    <div class="position-relative">
+                        <img src="{% static 'images/project_2_ecommerce_platform.jpg' %}" alt="E-Commerce Marketplace" class="card-img-top" style="height: 190px; object-fit: cover;">
+                        <span class="badge bg-primary position-absolute top-0 end-0 m-2 px-2 py-1 rounded-pill small">E-Commerce</span>
+                    </div>
+                    <div class="card-body p-3">
+                        <span class="badge bg-success mb-2 small"><i class="fas fa-check-circle me-1"></i> Razorpay Ready</span>
+                        <h6 class="fw-bold text-dark mb-1">Multi-Vendor Marketplace</h6>
+                        <p class="small text-muted mb-2">Inventory management, payment gateway & live order shipment tracking.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-light text-dark border small">React</span>
+                            <span class="badge bg-light text-dark border small">Django REST</span>
+                            <span class="badge bg-light text-dark border small">Redis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: AI Examination Portal -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 project-showcase-card">
+                    <div class="position-relative">
+                        <img src="{% static 'images/project_3_ai_exam_portal.jpg' %}" alt="AI Assessment Portal" class="card-img-top" style="height: 190px; object-fit: cover;">
+                        <span class="badge bg-dark position-absolute top-0 end-0 m-2 px-2 py-1 rounded-pill small">AI & EdTech</span>
+                    </div>
+                    <div class="card-body p-3">
+                        <span class="badge bg-success mb-2 small"><i class="fas fa-check-circle me-1"></i> AI Proctoring</span>
+                        <h6 class="fw-bold text-dark mb-1">AI Online Exam Portal</h6>
+                        <p class="small text-muted mb-2">Face recognition proctoring, timer auto-submit & QR certificate verification.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-light text-dark border small">Python AI</span>
+                            <span class="badge bg-light text-dark border small">OpenCV</span>
+                            <span class="badge bg-light text-dark border small">WebSockets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: HRMS & Payroll Automation -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 project-showcase-card">
+                    <div class="position-relative">
+                        <img src="{% static 'images/project_4_hrms_payroll.jpg' %}" alt="Corporate HRMS" class="card-img-top" style="height: 190px; object-fit: cover;">
+                        <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2 px-2 py-1 rounded-pill small">Enterprise HR</span>
+                    </div>
+                    <div class="card-body p-3">
+                        <span class="badge bg-success mb-2 small"><i class="fas fa-check-circle me-1"></i> Deployed</span>
+                        <h6 class="fw-bold text-dark mb-1">Corporate HRMS & Payroll</h6>
+                        <p class="small text-muted mb-2">Biometric attendance sync, leave hierarchies & PDF salary slips generation.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-light text-dark border small">Django</span>
+                            <span class="badge bg-light text-dark border small">Chart.js</span>
+                            <span class="badge bg-light text-dark border small">PDFKit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'projects' %}" class="btn btn-danger btn-lg fw-bold px-5 py-3 shadow">
+                View All Developed Projects & Case Studies &rarr;
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Who We Are & YouTube Channel Section -->
+<section class="py-5 bg-white">
+    <div class="container px-4">
+        <div class="row g-4 align-items-center">
+            <!-- Left Side: YouTube Official Channel Card -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden border-top border-4 border-danger">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=maurya_technical_lucknow" title="Maurya Technical YouTube Channel" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-body bg-dark text-white p-3 text-center">
+                        <h5 class="mb-1">
+                            <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" class="text-danger fw-bold">
+                                <i class="fab fa-youtube fs-4 me-2"></i> @maurya_technical_lucknow
+                            </a>
+                        </h5>
+                        <div class="d-flex justify-content-center gap-2 flex-wrap mt-2">
+                            <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" class="btn btn-danger btn-sm fw-bold px-3">
+                                <i class="fab fa-youtube me-1"></i> YouTube Channel
+                            </a>
+                            <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-sm fw-bold px-3">
+                                <i class="fab fa-instagram me-1"></i> Follow Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Who We Are & 4 Icons -->
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="who-we-are-box">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="p-3 bg-danger text-white rounded-3 me-3">
+                            <i class="fas fa-users-cog fs-3"></i>
+                        </div>
+                        <h2 class="fw-bold mb-0">Who We Are</h2>
+                    </div>
+                    <p class="text-muted fs-6 mb-4">
+                        <strong>Maurya Technical Private Limited (Alambagh Lucknow)</strong> is recognized as the <strong>Best IT Training Institute in Lucknow</strong>, empowering engineering and diploma students with industry-standard tech skills, live project experience, and guaranteed placement support.
+                    </p>
+
+                    <!-- 4 Icon Box Grid -->
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="feature-mini-card">
+                                <div class="feature-icon-box bg-danger"><i class="fas fa-user-tie"></i></div>
+                                <h6 class="fw-bold mb-1">Mentors</h6>
+                                <small class="text-muted">Industry Pros</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="feature-mini-card">
+                                <div class="feature-icon-box bg-warning text-dark"><i class="fas fa-award"></i></div>
+                                <h6 class="fw-bold mb-1">Placement</h6>
+                                <small class="text-muted">100% Support</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="feature-mini-card">
+                                <div class="feature-icon-box bg-success"><i class="fas fa-code"></i></div>
+                                <h6 class="fw-bold mb-1">Projects</h6>
+                                <small class="text-muted">Live Practical</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="feature-mini-card">
+                                <div class="feature-icon-box bg-dark"><i class="fas fa-handshake"></i></div>
+                                <h6 class="fw-bold mb-1">Partners</h6>
+                                <small class="text-muted">500+ Hiring</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

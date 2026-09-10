@@ -1,0 +1,44 @@
+<!-- Top Header Bar -->
+<div class="top-header-bar d-none d-md-block">
+    <div class="container-fluid px-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Left Info -->
+            <div class="d-flex align-items-center">
+                <a href="tel:+918887839689" class="text-white me-3 fw-bold">
+                    <i class="fas fa-phone-alt text-warning me-1"></i> +91 88878 39689
+                </a>
+                <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20training%20courses" target="_blank" class="text-success me-3 fw-bold">
+                    <i class="fab fa-whatsapp me-1"></i> WhatsApp Support
+                </a>
+                <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" class="text-danger me-3 fw-bold">
+                    <i class="fab fa-youtube me-1"></i> YouTube Channel
+                </a>
+                <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="text-white me-3 fw-bold">
+                    <i class="fab fa-linkedin text-info me-1"></i> LinkedIn
+                </a>
+                <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="text-white me-3 fw-bold">
+                    <i class="fab fa-instagram text-danger me-1"></i> Instagram
+                </a>
+                <span class="text-secondary me-3">|</span>
+                <a href="{% url 'about' %}"><i class="fas fa-file-alt me-1"></i> Company Profile</a>
+                <a href="{% url 'trainings' %}"><i class="fas fa-book me-1"></i> Training Brochure</a>
+            </div>
+
+            <!-- Right Buttons -->
+            <div class="d-flex align-items-center gap-2">
+                <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" class="top-btn top-btn-red">
+                    <i class="fab fa-youtube me-1"></i> Subscribe YouTube
+                </a>
+                <a href="{% url 'job_fair' %}" class="top-btn top-btn-red">
+                    <i class="fas fa-briefcase text-warning me-1"></i> Job Fair 2026
+                </a>
+                <a href="{% url 'registration' %}" class="top-btn top-btn-gold text-dark">
+                    <i class="fas fa-edit me-1"></i> Register For Training
+                </a>
+                <a href="{% url 'student_login' %}" class="top-btn top-btn-green">
+                    <i class="fas fa-sign-in-alt me-1"></i> Student Login
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
