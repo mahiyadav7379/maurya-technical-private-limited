@@ -1700,5 +1700,54 @@ img, video, canvas, svg {
     }
 }
 
+/* ============================================================
+   HERO SECTION EQUAL HEIGHT & ACCORDION ALIGNMENT
+   ============================================================ */
+.hero-building-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
+    min-height: 100%;
+}
+
+.hero-building-img-wrapper {
+    flex: 1 1 auto;
+    min-height: 520px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    background-color: #1a1a1a;
+}
+
+.hero-building-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hero-building-card:hover .hero-building-img {
+    transform: scale(1.04);
+}
+
+.design-open-btn {
+    min-width: 82px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 13px !important;
+    padding: 4px 12px !important;
+    font-weight: 700 !important;
+}
+
+@media (max-width: 991.98px) {
+    .hero-building-img-wrapper {
+        min-height: 320px;
+        max-height: 440px;
+    }
+}
+
+
 
 
