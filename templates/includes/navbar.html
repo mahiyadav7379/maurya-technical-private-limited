@@ -62,6 +62,26 @@
                     <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'services' %}">OUR SERVICES</a>
                 </li>
             </ul>
+
+            <!-- Mobile Quick Actions Bar (Visible only on mobile/tablet screens < 992px) -->
+            <div class="d-lg-none mobile-nav-actions mt-3 pt-3 border-top">
+                <div class="d-grid gap-2">
+                    <a href="{% url 'registration' %}" class="btn btn-danger fw-bold py-2 shadow-sm d-flex align-items-center justify-content-center gap-2">
+                        <i class="fas fa-edit text-warning"></i> Register For Training
+                    </a>
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'student_login' %}" class="btn btn-success fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-2">
+                            <i class="fas fa-sign-in-alt"></i> Student Login
+                        </a>
+                        <a href="tel:+918887839689" class="btn btn-outline-dark fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-2">
+                            <i class="fas fa-phone-alt text-danger"></i> Call Us
+                        </a>
+                    </div>
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20training%20courses" target="_blank" class="btn btn-outline-success fw-bold py-2 d-flex align-items-center justify-content-center gap-2">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Support (+91 88878 39689)
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
