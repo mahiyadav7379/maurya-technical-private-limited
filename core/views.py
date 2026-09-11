@@ -195,16 +195,34 @@ def course_detail(request, slug):
     return render(request, 'course_detail.html', context)
 
 
-def web_design_hub(request):
+def fees_structure(request):
+    all_courses = TrainingCourse.objects.filter(is_active=True).order_by('id')
     python_course = TrainingCourse.objects.filter(slug='python-web-design').first()
-    web_courses = TrainingCourse.objects.filter(category='Web Design', is_active=True)
-    all_design_courses = TrainingCourse.objects.filter(is_active=True).exclude(category='Web Design')[:6]
+    if not python_course:
+        python_course = all_courses.first()
+
+    software_web_courses = all_courses.filter(category__in=[
+        'Web Design', 'Software Development', 'Full Stack Development', 
+        'Data Science & AI', 'Mobile App Development'
+    ])
+    machine_courses = all_courses.filter(category='Machine Design')
+    circuit_courses = all_courses.filter(category='Circuit Design')
+    building_interior_courses = all_courses.filter(category__in=['Building Design', 'Interior Design'])
+    textile_fashion_courses = all_courses.filter(category__in=['Textile Design', 'Fashion Design'])
+
     context = {
+        'all_courses': all_courses,
         'python_course': python_course,
-        'web_courses': web_courses,
-        'other_courses': all_design_courses,
+        'software_web_courses': software_web_courses,
+        'machine_courses': machine_courses,
+        'circuit_courses': circuit_courses,
+        'building_interior_courses': building_interior_courses,
+        'textile_fashion_courses': textile_fashion_courses,
     }
-    return render(request, 'web_design.html', context)
+    return render(request, 'fees.html', context)
+
+
+web_design_hub = fees_structure
 
 
 def python_web_design_redirect(request):

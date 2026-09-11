@@ -26,13 +26,17 @@
                     
                     <!-- 1. Web Design -->
                     <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden active-design-item">
-                        <h2 class="accordion-header" id="headingWebDesign">
-                            <button class="accordion-button fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWebDesign" aria-expanded="true" aria-controls="collapseWebDesign">
+                        <div class="accordion-header d-flex align-items-center justify-content-between p-2 px-3 bg-white" id="headingWebDesign">
+                            <div class="d-flex align-items-center flex-grow-1 cursor-pointer py-1" data-bs-toggle="collapse" data-bs-target="#collapseWebDesign" role="button" aria-expanded="true" aria-controls="collapseWebDesign" style="cursor: pointer; user-select: none;">
                                 <span class="badge bg-danger p-2 me-2 rounded-circle"><i class="fas fa-globe text-white"></i></span>
-                                <span class="fs-6">1. Web Design</span>
-                                <span class="badge bg-warning text-dark ms-2 small">Featured</span>
-                            </button>
-                        </h2>
+                                <span class="fs-6 fw-bold text-dark">1. Web Design</span>
+                            </div>
+                            <div class="d-flex align-items-center ms-2 flex-shrink-0">
+                                <a href="{% url 'fees' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm d-inline-flex align-items-center gap-1 text-white text-decoration-none design-open-btn" title="View Training Fees">
+                                    <span>Fees</span> <i class="fas fa-arrow-up-right-from-square small"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div id="collapseWebDesign" class="accordion-collapse collapse show" aria-labelledby="headingWebDesign" data-bs-parent="#designSolutionsAccordion">
                             <div class="accordion-body bg-light p-3">
                                 <!-- Fees Box -->
@@ -63,8 +67,8 @@
                                     <a href="{% url 'course_detail' 'python-web-design' %}" class="btn btn-sm btn-danger fw-bold shadow-sm">
                                         <i class="fab fa-python me-1"></i> Open Python Web Design Webpage &rarr;
                                     </a>
-                                    <a href="{% url 'web_design' %}" class="btn btn-sm btn-outline-dark fw-bold">
-                                        All Web Design Tracks &rarr;
+                                    <a href="{% url 'fees' %}" class="btn btn-sm btn-outline-dark fw-bold">
+                                        View Complete Fee Structure &rarr;
                                     </a>
                                 </div>
                             </div>
@@ -73,12 +77,17 @@
 
                     <!-- 2. Machine Design -->
                     <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
-                        <h2 class="accordion-header" id="headingMachineDesign">
-                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMachineDesign" aria-expanded="false" aria-controls="collapseMachineDesign">
+                        <div class="accordion-header d-flex align-items-center justify-content-between p-2 px-3 bg-white" id="headingMachineDesign">
+                            <div class="d-flex align-items-center flex-grow-1 cursor-pointer py-1" data-bs-toggle="collapse" data-bs-target="#collapseMachineDesign" role="button" aria-expanded="false" aria-controls="collapseMachineDesign" style="cursor: pointer; user-select: none;">
                                 <span class="badge bg-secondary p-2 me-2 rounded-circle"><i class="fas fa-cogs text-white"></i></span>
-                                <span class="fs-6">2. ⚙️ Machine Design</span>
-                            </button>
-                        </h2>
+                                <span class="fs-6 fw-bold text-dark">2. ⚙️ Machine Design</span>
+                            </div>
+                            <div class="d-flex align-items-center ms-2 flex-shrink-0">
+                                <a href="{% url 'course_detail' 'machine-design' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm d-inline-flex align-items-center gap-1 text-white text-decoration-none design-open-btn" title="Open Machine Design Webpage">
+                                    <span>Open</span> <i class="fas fa-arrow-up-right-from-square small"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div id="collapseMachineDesign" class="accordion-collapse collapse" aria-labelledby="headingMachineDesign" data-bs-parent="#designSolutionsAccordion">
                             <div class="accordion-body bg-light p-3">
                                 <!-- Fees Box -->
@@ -119,12 +128,17 @@
 
                     <!-- 3. Circuit Design -->
                     <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
-                        <h2 class="accordion-header" id="headingCircuitDesign">
-                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCircuitDesign" aria-expanded="false" aria-controls="collapseCircuitDesign">
+                        <div class="accordion-header d-flex align-items-center justify-content-between p-2 px-3 bg-white" id="headingCircuitDesign">
+                            <div class="d-flex align-items-center flex-grow-1 cursor-pointer py-1" data-bs-toggle="collapse" data-bs-target="#collapseCircuitDesign" role="button" aria-expanded="false" aria-controls="collapseCircuitDesign" style="cursor: pointer; user-select: none;">
                                 <span class="badge bg-warning text-dark p-2 me-2 rounded-circle"><i class="fas fa-microchip"></i></span>
-                                <span class="fs-6">3. 🔌 Circuit Design</span>
-                            </button>
-                        </h2>
+                                <span class="fs-6 fw-bold text-dark">3. 🔌 Circuit Design</span>
+                            </div>
+                            <div class="d-flex align-items-center ms-2 flex-shrink-0">
+                                <a href="{% url 'course_detail' 'circuit-design' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm d-inline-flex align-items-center gap-1 text-white text-decoration-none design-open-btn" title="Open Circuit Design Webpage">
+                                    <span>Open</span> <i class="fas fa-arrow-up-right-from-square small"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div id="collapseCircuitDesign" class="accordion-collapse collapse" aria-labelledby="headingCircuitDesign" data-bs-parent="#designSolutionsAccordion">
                             <div class="accordion-body bg-light p-3">
                                 <!-- Fees Box -->
@@ -165,12 +179,17 @@
 
                     <!-- 4. Building Design -->
                     <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
-                        <h2 class="accordion-header" id="headingBuildingDesign">
-                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBuildingDesign" aria-expanded="false" aria-controls="collapseBuildingDesign">
+                        <div class="accordion-header d-flex align-items-center justify-content-between p-2 px-3 bg-white" id="headingBuildingDesign">
+                            <div class="d-flex align-items-center flex-grow-1 cursor-pointer py-1" data-bs-toggle="collapse" data-bs-target="#collapseBuildingDesign" role="button" aria-expanded="false" aria-controls="collapseBuildingDesign" style="cursor: pointer; user-select: none;">
                                 <span class="badge bg-info text-white p-2 me-2 rounded-circle"><i class="fas fa-city"></i></span>
-                                <span class="fs-6">4. 🏢 Building Design</span>
-                            </button>
-                        </h2>
+                                <span class="fs-6 fw-bold text-dark">4. 🏢 Building Design</span>
+                            </div>
+                            <div class="d-flex align-items-center ms-2 flex-shrink-0">
+                                <a href="{% url 'course_detail' 'building-design' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm d-inline-flex align-items-center gap-1 text-white text-decoration-none design-open-btn" title="Open Building Design Webpage">
+                                    <span>Open</span> <i class="fas fa-arrow-up-right-from-square small"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div id="collapseBuildingDesign" class="accordion-collapse collapse" aria-labelledby="headingBuildingDesign" data-bs-parent="#designSolutionsAccordion">
                             <div class="accordion-body bg-light p-3">
                                 <!-- Fees Box -->
@@ -211,12 +230,17 @@
 
                     <!-- 5. Interior Design -->
                     <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
-                        <h2 class="accordion-header" id="headingInteriorDesign">
-                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInteriorDesign" aria-expanded="false" aria-controls="collapseInteriorDesign">
+                        <div class="accordion-header d-flex align-items-center justify-content-between p-2 px-3 bg-white" id="headingInteriorDesign">
+                            <div class="d-flex align-items-center flex-grow-1 cursor-pointer py-1" data-bs-toggle="collapse" data-bs-target="#collapseInteriorDesign" role="button" aria-expanded="false" aria-controls="collapseInteriorDesign" style="cursor: pointer; user-select: none;">
                                 <span class="badge bg-success text-white p-2 me-2 rounded-circle"><i class="fas fa-couch"></i></span>
-                                <span class="fs-6">5. 🏠 Interior Design</span>
-                            </button>
-                        </h2>
+                                <span class="fs-6 fw-bold text-dark">5. 🏠 Interior Design</span>
+                            </div>
+                            <div class="d-flex align-items-center ms-2 flex-shrink-0">
+                                <a href="{% url 'course_detail' 'interior-design' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm d-inline-flex align-items-center gap-1 text-white text-decoration-none design-open-btn" title="Open Interior Design Webpage">
+                                    <span>Open</span> <i class="fas fa-arrow-up-right-from-square small"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div id="collapseInteriorDesign" class="accordion-collapse collapse" aria-labelledby="headingInteriorDesign" data-bs-parent="#designSolutionsAccordion">
                             <div class="accordion-body bg-light p-3">
                                 <!-- Fees Box -->
@@ -257,12 +281,17 @@
 
                     <!-- 6. Textile Design -->
                     <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
-                        <h2 class="accordion-header" id="headingTextileDesign">
-                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTextileDesign" aria-expanded="false" aria-controls="collapseTextileDesign">
+                        <div class="accordion-header d-flex align-items-center justify-content-between p-2 px-3 bg-white" id="headingTextileDesign">
+                            <div class="d-flex align-items-center flex-grow-1 cursor-pointer py-1" data-bs-toggle="collapse" data-bs-target="#collapseTextileDesign" role="button" aria-expanded="false" aria-controls="collapseTextileDesign" style="cursor: pointer; user-select: none;">
                                 <span class="badge bg-dark text-white p-2 me-2 rounded-circle"><i class="fas fa-scroll"></i></span>
-                                <span class="fs-6">6. 👗 Textile Design</span>
-                            </button>
-                        </h2>
+                                <span class="fs-6 fw-bold text-dark">6. 👗 Textile Design</span>
+                            </div>
+                            <div class="d-flex align-items-center ms-2 flex-shrink-0">
+                                <a href="{% url 'course_detail' 'textile-design' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm d-inline-flex align-items-center gap-1 text-white text-decoration-none design-open-btn" title="Open Textile Design Webpage">
+                                    <span>Open</span> <i class="fas fa-arrow-up-right-from-square small"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div id="collapseTextileDesign" class="accordion-collapse collapse" aria-labelledby="headingTextileDesign" data-bs-parent="#designSolutionsAccordion">
                             <div class="accordion-body bg-light p-3">
                                 <!-- Fees Box -->
@@ -303,12 +332,17 @@
 
                     <!-- 7. Fashion Design -->
                     <div class="accordion-item border rounded-3 mb-2 shadow-sm overflow-hidden">
-                        <h2 class="accordion-header" id="headingFashionDesign">
-                            <button class="accordion-button collapsed fw-bold text-dark py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFashionDesign" aria-expanded="false" aria-controls="collapseFashionDesign">
+                        <div class="accordion-header d-flex align-items-center justify-content-between p-2 px-3 bg-white" id="headingFashionDesign">
+                            <div class="d-flex align-items-center flex-grow-1 cursor-pointer py-1" data-bs-toggle="collapse" data-bs-target="#collapseFashionDesign" role="button" aria-expanded="false" aria-controls="collapseFashionDesign" style="cursor: pointer; user-select: none;">
                                 <span class="badge bg-primary text-white p-2 me-2 rounded-circle"><i class="fas fa-tshirt"></i></span>
-                                <span class="fs-6">7. 👚 Fashion Design</span>
-                            </button>
-                        </h2>
+                                <span class="fs-6 fw-bold text-dark">7. 👚 Fashion Design</span>
+                            </div>
+                            <div class="d-flex align-items-center ms-2 flex-shrink-0">
+                                <a href="{% url 'course_detail' 'fashion-design' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm d-inline-flex align-items-center gap-1 text-white text-decoration-none design-open-btn" title="Open Fashion Design Webpage">
+                                    <span>Open</span> <i class="fas fa-arrow-up-right-from-square small"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div id="collapseFashionDesign" class="accordion-collapse collapse" aria-labelledby="headingFashionDesign" data-bs-parent="#designSolutionsAccordion">
                             <div class="accordion-body bg-light p-3">
                                 <!-- Fees Box -->
@@ -395,18 +429,20 @@
 <!-- Founder & Director Leadership Showcase Section -->
 <section class="py-5 director-section" id="director-section">
     <div class="container px-4">
-        <div class="row align-items-center g-5">
+        <div class="row align-items-stretch g-4 g-lg-5">
             <!-- Left Side: Director Official Poster Card -->
-            <div class="col-lg-5 text-center" data-aos="fade-right">
-                <div class="director-card-wrapper mx-auto" style="max-width: 440px;">
-                    <div class="director-card position-relative shadow-lg">
+            <div class="col-lg-5 text-center d-flex flex-column" data-aos="fade-right">
+                <div class="director-card-wrapper mx-auto w-100 h-100 d-flex flex-column" style="max-width: 440px;">
+                    <div class="director-card position-relative shadow-lg h-100 d-flex flex-column">
                         <div class="position-absolute top-0 start-0 m-3 z-3">
                             <span class="badge bg-danger shadow-sm px-3 py-2 rounded-pill fw-bold">
                                 <i class="fas fa-crown text-warning me-1"></i> Founder & Director
                             </span>
                         </div>
-                        <img src="{% static 'images/director_vivek_kushawaha.png' %}" alt="Vivek Kushawaha - Founder & Director, Maurya Technical Private Limited" class="director-img">
-                        <div class="p-3 bg-white border-top text-center">
+                        <div class="director-img-container">
+                            <img src="{% static 'images/director_vivek_kushawaha.png' %}?v=2026_suit" alt="Vivek Kushawaha - Founder & Director, Maurya Technical Private Limited" class="director-img">
+                        </div>
+                        <div class="p-3 bg-white border-top text-center mt-auto flex-shrink-0">
                             <h5 class="fw-bold text-dark mb-1">Vivek Kushawaha</h5>
                             <p class="text-danger fw-bold small mb-2">Founder & Director &bull; Maurya Technical Private Limited</p>
                             <div class="d-flex justify-content-center gap-2 flex-wrap">
@@ -426,8 +462,8 @@
             </div>
 
             <!-- Right Side: Leadership Vision, Credentials & Message -->
-            <div class="col-lg-7" data-aos="fade-left">
-                <div class="ps-lg-3">
+            <div class="col-lg-7 d-flex flex-column justify-content-between h-100" data-aos="fade-left">
+                <div class="ps-lg-3 d-flex flex-column h-100 justify-content-between">
                     <div class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 rounded-pill">
                         <i class="fas fa-user-tie me-1"></i> LEADERSHIP & FOUNDER'S DESK
                     </div>
@@ -518,6 +554,130 @@
                         </a>
                         <a href="{% url 'registration' %}" class="btn btn-outline-danger btn-lg fw-bold px-4 py-3 shadow-sm">
                             <i class="fas fa-user-plus me-2"></i> Register for 2026 Batch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Meet Our HR Head - Kirti Kushwaha Leadership Showcase Section -->
+<section class="py-5 bg-light border-top border-bottom" id="hr-leadership-section">
+    <div class="container px-4">
+        <div class="row align-items-stretch g-4 g-lg-5 flex-lg-row-reverse">
+            <!-- Right Side (Desktop): HR Head Official Poster Card -->
+            <div class="col-lg-5 text-center d-flex flex-column" data-aos="fade-left">
+                <div class="director-card-wrapper mx-auto w-100 h-100 d-flex flex-column" style="max-width: 440px;">
+                    <div class="director-card position-relative shadow-lg h-100 d-flex flex-column">
+                        <div class="position-absolute top-0 start-0 m-3 z-3">
+                            <span class="badge bg-danger shadow-sm px-3 py-2 rounded-pill fw-bold">
+                                <i class="fas fa-user-tie text-warning me-1"></i> HR Head
+                            </span>
+                        </div>
+                        <div class="director-img-container">
+                            <img src="{% static 'images/hr_head_kirti_kushwaha.jpg' %}?v=2026" alt="Mrs. Kirti Kushwaha - HR Head, Maurya Technical Private Limited" class="director-img" style="object-position: center top;">
+                        </div>
+                        <div class="p-3 bg-white border-top text-center mt-auto flex-shrink-0">
+                            <h5 class="fw-bold text-dark mb-1">Mrs. Kirti Kushwaha</h5>
+                            <p class="text-danger fw-bold small mb-2">HR Head &bull; Maurya Technical Private Limited</p>
+                            <div class="d-flex justify-content-center gap-1 mb-2 flex-wrap">
+                                <span class="badge bg-light text-dark border px-2 py-1 small">
+                                    <i class="fas fa-graduation-cap text-danger me-1"></i> B.Com, PGDCA, MBA
+                                </span>
+                                <span class="badge bg-light text-dark border px-2 py-1 small">
+                                    <i class="fas fa-briefcase text-warning me-1"></i> 10 Yrs Experience
+                                </span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                <a href="https://wa.me/918858298247?text=Hello%20HR%20Desk%20/%20Maurya%20Technical,%20I%20want%20to%20connect%20with%20Mrs.%20Kirti%20Kushwaha" target="_blank" class="btn btn-success btn-sm fw-bold px-3 shadow-sm">
+                                    <i class="fab fa-whatsapp me-1"></i> WhatsApp HR Desk
+                                </a>
+                                <a href="tel:8858298247" class="btn btn-outline-danger btn-sm fw-bold px-3 shadow-sm">
+                                    <i class="fas fa-phone-alt me-1"></i> Call HR
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left Side (Desktop): HR Leadership Vision, Credentials & Message -->
+            <div class="col-lg-7 d-flex flex-column justify-content-between h-100" data-aos="fade-right">
+                <div class="pe-lg-3 d-flex flex-column h-100 justify-content-between">
+                    <div class="badge bg-danger text-white fw-bold px-3 py-2 mb-3 rounded-pill">
+                        <i class="fas fa-briefcase me-1"></i> TALENT ACQUISITION &amp; HR DESK
+                    </div>
+                    <h2 class="display-6 fw-bold text-dark mb-2">Meet Our HR Head</h2>
+                    <h3 class="fw-bold text-danger mb-3">Mrs. Kirti Kushwaha</h3>
+
+                    <!-- Designations & Roles Badges -->
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-danger p-2 px-3 fs-6 rounded-pill">
+                            <i class="fas fa-id-badge me-1"></i> Company HR Head
+                        </span>
+                        <span class="badge bg-dark p-2 px-3 fs-6 rounded-pill">
+                            <i class="fas fa-user-check me-1"></i> Talent Acquisition Lead
+                        </span>
+                        <span class="badge bg-primary p-2 px-3 fs-6 rounded-pill">
+                            <i class="fas fa-graduation-cap me-1"></i> Campus Placement Coordinator
+                        </span>
+                        <span class="badge bg-secondary p-2 px-3 fs-6 rounded-pill">
+                            <i class="fas fa-handshake me-1"></i> Corporate Relations
+                        </span>
+                    </div>
+
+                    <!-- Qualification & Experience Info Box -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-white border rounded-3 shadow-sm d-flex align-items-center h-100">
+                                <div class="badge bg-danger rounded-circle p-3 me-3">
+                                    <i class="fas fa-user-graduate text-white fs-5"></i>
+                                </div>
+                                <div>
+                                    <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.75rem; letter-spacing: 0.5px;">Qualification</small>
+                                    <h6 class="fw-bold text-dark mb-0 fs-6">B.Com, PGDCA, MBA</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-white border rounded-3 shadow-sm d-flex align-items-center h-100">
+                                <div class="badge bg-warning rounded-circle p-3 me-3 text-dark">
+                                    <i class="fas fa-business-time fs-5"></i>
+                                </div>
+                                <div>
+                                    <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.75rem; letter-spacing: 0.5px;">Experience</small>
+                                    <h6 class="fw-bold text-dark mb-0 fs-6">10 Years Experience</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HR Vision Quote Box -->
+                    <div class="director-quote-box mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-quote-left text-danger fs-3 me-3 mt-1"></i>
+                            <div>
+                                <p class="mb-0 text-dark fw-medium fs-6 lh-base">
+                                    "At Maurya Technical Private Limited, our HR department is actively dedicated to guiding students through technical recruitment, coordinating mega Job Fair drives, and ensuring smooth career transitions into leading IT corporations. We bridge the gap between classroom training and corporate hiring requirements."
+                                </p>
+                                <div class="mt-2 text-end">
+                                    <strong class="text-danger">&mdash; Mrs. Kirti Kushwaha</strong>, <small class="text-muted">HR Head &amp; Campus Placement Coordinator</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="https://wa.me/918858298247?text=Hello%20HR%20Desk%20/%20Maurya%20Technical,%20I%20want%20to%20connect%20with%20Mrs.%20Kirti%20Kushwaha" target="_blank" class="btn btn-success btn-lg fw-bold px-4 py-3 shadow">
+                            <i class="fab fa-whatsapp fs-5 me-2"></i> WhatsApp HR Desk (+91 88582 98247)
+                        </a>
+                        <a href="{% url 'job_fair' %}" class="btn btn-danger btn-lg fw-bold px-4 py-3 shadow">
+                            <i class="fas fa-briefcase me-2"></i> View Job Fair Drives
+                        </a>
+                        <a href="{% url 'placements' %}" class="btn btn-outline-dark btn-lg fw-bold px-4 py-3 shadow-sm">
+                            <i class="fas fa-award me-2"></i> Placed Students
                         </a>
                     </div>
                 </div>

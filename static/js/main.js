@@ -10,7 +10,23 @@ document.addEventListener('DOMContentLoaded', function() {
             easing: 'ease-out-back',
             offset: 80
         });
+    } else {
+        // Fallback: If AOS library fails to load, ensure elements are visible
+        document.querySelectorAll('[data-aos]').forEach(function(el) {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
     }
+
+    // Safety timeout: ensure no element remains invisible
+    setTimeout(function() {
+        document.querySelectorAll('[data-aos]').forEach(function(el) {
+            if (window.getComputedStyle(el).opacity === '0') {
+                el.classList.add('aos-animate');
+                el.style.opacity = '1';
+            }
+        });
+    }, 1000);
 
     // Back to top smooth scroll
     const backToTopBtn = document.getElementById('backToTopBtn');
@@ -113,6 +129,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 navbar.classList.remove('shadow-md');
                 navbar.style.padding = '12px 0';
             }
+        });
+    }
+
+    // Design Solutions Accordion Expanded State Sync
+    const designAccordion = document.getElementById('designSolutionsAccordion');
+    if (designAccordion) {
+        designAccordion.addEventListener('show.bs.collapse', function(e) {
+            const item = e.target.closest('.accordion-item');
+            if (item) item.classList.add('is-expanded');
+        });
+
+        designAccordion.addEventListener('hide.bs.collapse', function(e) {
+            const item = e.target.closest('.accordion-item');
+            if (item) item.classList.remove('is-expanded');
         });
     }
 });

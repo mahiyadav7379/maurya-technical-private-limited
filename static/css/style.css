@@ -789,6 +789,7 @@ a {
 
 .director-card-wrapper {
     position: relative;
+    height: 100%;
 }
 
 .director-card {
@@ -798,6 +799,9 @@ a {
     border: 2px solid rgba(218, 165, 32, 0.35);
     overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .director-card:hover {
@@ -805,12 +809,25 @@ a {
     box-shadow: 0 25px 50px rgba(168, 27, 27, 0.2);
 }
 
+.director-img-container {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    flex: 1 1 auto;
+    overflow: hidden;
+    position: relative;
+    background: #F8F9FA;
+}
+
 .director-img {
     width: 100%;
-    max-height: 480px;
-    object-fit: contain;
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+    object-position: center 12%;
     background: #FAFAFA;
     transition: transform 0.4s ease;
+    display: block;
 }
 
 .director-card:hover .director-img {
@@ -920,17 +937,36 @@ a {
     border-color: var(--primary-red) !important;
 }
 
-.design-solutions-accordion .accordion-button {
-    font-size: 0.95rem;
+.design-solutions-accordion .accordion-header {
     background-color: #ffffff;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.design-solutions-accordion .accordion-button:not(.collapsed) {
+.design-solutions-accordion .accordion-header:hover {
     background-color: #fff8f8;
-    color: var(--primary-red);
-    box-shadow: none;
+}
+
+.design-solutions-accordion .accordion-item.is-expanded .accordion-header,
+.design-solutions-accordion .accordion-item:has(.accordion-collapse.show) .accordion-header {
+    background-color: #fff8f8;
     border-bottom: 1px solid #fee2e2;
 }
+
+.design-open-btn {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    padding: 0.28rem 0.85rem !important;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.design-open-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(168, 27, 27, 0.35) !important;
+    background-color: var(--dark-red) !important;
+    border-color: var(--dark-red) !important;
+}
+
 
 .web-subject-pill {
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -943,5 +979,10 @@ a {
 
 .web-subject-pill.primary-subject:hover {
     border-color: var(--dark-red) !important;
+}
+
+/* Hide accordion arrow chevron across all accordion buttons */
+.accordion-button::after {
+    display: none !important;
 }
 

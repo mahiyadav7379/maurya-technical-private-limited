@@ -38,7 +38,7 @@
                     <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'trainings' or request.resolver_match.url_name == 'course_detail' %}active{% endif %}" href="{% url 'trainings' %}">TRAININGS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'web_design' %}active{% endif %}" href="{% url 'web_design' %}">WEB DESIGN</a>
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'fees' or request.resolver_match.url_name == 'web_design' %}active{% endif %}" href="{% url 'fees' %}">FEES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-custom {% if request.resolver_match.url_name == 'registration' %}active{% endif %}" href="{% url 'registration' %}">REGISTRATION</a>

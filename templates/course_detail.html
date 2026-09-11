@@ -3,6 +3,14 @@
 
 {% block title %}{{ course.title }} - Maurya Technical Private Limited{% endblock %}
 
+{% block extra_css %}
+<style>
+    .accordion-button::after {
+        display: none !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Course Hero Banner -->
 <div class="py-5 text-white" style="background: linear-gradient(135deg, #121824 0%, #1f2937 50%, #500707 100%);">
@@ -11,7 +19,7 @@
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white-50 text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'web_design' %}" class="text-white-50 text-decoration-none">Design Solutions</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'fees' %}" class="text-white-50 text-decoration-none">Fees &amp; Training</a></li>
                 <li class="breadcrumb-item active text-warning" aria-current="page">{{ course.title }}</li>
             </ol>
         </nav>
@@ -189,18 +197,7 @@
                     </a>
                 </div>
 
-                <hr class="my-4">
 
-                <!-- Related Design Programs -->
-                <h6 class="fw-bold text-dark mb-3"><i class="fas fa-graduation-cap text-danger me-2"></i> Other Design Solutions</h6>
-                <div class="d-flex flex-column gap-2">
-                    {% for rc in related_courses %}
-                    <a href="{% url 'course_detail' rc.slug %}" class="p-2 rounded-3 border bg-light text-decoration-none d-flex align-items-center justify-content-between">
-                        <small class="fw-bold text-dark">{{ rc.title|truncatechars:28 }}</small>
-                        <i class="fas fa-chevron-right text-danger small"></i>
-                    </a>
-                    {% endfor %}
-                </div>
             </div>
         </div>
     </div>

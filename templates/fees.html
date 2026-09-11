@@ -1,0 +1,578 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Training Fee Structure & Course Charges 2026 - Maurya Technical{% endblock %}
+
+{% block content %}
+<!-- Fees Hero Banner -->
+<div class="py-5 text-white" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-4 text-center">
+        <span class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 rounded-pill shadow-sm">
+            <i class="fas fa-shield-alt text-danger me-1"></i> Government Registered &amp; ISO 9001:2015 Certified Training Institute
+        </span>
+        <h1 class="display-5 fw-bold mb-2">Industrial Training Fee Structure 2026</h1>
+        <p class="lead mb-3 text-white-50 max-w-700 mx-auto">
+            100% Transparent, Affordable &amp; Industry-Standard Practical Training Packages for 45 Days &amp; 06 Months Batches at Maurya Technical Private Limited (Alambagh Lucknow).
+        </p>
+        <div class="d-flex justify-content-center flex-wrap gap-2">
+            <span class="badge bg-black bg-opacity-50 text-white border border-light border-opacity-25 px-3 py-2 rounded-pill">
+                <i class="fas fa-check-circle text-success me-1"></i> 45 Days: ₹4,000
+            </span>
+            <span class="badge bg-black bg-opacity-50 text-white border border-light border-opacity-25 px-3 py-2 rounded-pill">
+                <i class="fas fa-check-circle text-warning me-1"></i> 06 Months: ₹18,000
+            </span>
+            <span class="badge bg-black bg-opacity-50 text-white border border-light border-opacity-25 px-3 py-2 rounded-pill">
+                <i class="fas fa-check-circle text-info me-1"></i> Live Projects Included
+            </span>
+            <span class="badge bg-black bg-opacity-50 text-white border border-light border-opacity-25 px-3 py-2 rounded-pill">
+                <i class="fas fa-check-circle text-danger me-1"></i> Zero Hidden Charges
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+
+    <!-- Top Two Flagship Pricing Tiers (Side by Side) -->
+    <div class="row g-4 justify-content-center mb-5">
+        
+        <!-- 45 Days / 06 Weeks Training Card -->
+        <div class="col-lg-5 col-md-6">
+            <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden position-relative border-top border-4 border-primary">
+                <div class="card-header bg-white border-0 pt-4 pb-2 px-4">
+                    <span class="badge bg-primary text-white fw-bold px-3 py-2 rounded-pill mb-2">
+                        <i class="fas fa-calendar-day me-1"></i> SHORT-TERM PRACTICAL TRACK
+                    </span>
+                    <h3 class="fw-bold text-dark mb-1">45 Days / 6 Weeks Training</h3>
+                    <p class="text-muted small mb-0">Best suited for AKTU / BTEUP Summer &amp; Winter Vocational Training</p>
+                </div>
+                <div class="card-body px-4 py-3">
+                    <div class="d-flex align-items-baseline gap-2 mb-3 pb-3 border-bottom">
+                        <span class="display-5 fw-bold text-primary">₹4,000</span>
+                        <span class="text-muted fs-6 fw-semibold">/ all-inclusive one-time</span>
+                    </div>
+
+                    <ul class="list-unstyled mb-4 d-flex flex-column gap-2">
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check text-success mt-1"></i>
+                            <span class="text-dark small"><strong>45 Days Intensive Lab Sessions</strong> (Daily practical classes)</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check text-success mt-1"></i>
+                            <span class="text-dark small"><strong>1 Major Capstone Live Project</strong> with complete guided source code</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check text-success mt-1"></i>
+                            <span class="text-dark small"><strong>ISO Govt. Registered Certificate</strong> with online QR verification</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check text-success mt-1"></i>
+                            <span class="text-dark small"><strong>Free Software Tool Setup</strong> &amp; development environment setup</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check text-success mt-1"></i>
+                            <span class="text-dark small"><strong>Technical Q&amp;A Sessions</strong> &amp; resume building guidance</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check text-success mt-1"></i>
+                            <span class="text-dark small"><strong>College Training Letter</strong> &amp; synopsis approval support</span>
+                        </li>
+                    </ul>
+
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'registration' %}?training_type=45_days" class="btn btn-primary btn-lg fw-bold shadow-sm">
+                            <i class="fas fa-user-check me-2"></i> Enroll for 45 Days (₹4,000)
+                        </a>
+                        <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20about%2045%20Days%20Training%20Fee%20(Rs%204000)" target="_blank" class="btn btn-outline-success fw-bold">
+                            <i class="fab fa-whatsapp me-2"></i> WhatsApp Inquiry (Desk)
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer bg-light border-0 py-2 px-4 text-center">
+                    <small class="text-muted"><i class="fas fa-shield-alt text-primary me-1"></i> 100% Practical Laboratory Training</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 06 Months Industrial Internship Card (FEATURED) -->
+        <div class="col-lg-5 col-md-6">
+            <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden position-relative border-top border-4 border-danger" style="transform: scale(1.02); z-index: 2;">
+                <!-- Featured Banner Tag -->
+                <div class="position-absolute top-0 end-0 bg-danger text-white px-3 py-1 rounded-bottom-start fw-bold small shadow-sm">
+                    <i class="fas fa-crown text-warning me-1"></i> MOST POPULAR / RECOMMENDED
+                </div>
+                <div class="card-header bg-white border-0 pt-4 pb-2 px-4">
+                    <span class="badge bg-danger text-white fw-bold px-3 py-2 rounded-pill mb-2">
+                        <i class="fas fa-graduation-cap me-1"></i> FULL INDUSTRIAL INTERNSHIP
+                    </span>
+                    <h3 class="fw-bold text-dark mb-1">06 Months Industrial Training</h3>
+                    <p class="text-muted small mb-0">Complete end-to-end career transition &amp; job readiness program</p>
+                </div>
+                <div class="card-body px-4 py-3">
+                    <div class="d-flex align-items-baseline gap-2 mb-3 pb-3 border-bottom">
+                        <span class="display-5 fw-bold text-danger">₹18,000</span>
+                        <span class="text-muted fs-6 fw-semibold">/ installments available</span>
+                    </div>
+
+                    <ul class="list-unstyled mb-4 d-flex flex-column gap-2">
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle text-danger mt-1"></i>
+                            <span class="text-dark small"><strong>06 Months Comprehensive Apprenticeship</strong> from scratch to deployment</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle text-danger mt-1"></i>
+                            <span class="text-dark small"><strong>3+ Real-time Enterprise Live Projects</strong> with production deployment</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle text-danger mt-1"></i>
+                            <span class="text-dark small"><strong>Industrial Internship Certificate</strong> + Official AKTU Project Report Signing</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle text-danger mt-1"></i>
+                            <span class="text-dark small"><strong>100% Campus Placement Assistance</strong> &amp; Mega Job Fair 2026 Participation</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle text-danger mt-1"></i>
+                            <span class="text-dark small"><strong>1-on-1 Mentorship</strong> by Director Vivek Kushawaha &amp; Lead HR Mrs. Kirti Kushwaha</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle text-danger mt-1"></i>
+                            <span class="text-dark small"><strong>Mock Technical Interviews</strong>, Soft Skills, Aptitude &amp; HR screening prep</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle text-danger mt-1"></i>
+                            <span class="text-dark small"><strong>Easy 2-3 Monthly Installments</strong> facility for all enrolled students</span>
+                        </li>
+                    </ul>
+
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'registration' %}?training_type=6_months" class="btn btn-danger btn-lg fw-bold shadow">
+                            <i class="fas fa-award me-2"></i> Enroll for 6 Months (₹18,000)
+                        </a>
+                        <a href="https://wa.me/918858298247?text=Hello%20HR%20Desk%20/%20Maurya%20Technical,%20I%20want%20to%20enroll%20in%2006%20Months%20Industrial%20Training%20(Rs%2018000)" target="_blank" class="btn btn-success fw-bold shadow-sm">
+                            <i class="fab fa-whatsapp me-2"></i> WhatsApp HR Desk (+91 88582 98247)
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer bg-light border-0 py-2 px-4 text-center">
+                    <small class="text-danger fw-bold"><i class="fas fa-certificate me-1"></i> Guaranteed Practical Training &amp; Placement Support</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Complete Course-by-Course Fee Directory -->
+    <div class="mb-5">
+        <div class="text-center mb-4">
+            <span class="badge bg-danger px-3 py-1 rounded-pill mb-2">COMPLETE COURSE CATALOG</span>
+            <h2 class="fw-bold text-dark">Course-Wise Fee Structure (All 19 Programs)</h2>
+            <p class="text-muted">Standard transparent fees across all engineering and technology domains:</p>
+        </div>
+
+        <!-- Filter Nav Tabs -->
+        <ul class="nav nav-pills justify-content-center mb-4 gap-2 flex-wrap" id="feesTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active fw-bold rounded-pill px-4" id="all-tab" data-bs-toggle="pill" data-bs-target="#tab-all" type="button" role="tab">All Courses ({{ all_courses|length }})</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold rounded-pill px-4" id="sw-tab" data-bs-toggle="pill" data-bs-target="#tab-sw" type="button" role="tab">Software &amp; Web Design</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold rounded-pill px-4" id="mech-tab" data-bs-toggle="pill" data-bs-target="#tab-mech" type="button" role="tab">Machine Design (CAD)</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold rounded-pill px-4" id="elec-tab" data-bs-toggle="pill" data-bs-target="#tab-elec" type="button" role="tab">Circuit Design (VLSI)</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold rounded-pill px-4" id="civil-tab" data-bs-toggle="pill" data-bs-target="#tab-civil" type="button" role="tab">Building &amp; Interior</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold rounded-pill px-4" id="textile-tab" data-bs-toggle="pill" data-bs-target="#tab-textile" type="button" role="tab">Textile &amp; Fashion</button>
+            </li>
+        </ul>
+
+        <!-- Tab Content Panes -->
+        <div class="tab-content" id="feesTabContent">
+
+            <!-- Tab 1: All Courses -->
+            <div class="tab-pane fade show active" id="tab-all" role="tabpanel">
+                <div class="table-responsive bg-white rounded-4 shadow-sm border p-3">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="py-3 ps-3">Course / Program Name</th>
+                                <th scope="col" class="py-3">Domain</th>
+                                <th scope="col" class="py-3 text-center">45 Days Fee</th>
+                                <th scope="col" class="py-3 text-center">6 Months Fee</th>
+                                <th scope="col" class="py-3 text-center">Certification</th>
+                                <th scope="col" class="py-3 text-end pe-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for c in all_courses %}
+                            <tr>
+                                <td class="ps-3 py-3">
+                                    <a href="{% url 'course_detail' c.slug %}" class="fw-bold text-dark text-decoration-none d-block">
+                                        {{ c.title }}
+                                    </a>
+                                    <small class="text-muted">{{ c.short_description|truncatewords:10 }}</small>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border">{{ c.category }}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-primary fs-6 px-3 py-2 shadow-sm">{{ c.fee_45_days }}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-danger fs-6 px-3 py-2 shadow-sm">{{ c.fee_6_months }}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle small fw-semibold">
+                                        <i class="fas fa-shield-alt me-1"></i> ISO Verified
+                                    </span>
+                                </td>
+                                <td class="text-end pe-3">
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <a href="{% url 'course_detail' c.slug %}" class="btn btn-sm btn-outline-dark fw-bold">Details</a>
+                                        <a href="{% url 'registration' %}?course={{ c.title|urlencode }}" class="btn btn-sm btn-danger fw-bold">Enroll</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 2: Software & Web Design -->
+            <div class="tab-pane fade" id="tab-sw" role="tabpanel">
+                <div class="row g-4">
+                    {% for c in software_web_courses %}
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white border-start border-4 border-danger">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger">{{ c.category }}</span>
+                                <span class="badge bg-light text-muted border">45 Days &amp; 6 Months</span>
+                            </div>
+                            <h4 class="fw-bold text-dark mb-2">{{ c.title }}</h4>
+                            <p class="text-muted small mb-3">{{ c.short_description }}</p>
+                            <div class="d-flex justify-content-between align-items-center p-3 rounded-3 bg-light border mb-3">
+                                <div>
+                                    <small class="text-muted d-block fw-semibold">45 Days Training</small>
+                                    <span class="fs-5 fw-bold text-primary">{{ c.fee_45_days }}</span>
+                                </div>
+                                <div class="border-start ps-3">
+                                    <small class="text-muted d-block fw-semibold">06 Months Internship</small>
+                                    <span class="fs-5 fw-bold text-danger">{{ c.fee_6_months }}</span>
+                                </div>
+                                <span class="badge bg-warning text-dark fw-bold">ISO Govt.</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <a href="{% url 'course_detail' c.slug %}" class="btn btn-outline-danger btn-sm fw-bold">View Curriculum &rarr;</a>
+                                <a href="{% url 'registration' %}?course={{ c.title|urlencode }}" class="btn btn-danger btn-sm fw-bold">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Tab 3: Machine Design (CAD) -->
+            <div class="tab-pane fade" id="tab-mech" role="tabpanel">
+                <div class="row g-4">
+                    {% for c in machine_courses %}
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white border-start border-4 border-secondary">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-secondary">{{ c.category }}</span>
+                                <span class="badge bg-light text-muted border">Mechanical CAD</span>
+                            </div>
+                            <h4 class="fw-bold text-dark mb-2">{{ c.title }}</h4>
+                            <p class="text-muted small mb-3">{{ c.short_description }}</p>
+                            <div class="d-flex justify-content-between align-items-center p-3 rounded-3 bg-light border mb-3">
+                                <div>
+                                    <small class="text-muted d-block fw-semibold">45 Days Training</small>
+                                    <span class="fs-5 fw-bold text-primary">{{ c.fee_45_days }}</span>
+                                </div>
+                                <div class="border-start ps-3">
+                                    <small class="text-muted d-block fw-semibold">06 Months Internship</small>
+                                    <span class="fs-5 fw-bold text-danger">{{ c.fee_6_months }}</span>
+                                </div>
+                                <span class="badge bg-warning text-dark fw-bold">CAD/CAM</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <a href="{% url 'course_detail' c.slug %}" class="btn btn-outline-secondary btn-sm fw-bold">View Curriculum &rarr;</a>
+                                <a href="{% url 'registration' %}?course={{ c.title|urlencode }}" class="btn btn-danger btn-sm fw-bold">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Tab 4: Circuit Design -->
+            <div class="tab-pane fade" id="tab-elec" role="tabpanel">
+                <div class="row g-4">
+                    {% for c in circuit_courses %}
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white border-start border-4 border-warning">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-warning text-dark">{{ c.category }}</span>
+                                <span class="badge bg-light text-muted border">Electronics / VLSI</span>
+                            </div>
+                            <h4 class="fw-bold text-dark mb-2">{{ c.title }}</h4>
+                            <p class="text-muted small mb-3">{{ c.short_description }}</p>
+                            <div class="d-flex justify-content-between align-items-center p-3 rounded-3 bg-light border mb-3">
+                                <div>
+                                    <small class="text-muted d-block fw-semibold">45 Days Training</small>
+                                    <span class="fs-5 fw-bold text-primary">{{ c.fee_45_days }}</span>
+                                </div>
+                                <div class="border-start ps-3">
+                                    <small class="text-muted d-block fw-semibold">06 Months Internship</small>
+                                    <span class="fs-5 fw-bold text-danger">{{ c.fee_6_months }}</span>
+                                </div>
+                                <span class="badge bg-warning text-dark fw-bold">Embedded/PCB</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <a href="{% url 'course_detail' c.slug %}" class="btn btn-outline-warning btn-sm fw-bold text-dark">View Curriculum &rarr;</a>
+                                <a href="{% url 'registration' %}?course={{ c.title|urlencode }}" class="btn btn-danger btn-sm fw-bold">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Tab 5: Building & Interior -->
+            <div class="tab-pane fade" id="tab-civil" role="tabpanel">
+                <div class="row g-4">
+                    {% for c in building_interior_courses %}
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white border-start border-4 border-info">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-info text-white">{{ c.category }}</span>
+                                <span class="badge bg-light text-muted border">Civil &amp; Architecture</span>
+                            </div>
+                            <h4 class="fw-bold text-dark mb-2">{{ c.title }}</h4>
+                            <p class="text-muted small mb-3">{{ c.short_description }}</p>
+                            <div class="d-flex justify-content-between align-items-center p-3 rounded-3 bg-light border mb-3">
+                                <div>
+                                    <small class="text-muted d-block fw-semibold">45 Days Training</small>
+                                    <span class="fs-5 fw-bold text-primary">{{ c.fee_45_days }}</span>
+                                </div>
+                                <div class="border-start ps-3">
+                                    <small class="text-muted d-block fw-semibold">06 Months Internship</small>
+                                    <span class="fs-5 fw-bold text-danger">{{ c.fee_6_months }}</span>
+                                </div>
+                                <span class="badge bg-warning text-dark fw-bold">BIM &amp; 3D Max</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <a href="{% url 'course_detail' c.slug %}" class="btn btn-outline-info btn-sm fw-bold">View Curriculum &rarr;</a>
+                                <a href="{% url 'registration' %}?course={{ c.title|urlencode }}" class="btn btn-danger btn-sm fw-bold">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Tab 6: Textile & Fashion -->
+            <div class="tab-pane fade" id="tab-textile" role="tabpanel">
+                <div class="row g-4">
+                    {% for c in textile_fashion_courses %}
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white border-start border-4 border-dark">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-dark text-white">{{ c.category }}</span>
+                                <span class="badge bg-light text-muted border">Apparel &amp; Fabric</span>
+                            </div>
+                            <h4 class="fw-bold text-dark mb-2">{{ c.title }}</h4>
+                            <p class="text-muted small mb-3">{{ c.short_description }}</p>
+                            <div class="d-flex justify-content-between align-items-center p-3 rounded-3 bg-light border mb-3">
+                                <div>
+                                    <small class="text-muted d-block fw-semibold">45 Days Training</small>
+                                    <span class="fs-5 fw-bold text-primary">{{ c.fee_45_days }}</span>
+                                </div>
+                                <div class="border-start ps-3">
+                                    <small class="text-muted d-block fw-semibold">06 Months Internship</small>
+                                    <span class="fs-5 fw-bold text-danger">{{ c.fee_6_months }}</span>
+                                </div>
+                                <span class="badge bg-warning text-dark fw-bold">Fashion CAD</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <a href="{% url 'course_detail' c.slug %}" class="btn btn-outline-dark btn-sm fw-bold">View Curriculum &rarr;</a>
+                                <a href="{% url 'registration' %}?course={{ c.title|urlencode }}" class="btn btn-danger btn-sm fw-bold">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Payment Modes, Installment Policy & Discounts -->
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-white border-top border-4 border-success">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="badge bg-success rounded-circle p-3 fs-5">
+                        <i class="fas fa-credit-card text-white"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold text-dark mb-0">Accepted Payment Modes</h5>
+                        <small class="text-muted">Safe &amp; Instant Verification</small>
+                    </div>
+                </div>
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-muted small">
+                    <li><i class="fas fa-check text-success me-2"></i><strong>UPI Transfer:</strong> Google Pay, PhonePe, Paytm, BHIM</li>
+                    <li><i class="fas fa-check text-success me-2"></i><strong>Net Banking:</strong> NEFT, RTGS, IMPS Account Transfer</li>
+                    <li><i class="fas fa-check text-success me-2"></i><strong>Cash Payment:</strong> At Alambagh, Lucknow Institute Desk</li>
+                    <li><i class="fas fa-check text-success me-2"></i><strong>Official GST Invoice:</strong> Issued for every fee deposit</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-white border-top border-4 border-warning">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="badge bg-warning rounded-circle p-3 fs-5 text-dark">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold text-dark mb-0">Installment Facility</h5>
+                        <small class="text-muted">For 06 Months Industrial Training</small>
+                    </div>
+                </div>
+                <p class="text-muted small mb-3">
+                    To support college students and ambitious learners, Maurya Technical provides an easy monthly installment option for the <strong>06 Months Training (₹18,000)</strong>:
+                </p>
+                <div class="p-2 px-3 rounded-3 bg-light border small">
+                    <span class="d-block fw-bold text-dark mb-1">&bull; Part 1: At the time of Admission</span>
+                    <span class="d-block fw-bold text-dark mb-1">&bull; Part 2: After 30 Days of Training</span>
+                    <span class="d-block fw-bold text-dark">&bull; Part 3: After 60 Days of Training</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-white border-top border-4 border-danger">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="badge bg-danger rounded-circle p-3 fs-5">
+                        <i class="fas fa-users text-white"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold text-dark mb-0">Group Discounts &amp; Scholarships</h5>
+                        <small class="text-muted">AKTU &amp; Polytechnic Students</small>
+                    </div>
+                </div>
+                <p class="text-muted small mb-3">
+                    Enrolling with college classmates? Maurya Technical offers special group fee concessions:
+                </p>
+                <div class="p-2 px-3 rounded-3 bg-light border small mb-3">
+                    <span class="d-block fw-bold text-success mb-1"><i class="fas fa-tag me-1"></i> 3+ Students Group: Special Group Concession</span>
+                    <span class="d-block fw-bold text-primary"><i class="fas fa-graduation-cap me-1"></i> College Campus Batch: Custom Pricing</span>
+                </div>
+                <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20we%20are%20a%20group%20of%20students%20interested%20in%20group%20discount%20for%20industrial%20training" target="_blank" class="btn btn-outline-danger btn-sm fw-bold w-100">
+                    <i class="fab fa-whatsapp me-1"></i> Inquire Group Discount
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Frequently Asked Questions (Accordion) -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="text-center mb-4">
+                <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill mb-2">HELP &amp; CLARIFICATIONS</span>
+                <h3 class="fw-bold text-dark">Frequently Asked Questions on Fees</h3>
+            </div>
+
+            <div class="accordion shadow-sm rounded-4 overflow-hidden" id="feesAccordion">
+                
+                <!-- Q1 -->
+                <div class="accordion-item border-0 border-bottom">
+                    <h2 class="accordion-header" id="faqHeadingOne">
+                        <button class="accordion-button fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                            1. Are there any hidden or extra examination / certification charges?
+                        </button>
+                    </h2>
+                    <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#feesAccordion">
+                        <div class="accordion-body text-muted small">
+                            <strong>No.</strong> The stated fees (₹4,000 for 45 Days and ₹18,000 for 6 Months) are completely all-inclusive. It covers practical daily lab classes, software tools installation, major project guidance, source code, project report validation, and official ISO-certified Govt. Registered certificates with online verification.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="accordion-item border-0 border-bottom">
+                    <h2 class="accordion-header" id="faqHeadingTwo">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                            2. How can I pay the training fee in installments?
+                        </button>
+                    </h2>
+                    <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#feesAccordion">
+                        <div class="accordion-body text-muted small">
+                            For 6 Months Industrial Training (₹18,000), students can divide the payment into 2 to 3 convenient parts. You can deposit the first installment upon registration/batch commencement, and the remaining installments within the first 60 days.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="accordion-item border-0 border-bottom">
+                    <h2 class="accordion-header" id="faqHeadingThree">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                            3. Is this fee applicable for both Online and Offline batches?
+                        </button>
+                    </h2>
+                    <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#feesAccordion">
+                        <div class="accordion-body text-muted small">
+                            Yes, the fee structure is identical for offline classroom laboratory training at our Alambagh, Lucknow center as well as live instructor-led online sessions for distant students. Both options include the full hands-on project and official certificate.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="accordion-item border-0">
+                    <h2 class="accordion-header" id="faqHeadingFour">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+                            4. What if I want to switch or add another subject during training?
+                        </button>
+                    </h2>
+                    <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#feesAccordion">
+                        <div class="accordion-body text-muted small">
+                            You can easily coordinate with your batch mentor or academic counselor within the first week of training if you wish to adjust your specialization track or add additional modules.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Banner -->
+    <div class="bg-dark text-white rounded-4 p-4 p-lg-5 text-center shadow-lg position-relative overflow-hidden" style="background: linear-gradient(135deg, #121824 0%, #1f2937 50%, #7A0C0C 100%) !important;">
+        <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-3">
+            <i class="fas fa-door-open me-1"></i> ADMISSIONS OPEN FOR 2026 BATCHES
+        </span>
+        <h2 class="display-6 fw-bold mb-3">Reserve Your Seat for Industrial Practical Training</h2>
+        <p class="lead text-white-50 max-w-700 mx-auto mb-4">
+            Limited seats per batch to ensure individual practical lab attention. Register online today or visit our Alambagh, Lucknow campus.
+        </p>
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+            <a href="{% url 'registration' %}" class="btn btn-danger btn-lg fw-bold px-4 py-3 shadow">
+                <i class="fas fa-file-signature me-2"></i> Register Online Now &rarr;
+            </a>
+            <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20reserve%20a%20seat%20for%20Industrial%20Training%202026" target="_blank" class="btn btn-success btn-lg fw-bold px-4 py-3 shadow">
+                <i class="fab fa-whatsapp fs-5 me-2"></i> WhatsApp Desk (+91 88878 39689)
+            </a>
+            <a href="tel:8887839689" class="btn btn-outline-light btn-lg fw-bold px-4 py-3">
+                <i class="fas fa-phone-alt me-2"></i> Call: 88878 39689
+            </a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
