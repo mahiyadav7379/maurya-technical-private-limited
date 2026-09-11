@@ -1,0 +1,85 @@
+﻿{% load static %}
+<!-- Maurya Technical Official Live Chatbot Widget -->
+<div id="mauryaChatbotContainer" class="maurya-chatbot-wrapper">
+    <!-- Chatbot Floating Launcher Bubble -->
+    <div id="mauryaChatLauncher" class="chat-launcher-bubble" title="Chat with Maurya Technical Support" role="button" aria-label="Open Live Chat">
+        <div class="launcher-pulse-ring"></div>
+        <div class="launcher-icon-inner">
+            <i class="fas fa-comment-dots chat-icon-open"></i>
+            <i class="fas fa-times chat-icon-close d-none"></i>
+        </div>
+        <span class="chat-unread-badge">1</span>
+    </div>
+
+    <!-- Chatbot Window Box -->
+    <div id="mauryaChatWindow" class="chat-window-box shadow-2xl d-none">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="d-flex align-items-center gap-2">
+                <div class="chat-avatar position-relative">
+                    <img src="{% static 'images/maurya_official_logo.png' %}?v=2026" alt="Maurya Technical Bot" class="chat-bot-img">
+                    <span class="chat-online-dot"></span>
+                </div>
+                <div>
+                    <h6 class="chat-title mb-0 fw-bold">Maurya Technical Desk</h6>
+                    <small class="chat-subtitle"><i class="fas fa-circle text-success me-1 online-pulse"></i> Online • Instant AI Help</small>
+                </div>
+            </div>
+            <div class="chat-header-actions">
+                <button type="button" id="chatMinimizeBtn" class="chat-tool-btn" title="Minimize Chat">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" id="chatCloseBtn" class="chat-tool-btn" title="Close Chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chatMessagesArea" class="chat-messages-body">
+            <!-- Initial Greeting -->
+            <div class="chat-msg bot-msg">
+                <div class="chat-msg-bubble">
+                    <p class="mb-1 fw-semibold text-danger">Namaste! Welcome to Maurya Technical Private Limited (Alambagh, Lucknow) 🙏</p>
+                    <p class="mb-0 small text-muted">Aap training, fee structure, syllabus ya admissions ke baare me kuch bhi puch sakte hain:</p>
+                </div>
+                <span class="chat-timestamp">Just now</span>
+            </div>
+
+            <!-- Interactive Quick Option Chips -->
+            <div class="chat-quick-chips mt-2" id="chatQuickChips">
+                <button type="button" class="quick-chip-btn" data-query="fees">
+                    <i class="fas fa-tags text-danger me-1"></i> Fee Structure
+                </button>
+                <button type="button" class="quick-chip-btn" data-query="courses">
+                    <i class="fas fa-graduation-cap text-primary me-1"></i> Courses & Domains
+                </button>
+                <button type="button" class="quick-chip-btn" data-query="register">
+                    <i class="fas fa-edit text-warning me-1"></i> How to Register
+                </button>
+                <button type="button" class="quick-chip-btn" data-query="placements">
+                    <i class="fas fa-award text-success me-1"></i> Placements & Job Fair
+                </button>
+                <button type="button" class="quick-chip-btn" data-query="whatsapp">
+                    <i class="fab fa-whatsapp text-success me-1"></i> Chat on WhatsApp
+                </button>
+                <button type="button" class="quick-chip-btn" data-query="location">
+                    <i class="fas fa-map-marker-alt text-danger me-1"></i> Office Address
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Input Footer -->
+        <form id="chatInputForm" class="chat-footer-form">
+            <div class="input-group">
+                <input type="text" id="chatInputField" class="form-control chat-input-control" placeholder="Apna sawal yahan type karein..." autocomplete="off">
+                <button type="submit" id="chatSendBtn" class="btn btn-danger chat-send-btn" title="Send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="chat-footer-brand">
+                <small>Powered by Maurya Technical Private Limited • Live Support</small>
+            </div>
+        </form>
+    </div>
+</div>

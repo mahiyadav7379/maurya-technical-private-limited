@@ -51,6 +51,7 @@
 
     <!-- Include Floating Portals & Widgets -->
     {% include 'includes/floating_widgets.html' %}
+    {% include 'includes/chatbot_widget.html' %}
 
     <!-- Include Footer -->
     {% include 'includes/footer.html' %}
@@ -95,7 +96,27 @@
     <!-- AOS Animate On Scroll JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Custom Main JS -->
-    <script src="{% static 'js/main.js' %}?v=2026_fix"></script>
+    <script src="{% static 'js/main.js' %}?v=2026_chatbot_responsive"></script>
+    
+    <!-- Tawk.to Live Chatbot Integration Hook -->
+    <script type="text/javascript">
+        // Tawk.to dynamic loader - when property ID is configured, it auto-mounts
+        window.loadTawkTo = function(propertyId, widgetId) {
+            if (!propertyId) return;
+            widgetId = widgetId || 'default';
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/' + propertyId + '/' + widgetId;
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+            console.log('Tawk.to Live Chat Loaded for Property:', propertyId);
+        };
+        // Auto-check for configured property
+        if (window.TAWK_PROPERTY_ID) {
+            window.loadTawkTo(window.TAWK_PROPERTY_ID, window.TAWK_WIDGET_ID || 'default');
+        }
+    </script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>
