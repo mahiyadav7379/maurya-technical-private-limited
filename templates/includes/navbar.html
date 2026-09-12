@@ -137,7 +137,7 @@
 
                 <!-- 4. PLACEMENTS & CAREERS (Dropdown) -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link nav-link-custom dropdown-toggle {% if request.resolver_match.url_name in 'placements job_fair verify_certificate' %}active{% endif %}" href="{% url 'placements' %}" id="placementsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link nav-link-custom dropdown-toggle {% if request.resolver_match.url_name in 'placements job_fair' %}active{% endif %}" href="{% url 'placements' %}" id="placementsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-award d-xl-none me-2 text-danger"></i>PLACEMENTS
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="placementsDropdown">
@@ -160,17 +160,6 @@
                                 <div>
                                     <span class="dropdown-item-title">Mega Job Fair 2026</span>
                                     <small class="dropdown-item-desc">Campus Drives &amp; Direct Interviews</small>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item dropdown-item-custom {% if request.resolver_match.url_name == 'verify_certificate' %}active{% endif %}" href="{% url 'verify_certificate' %}">
-                                <div class="dropdown-icon-box bg-primary-subtle text-primary">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <div>
-                                    <span class="dropdown-item-title">Verify Certificate</span>
-                                    <small class="dropdown-item-desc">Instant Online QR / Certificate Check</small>
                                 </div>
                             </a>
                         </li>
