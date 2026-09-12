@@ -135,35 +135,11 @@
                     </ul>
                 </li>
 
-                <!-- 4. PLACEMENTS & CAREERS (Dropdown) -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link nav-link-custom dropdown-toggle {% if request.resolver_match.url_name in 'placements job_fair' %}active{% endif %}" href="{% url 'placements' %}" id="placementsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- 4. PLACEMENTS -->
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom {% if request.resolver_match.url_name in 'placements job_fair' %}active{% endif %}" href="{% url 'placements' %}">
                         <i class="fas fa-award d-xl-none me-2 text-danger"></i>PLACEMENTS
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="placementsDropdown">
-                        <li>
-                            <a class="dropdown-item dropdown-item-custom {% if request.resolver_match.url_name == 'placements' %}active{% endif %}" href="{% url 'placements' %}">
-                                <div class="dropdown-icon-box bg-success-subtle text-success">
-                                    <i class="fas fa-user-graduate"></i>
-                                </div>
-                                <div>
-                                    <span class="dropdown-item-title">Placed Students <span class="badge bg-success ms-1">100% Support</span></span>
-                                    <small class="dropdown-item-desc">Trainees Selected in Top Software MNCs</small>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item dropdown-item-custom {% if request.resolver_match.url_name == 'job_fair' %}active{% endif %}" href="{% url 'job_fair' %}">
-                                <div class="dropdown-icon-box bg-danger-subtle text-danger">
-                                    <i class="fas fa-briefcase"></i>
-                                </div>
-                                <div>
-                                    <span class="dropdown-item-title">Mega Job Fair 2026</span>
-                                    <small class="dropdown-item-desc">Campus Drives &amp; Direct Interviews</small>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 <!-- 5. PROJECTS & SERVICES (Dropdown) -->
