@@ -1990,17 +1990,4 @@ html {
     box-shadow: 0 12px 28px rgba(168, 27, 27, 0.35) !important;
 }
 
-#about-maurya-section {
-    background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
-}
-
-#about-maurya-section .card {
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-#about-maurya-section .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
-}
-
 
