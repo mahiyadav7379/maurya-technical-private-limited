@@ -14,9 +14,9 @@
                 <span class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 rounded-pill shadow-sm text-wrap text-start lh-base">
                     <i class="fas fa-shield-alt text-danger me-1"></i> Government Registered Design Service Provider &amp; Training Institute
                 </span>
-                <h2 class="fw-bold text-dark mb-3 hero-title-responsive">
-                    The industry offers complete design solutions across:
-                </h2>
+                <h1 class="fw-bold text-dark mb-3 hero-title-responsive">
+                    The Industry Offers Complete <span class="text-danger">Design Solutions</span> Across:
+                </h1>
                 <p class="text-muted fs-6 mb-3">
                     <strong>Maurya Technical Private Limited</strong> (Alambagh Lucknow) is an ISO-certified leader delivering industry-grade design solutions, technical project consultation, and professional practical training across multi-disciplinary engineering and creative domains:
                 </p>
@@ -397,20 +397,88 @@
                 </div>
             </div>
 
-            <!-- Right Side: Official Office & Building Infrastructure Image -->
-            <div class="col-lg-6 mt-4 mt-lg-0 d-flex flex-column" data-aos="fade-left">
-                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger hero-building-card h-100 d-flex flex-column position-relative">
+            <!-- Right Side: Campus Building Showcase & Key Highlights (Equal Height & Balanced) -->
+            <div class="col-lg-6 mt-4 mt-lg-0 d-flex flex-column justify-content-between" data-aos="fade-left">
+                <!-- Campus Building Showcase Card -->
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger hero-building-card mb-3 position-relative">
                     <div class="position-absolute top-0 start-0 m-3 z-3">
                         <span class="badge bg-danger shadow px-3 py-2 rounded-pill fw-bold">
                             <i class="fas fa-building text-warning me-1"></i> Head Office Campus
                         </span>
                     </div>
-                    <div class="hero-building-img-wrapper flex-grow-1 w-100 overflow-hidden d-flex position-relative">
-                        <img src="{% static 'images/maurya_building_office.png' %}" alt="Maurya Technical Private Limited Building & Infrastructure" class="img-fluid w-100 h-100 hero-building-img">
+                    <div class="position-absolute top-0 end-0 m-3 z-3">
+                        <span class="badge bg-dark bg-opacity-75 text-white shadow px-3 py-2 rounded-pill fw-semibold small">
+                            <i class="fas fa-map-marker-alt text-danger me-1"></i> Alambagh, Lucknow
+                        </span>
                     </div>
-                    <div class="card-body bg-dark text-white p-3 text-center mt-auto flex-shrink-0">
-                        <h6 class="fw-bold mb-0 text-warning"><i class="fas fa-door-open me-2"></i> Maurya Technical Private Limited Campus (Alambagh, Lucknow)</h6>
+                    <div class="hero-building-img-wrapper w-100 overflow-hidden d-flex position-relative">
+                        <img src="{% static 'images/maurya_building_office.png' %}" alt="Maurya Technical Private Limited Building & Infrastructure" class="img-fluid w-100 hero-building-img">
                     </div>
+                    <div class="card-body bg-dark text-white py-2 px-3 text-center">
+                        <h6 class="fw-bold mb-0 text-warning small"><i class="fas fa-door-open me-1"></i> Maurya Technical Private Limited Campus &bull; Alambagh, Lucknow</h6>
+                    </div>
+                </div>
+
+                <!-- 4 Quick Trust Pillars / Key Highlights (Balances height with left accordion) -->
+                <div class="row g-2 mb-3">
+                    <div class="col-6">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light h-100 shadow-sm d-flex align-items-center">
+                            <div class="badge bg-danger rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small lh-sm">Govt. Registered</h6>
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">ISO 9001:2015 Certified</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light h-100 shadow-sm d-flex align-items-center">
+                            <div class="badge bg-warning rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-dark">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small lh-sm">100% Placement</h6>
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">500+ Partner MNCs</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light h-100 shadow-sm d-flex align-items-center">
+                            <div class="badge bg-success rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small lh-sm">Live Practical Labs</h6>
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">Hands-on Industry Stacks</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light h-100 shadow-sm d-flex align-items-center">
+                            <div class="badge bg-primary rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small lh-sm">5000+ Alumni</h6>
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">Engineers &amp; Designers</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026 Batch Announcement Quick Action Banner -->
+                <div class="hero-batch-alert p-3 rounded-3 bg-danger bg-opacity-10 border border-danger d-flex flex-wrap align-items-center justify-content-between gap-2 shadow-sm">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-danger rounded-pill px-2 py-1 small"><i class="fas fa-fire me-1"></i> New</span>
+                        <div>
+                            <span class="fw-bold text-dark small d-block">Winter &amp; Summer 2026 Industrial Training</span>
+                            <small class="text-danger fw-semibold" style="font-size: 0.78rem;">45 Days &bull; 6 Months &bull; Live Projects</small>
+                        </div>
+                    </div>
+                    <a href="{% url 'registration' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm">
+                        Enroll Online &rarr;
+                    </a>
                 </div>
             </div>
         </div>
@@ -434,32 +502,32 @@
 </div>
 
 <!-- Founder & Director Leadership Showcase Section -->
-<section class="py-5 director-section" id="director-section">
+<section class="py-4 director-section" id="director-section">
     <div class="container px-4">
-        <div class="row align-items-stretch g-4 g-lg-5">
-            <!-- Left Side: Director Official Poster Card -->
-            <div class="col-lg-5 text-center d-flex flex-column" data-aos="fade-right">
-                <div class="director-card-wrapper mx-auto w-100 h-100 d-flex flex-column" style="max-width: 440px;">
-                    <div class="director-card position-relative shadow-lg h-100 d-flex flex-column">
-                        <div class="position-absolute top-0 start-0 m-3 z-3">
-                            <span class="badge bg-danger shadow-sm px-3 py-2 rounded-pill fw-bold">
-                                <i class="fas fa-crown text-warning me-1"></i> Founder & Director
+        <div class="row align-items-center g-4 g-lg-5">
+            <!-- Left Side: Director Official Poster Card (Compact Height) -->
+            <div class="col-lg-5 text-center d-flex flex-column align-items-center" data-aos="fade-right">
+                <div class="director-card-wrapper mx-auto w-100" style="max-width: 340px;">
+                    <div class="director-card position-relative shadow-lg overflow-hidden">
+                        <div class="position-absolute top-0 start-0 m-2 z-3">
+                            <span class="badge bg-danger shadow-sm px-2 py-1 rounded-pill fw-bold small">
+                                <i class="fas fa-crown text-warning me-1"></i> Founder &amp; Director
                             </span>
                         </div>
                         <div class="director-img-container">
-                            <img src="{% static 'images/director_vivek_kushawaha.png' %}?v=2026_suit" alt="Vivek Kushawaha - Founder & Director, Maurya Technical Private Limited" class="director-img">
+                            <img src="{% static 'images/director_vivek_kushawaha.png' %}?v=2026_suit" alt="Vivek Kushawaha - Founder &amp; Director, Maurya Technical Private Limited" class="director-img">
                         </div>
-                        <div class="p-3 bg-white border-top text-center mt-auto flex-shrink-0">
-                            <h5 class="fw-bold text-dark mb-1">Vivek Kushawaha</h5>
-                            <p class="text-danger fw-bold small mb-2">Founder & Director &bull; Maurya Technical Private Limited</p>
-                            <div class="d-flex justify-content-center gap-2 flex-wrap">
-                                <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-sm fw-bold px-3 shadow-sm">
+                        <div class="p-2 px-3 bg-white border-top text-center">
+                            <h6 class="fw-bold text-dark mb-0 fs-6">Vivek Kushawaha</h6>
+                            <p class="text-danger fw-semibold small mb-2" style="font-size: 0.78rem;">Founder &amp; Director &bull; Maurya Technical Pvt. Ltd.</p>
+                            <div class="d-flex justify-content-center gap-1 flex-wrap">
+                                <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
                                     <i class="fab fa-linkedin me-1"></i> LinkedIn
                                 </a>
-                                <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-sm fw-bold px-3 shadow-sm">
+                                <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
                                     <i class="fab fa-instagram me-1"></i> Instagram
                                 </a>
-                                <a href="https://wa.me/918887839689?text=Hello%20Director%20Sir%20/%20Maurya%20Technical,%20I%20want%20to%20know%20about%20industrial%20training" target="_blank" class="btn btn-success btn-sm fw-bold px-3 shadow-sm">
+                                <a href="https://wa.me/918887839689?text=Hello%20Director%20Sir%20/%20Maurya%20Technical,%20I%20want%20to%20know%20about%20industrial%20training" target="_blank" class="btn btn-success btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
                                     <i class="fab fa-whatsapp me-1"></i> Desk
                                 </a>
                             </div>
@@ -468,99 +536,99 @@
                 </div>
             </div>
 
-            <!-- Right Side: Leadership Vision, Credentials & Message -->
-            <div class="col-lg-7 d-flex flex-column justify-content-between h-100" data-aos="fade-left">
-                <div class="ps-lg-3 d-flex flex-column h-100 justify-content-between">
-                    <div class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 rounded-pill">
-                        <i class="fas fa-user-tie me-1"></i> LEADERSHIP & FOUNDER'S DESK
+            <!-- Right Side: Leadership Vision, Credentials & Message (Compact) -->
+            <div class="col-lg-7" data-aos="fade-left">
+                <div class="ps-lg-2">
+                    <div class="badge bg-warning text-dark fw-bold px-3 py-1 mb-2 rounded-pill small">
+                        <i class="fas fa-user-tie me-1"></i> LEADERSHIP &amp; FOUNDER'S DESK
                     </div>
-                    <h2 class="display-6 fw-bold text-dark mb-2">Meet Our Founder & Director</h2>
-                    <h3 class="fw-bold text-danger mb-3">Vivek Kushawaha</h3>
+                    <h3 class="fw-bold text-dark mb-1">Meet Our Founder &amp; Director</h3>
+                    <h4 class="fw-bold text-danger mb-2">Vivek Kushawaha</h4>
 
-                    <!-- Designations & Roles Badges -->
-                    <div class="d-flex flex-wrap gap-2 mb-4">
-                        <span class="badge bg-danger p-2 px-3 fs-6 rounded-pill">
-                            <i class="fas fa-briefcase me-1"></i> Founder & Director &bull; Maurya Technical Pvt. Ltd.
+                    <!-- Designations & Roles Badges (Compact) -->
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                        <span class="badge bg-danger px-2 py-1 small rounded-pill">
+                            <i class="fas fa-briefcase me-1"></i> Founder &amp; Director
                         </span>
-                        <span class="badge bg-primary p-2 px-3 fs-6 rounded-pill">
+                        <span class="badge bg-primary px-2 py-1 small rounded-pill">
                             <i class="fas fa-chalkboard-teacher me-1"></i> Assistant Professor
                         </span>
-                        <span class="badge bg-dark p-2 px-3 fs-6 rounded-pill">
-                            <i class="fas fa-user-graduate me-1"></i> Dean Student Welfare & HOD (Electrical Engg.)
+                        <span class="badge bg-dark px-2 py-1 small rounded-pill">
+                            <i class="fas fa-user-graduate me-1"></i> Dean Student Welfare &amp; HOD (EE)
                         </span>
-                        <span class="badge bg-secondary p-2 px-3 fs-6 rounded-pill">
-                            <i class="fas fa-university me-1"></i> M.G. Institute of Management & Technology, Lucknow (AKTU)
+                        <span class="badge bg-secondary px-2 py-1 small rounded-pill">
+                            <i class="fas fa-university me-1"></i> MGIMT Lucknow (AKTU)
                         </span>
                     </div>
 
-                    <!-- Director's Vision Quote Box -->
-                    <div class="director-quote-box mb-4">
+                    <!-- Director's Vision Quote Box (Compact) -->
+                    <div class="director-quote-box mb-3 p-3">
                         <div class="d-flex align-items-start">
-                            <i class="fas fa-quote-left text-danger fs-3 me-3 mt-1"></i>
+                            <i class="fas fa-quote-left text-danger fs-4 me-2 mt-1"></i>
                             <div>
-                                <p class="mb-0 text-dark fw-medium fs-6 lh-base">
-                                    "Our core commitment at Maurya Technical Private Limited is to transform ambitious technical students into industry-ready software engineers. Through rigorous hands-on live projects, an advanced curriculum in Python, Django, Web Development & AI, and direct mentorship from industry directors, we ensure our graduates secure premier careers in top IT enterprises."
+                                <p class="mb-0 text-dark fw-medium small lh-base">
+                                    "Our mission at Maurya Technical Private Limited is transforming technical graduates into enterprise-ready software engineers through practical live projects, advanced curriculum in Python, Django, AI &amp; CAD, and direct industry mentorship."
                                 </p>
-                                <div class="mt-2 text-end">
-                                    <strong class="text-danger">&mdash; Vivek Kushawaha</strong>, <small class="text-muted">Founder & Director</small>
+                                <div class="mt-1 text-end">
+                                    <strong class="text-danger small">&mdash; Vivek Kushawaha</strong>, <small class="text-muted" style="font-size: 0.72rem;">Founder &amp; Director</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 4 Strategic Pillars Grid -->
-                    <div class="row g-3 mb-4">
+                    <!-- 4 Strategic Pillars Grid (Compact) -->
+                    <div class="row g-2 mb-3">
                         <div class="col-sm-6">
-                            <div class="director-credential-pill">
+                            <div class="director-credential-pill p-2">
                                 <div class="d-flex align-items-center mb-1">
-                                    <div class="badge bg-danger rounded-circle p-2 me-2"><i class="fas fa-university text-white"></i></div>
-                                    <h6 class="fw-bold mb-0 text-dark">AKTU Academic Affiliation</h6>
+                                    <div class="badge bg-danger rounded-circle p-1 me-2"><i class="fas fa-university text-white small"></i></div>
+                                    <h6 class="fw-bold mb-0 text-dark small">AKTU Academic Affiliation</h6>
                                 </div>
-                                <small class="text-muted">Dean Student Welfare & Head of Department at MGIMT Lucknow</small>
+                                <small class="text-muted d-block" style="font-size: 0.72rem;">Dean Student Welfare &amp; HOD at MGIMT Lucknow</small>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="director-credential-pill">
+                            <div class="director-credential-pill p-2">
                                 <div class="d-flex align-items-center mb-1">
-                                    <div class="badge bg-warning rounded-circle p-2 me-2 text-dark"><i class="fas fa-laptop-code"></i></div>
-                                    <h6 class="fw-bold mb-0 text-dark">Live Industrial Training</h6>
+                                    <div class="badge bg-warning rounded-circle p-1 me-2 text-dark"><i class="fas fa-laptop-code small"></i></div>
+                                    <h6 class="fw-bold mb-0 text-dark small">Live Industrial Training</h6>
                                 </div>
-                                <small class="text-muted">Direct practical training on real-time enterprise software stacks</small>
+                                <small class="text-muted d-block" style="font-size: 0.72rem;">Hands-on practical training on real-time software</small>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="director-credential-pill">
+                            <div class="director-credential-pill p-2">
                                 <div class="d-flex align-items-center mb-1">
-                                    <div class="badge bg-success rounded-circle p-2 me-2"><i class="fas fa-users-cog text-white"></i></div>
-                                    <h6 class="fw-bold mb-0 text-dark">5000+ Students Mentored</h6>
+                                    <div class="badge bg-success rounded-circle p-1 me-2"><i class="fas fa-users-cog text-white small"></i></div>
+                                    <h6 class="fw-bold mb-0 text-dark small">5000+ Students Mentored</h6>
                                 </div>
-                                <small class="text-muted">Empowering B.Tech, Diploma, BCA, MCA & M.Tech candidates</small>
+                                <small class="text-muted d-block" style="font-size: 0.72rem;">B.Tech, Diploma, BCA, MCA &amp; M.Tech candidates</small>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="director-credential-pill">
+                            <div class="director-credential-pill p-2">
                                 <div class="d-flex align-items-center mb-1">
-                                    <div class="badge bg-primary rounded-circle p-2 me-2"><i class="fas fa-award text-white"></i></div>
-                                    <h6 class="fw-bold mb-0 text-dark">Assured Placement Support</h6>
+                                    <div class="badge bg-primary rounded-circle p-1 me-2"><i class="fas fa-award text-white small"></i></div>
+                                    <h6 class="fw-bold mb-0 text-dark small">Assured Placement Support</h6>
                                 </div>
-                                <small class="text-muted">500+ active software company recruiting partners across India</small>
+                                <small class="text-muted d-block" style="font-size: 0.72rem;">500+ active recruitment partners across India</small>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Action Buttons with LinkedIn & Instagram Links -->
-                    <div class="d-flex flex-wrap gap-3 responsive-btn-group">
-                        <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-lg fw-bold px-4 py-3 shadow">
-                            <i class="fab fa-linkedin fs-5 me-2"></i> Company on LinkedIn
+                    <!-- Action Buttons (Compact) -->
+                    <div class="d-flex flex-wrap gap-2 responsive-btn-group">
+                        <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-sm fw-bold px-3 py-2 shadow-sm">
+                            <i class="fab fa-linkedin me-1"></i> LinkedIn
                         </a>
-                        <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-lg fw-bold px-4 py-3 shadow">
-                            <i class="fab fa-instagram fs-5 me-2"></i> Company on Instagram
+                        <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-sm fw-bold px-3 py-2 shadow-sm">
+                            <i class="fab fa-instagram me-1"></i> Instagram
                         </a>
-                        <a href="https://wa.me/918887839689?text=Hello%20Vivek%20Sir%20/%20Maurya%20Technical,%20I%20am%20interested%20in%20joining%20the%20upcoming%20training%20batch" target="_blank" class="btn btn-success btn-lg fw-bold px-4 py-3 shadow">
-                            <i class="fab fa-whatsapp fs-5 me-2"></i> WhatsApp Director Office
+                        <a href="https://wa.me/918887839689?text=Hello%20Vivek%20Sir%20/%20Maurya%20Technical,%20I%20am%20interested%20in%20joining%20the%20upcoming%20training%20batch" target="_blank" class="btn btn-success btn-sm fw-bold px-3 py-2 shadow-sm">
+                            <i class="fab fa-whatsapp me-1"></i> WhatsApp Desk
                         </a>
-                        <a href="{% url 'registration' %}" class="btn btn-outline-danger btn-lg fw-bold px-4 py-3 shadow-sm">
-                            <i class="fas fa-user-plus me-2"></i> Register for 2026 Batch
+                        <a href="{% url 'registration' %}" class="btn btn-outline-danger btn-sm fw-bold px-3 py-2 shadow-sm">
+                            <i class="fas fa-user-plus me-1"></i> Register 2026 Batch
                         </a>
                     </div>
                 </div>
@@ -570,37 +638,37 @@
 </section>
 
 <!-- Meet Our HR Head - Kirti Kushwaha Leadership Showcase Section -->
-<section class="py-5 bg-light border-top border-bottom" id="hr-leadership-section">
+<section class="py-4 bg-light border-top border-bottom" id="hr-leadership-section">
     <div class="container px-4">
-        <div class="row align-items-stretch g-4 g-lg-5 flex-lg-row-reverse">
+        <div class="row align-items-center g-4 g-lg-5 flex-lg-row-reverse">
             <!-- Right Side (Desktop): HR Head Official Poster Card -->
-            <div class="col-lg-5 text-center d-flex flex-column" data-aos="fade-left">
-                <div class="director-card-wrapper mx-auto w-100 h-100 d-flex flex-column" style="max-width: 440px;">
-                    <div class="director-card position-relative shadow-lg h-100 d-flex flex-column">
-                        <div class="position-absolute top-0 start-0 m-3 z-3">
-                            <span class="badge bg-danger shadow-sm px-3 py-2 rounded-pill fw-bold">
+            <div class="col-lg-5 text-center d-flex flex-column align-items-center" data-aos="fade-left">
+                <div class="director-card-wrapper mx-auto w-100" style="max-width: 340px;">
+                    <div class="director-card position-relative shadow-lg overflow-hidden">
+                        <div class="position-absolute top-0 start-0 m-2 z-3">
+                            <span class="badge bg-danger shadow-sm px-2 py-1 rounded-pill fw-bold small">
                                 <i class="fas fa-user-tie text-warning me-1"></i> HR Head
                             </span>
                         </div>
                         <div class="director-img-container">
                             <img src="{% static 'images/hr_head_kirti_kushwaha.jpg' %}?v=2026" alt="Mrs. Kirti Kushwaha - HR Head, Maurya Technical Private Limited" class="director-img" style="object-position: center top;">
                         </div>
-                        <div class="p-3 bg-white border-top text-center mt-auto flex-shrink-0">
-                            <h5 class="fw-bold text-dark mb-1">Mrs. Kirti Kushwaha</h5>
-                            <p class="text-danger fw-bold small mb-2">HR Head &bull; Maurya Technical Private Limited</p>
+                        <div class="p-2 px-3 bg-white border-top text-center">
+                            <h6 class="fw-bold text-dark mb-0 fs-6">Mrs. Kirti Kushwaha</h6>
+                            <p class="text-danger fw-semibold small mb-2" style="font-size: 0.78rem;">HR Head &bull; Maurya Technical Pvt. Ltd.</p>
                             <div class="d-flex justify-content-center gap-1 mb-2 flex-wrap">
-                                <span class="badge bg-light text-dark border px-2 py-1 small">
+                                <span class="badge bg-light text-dark border px-2 py-1 small" style="font-size: 0.72rem;">
                                     <i class="fas fa-graduation-cap text-danger me-1"></i> B.Com, PGDCA, MBA
                                 </span>
-                                <span class="badge bg-light text-dark border px-2 py-1 small">
-                                    <i class="fas fa-briefcase text-warning me-1"></i> 10 Yrs Experience
+                                <span class="badge bg-light text-dark border px-2 py-1 small" style="font-size: 0.72rem;">
+                                    <i class="fas fa-briefcase text-warning me-1"></i> 10 Yrs Exp.
                                 </span>
                             </div>
-                            <div class="d-flex justify-content-center gap-2 flex-wrap">
-                                <a href="https://wa.me/918858298247?text=Hello%20HR%20Desk%20/%20Maurya%20Technical,%20I%20want%20to%20connect%20with%20Mrs.%20Kirti%20Kushwaha" target="_blank" class="btn btn-success btn-sm fw-bold px-3 shadow-sm">
-                                    <i class="fab fa-whatsapp me-1"></i> WhatsApp HR Desk
+                            <div class="d-flex justify-content-center gap-1 flex-wrap">
+                                <a href="https://wa.me/918858298247?text=Hello%20HR%20Desk%20/%20Maurya%20Technical,%20I%20want%20to%20connect%20with%20Mrs.%20Kirti%20Kushwaha" target="_blank" class="btn btn-success btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
+                                    <i class="fab fa-whatsapp me-1"></i> HR WhatsApp
                                 </a>
-                                <a href="tel:8858298247" class="btn btn-outline-danger btn-sm fw-bold px-3 shadow-sm">
+                                <a href="tel:8858298247" class="btn btn-outline-danger btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
                                     <i class="fas fa-phone-alt me-1"></i> Call HR
                                 </a>
                             </div>
@@ -610,81 +678,81 @@
             </div>
 
             <!-- Left Side (Desktop): HR Leadership Vision, Credentials & Message -->
-            <div class="col-lg-7 d-flex flex-column justify-content-between h-100" data-aos="fade-right">
-                <div class="pe-lg-3 d-flex flex-column h-100 justify-content-between">
-                    <div class="badge bg-danger text-white fw-bold px-3 py-2 mb-3 rounded-pill">
+            <div class="col-lg-7" data-aos="fade-right">
+                <div class="pe-lg-2">
+                    <div class="badge bg-danger text-white fw-bold px-3 py-1 mb-2 rounded-pill small">
                         <i class="fas fa-briefcase me-1"></i> TALENT ACQUISITION &amp; HR DESK
                     </div>
-                    <h2 class="display-6 fw-bold text-dark mb-2">Meet Our HR Head</h2>
-                    <h3 class="fw-bold text-danger mb-3">Mrs. Kirti Kushwaha</h3>
+                    <h3 class="fw-bold text-dark mb-1">Meet Our HR Head</h3>
+                    <h4 class="fw-bold text-danger mb-2">Mrs. Kirti Kushwaha</h4>
 
                     <!-- Designations & Roles Badges -->
-                    <div class="d-flex flex-wrap gap-2 mb-3">
-                        <span class="badge bg-danger p-2 px-3 fs-6 rounded-pill">
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                        <span class="badge bg-danger px-2 py-1 small rounded-pill">
                             <i class="fas fa-id-badge me-1"></i> Company HR Head
                         </span>
-                        <span class="badge bg-dark p-2 px-3 fs-6 rounded-pill">
+                        <span class="badge bg-dark px-2 py-1 small rounded-pill">
                             <i class="fas fa-user-check me-1"></i> Talent Acquisition Lead
                         </span>
-                        <span class="badge bg-primary p-2 px-3 fs-6 rounded-pill">
+                        <span class="badge bg-primary px-2 py-1 small rounded-pill">
                             <i class="fas fa-graduation-cap me-1"></i> Campus Placement Coordinator
                         </span>
-                        <span class="badge bg-secondary p-2 px-3 fs-6 rounded-pill">
+                        <span class="badge bg-secondary px-2 py-1 small rounded-pill">
                             <i class="fas fa-handshake me-1"></i> Corporate Relations
                         </span>
                     </div>
 
-                    <!-- Qualification & Experience Info Box -->
-                    <div class="row g-3 mb-4">
+                    <!-- Qualification & Experience Info Box (Compact) -->
+                    <div class="row g-2 mb-3">
                         <div class="col-sm-6">
-                            <div class="p-3 bg-white border rounded-3 shadow-sm d-flex align-items-center h-100">
-                                <div class="badge bg-danger rounded-circle p-3 me-3">
-                                    <i class="fas fa-user-graduate text-white fs-5"></i>
+                            <div class="p-2 bg-white border rounded-3 shadow-sm d-flex align-items-center">
+                                <div class="badge bg-danger rounded-circle p-2 me-2">
+                                    <i class="fas fa-user-graduate text-white"></i>
                                 </div>
                                 <div>
-                                    <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.75rem; letter-spacing: 0.5px;">Qualification</small>
-                                    <h6 class="fw-bold text-dark mb-0 fs-6">B.Com, PGDCA, MBA</h6>
+                                    <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.68rem;">Qualification</small>
+                                    <h6 class="fw-bold text-dark mb-0 small">B.Com, PGDCA, MBA</h6>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="p-3 bg-white border rounded-3 shadow-sm d-flex align-items-center h-100">
-                                <div class="badge bg-warning rounded-circle p-3 me-3 text-dark">
-                                    <i class="fas fa-business-time fs-5"></i>
+                            <div class="p-2 bg-white border rounded-3 shadow-sm d-flex align-items-center">
+                                <div class="badge bg-warning rounded-circle p-2 me-2 text-dark">
+                                    <i class="fas fa-business-time"></i>
                                 </div>
                                 <div>
-                                    <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.75rem; letter-spacing: 0.5px;">Experience</small>
-                                    <h6 class="fw-bold text-dark mb-0 fs-6">10 Years Experience</h6>
+                                    <small class="text-muted text-uppercase fw-bold d-block" style="font-size: 0.68rem;">Experience</small>
+                                    <h6 class="fw-bold text-dark mb-0 small">10 Years Corporate Experience</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- HR Vision Quote Box -->
-                    <div class="director-quote-box mb-4">
+                    <!-- HR Vision Quote Box (Compact) -->
+                    <div class="director-quote-box mb-3 p-3">
                         <div class="d-flex align-items-start">
-                            <i class="fas fa-quote-left text-danger fs-3 me-3 mt-1"></i>
+                            <i class="fas fa-quote-left text-danger fs-4 me-2 mt-1"></i>
                             <div>
-                                <p class="mb-0 text-dark fw-medium fs-6 lh-base">
-                                    "At Maurya Technical Private Limited, our HR department is actively dedicated to guiding students through technical recruitment, coordinating mega Job Fair drives, and ensuring smooth career transitions into leading IT corporations. We bridge the gap between classroom training and corporate hiring requirements."
+                                <p class="mb-0 text-dark fw-medium small lh-base">
+                                    "At Maurya Technical Private Limited, our HR department is dedicated to guiding students through corporate technical recruitment, coordinating mega Job Fair drives, and ensuring career transitions into top IT enterprises."
                                 </p>
-                                <div class="mt-2 text-end">
-                                    <strong class="text-danger">&mdash; Mrs. Kirti Kushwaha</strong>, <small class="text-muted">HR Head &amp; Campus Placement Coordinator</small>
+                                <div class="mt-1 text-end">
+                                    <strong class="text-danger small">&mdash; Mrs. Kirti Kushwaha</strong>, <small class="text-muted" style="font-size: 0.72rem;">HR Head &amp; Campus Placement Coordinator</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="d-flex flex-wrap gap-3 responsive-btn-group">
-                        <a href="https://wa.me/918858298247?text=Hello%20HR%20Desk%20/%20Maurya%20Technical,%20I%20want%20to%20connect%20with%20Mrs.%20Kirti%20Kushwaha" target="_blank" class="btn btn-success btn-lg fw-bold px-4 py-3 shadow">
-                            <i class="fab fa-whatsapp fs-5 me-2"></i> WhatsApp HR Desk (+91 88582 98247)
+                    <div class="d-flex flex-wrap gap-2 responsive-btn-group">
+                        <a href="https://wa.me/918858298247?text=Hello%20HR%20Desk%20/%20Maurya%20Technical,%20I%20want%20to%20connect%20with%20Mrs.%20Kirti%20Kushwaha" target="_blank" class="btn btn-success btn-sm fw-bold px-3 py-2 shadow-sm">
+                            <i class="fab fa-whatsapp me-1"></i> WhatsApp HR Desk
                         </a>
-                        <a href="{% url 'job_fair' %}" class="btn btn-danger btn-lg fw-bold px-4 py-3 shadow">
-                            <i class="fas fa-briefcase me-2"></i> View Job Fair Drives
+                        <a href="{% url 'job_fair' %}" class="btn btn-danger btn-sm fw-bold px-3 py-2 shadow-sm">
+                            <i class="fas fa-briefcase me-1"></i> Job Fair Drives
                         </a>
-                        <a href="{% url 'placements' %}" class="btn btn-outline-dark btn-lg fw-bold px-4 py-3 shadow-sm">
-                            <i class="fas fa-award me-2"></i> Placed Students
+                        <a href="{% url 'placements' %}" class="btn btn-outline-dark btn-sm fw-bold px-3 py-2 shadow-sm">
+                            <i class="fas fa-award me-1"></i> Placed Students
                         </a>
                     </div>
                 </div>

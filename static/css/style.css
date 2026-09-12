@@ -811,9 +811,8 @@ a {
 
 .director-img-container {
     width: 100%;
-    height: 100%;
-    min-height: 480px;
-    flex: 1 1 auto;
+    height: 310px;
+    max-height: 320px;
     overflow: hidden;
     position: relative;
     background: #F8F9FA;
@@ -822,9 +821,9 @@ a {
 .director-img {
     width: 100%;
     height: 100%;
-    min-height: 480px;
+    max-height: 320px;
     object-fit: cover;
-    object-position: center 12%;
+    object-position: center 10%;
     background: #FAFAFA;
     transition: transform 0.4s ease;
     display: block;
@@ -1124,16 +1123,16 @@ img, video, canvas, svg {
     }
 
     .director-img-container {
-        min-height: 280px !important;
-        max-height: 350px !important;
-        height: 300px !important;
+        min-height: unset !important;
+        max-height: 280px !important;
+        height: 270px !important;
     }
 
     .director-img {
-        min-height: 280px !important;
-        max-height: 350px !important;
-        height: 300px !important;
-        object-position: center 15% !important;
+        min-height: unset !important;
+        max-height: 280px !important;
+        height: 270px !important;
+        object-position: center 10% !important;
     }
 
     .director-quote-box {
@@ -1704,19 +1703,23 @@ img, video, canvas, svg {
    HERO SECTION EQUAL HEIGHT & ACCORDION ALIGNMENT
    ============================================================ */
 .hero-building-card {
-    height: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
-    min-height: 100%;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1) !important;
+    border-top: 4px solid var(--primary-red) !important;
+    transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+}
+
+.hero-building-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(168, 27, 27, 0.16) !important;
 }
 
 .hero-building-img-wrapper {
-    flex: 1 1 auto;
-    min-height: 520px;
     width: 100%;
+    height: 330px;
     overflow: hidden;
-    display: flex;
+    position: relative;
     background-color: #1a1a1a;
 }
 
@@ -1725,11 +1728,30 @@ img, video, canvas, svg {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.5s ease;
 }
 
 .hero-building-card:hover .hero-building-img {
-    transform: scale(1.04);
+    transform: scale(1.03);
+}
+
+.hero-highlight-card {
+    background: #ffffff !important;
+    border: 1px solid #E5E7EB !important;
+    border-radius: 12px !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-highlight-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-red) !important;
+    box-shadow: 0 6px 16px rgba(168, 27, 27, 0.1) !important;
+}
+
+.hero-batch-alert {
+    border-radius: 12px !important;
+    border: 1.5px dashed rgba(168, 27, 27, 0.4) !important;
+    background: linear-gradient(135deg, rgba(255, 245, 245, 0.95), rgba(255, 255, 255, 0.95)) !important;
 }
 
 .design-open-btn {
@@ -1743,8 +1765,13 @@ img, video, canvas, svg {
 
 @media (max-width: 991.98px) {
     .hero-building-img-wrapper {
-        min-height: 320px;
-        max-height: 440px;
+        height: 280px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-building-img-wrapper {
+        height: 230px !important;
     }
 }
 
