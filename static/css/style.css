@@ -1708,6 +1708,9 @@ img, video, canvas, svg {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1) !important;
     border-top: 4px solid var(--primary-red) !important;
     transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto;
 }
 
 .hero-building-card:hover {
@@ -1717,7 +1720,8 @@ img, video, canvas, svg {
 
 .hero-building-img-wrapper {
     width: 100%;
-    height: 330px;
+    flex: 1 1 auto;
+    min-height: 300px;
     overflow: hidden;
     position: relative;
     background-color: #1a1a1a;
@@ -1764,8 +1768,13 @@ img, video, canvas, svg {
 }
 
 @media (max-width: 991.98px) {
+    .hero-building-card {
+        flex: 0 0 auto !important;
+    }
     .hero-building-img-wrapper {
-        height: 280px !important;
+        min-height: 250px !important;
+        height: 270px !important;
+        flex: 0 0 auto !important;
     }
 }
 

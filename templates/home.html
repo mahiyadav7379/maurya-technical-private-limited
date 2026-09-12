@@ -398,9 +398,10 @@
             </div>
 
             <!-- Right Side: Campus Building Showcase & Key Highlights (Equal Height & Balanced) -->
-            <div class="col-lg-6 mt-4 mt-lg-0 d-flex flex-column justify-content-between" data-aos="fade-left">
-                <!-- Campus Building Showcase Card -->
-                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger hero-building-card mb-3 position-relative">
+            <!-- Right Side: Campus Building Showcase & Key Highlights (Equal Height & Zero Large Gaps) -->
+            <div class="col-lg-6 mt-4 mt-lg-0 d-flex flex-column gap-3" data-aos="fade-left">
+                <!-- Campus Building Showcase Card (Naturally Fills Space) -->
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger hero-building-card position-relative mb-0">
                     <div class="position-absolute top-0 start-0 m-3 z-3">
                         <span class="badge bg-danger shadow px-3 py-2 rounded-pill fw-bold">
                             <i class="fas fa-building text-warning me-1"></i> Head Office Campus
@@ -414,15 +415,15 @@
                     <div class="hero-building-img-wrapper w-100 overflow-hidden d-flex position-relative">
                         <img src="{% static 'images/maurya_building_office.png' %}" alt="Maurya Technical Private Limited Building & Infrastructure" class="img-fluid w-100 hero-building-img">
                     </div>
-                    <div class="card-body bg-dark text-white py-2 px-3 text-center">
+                    <div class="card-body bg-dark text-white py-2 px-3 text-center flex-shrink-0">
                         <h6 class="fw-bold mb-0 text-warning small"><i class="fas fa-door-open me-1"></i> Maurya Technical Private Limited Campus &bull; Alambagh, Lucknow</h6>
                     </div>
                 </div>
 
-                <!-- 4 Quick Trust Pillars / Key Highlights (Balances height with left accordion) -->
-                <div class="row g-2 mb-3">
+                <!-- 4 Quick Trust Pillars / Key Highlights (Tight spacing directly below building) -->
+                <div class="row g-2 mb-0 flex-shrink-0">
                     <div class="col-6">
-                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light h-100 shadow-sm d-flex align-items-center">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
                             <div class="badge bg-danger rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
                                 <i class="fas fa-certificate"></i>
                             </div>
@@ -433,7 +434,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light h-100 shadow-sm d-flex align-items-center">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
                             <div class="badge bg-warning rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-dark">
                                 <i class="fas fa-award"></i>
                             </div>
@@ -444,7 +445,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light h-100 shadow-sm d-flex align-items-center">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
                             <div class="badge bg-success rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
                                 <i class="fas fa-laptop-code"></i>
                             </div>
@@ -455,7 +456,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light h-100 shadow-sm d-flex align-items-center">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
                             <div class="badge bg-primary rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
                                 <i class="fas fa-user-graduate"></i>
                             </div>
@@ -467,8 +468,8 @@
                     </div>
                 </div>
 
-                <!-- 2026 Batch Announcement Quick Action Banner -->
-                <div class="hero-batch-alert p-3 rounded-3 bg-danger bg-opacity-10 border border-danger d-flex flex-wrap align-items-center justify-content-between gap-2 shadow-sm">
+                <!-- 2026 Batch Announcement Quick Action Banner (Tight spacing directly below cards) -->
+                <div class="hero-batch-alert p-3 rounded-3 bg-danger bg-opacity-10 border border-danger d-flex flex-wrap align-items-center justify-content-between gap-2 shadow-sm mb-0 flex-shrink-0">
                     <div class="d-flex align-items-center gap-2">
                         <span class="badge bg-danger rounded-pill px-2 py-1 small"><i class="fas fa-fire me-1"></i> New</span>
                         <div>
