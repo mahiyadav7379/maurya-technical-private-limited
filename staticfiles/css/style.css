@@ -271,6 +271,125 @@ a {
     color: var(--primary-red);
 }
 
+/* --- ENHANCED NAVBAR & DROPDOWNS --- */
+.dropdown-menu-custom {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    border-top: 3px solid var(--primary-red);
+    padding: 10px;
+    min-width: 270px;
+    background: #ffffff;
+}
+
+.dropdown-menu-wide {
+    min-width: 520px;
+}
+
+.dropdown-item-custom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    color: #1f2937;
+    text-decoration: none;
+    white-space: normal;
+}
+
+.dropdown-item-custom:hover, .dropdown-item-custom.active {
+    background-color: rgba(168, 27, 27, 0.07);
+    color: var(--primary-red);
+    transform: translateX(4px);
+}
+
+.dropdown-icon-box {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item-custom:hover .dropdown-icon-box {
+    transform: scale(1.1);
+}
+
+.dropdown-item-title {
+    display: block;
+    font-weight: 700;
+    font-size: 13.5px;
+    line-height: 1.25;
+    color: #1e293b;
+}
+
+.dropdown-item-desc {
+    display: block;
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.dropdown-item-compact {
+    padding: 7px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    color: #334155;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item-compact:hover {
+    background-color: rgba(168, 27, 27, 0.08);
+    color: var(--primary-red);
+    padding-left: 16px;
+}
+
+.nav-cta-pulse {
+    animation: nav-pulse 2s infinite;
+}
+
+@keyframes nav-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(168, 27, 27, 0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(168, 27, 27, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(168, 27, 27, 0); }
+}
+
+@media (min-width: 1200px) {
+    .navbar .dropdown:hover > .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .dropdown-menu-custom {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .dropdown-menu-wide {
+        min-width: 100%;
+    }
+    .dropdown-menu-custom {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        box-shadow: none;
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+}
+
 /* --- FLOATING PORTALS & SIDEBAR BUTTONS --- */
 .floating-side-portal-left {
     position: fixed;
@@ -811,8 +930,8 @@ a {
 
 .director-img-container {
     width: 100%;
-    height: 310px;
-    max-height: 320px;
+    height: 340px;
+    max-height: 350px;
     overflow: hidden;
     position: relative;
     background: #F8F9FA;
@@ -821,9 +940,9 @@ a {
 .director-img {
     width: 100%;
     height: 100%;
-    max-height: 320px;
+    max-height: 350px;
     object-fit: cover;
-    object-position: center 10%;
+    object-position: center top;
     background: #FAFAFA;
     transition: transform 0.4s ease;
     display: block;
@@ -1790,18 +1909,22 @@ img, video, canvas, svg {
 .team-profile-card {
     transition: transform 0.35s ease, box-shadow 0.35s ease !important;
     border-radius: 18px !important;
+    max-width: 360px;
+    margin: 0 auto;
+    background: #ffffff;
 }
 
 .team-profile-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     box-shadow: 0 20px 45px rgba(168, 27, 27, 0.16) !important;
 }
 
 .team-img-wrap {
-    height: 350px;
+    width: 100%;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
     position: relative;
-    background: #f8f9fa;
+    background: #fdfdfd;
 }
 
 .team-profile-card .team-img {
@@ -1809,15 +1932,75 @@ img, video, canvas, svg {
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    transition: transform 0.45s ease;
+    transition: transform 0.4s ease;
+    display: block;
 }
 
 .team-profile-card:hover .team-img {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
-@media (max-width: 767.98px) {
-    .team-img-wrap {
-        height: 320px;
+/* ============================================================
+   ENHANCED HERO & ABOUT SECTION STYLING
+   ============================================================ */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+.fw-black {
+    font-weight: 900;
+}
+
+.max-w-700 {
+    max-width: 700px;
+}
+
+.hero-main-section {
+    background: radial-gradient(circle at top right, rgba(168, 27, 27, 0.04) 0%, #ffffff 70%);
+}
+
+.hero-headline {
+    font-size: 2.75rem;
+    line-height: 1.18;
+    letter-spacing: -0.5px;
+}
+
+@media (max-width: 991.98px) {
+    .hero-headline {
+        font-size: 2.1rem;
+        line-height: 1.25;
     }
 }
+
+@media (max-width: 575.98px) {
+    .hero-headline {
+        font-size: 1.75rem;
+    }
+}
+
+.hero-cta-btn {
+    font-size: 1.05rem;
+    letter-spacing: 0.3px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(168, 27, 27, 0.35) !important;
+}
+
+#about-maurya-section {
+    background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+}
+
+#about-maurya-section .card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+#about-maurya-section .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+

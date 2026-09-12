@@ -5,22 +5,178 @@
 
 {% block content %}
 
-<!-- Best IT Training & Campus Overview Hero Section -->
-<section class="py-5 bg-white">
+<!-- ============================================================
+     PREMIUM HERO SECTION: Maurya Technical Private Limited
+     ============================================================ -->
+<section class="py-5 bg-white hero-main-section position-relative border-bottom">
     <div class="container px-4">
-        <div class="row g-4 g-lg-5 align-items-stretch">
-            <!-- Left Text Content -->
+        <div class="row g-4 g-lg-5 align-items-center">
+            <!-- Left Hero Content -->
             <div class="col-lg-6 d-flex flex-column" data-aos="fade-right">
-                <span class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 rounded-pill shadow-sm text-wrap text-start lh-base">
-                    <i class="fas fa-shield-alt text-danger me-1"></i> Government Registered Design Service Provider &amp; Training Institute
-                </span>
-                <h1 class="fw-bold text-dark mb-3 hero-title-responsive">
-                    The Industry Offers Complete <span class="text-danger">Design Solutions</span> Across:
+                <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill bg-light border border-danger-subtle shadow-sm mb-3 align-self-start">
+                    <span class="badge bg-danger rounded-pill px-2 py-1"><i class="fas fa-shield-alt text-warning me-1"></i> ISO 9001:2015</span>
+                    <span class="text-dark fw-bold small">Govt. Registered Design Service Provider &amp; Training Institute</span>
+                </div>
+
+                <h1 class="fw-black text-dark mb-3 hero-headline">
+                    Empowering Future Engineers With <span class="text-danger">Live Industrial Training</span> &amp; Complete Design Solutions
                 </h1>
-                <p class="text-muted fs-6 mb-3">
-                    <strong>Maurya Technical Private Limited</strong> (Alambagh Lucknow) is an ISO-certified leader delivering industry-grade design solutions, technical project consultation, and professional practical training across multi-disciplinary engineering and creative domains:
+
+                <p class="text-muted fs-6 mb-4 lh-lg">
+                    <strong>Maurya Technical Private Limited</strong> (Alambagh, Lucknow) is an ISO-certified leader delivering hands-on practical training on live client projects across <strong>Python Full-Stack, CAD/CAM, Embedded IoT, Civil BIM, and 7 Multi-Disciplinary Design Divisions</strong> backed by 100% placement support.
                 </p>
 
+                <!-- Hero Action Buttons -->
+                <div class="d-flex flex-wrap gap-2 mb-4 responsive-btn-group">
+                    <a href="{% url 'registration' %}" class="btn btn-danger btn-lg fw-bold px-4 py-3 rounded-pill shadow hero-cta-btn pulse-glow-btn d-inline-flex align-items-center gap-2">
+                        <i class="fas fa-user-graduate text-warning"></i>
+                        <span>Register for 2026 Batch</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#designSolutionsSection" class="btn btn-outline-dark btn-lg fw-bold px-4 py-3 rounded-pill shadow-sm d-inline-flex align-items-center gap-2">
+                        <i class="fas fa-layer-group text-danger"></i>
+                        <span>Explore 7 Design Solutions</span>
+                    </a>
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20your%20training%20courses" target="_blank" class="btn btn-success btn-lg fw-bold px-4 py-3 rounded-pill shadow-sm d-inline-flex align-items-center gap-2">
+                        <i class="fab fa-whatsapp fs-5"></i>
+                        <span>WhatsApp Desk</span>
+                    </a>
+                </div>
+
+                <!-- Hero 4 Trust Metrics Row -->
+                <div class="row g-2 pt-3 border-top mt-auto">
+                    <div class="col-6 col-sm-3">
+                        <div class="p-2 bg-light rounded-3 border text-center">
+                            <h5 class="fw-bold text-danger mb-0">5000+</h5>
+                            <small class="text-muted fw-semibold" style="font-size: 0.72rem;">Trained Alumni</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div class="p-2 bg-light rounded-3 border text-center">
+                            <h5 class="fw-bold text-dark mb-0">500+</h5>
+                            <small class="text-muted fw-semibold" style="font-size: 0.72rem;">Hiring Partners</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div class="p-2 bg-light rounded-3 border text-center">
+                            <h5 class="fw-bold text-success mb-0">100%</h5>
+                            <small class="text-muted fw-semibold" style="font-size: 0.72rem;">Practical Labs</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div class="p-2 bg-light rounded-3 border text-center">
+                            <h5 class="fw-bold text-warning-emphasis mb-0">7 Domains</h5>
+                            <small class="text-muted fw-semibold" style="font-size: 0.72rem;">Design Solutions</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Campus Building Showcase & Key Highlights -->
+            <div class="col-lg-6 mt-4 mt-lg-0 d-flex flex-column gap-3" data-aos="fade-left">
+                <!-- Campus Building Showcase Card -->
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger hero-building-card position-relative mb-0">
+                    <div class="position-absolute top-0 start-0 m-3 z-3">
+                        <span class="badge bg-danger shadow px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-building text-warning me-1"></i> Head Office Campus
+                        </span>
+                    </div>
+                    <div class="position-absolute top-0 end-0 m-3 z-3">
+                        <span class="badge bg-dark bg-opacity-75 text-white shadow px-3 py-2 rounded-pill fw-semibold small">
+                            <i class="fas fa-map-marker-alt text-danger me-1"></i> Alambagh, Lucknow
+                        </span>
+                    </div>
+                    <div class="hero-building-img-wrapper w-100 overflow-hidden d-flex position-relative">
+                        <img src="{% static 'images/maurya_building_office.png' %}" alt="Maurya Technical Private Limited Building &amp; Infrastructure" class="img-fluid w-100 hero-building-img">
+                    </div>
+                    <div class="card-body bg-dark text-white py-2 px-3 text-center flex-shrink-0">
+                        <h6 class="fw-bold mb-0 text-warning small"><i class="fas fa-door-open me-1"></i> Maurya Technical Private Limited Campus &bull; Alambagh, Lucknow</h6>
+                    </div>
+                </div>
+
+                <!-- 4 Quick Trust Pillars / Key Highlights -->
+                <div class="row g-2 mb-0 flex-shrink-0">
+                    <div class="col-6">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
+                            <div class="badge bg-danger rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small lh-sm">Govt. Registered</h6>
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">ISO 9001:2015 Certified</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
+                            <div class="badge bg-warning rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-dark">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small lh-sm">100% Placement</h6>
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">500+ Partner MNCs</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
+                            <div class="badge bg-success rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small lh-sm">Live Practical Labs</h6>
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">Hands-on Industry Stacks</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
+                            <div class="badge bg-primary rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark small lh-sm">5000+ Alumni</h6>
+                                <small class="text-muted d-block" style="font-size: 0.75rem;">Engineers &amp; Designers</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2026 Batch Announcement Quick Action Banner -->
+                <div class="hero-batch-alert p-3 rounded-3 bg-danger bg-opacity-10 border border-danger d-flex flex-wrap align-items-center justify-content-between gap-2 shadow-sm mb-0 flex-shrink-0">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-danger rounded-pill px-2 py-1 small"><i class="fas fa-fire me-1"></i> New</span>
+                        <div>
+                            <span class="fw-bold text-dark small d-block">Winter &amp; Summer 2026 Industrial Training</span>
+                            <small class="text-danger fw-semibold" style="font-size: 0.78rem;">45 Days &bull; 6 Months &bull; Live Projects</small>
+                        </div>
+                    </div>
+                    <a href="{% url 'registration' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm">
+                        Enroll Online &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     7 CORE DESIGN SOLUTIONS & INDUSTRIAL VERTICALS SHOWCASE
+     ============================================================ -->
+<section class="py-5 bg-light border-bottom" id="designSolutionsSection">
+    <div class="container px-4">
+        <div class="section-heading-wrapper text-center mb-4" data-aos="fade-up">
+            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle fw-bold px-3 py-2 rounded-pill mb-2">
+                <i class="fas fa-layer-group me-1"></i> MULTI-DISCIPLINARY DIVISIONS
+            </span>
+            <h2 class="section-title">The Industry Offers Complete <span class="text-danger">Design Solutions</span> Across:</h2>
+            <p class="text-muted fs-6 max-w-700 mx-auto">
+                <strong>Maurya Technical Private Limited</strong> (Alambagh Lucknow) delivers industry-grade design solutions, technical project consultation, and professional practical training across 7 core engineering and creative verticals:
+            </p>
+        </div>
+
+        <div class="row justify-content-center" data-aos="fade-up">
+            <div class="col-lg-10">
                 <!-- 7 Design Solutions Accordion Showcase -->
                 <div class="accordion design-solutions-accordion mb-4" id="designSolutionsAccordion">
                     
@@ -383,103 +539,26 @@
 
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="d-flex flex-wrap gap-3 mt-auto pt-3 responsive-btn-group">
-                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20your%20Design%20Solutions%20and%20Python%20Web%20Design" target="_blank" class="btn btn-success btn-lg fw-bold shadow">
-                        <i class="fab fa-whatsapp me-2"></i> WhatsApp (+91 88878 39689)
-                    </a>
-                    <a href="{% url 'course_detail' 'python-web-design' %}" class="btn btn-danger btn-lg fw-bold shadow">
-                        <i class="fab fa-python me-2"></i> Python Web Design Page &rarr;
-                    </a>
-                    <a href="{% url 'contact' %}" class="btn btn-outline-dark btn-lg fw-bold">
-                        Contact Office
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right Side: Campus Building Showcase & Key Highlights (Equal Height & Balanced) -->
-            <!-- Right Side: Campus Building Showcase & Key Highlights (Equal Height & Zero Large Gaps) -->
-            <div class="col-lg-6 mt-4 mt-lg-0 d-flex flex-column gap-3" data-aos="fade-left">
-                <!-- Campus Building Showcase Card (Naturally Fills Space) -->
-                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger hero-building-card position-relative mb-0">
-                    <div class="position-absolute top-0 start-0 m-3 z-3">
-                        <span class="badge bg-danger shadow px-3 py-2 rounded-pill fw-bold">
-                            <i class="fas fa-building text-warning me-1"></i> Head Office Campus
-                        </span>
-                    </div>
-                    <div class="position-absolute top-0 end-0 m-3 z-3">
-                        <span class="badge bg-dark bg-opacity-75 text-white shadow px-3 py-2 rounded-pill fw-semibold small">
-                            <i class="fas fa-map-marker-alt text-danger me-1"></i> Alambagh, Lucknow
-                        </span>
-                    </div>
-                    <div class="hero-building-img-wrapper w-100 overflow-hidden d-flex position-relative">
-                        <img src="{% static 'images/maurya_building_office.png' %}" alt="Maurya Technical Private Limited Building & Infrastructure" class="img-fluid w-100 hero-building-img">
-                    </div>
-                    <div class="card-body bg-dark text-white py-2 px-3 text-center flex-shrink-0">
-                        <h6 class="fw-bold mb-0 text-warning small"><i class="fas fa-door-open me-1"></i> Maurya Technical Private Limited Campus &bull; Alambagh, Lucknow</h6>
-                    </div>
-                </div>
-
-                <!-- 4 Quick Trust Pillars / Key Highlights (Tight spacing directly below building) -->
-                <div class="row g-2 mb-0 flex-shrink-0">
-                    <div class="col-6">
-                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
-                            <div class="badge bg-danger rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold mb-0 text-dark small lh-sm">Govt. Registered</h6>
-                                <small class="text-muted d-block" style="font-size: 0.75rem;">ISO 9001:2015 Certified</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
-                            <div class="badge bg-warning rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-dark">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold mb-0 text-dark small lh-sm">100% Placement</h6>
-                                <small class="text-muted d-block" style="font-size: 0.75rem;">500+ Partner MNCs</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
-                            <div class="badge bg-success rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold mb-0 text-dark small lh-sm">Live Practical Labs</h6>
-                                <small class="text-muted d-block" style="font-size: 0.75rem;">Hands-on Industry Stacks</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="hero-highlight-card p-2 p-md-3 rounded-3 border bg-light shadow-sm d-flex align-items-center">
-                            <div class="badge bg-primary rounded-circle p-2 p-md-3 me-2 flex-shrink-0 text-white">
-                                <i class="fas fa-user-graduate"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold mb-0 text-dark small lh-sm">5000+ Alumni</h6>
-                                <small class="text-muted d-block" style="font-size: 0.75rem;">Engineers &amp; Designers</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2026 Batch Announcement Quick Action Banner (Tight spacing directly below cards) -->
-                <div class="hero-batch-alert p-3 rounded-3 bg-danger bg-opacity-10 border border-danger d-flex flex-wrap align-items-center justify-content-between gap-2 shadow-sm mb-0 flex-shrink-0">
-                    <div class="d-flex align-items-center gap-2">
-                        <span class="badge bg-danger rounded-pill px-2 py-1 small"><i class="fas fa-fire me-1"></i> New</span>
+                <!-- Bottom Action Row for Design Solutions -->
+                <div class="d-flex flex-wrap align-items-center justify-content-between p-3 rounded-4 bg-white border shadow-sm gap-3 mt-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="badge bg-danger p-3 rounded-circle fs-5 text-white"><i class="fas fa-graduation-cap"></i></span>
                         <div>
-                            <span class="fw-bold text-dark small d-block">Winter &amp; Summer 2026 Industrial Training</span>
-                            <small class="text-danger fw-semibold" style="font-size: 0.78rem;">45 Days &bull; 6 Months &bull; Live Projects</small>
+                            <h6 class="fw-bold text-dark mb-0">Admissions Open for Winter &amp; Summer Batches 2026</h6>
+                            <small class="text-muted">45 Days Training (₹4,000) &bull; 6 Months Training (₹18,000) &bull; ISO Certification</small>
                         </div>
                     </div>
-                    <a href="{% url 'registration' %}" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm">
-                        Enroll Online &rarr;
-                    </a>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20your%20Design%20Solutions" target="_blank" class="btn btn-success fw-bold rounded-pill px-3 shadow-sm">
+                            <i class="fab fa-whatsapp me-1"></i> WhatsApp Desk
+                        </a>
+                        <a href="{% url 'fees' %}" class="btn btn-outline-dark fw-bold rounded-pill px-3">
+                            View Fee Structure &rarr;
+                        </a>
+                        <a href="{% url 'registration' %}" class="btn btn-danger fw-bold rounded-pill px-4 shadow-sm">
+                            Register Online &rarr;
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -502,6 +581,136 @@
     </div>
 </div>
 
+<!-- ============================================================
+     ABOUT MAURYA TECHNICAL PRIVATE LIMITED SECTION
+     ============================================================ -->
+<section class="py-5 bg-white position-relative" id="about-maurya-section">
+    <div class="container px-4">
+        <!-- Section Header -->
+        <div class="section-heading-wrapper text-center mb-5" data-aos="fade-up">
+            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle fw-bold px-3 py-2 rounded-pill mb-2">
+                <i class="fas fa-building me-1"></i> ABOUT MAURYA TECHNICAL PRIVATE LIMITED
+            </span>
+            <h2 class="section-title">Pioneering Practical Engineering &amp; Industrial Design Education</h2>
+            <p class="text-muted fs-6 max-w-700 mx-auto">Registered under Ministry of Corporate Affairs (MCA) | ISO 9001:2015 Certified Organization | Alambagh, Lucknow</p>
+        </div>
+
+        <div class="row g-4 g-lg-5 align-items-center">
+            <!-- Left Narrative & Feature Grid -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <h3 class="fw-bold text-dark mb-3">
+                    Bridging The Critical Gap Between <span class="text-danger">College Theory</span> &amp; <span class="text-danger">Corporate Expectations</span>
+                </h3>
+                <p class="text-muted mb-3 fs-6">
+                    Established with an unyielding commitment to practical excellence, <strong>Maurya Technical Private Limited</strong> is a premier technical enterprise and training institute headquartered in Alambagh, Lucknow. Under visionary leadership, our organization delivers production-grade design solutions, enterprise consultation, and immersive industrial training programs.
+                </p>
+                <p class="text-muted mb-4 fs-6">
+                    We specialize in transforming B.Tech, Diploma, BCA, MCA, and M.Tech candidates into high-impact software developers, CAD designers, embedded engineers, and architectural specialists through live client project workflows and rigorous 1-on-1 industry mentorship.
+                </p>
+
+                <!-- 4 Core Pillars Grid -->
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded-3 bg-light border-start border-4 border-danger h-100 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="badge bg-danger p-2 rounded-circle me-2 text-white"><i class="fas fa-laptop-code"></i></div>
+                                <h6 class="fw-bold text-dark mb-0">High-Tech Coding Labs</h6>
+                            </div>
+                            <small class="text-muted">Air-conditioned individual workstations with high-speed fiber internet and projector live coding.</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded-3 bg-light border-start border-4 border-warning h-100 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="badge bg-warning p-2 rounded-circle me-2 text-dark"><i class="fas fa-briefcase"></i></div>
+                                <h6 class="fw-bold text-dark mb-0">100% Placement Drives</h6>
+                            </div>
+                            <small class="text-muted">500+ recruitment partners and annual Mega Job Fair drives with on-the-spot MNC interview offers.</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded-3 bg-light border-start border-4 border-success h-100 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="badge bg-success p-2 rounded-circle me-2 text-white"><i class="fas fa-certificate"></i></div>
+                                <h6 class="fw-bold text-dark mb-0">ISO &amp; Govt. Recognized</h6>
+                            </div>
+                            <small class="text-muted">Legitimate MCA incorporation &amp; ISO 9001:2015 certification with QR-code online verification.</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded-3 bg-light border-start border-4 border-primary h-100 shadow-sm">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="badge bg-primary p-2 rounded-circle me-2 text-white"><i class="fas fa-project-diagram"></i></div>
+                                <h6 class="fw-bold text-dark mb-0">Live Client Projects</h6>
+                            </div>
+                            <small class="text-muted">Hands-on experience building healthcare ERPs, AI exam portals, multi-vendor platforms, and CAD assemblies.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex flex-wrap gap-3 responsive-btn-group">
+                    <a href="{% url 'about' %}" class="btn btn-danger fw-bold px-4 py-2 rounded-pill shadow-sm">
+                        <i class="fas fa-info-circle me-1"></i> Read Full Company Profile &rarr;
+                    </a>
+                    <a href="{% url 'branches' %}" class="btn btn-outline-dark fw-bold px-4 py-2 rounded-pill">
+                        <i class="fas fa-map-marker-alt text-danger me-1"></i> Our Campus Branches
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-danger fw-bold px-4 py-2 rounded-pill">
+                        <i class="fas fa-envelope me-1"></i> Contact Desk
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Campus Showcase & Trust Card -->
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-4 border-danger">
+                    <div class="position-relative">
+                        <img src="{% static 'images/maurya_building_office.png' %}" alt="Maurya Technical Campus &amp; Building" class="img-fluid w-100" style="height: 300px; object-fit: cover;">
+                        <div class="position-absolute top-0 start-0 m-3 z-3">
+                            <span class="badge bg-danger shadow px-3 py-2 rounded-pill fw-bold">
+                                <i class="fas fa-university text-warning me-1"></i> Main Campus &amp; Corporate Center
+                            </span>
+                        </div>
+                        <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-dark bg-opacity-75 text-white">
+                            <h6 class="fw-bold mb-0 text-warning"><i class="fas fa-map-marker-alt text-danger me-1"></i> Alambagh, Lucknow &bull; Corporate Headquarters</h6>
+                            <small class="text-white-50">State-of-the-Art Practical Labs, Conference Theaters &amp; Director Chambers</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Counter Strip in About Card -->
+                    <div class="card-body bg-light p-4">
+                        <div class="row g-3 text-center">
+                            <div class="col-4 border-end">
+                                <h4 class="fw-bold text-danger mb-0">10+</h4>
+                                <small class="text-muted fw-semibold">Years Exp.</small>
+                            </div>
+                            <div class="col-4 border-end">
+                                <h4 class="fw-bold text-dark mb-0">5000+</h4>
+                                <small class="text-muted fw-semibold">Graduates</small>
+                            </div>
+                            <div class="col-4">
+                                <h4 class="fw-bold text-success mb-0">100%</h4>
+                                <small class="text-muted fw-semibold">Support</small>
+                            </div>
+                        </div>
+
+                        <!-- Vision Quote Pill -->
+                        <div class="p-3 bg-white rounded-3 border mt-3 shadow-sm">
+                            <div class="d-flex align-items-start gap-2">
+                                <i class="fas fa-quote-left text-danger mt-1"></i>
+                                <p class="small text-muted mb-0 fst-italic">
+                                    "We don't merely award course completion certificates; we build tangible engineering competence, project portfolios, and professional career pathways."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Founder & Director Leadership Showcase Section -->
 <section class="py-4 director-section" id="director-section">
     <div class="container px-4">
@@ -516,7 +725,7 @@
                             </span>
                         </div>
                         <div class="director-img-container">
-                            <img src="{% static 'images/director_vivek_kushawaha.png' %}?v=2026_suit" alt="Vivek Kushawaha - Founder &amp; Director, Maurya Technical Private Limited" class="director-img">
+                            <img src="{% static 'images/director_vivek_kushawaha.png' %}?v=2026_fixed_head" alt="Vivek Kushawaha - Founder &amp; Director, Maurya Technical Private Limited" class="director-img" style="object-position: center top;">
                         </div>
                         <div class="p-2 px-3 bg-white border-top text-center">
                             <h6 class="fw-bold text-dark mb-0 fs-6">Vivek Kushawaha</h6>
@@ -1014,11 +1223,8 @@
 <section class="py-5 bg-white border-bottom" id="our-team-section">
     <div class="container px-4">
         <div class="section-heading-wrapper text-center mb-5" data-aos="fade-up">
-            <span class="badge bg-danger shadow-sm text-white fw-bold px-3 py-2 rounded-pill mb-2">
-                <i class="fas fa-users-cog me-1"></i> DEDICATED ACADEMIC &amp; OPERATIONS TEAM
-            </span>
             <h2 class="section-title">Meet Our Team</h2>
-            <p class="text-muted fs-6 mb-0">Experienced Technical Mentors &amp; Center Management Driving Quality Training at Maurya Technical Private Limited</p>
+            <p class="text-muted fs-6 mb-0">Maurya Technical Private Limited Core Management &amp; Center Incharges</p>
         </div>
 
         <div class="row g-4 justify-content-center">
@@ -1026,36 +1232,13 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100 border-top border-4 border-danger team-profile-card">
                     <div class="team-img-wrap">
-                        <div class="position-absolute top-0 start-0 m-3 z-3">
-                            <span class="badge bg-danger shadow-sm px-3 py-2 rounded-pill fw-bold small">
-                                <i class="fas fa-user-tie me-1"></i> Assistant Director
-                            </span>
-                        </div>
-                        <img src="{% static 'images/team_ayushi_singh.png' %}?v=2026" alt="Ms. Ayushi Singh - Assistant Director, Maurya Technical" class="team-img">
+                        <img src="{% static 'images/team_ayushi_singh.png' %}?v=2026_3" alt="Ms. Ayushi Singh - Assistant Director" class="team-img">
                     </div>
-                    <div class="card-body p-4 text-center border-top bg-white d-flex flex-column justify-content-between">
-                        <div>
-                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle mb-2 px-3 py-1 rounded-pill fw-bold" style="font-size: 0.72rem;">
-                                LEADERSHIP &bull; ACADEMIC OPERATIONS
-                            </span>
-                            <h4 class="fw-bold text-dark mb-1">Ms. Ayushi Singh</h4>
-                            <p class="text-danger fw-bold mb-2 small text-uppercase">Assistant Director &bull; Maurya Technical</p>
-                            
-                            <div class="d-flex justify-content-center gap-1 mb-3 flex-wrap">
-                                <span class="badge bg-light text-dark border px-3 py-2 small fw-semibold">
-                                    <i class="fas fa-graduation-cap text-danger me-1"></i> Diploma, B.Tech (CSE)
-                                </span>
-                            </div>
-                            <p class="small text-muted mb-0">Overseeing academic curriculum, student technical advancement, and institutional coordination.</p>
-                        </div>
-                        <div class="pt-3 mt-3 border-top d-flex justify-content-center gap-2">
-                            <a href="https://wa.me/918887839689?text=Hello%20Ms.%20Ayushi%20Singh%20/%20Maurya%20Technical%20Team" target="_blank" class="btn btn-outline-success btn-sm fw-bold px-3 py-2 rounded-pill flex-grow-1 shadow-sm">
-                                <i class="fab fa-whatsapp me-1"></i> WhatsApp
-                            </a>
-                            <a href="tel:+918887839689" class="btn btn-outline-danger btn-sm fw-bold px-3 py-2 rounded-pill flex-grow-1 shadow-sm">
-                                <i class="fas fa-phone-alt me-1"></i> Call Office
-                            </a>
-                        </div>
+                    <div class="card-body p-3 text-center border-top bg-white">
+                        <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Assistant Director</span>
+                        <h5 class="fw-bold text-dark mb-1"> Ayushi Singh</h5>
+                        <p class="text-danger fw-bold mb-1">Diploma, B.Tech (CSE)</p>
+                        <small class="text-muted">Maurya Technical Private Limited</small>
                     </div>
                 </div>
             </div>
@@ -1064,36 +1247,13 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100 border-top border-4 border-danger team-profile-card">
                     <div class="team-img-wrap">
-                        <div class="position-absolute top-0 start-0 m-3 z-3">
-                            <span class="badge bg-danger shadow-sm px-3 py-2 rounded-pill fw-bold small">
-                                <i class="fas fa-building me-1"></i> Center Incharge
-                            </span>
-                        </div>
-                        <img src="{% static 'images/team_sangeeta_rautiya.png' %}?v=2026" alt="Ms. Sangeeta Rautiya - Center Incharge, Maurya Technical" class="team-img">
+                        <img src="{% static 'images/team_sangeeta_rautiya.png' %}?v=2026_3" alt="Ms. Sangeeta Rautiya - Center Incharge" class="team-img">
                     </div>
-                    <div class="card-body p-4 text-center border-top bg-white d-flex flex-column justify-content-between">
-                        <div>
-                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle mb-2 px-3 py-1 rounded-pill fw-bold" style="font-size: 0.72rem;">
-                                BRANCH MANAGEMENT &bull; STUDENT INCHARGE
-                            </span>
-                            <h4 class="fw-bold text-dark mb-1">Ms. Sangeeta Rautiya</h4>
-                            <p class="text-danger fw-bold mb-2 small text-uppercase">Center Incharge &bull; Maurya Technical</p>
-                            
-                            <div class="d-flex justify-content-center gap-1 mb-3 flex-wrap">
-                                <span class="badge bg-light text-dark border px-3 py-2 small fw-semibold">
-                                    <i class="fas fa-graduation-cap text-danger me-1"></i> Diploma, B.Tech (CSE)
-                                </span>
-                            </div>
-                            <p class="small text-muted mb-0">Managing day-to-day center execution, lab infrastructure, and trainee learning experiences.</p>
-                        </div>
-                        <div class="pt-3 mt-3 border-top d-flex justify-content-center gap-2">
-                            <a href="https://wa.me/918887839689?text=Hello%20Ms.%20Sangeeta%20Rautiya%20/%20Maurya%20Technical%20Team" target="_blank" class="btn btn-outline-success btn-sm fw-bold px-3 py-2 rounded-pill flex-grow-1 shadow-sm">
-                                <i class="fab fa-whatsapp me-1"></i> WhatsApp
-                            </a>
-                            <a href="tel:+918887839689" class="btn btn-outline-danger btn-sm fw-bold px-3 py-2 rounded-pill flex-grow-1 shadow-sm">
-                                <i class="fas fa-phone-alt me-1"></i> Call Office
-                            </a>
-                        </div>
+                    <div class="card-body p-3 text-center border-top bg-white">
+                        <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Center Incharge</span>
+                        <h5 class="fw-bold text-dark mb-1"> Sangeeta Rautiya</h5>
+                        <p class="text-danger fw-bold mb-1">Diploma, B.Tech (CSE)</p>
+                        <small class="text-muted">Maurya Technical Private Limited</small>
                     </div>
                 </div>
             </div>
@@ -1102,36 +1262,13 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100 border-top border-4 border-danger team-profile-card">
                     <div class="team-img-wrap">
-                        <div class="position-absolute top-0 start-0 m-3 z-3">
-                            <span class="badge bg-danger shadow-sm px-3 py-2 rounded-pill fw-bold small">
-                                <i class="fas fa-tasks me-1"></i> Center Manager
-                            </span>
-                        </div>
-                        <img src="{% static 'images/team_kapil_chauhan.png' %}?v=2026" alt="Mr. Kapil Chauhan - Center Manager, Maurya Technical" class="team-img">
+                        <img src="{% static 'images/team_kapil_chauhan.png' %}?v=2026_3" alt="Mr. Kapil Chauhan - Center Manager" class="team-img">
                     </div>
-                    <div class="card-body p-4 text-center border-top bg-white d-flex flex-column justify-content-between">
-                        <div>
-                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle mb-2 px-3 py-1 rounded-pill fw-bold" style="font-size: 0.72rem;">
-                                CENTER OPERATIONS &bull; BATCH CONTROLLER
-                            </span>
-                            <h4 class="fw-bold text-dark mb-1">Mr. Kapil Chauhan</h4>
-                            <p class="text-danger fw-bold mb-2 small text-uppercase">Center Manager &bull; Maurya Technical</p>
-                            
-                            <div class="d-flex justify-content-center gap-1 mb-3 flex-wrap">
-                                <span class="badge bg-light text-dark border px-3 py-2 small fw-semibold">
-                                    <i class="fas fa-graduation-cap text-danger me-1"></i> Diploma, B.Tech (CSE)
-                                </span>
-                            </div>
-                            <p class="small text-muted mb-0">Directing batch schedules, technical resources, student evaluations, and corporate deliverables.</p>
-                        </div>
-                        <div class="pt-3 mt-3 border-top d-flex justify-content-center gap-2">
-                            <a href="https://wa.me/918887839689?text=Hello%20Mr.%20Kapil%20Chauhan%20/%20Maurya%20Technical%20Team" target="_blank" class="btn btn-outline-success btn-sm fw-bold px-3 py-2 rounded-pill flex-grow-1 shadow-sm">
-                                <i class="fab fa-whatsapp me-1"></i> WhatsApp
-                            </a>
-                            <a href="tel:+918887839689" class="btn btn-outline-danger btn-sm fw-bold px-3 py-2 rounded-pill flex-grow-1 shadow-sm">
-                                <i class="fas fa-phone-alt me-1"></i> Call Office
-                            </a>
-                        </div>
+                    <div class="card-body p-3 text-center border-top bg-white">
+                        <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Center Manager</span>
+                        <h5 class="fw-bold text-dark mb-1"> Kajal Chauhan</h5>
+                        <p class="text-danger fw-bold mb-1">Diploma, B.Tech (CSE)</p>
+                        <small class="text-muted">Maurya Technical Private Limited</small>
                     </div>
                 </div>
             </div>
