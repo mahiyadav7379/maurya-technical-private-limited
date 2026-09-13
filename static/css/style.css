@@ -2543,5 +2543,94 @@ html {
     }
 }
 
+/* --- FOUNDATION DAY & CELEBRATION MARQUEE SCROLLER (BELOW OUR TEAM) --- */
+.celebration-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 15px 0;
+    margin: 15px 0;
+}
 
+.celebration-marquee-wrapper::before,
+.celebration-marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 3;
+    pointer-events: none;
+}
 
+.celebration-marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0));
+}
+
+.celebration-marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0));
+}
+
+.celebration-marquee-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: celebrationAutoScroll 45s linear infinite;
+}
+
+.celebration-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes celebrationAutoScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 12px));
+    }
+}
+
+.celebration-scroll-card {
+    width: 320px;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.celebration-scroll-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(168, 27, 27, 0.16);
+}
+
+.celebration-scroll-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.celebration-scroll-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.celebration-scroll-card:hover .celebration-scroll-img {
+    transform: scale(1.07);
+}
+
+.celebration-scroll-body {
+    padding: 16px 18px;
+    text-align: center;
+}

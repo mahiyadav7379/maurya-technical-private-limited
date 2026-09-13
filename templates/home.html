@@ -1159,42 +1159,241 @@
             <p class="text-muted fs-6">Glimpses of Award Ceremonies, Certificate Distribution & Outings at Maurya Technical Private Limited, Alambagh Lucknow</p>
         </div>
 
-        <div class="row g-4">
-            <!-- Event Photo 1 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
-                    <img src="{% static 'images/maurya_event_1.jpg' %}" alt="Foundation Day Trophy Award" class="card-img-top" style="height: 250px; object-fit: cover;">
-                    <div class="card-body p-4 text-center">
-                        <span class="badge bg-danger mb-2">Foundation Day 2026</span>
-                        <h5 class="fw-bold text-dark">Trophy & Honor Award</h5>
-                        <p class="small text-muted mb-0">Recognizing outstanding student projects & performance at Maurya Technical Alambagh Lucknow.</p>
-                    </div>
+        <!-- Continuous Auto-Scrolling Celebration Cards Marquee -->
+        <div class="celebration-marquee-wrapper" data-aos="fade-up">
+            <div class="celebration-marquee-track">
+                <!-- ================= SET 1 ================= -->
+                <!-- Card 1 -->
+                <div class="celebration-scroll-card">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_1.jpg' %}" alt="Foundation Day Trophy Award" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Foundation Day 2026</span>
+                            <h6 class="fw-bold text-dark mb-1">Trophy &amp; Honor Award</h6>
+                            <p class="small text-muted mb-0">Recognizing outstanding student projects &amp; live performance.</p>
+                        </div>
+                    </a>
                 </div>
-            </div>
 
-            <!-- Event Photo 2 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
-                    <img src="{% static 'images/maurya_event_2.jpg' %}" alt="Student Outing & Faculty Group Photo" class="card-img-top" style="height: 250px; object-fit: cover;">
-                    <div class="card-body p-4 text-center">
-                        <span class="badge bg-warning text-dark mb-2">Student Life & Outings</span>
-                        <h5 class="fw-bold text-dark">Faculty & Trainees Outing</h5>
-                        <p class="small text-muted mb-0">Fun industrial trips and celebrations organized for all training batches.</p>
-                    </div>
+                <!-- Card 2 -->
+                <div class="celebration-scroll-card">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_2.jpg' %}" alt="Student Outing & Faculty Group Photo" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-warning text-dark mb-2 px-3 py-1 rounded-pill fw-bold">Student Outing</span>
+                            <h6 class="fw-bold text-dark mb-1">Faculty &amp; Trainees Outing</h6>
+                            <p class="small text-muted mb-0">Industrial trips, celebrations &amp; mall outings organized for batches.</p>
+                        </div>
+                    </a>
                 </div>
-            </div>
 
-            <!-- Event Photo 3 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="card border-0 shadow rounded-4 overflow-hidden h-100 batch-card">
-                    <img src="{% static 'images/maurya_event_3.jpg' %}" alt="Certificate of Appreciation Distribution" class="card-img-top" style="height: 250px; object-fit: cover;">
-                    <div class="card-body p-4 text-center">
-                        <span class="badge bg-danger mb-2">Certificate Distribution</span>
-                        <h5 class="fw-bold text-dark">Certificate of Appreciation</h5>
-                        <p class="small text-muted mb-0">Honoring successful completion of Python Django & Industrial Training.</p>
-                    </div>
+                <!-- Card 3 -->
+                <div class="celebration-scroll-card">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_3.jpg' %}" alt="Certificate of Appreciation Distribution" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Certificate Distribution</span>
+                            <h6 class="fw-bold text-dark mb-1">Appreciation Certificate</h6>
+                            <p class="small text-muted mb-0">Honoring successful completion of Python &amp; Industrial Training.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="celebration-scroll-card">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_4.jpg' %}" alt="Director Award Presentation" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-primary mb-2 px-3 py-1 rounded-pill fw-bold">Director Award</span>
+                            <h6 class="fw-bold text-dark mb-1">Director Award Presentation</h6>
+                            <p class="small text-muted mb-0">Directors awarding live project credentials to graduating trainees.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="celebration-scroll-card">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_5.jpg' %}" alt="Apprenticeship Award" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-success mb-2 px-3 py-1 rounded-pill fw-bold">Apprenticeship</span>
+                            <h6 class="fw-bold text-dark mb-1">Apprenticeship Award</h6>
+                            <p class="small text-muted mb-0">Official industry apprenticeship credentials for engineering students.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="celebration-scroll-card">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_6.jpg' %}" alt="Foundation Day Excellence Honor" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Excellence Award</span>
+                            <h6 class="fw-bold text-dark mb-1">Excellence Honor Trophy</h6>
+                            <p class="small text-muted mb-0">Student receiving excellence honor from Maurya Technical Director.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="celebration-scroll-card">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_7.jpg' %}" alt="Mentor Excellence Honor" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-warning text-dark mb-2 px-3 py-1 rounded-pill fw-bold">Mentor Award</span>
+                            <h6 class="fw-bold text-dark mb-1">Mentor Excellence Honor</h6>
+                            <p class="small text-muted mb-0">Recognizing outstanding faculty &amp; technical project mentors.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="celebration-scroll-card">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_8.jpg' %}" alt="Batch Farewell & Awards" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-dark mb-2 px-3 py-1 rounded-pill fw-bold">Batch Farewell</span>
+                            <h6 class="fw-bold text-dark mb-1">Farewell Ceremony 2026</h6>
+                            <p class="small text-muted mb-0">Celebrating successful batch passouts and corporate transitions.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- ================= SET 2 (Duplicate for Seamless Infinite Loop) ================= -->
+                <!-- Card 1 -->
+                <div class="celebration-scroll-card" aria-hidden="true">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_1.jpg' %}" alt="Foundation Day Trophy Award" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Foundation Day 2026</span>
+                            <h6 class="fw-bold text-dark mb-1">Trophy &amp; Honor Award</h6>
+                            <p class="small text-muted mb-0">Recognizing outstanding student projects &amp; live performance.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="celebration-scroll-card" aria-hidden="true">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_2.jpg' %}" alt="Student Outing & Faculty Group Photo" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-warning text-dark mb-2 px-3 py-1 rounded-pill fw-bold">Student Outing</span>
+                            <h6 class="fw-bold text-dark mb-1">Faculty &amp; Trainees Outing</h6>
+                            <p class="small text-muted mb-0">Industrial trips, celebrations &amp; mall outings organized for batches.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="celebration-scroll-card" aria-hidden="true">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_3.jpg' %}" alt="Certificate of Appreciation Distribution" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Certificate Distribution</span>
+                            <h6 class="fw-bold text-dark mb-1">Appreciation Certificate</h6>
+                            <p class="small text-muted mb-0">Honoring successful completion of Python &amp; Industrial Training.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="celebration-scroll-card" aria-hidden="true">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_4.jpg' %}" alt="Director Award Presentation" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-primary mb-2 px-3 py-1 rounded-pill fw-bold">Director Award</span>
+                            <h6 class="fw-bold text-dark mb-1">Director Award Presentation</h6>
+                            <p class="small text-muted mb-0">Directors awarding live project credentials to graduating trainees.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="celebration-scroll-card" aria-hidden="true">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_5.jpg' %}" alt="Apprenticeship Award" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-success mb-2 px-3 py-1 rounded-pill fw-bold">Apprenticeship</span>
+                            <h6 class="fw-bold text-dark mb-1">Apprenticeship Award</h6>
+                            <p class="small text-muted mb-0">Official industry apprenticeship credentials for engineering students.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="celebration-scroll-card" aria-hidden="true">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_6.jpg' %}" alt="Foundation Day Excellence Honor" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill fw-bold">Excellence Award</span>
+                            <h6 class="fw-bold text-dark mb-1">Excellence Honor Trophy</h6>
+                            <p class="small text-muted mb-0">Student receiving excellence honor from Maurya Technical Director.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="celebration-scroll-card" aria-hidden="true">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_7.jpg' %}" alt="Mentor Excellence Honor" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-warning text-dark mb-2 px-3 py-1 rounded-pill fw-bold">Mentor Award</span>
+                            <h6 class="fw-bold text-dark mb-1">Mentor Excellence Honor</h6>
+                            <p class="small text-muted mb-0">Recognizing outstanding faculty &amp; technical project mentors.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="celebration-scroll-card" aria-hidden="true">
+                    <a href="{% url 'gallery' %}" class="text-decoration-none">
+                        <div class="celebration-scroll-img-wrap">
+                            <img src="{% static 'images/maurya_event_8.jpg' %}" alt="Batch Farewell & Awards" class="celebration-scroll-img">
+                        </div>
+                        <div class="celebration-scroll-body">
+                            <span class="badge bg-dark mb-2 px-3 py-1 rounded-pill fw-bold">Batch Farewell</span>
+                            <h6 class="fw-bold text-dark mb-1">Farewell Ceremony 2026</h6>
+                            <p class="small text-muted mb-0">Celebrating successful batch passouts and corporate transitions.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
+        </div>
+
+        <div class="text-center mt-3" data-aos="fade-up">
+            <a href="{% url 'gallery' %}" class="btn btn-outline-danger btn-lg fw-bold px-4 py-2 rounded-pill shadow-sm">
+                <i class="fas fa-images me-2"></i> View Full 20+ Photos in Gallery &rarr;
+            </a>
         </div>
     </div>
 </section>
