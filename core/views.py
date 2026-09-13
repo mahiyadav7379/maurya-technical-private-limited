@@ -34,8 +34,16 @@ def branches(request):
 
 
 def trainings(request):
-    courses = TrainingCourse.objects.filter(is_active=True)
-    return render(request, 'trainings.html', {'courses': courses})
+    q = request.GET.get('q', '').strip()
+    if q:
+        from django.db.models import Q
+        courses = TrainingCourse.objects.filter(
+            Q(title__icontains=q) | Q(short_description__icontains=q) | Q(category__icontains=q),
+            is_active=True
+        )
+    else:
+        courses = TrainingCourse.objects.filter(is_active=True)
+    return render(request, 'trainings.html', {'courses': courses, 'search_query': q})
 
 
 def course_detail(request, slug):
@@ -259,10 +267,6 @@ def job_fair(request):
     return render(request, 'job_fair.html')
 
 
-def verify_certificate(request):
-    return redirect('job_fair')
-
-
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -296,5 +300,5 @@ def services(request):
 
 def student_login(request):
     if request.method == 'POST':
-        messages.error(request, "Invalid Student Roll Number or Password. Please contact administration.")
+        messages.error(request, "Invalid Email Address or Password. Please contact administration.")
     return render(request, 'student_login.html')

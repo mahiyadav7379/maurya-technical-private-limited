@@ -1,42 +1,47 @@
-<!-- Top Header Bar -->
-<div class="top-header-bar d-none d-md-block">
-    <div class="container-fluid px-4">
-        <div class="d-flex justify-content-between align-items-center">
-            <!-- Left Info -->
-            <div class="d-flex align-items-center">
-                <a href="tel:+918887839689" class="text-white me-3 fw-bold">
-                    <i class="fas fa-phone-alt text-warning me-1"></i> +91 88878 39689
-                </a>
-                <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20know%20more%20about%20training%20courses" target="_blank" class="text-success me-3 fw-bold">
-                    <i class="fab fa-whatsapp me-1"></i> WhatsApp Support
-                </a>
-                <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" class="text-danger me-3 fw-bold">
-                    <i class="fab fa-youtube me-1"></i> YouTube Channel
-                </a>
-                <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="text-white me-3 fw-bold">
-                    <i class="fab fa-linkedin text-info me-1"></i> LinkedIn
-                </a>
-                <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="text-white me-3 fw-bold">
-                    <i class="fab fa-instagram text-danger me-1"></i> Instagram
-                </a>
-                <span class="text-secondary me-3">|</span>
-                <a href="{% url 'about' %}"><i class="fas fa-file-alt me-1"></i> Company Profile</a>
-                <a href="{% url 'trainings' %}"><i class="fas fa-book me-1"></i> Training Brochure</a>
+{% load static %}
+<!-- AKTU University Style Top Quick Links Bar -->
+<div class="aktu-topbar-wrapper py-1 border-bottom">
+    <div class="container px-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <!-- Left / Center Links: Separated by vertical dividers just like AKTU header -->
+            <div class="aktu-top-links-scroll d-flex align-items-center flex-wrap">
+                <a href="{% url 'student_login' %}" class="aktu-top-link"><i class="fas fa-user-lock me-1"></i> Student Login</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'job_fair' %}" class="aktu-top-link"><i class="fas fa-briefcase me-1"></i> Job Fair 2026</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'registration' %}" class="aktu-top-link"><i class="fas fa-edit me-1"></i> Register Online</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'gallery' %}" class="aktu-top-link"><i class="fas fa-images me-1"></i> Photo Gallery</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'branches' %}" class="aktu-top-link"><i class="fas fa-map-marker-alt me-1"></i> Branches</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'placements' %}" class="aktu-top-link"><i class="fas fa-award me-1"></i> Placements</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'fees' %}" class="aktu-top-link"><i class="fas fa-receipt me-1"></i> Fee Structure</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'about' %}" class="aktu-top-link"><i class="fas fa-university me-1"></i> Company Profile</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'trainings' %}" class="aktu-top-link"><i class="fas fa-book me-1"></i> Training Brochure</a>
+                <span class="aktu-top-divider">|</span>
+
+                <a href="{% url 'contact' %}" class="aktu-top-link"><i class="fas fa-envelope me-1"></i> Contact Us</a>
             </div>
 
-            <!-- Right Buttons -->
-            <div class="d-flex align-items-center gap-2">
-                <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" class="top-btn top-btn-red">
-                    <i class="fab fa-youtube me-1"></i> Subscribe YouTube
+            <!-- Right Helpline Contacts -->
+            <div class="d-none d-xl-flex align-items-center aktu-top-helpline ms-auto">
+                <a href="tel:+918887839689" class="aktu-top-contact-link me-3">
+                    <i class="fas fa-phone-alt text-danger me-1"></i> +91 88878 39689
                 </a>
-                <a href="{% url 'job_fair' %}" class="top-btn top-btn-red">
-                    <i class="fas fa-briefcase text-warning me-1"></i> Job Fair 2026
-                </a>
-                <a href="{% url 'registration' %}" class="top-btn top-btn-gold text-dark">
-                    <i class="fas fa-edit me-1"></i> Register For Training
-                </a>
-                <a href="{% url 'student_login' %}" class="top-btn top-btn-green">
-                    <i class="fas fa-sign-in-alt me-1"></i> Student Login
+                <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical%20Team" target="_blank" class="aktu-top-whatsapp-link">
+                    <i class="fab fa-whatsapp text-success me-1"></i> WhatsApp Helpline
                 </a>
             </div>
         </div>

@@ -1990,4 +1990,558 @@ html {
     box-shadow: 0 12px 28px rgba(168, 27, 27, 0.35) !important;
 }
 
+/* ==========================================================================
+   AKTU PREMIER UNIVERSITY STYLE HEADER & NAVIGATION SUITE
+   Matches the exact visual design of AKTU reference image with Maurya branding
+   ========================================================================== */
+
+/* --- TIER 1: TOP QUICK LINKS BAR --- */
+.aktu-topbar-wrapper {
+    background-color: #fafafa;
+    border-top: 1px dashed #c08080;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 12px;
+}
+
+.aktu-top-links-scroll {
+    gap: 4px;
+}
+
+.aktu-top-link {
+    color: #800000;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    padding: 2px 3px;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    white-space: nowrap;
+}
+
+.aktu-top-link:hover {
+    color: #b91c1c;
+    text-decoration: underline;
+}
+
+.aktu-top-divider {
+    color: #cbd5e1;
+    font-size: 11px;
+    margin: 0 4px;
+    user-select: none;
+}
+
+.aktu-top-contact-link,
+.aktu-top-whatsapp-link {
+    font-size: 12px;
+    font-weight: 700;
+    color: #334155;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.aktu-top-contact-link:hover {
+    color: #800000;
+}
+
+.aktu-top-whatsapp-link:hover {
+    color: #15803d;
+}
+
+/* --- TIER 2: MAIN INSTITUTIONAL BRAND HEADER --- */
+.aktu-header-brand {
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.aktu-brand-group {
+    max-width: 650px;
+}
+
+.aktu-header-emblem {
+    height: 84px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 8px rgba(128, 0, 0, 0.15));
+    transition: transform 0.3s ease;
+}
+
+.aktu-logo-anchor:hover .aktu-header-emblem {
+    transform: scale(1.05);
+}
+
+.aktu-title-column {
+    line-height: 1.15;
+}
+
+.aktu-hindi-title {
+    font-family: 'Noto Sans Devanagari', 'Outfit', sans-serif;
+    font-size: 18.5px;
+    font-weight: 800;
+    color: #800000;
+    letter-spacing: 0.1px;
+    line-height: 1.25;
+    text-shadow: 0 1px 1px rgba(128, 0, 0, 0.08);
+}
+
+.aktu-eng-title {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #7a1515;
+    letter-spacing: 0.2px;
+    margin-top: 2px;
+    line-height: 1.2;
+}
+
+.aktu-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #52525b;
+    margin-top: 3px;
+    letter-spacing: 0.15px;
+}
+
+/* Circular Social Icons - Enlarged & Prominent */
+.aktu-social-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.aktu-social-circle:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.aktu-sc-fb {
+    border: 2px solid #3b5998;
+    color: #3b5998;
+}
+.aktu-sc-fb:hover {
+    background-color: #3b5998;
+    color: #ffffff;
+}
+
+.aktu-sc-tw {
+    border: 2px solid #1da1f2;
+    color: #1da1f2;
+}
+.aktu-sc-tw:hover {
+    background-color: #1da1f2;
+    color: #ffffff;
+}
+
+.aktu-sc-in {
+    border: 2px solid #0077b5;
+    color: #0077b5;
+}
+.aktu-sc-in:hover {
+    background-color: #0077b5;
+    color: #ffffff;
+}
+
+.aktu-sc-yt {
+    border: 2px solid #e62f31;
+    color: #e62f31;
+}
+.aktu-sc-yt:hover {
+    background-color: #e62f31;
+    color: #ffffff;
+}
+
+.aktu-sc-ig {
+    border: 2px solid #e1306c;
+    color: #e1306c;
+}
+.aktu-sc-ig:hover {
+    background-color: #e1306c;
+    color: #ffffff;
+}
+
+.aktu-sc-wa {
+    border: 2px solid #25d366;
+    color: #25d366;
+}
+.aktu-sc-wa:hover {
+    background-color: #25d366;
+    color: #ffffff;
+}
+
+/* Pill Search Box */
+.aktu-search-pill {
+    display: flex;
+    align-items: center;
+    width: 210px;
+    height: 32px;
+    border: 1.5px solid #800000;
+    border-radius: 20px;
+    background-color: #ffffff;
+    padding: 2px 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+}
+
+.aktu-search-pill:focus-within {
+    width: 230px;
+    box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.15), inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.aktu-search-btn {
+    background: transparent;
+    border: none;
+    color: #800000;
+    font-size: 13px;
+    padding: 0;
+    margin-right: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.aktu-search-input {
+    border: none;
+    outline: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #800000;
+    width: 100%;
+    background: transparent;
+}
+
+.aktu-search-input::placeholder {
+    color: #800000;
+    opacity: 0.85;
+    font-weight: 600;
+}
+
+/* Circular Portrait in Maroon Ring */
+.aktu-portrait-circle {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: 2px solid #800000;
+    padding: 2px;
+    background: #ffffff;
+    box-shadow: 0 3px 8px rgba(128, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.25s ease;
+}
+
+.aktu-portrait-circle:hover {
+    transform: scale(1.06);
+    box-shadow: 0 5px 12px rgba(128, 0, 0, 0.22);
+}
+
+.aktu-portrait-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 10%;
+}
+
+/* Golden Accreditation Medallion Seal (Matches NAAC A+ in Screenshot) */
+.aktu-gold-seal {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle, #ffeaa7 0%, #e1b12c 55%, #c28e00 100%);
+    box-shadow: 0 4px 10px rgba(194, 142, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: transform 0.25s ease;
+}
+
+.aktu-gold-seal:hover {
+    transform: scale(1.06) rotate(2deg);
+}
+
+.seal-inner {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    border: 1.5px dashed #800000;
+    background: radial-gradient(circle, #ffffff 30%, #fffbf0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.seal-top-text {
+    font-size: 6px;
+    font-weight: 800;
+    color: #800000;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.seal-grade {
+    font-size: 18px;
+    font-weight: 900;
+    color: #800000;
+    line-height: 1.05;
+    font-family: 'Outfit', sans-serif;
+}
+
+.seal-sub-text {
+    font-size: 6.5px;
+    font-weight: 800;
+    color: #aa8012;
+    letter-spacing: 0.4px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.seal-ribbon {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #8E0000 0%, #5B0000 100%);
+    color: #ffffff;
+    font-size: 7px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.4px;
+}
+
+/* --- TIER 3: MAIN NAVIGATION BAR (SLEEK BLACK - COMPACT / SLIM) --- */
+.aktu-navbar {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+    transition: all 0.3s ease;
+    z-index: 1030;
+    padding: 0 !important;
+    min-height: 38px;
+    position: sticky;
+    top: 0;
+}
+
+.aktu-mobile-brand-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+}
+
+.aktu-nav-list {
+    padding: 0 !important;
+}
+
+@media (min-width: 1200px) {
+    .aktu-nav-list {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+    }
+}
+
+.aktu-nav-link {
+    color: #ffffff !important;
+    font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    padding: 7px 6px !important;
+    text-transform: uppercase;
+    white-space: nowrap !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 0px;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.aktu-nav-link:hover {
+    background-color: #1a1a1a;
+    color: #fbbf24 !important;
+}
+
+.aktu-nav-link.active {
+    background-color: #151515;
+    color: #fde047 !important;
+    border-bottom: 2px solid #f59e0b;
+}
+
+/* Dropdown Menus */
+.aktu-dropdown-menu {
+    border: none;
+    border-top: 3px solid #f59e0b;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    padding: 6px 0;
+    background: #ffffff;
+    min-width: 230px;
+    animation: fadeInDown 0.2s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.aktu-dropdown-wide {
+    min-width: 460px;
+}
+
+.aktu-dropdown-item {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #334155;
+    padding: 6px 16px;
+    transition: all 0.2s ease;
+}
+
+.aktu-dropdown-item:hover {
+    background-color: #fef2f2;
+    color: #800000;
+    padding-left: 20px;
+}
+
+/* Quick Action Buttons in Nav */
+.aktu-nav-action-btn {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 16px;
+    padding: 4px 10px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap !important;
+    transition: all 0.2s ease;
+}
+
+.aktu-action-register {
+    background-color: #fbbf24;
+    color: #78350f;
+    box-shadow: 0 2px 5px rgba(251, 191, 36, 0.3);
+}
+
+.aktu-action-register:hover {
+    background-color: #f59e0b;
+    color: #451a03;
+    transform: translateY(-1px);
+}
+
+.aktu-action-login {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.aktu-action-login:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: translateY(-1px);
+}
+
+/* Multi-Color Bottom Accent Strip - Pinned Full Width to Bottom */
+.aktu-color-strip {
+    display: flex;
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.strip-color {
+    flex: 1;
+    height: 100%;
+}
+
+.strip-cyan {
+    background-color: #00bcd4;
+}
+
+.strip-green {
+    background-color: #4caf50;
+}
+
+.strip-gold {
+    background-color: #ffeb3b;
+}
+
+.strip-orange {
+    background-color: #ff9800;
+}
+
+.strip-purple {
+    background-color: #9c27b0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) {
+    .aktu-hindi-title {
+        font-size: 16.5px;
+    }
+    .aktu-eng-title {
+        font-size: 13.5px;
+    }
+    .aktu-subtitle {
+        font-size: 11px;
+    }
+    .aktu-header-emblem {
+        height: 68px;
+    }
+    .aktu-nav-link {
+        padding: 10px 14px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .aktu-dropdown-wide {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .aktu-hindi-title {
+        font-size: 14.5px;
+    }
+    .aktu-eng-title {
+        font-size: 12px;
+    }
+    .aktu-subtitle {
+        font-size: 10px;
+    }
+    .aktu-header-emblem {
+        height: 54px;
+    }
+    .aktu-search-pill {
+        width: 180px;
+    }
+}
+
+
 

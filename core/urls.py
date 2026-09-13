@@ -14,7 +14,6 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('placements/', views.placements, name='placements'),
     path('job-fair/', views.job_fair, name='job_fair'),
-    path('verify-certificate/', views.job_fair, name='verify_certificate'),
     path('contact/', views.contact, name='contact'),
     path('blogs/', views.blogs, name='blogs'),
     path('projects/', views.blogs, name='projects'),

@@ -9,27 +9,30 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/maurya_official_logo.png' %}?v=2026">
 
-    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <!-- Google Fonts: Outfit, Plus Jakarta Sans & Noto Sans Devanagari -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome 6 Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- AOS (Animate On Scroll) CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2026_equal_height">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2026_page_container_match">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
 
-    <!-- Include Top Bar -->
+    <!-- Include AKTU Style Top Bar -->
     {% include 'includes/topbar.html' %}
 
-    <!-- Include Navigation Bar -->
+    <!-- Include Main Branding Header (Logo, Hindi/Eng Titles, Search, Social, Badges) -->
+    {% include 'includes/header_brand.html' %}
+
+    <!-- Include University Style Maroon Navigation Bar -->
     {% include 'includes/navbar.html' %}
 
     <!-- Django Messages Alert -->
