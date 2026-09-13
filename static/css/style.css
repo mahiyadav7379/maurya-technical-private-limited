@@ -2634,3 +2634,58 @@ html {
     padding: 16px 18px;
     text-align: center;
 }
+
+/* --- OUR TEAM MARQUEE SCROLLER (CONTINUOUS AUTO-SCROLL) --- */
+.team-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 15px 0;
+    margin: 15px 0;
+}
+
+.team-marquee-wrapper::before,
+.team-marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.team-marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+}
+
+.team-marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+}
+
+.team-marquee-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: teamAutoScroll 32s linear infinite;
+}
+
+.team-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes teamAutoScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 12px));
+    }
+}
+
+.team-marquee-card {
+    width: 320px;
+    flex-shrink: 0;
+}
