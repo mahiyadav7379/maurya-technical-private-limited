@@ -1,11 +1,11 @@
-{% load static %}
-<!-- AKTU Style Main Navigation Bar (Tier 3) -->
-<nav class="navbar navbar-expand-xl aktu-navbar sticky-top p-0">
-    <div class="container px-4">
+<!-- Tier 3: Sleek Navigation Bar (Matches Reference Design) -->
+<nav class="navbar navbar-expand-xl aktu-navbar header-tier-navbar sticky-top p-0">
+    <div class="container px-4 position-relative">
         
         <!-- Mobile Brand Title (Visible only on mobile toggle collapse) -->
         <a class="navbar-brand d-xl-none text-white fw-bold py-2 d-flex align-items-center gap-2" href="{% url 'home' %}">
-            <span class="aktu-mobile-brand-name">MAURYA TECHNICAL</span>
+            <span class="fw-black text-danger">MAURYA</span>
+            <span class="fw-bold text-white">TECHNICAL</span>
         </a>
 
         <!-- Mobile Hamburger Toggle Button -->
@@ -20,13 +20,13 @@
         </button>
 
         <!-- Navbar Links Menu -->
-        <div class="collapse navbar-collapse justify-content-xl-end" id="aktuNavbarNav">
-            <ul class="navbar-nav ms-xl-auto align-items-xl-center aktu-nav-list my-2 my-xl-0">
+        <div class="collapse navbar-collapse" id="aktuNavbarNav">
+            <ul class="navbar-nav align-items-xl-center aktu-nav-list my-2 my-xl-0">
                 
-                <!-- 1. HOME -->
+                <!-- 1. HOME (Red Tab Button) -->
                 <li class="nav-item">
-                    <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">
-                        <i class="fas fa-home d-xl-none me-2 text-warning"></i>HOME
+                    <a class="nav-link aktu-nav-link header-nav-home active" href="{% url 'home' %}">
+                        <i class="fas fa-home me-1"></i> HOME
                     </a>
                 </li>
 
@@ -170,13 +170,13 @@
                 </li>
             </ul>
 
-            <!-- Desktop Right Quick Actions (Register & Student Login) -->
-            <div class="d-none d-xl-flex align-items-center gap-2 ms-xl-3 py-1">
-                <a href="{% url 'registration' %}" class="aktu-nav-action-btn aktu-action-register">
-                    <i class="fas fa-edit me-1"></i> Register
+            <!-- Desktop Right Quick Actions (REGISTER ONLINE & LOGIN) -->
+            <div class="d-none d-xl-flex align-items-center gap-2 ms-auto py-1">
+                <a href="{% url 'registration' %}" class="header-action-register-btn">
+                    <i class="far fa-edit me-1"></i> REGISTER ONLINE
                 </a>
-                <a href="{% url 'student_login' %}" class="aktu-nav-action-btn aktu-action-login">
-                    <i class="fas fa-sign-in-alt me-1"></i> Login
+                <a href="{% url 'student_login' %}" class="header-action-login-btn">
+                    <i class="fas fa-sign-in-alt me-1"></i> LOGIN
                 </a>
             </div>
 

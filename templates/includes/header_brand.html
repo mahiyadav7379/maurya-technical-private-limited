@@ -1,58 +1,71 @@
 {% load static %}
-<!-- AKTU Style Main Branding Header (Middle Tier) -->
-<header class="aktu-header-brand bg-white py-2 py-lg-3">
+<!-- Tier 2: Dark Executive Branding Header (Matches Reference Design) -->
+<header class="header-tier-brand py-2 py-lg-3">
     <div class="container px-4">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
             
-            <!-- Left: Emblem & Institutional Titles -->
-            <div class="d-flex align-items-center gap-2 gap-md-3 aktu-brand-group">
-                <!-- Circular Emblem Logo -->
-                <a href="{% url 'home' %}" class="aktu-logo-anchor d-inline-block flex-shrink-0" title="Maurya Technical Private Limited">
+            <!-- Left: Logo & Brand Typography -->
+            <div class="d-flex align-items-center gap-2 gap-md-3 brand-left-group">
+                <a href="{% url 'home' %}" class="brand-logo-anchor d-inline-block flex-shrink-0" title="Maurya Technical Private Limited">
                     <img src="{% static 'images/maurya_official_logo.png' %}?v=2026" 
                          alt="Maurya Technical Emblem" 
-                         class="aktu-header-emblem">
+                         class="brand-header-emblem">
                 </a>
 
-                <!-- Brand Title Typography (Matches User Screenshot: MAURYA TECHNICAL + PVT. LTD. Badge + ALAMBAGH, LUCKNOW) -->
-                <div class="aktu-title-column">
+                <div class="brand-titles-column">
                     <a href="{% url 'home' %}" class="text-decoration-none d-block">
-                        <div class="brand-title-wrap d-flex align-items-center gap-2">
-                            <span class="brand-title-maurya" style="font-size: 27px; font-weight: 900; letter-spacing: 0.8px;">MAURYA</span>
-                            <span class="brand-title-tech" style="font-size: 27px; font-weight: 800; letter-spacing: 1px;">TECHNICAL</span>
+                        <div class="brand-title-row d-flex align-items-center gap-2">
+                            <span class="brand-word-maurya">MAURYA</span>
+                            <span class="brand-word-tech">TECHNICAL</span>
                         </div>
-                        <div class="brand-subtitle-wrap d-flex align-items-center gap-2 mt-1">
-                            <span class="brand-badge-pvt">PVT. LTD.</span>
-                            <span class="fw-bold" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 1.2px; color: #f59e0b;">ALAMBAGH, LUCKNOW</span>
+                        <div class="brand-badge-row d-flex align-items-center gap-2 mt-1">
+                            <span class="brand-badge-pvt-red">PVT. LTD.</span>
+                            <span class="brand-location-sub">ALAMBAGH, LUCKNOW</span>
                         </div>
-                        <p class="aktu-subtitle mb-0 mt-1" style="font-size: 11px;">
-                            मौर्य टेक्निकल प्राइवेट लिमिटेड &bull; Govt. MCA Registered &amp; ISO 9001:2015 Certified
+                        <p class="brand-cert-line mb-0 mt-1">
+                            <span class="text-white-50">हिंदी</span> &nbsp;|&nbsp; Govt. MCA Registered &amp; ISO 9001:2015 Certified
                         </p>
                     </a>
                 </div>
             </div>
 
-            <!-- Right: Center-Right Elements (Social Circles, Search Box, Kalam Portrait, Quality Badge) -->
-            <div class="d-flex align-items-center gap-3 ms-auto aktu-right-cluster flex-wrap">
+            <!-- Center: Slogan with Indian Tricolor Accent Curve -->
+            <div class="brand-center-slogan d-none d-xl-flex flex-column align-items-center justify-content-center mx-auto">
+                <div class="slogan-line-1">Skilled People</div>
+                <div class="slogan-line-2">Stronger India</div>
+                <div class="slogan-tricolor-curve"></div>
+            </div>
+
+            <!-- Right Cluster: Search Input & Social Media Icons -->
+            <div class="d-flex align-items-center gap-3 ms-auto brand-right-cluster">
                 
-                <!-- Social Media Circles Row -->
-                <div class="d-flex align-items-center aktu-social-group">
-                    <div class="aktu-social-icons-row d-flex align-items-center gap-2">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener" class="aktu-social-circle aktu-sc-fb" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" rel="noopener" class="aktu-social-circle aktu-sc-in" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" rel="noopener" class="aktu-social-circle aktu-sc-yt" title="YouTube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://www.instagram.com/maurya_technical_pvt_ltd" target="_blank" rel="noopener" class="aktu-social-circle aktu-sc-ig" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://wa.me/918887839689" target="_blank" rel="noopener" class="aktu-social-circle aktu-sc-wa" title="WhatsApp Support">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                <!-- Search Input Pill -->
+                <form action="{% url 'trainings' %}" method="GET" class="brand-search-form d-none d-lg-flex align-items-center m-0">
+                    <div class="brand-search-box position-relative d-flex align-items-center">
+                        <input type="text" name="q" class="form-control brand-search-input" placeholder="Search here..." autocomplete="off">
+                        <button type="submit" class="btn brand-search-btn" title="Search Courses">
+                            <i class="fas fa-search text-white"></i>
+                        </button>
                     </div>
+                </form>
+
+                <!-- Social Media Circular Icons -->
+                <div class="d-flex align-items-center gap-2 brand-social-row">
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener" class="brand-social-circle bsc-fb" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" rel="noopener" class="brand-social-circle bsc-in" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" rel="noopener" class="brand-social-circle bsc-yt" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/maurya_technical_pvt_ltd" target="_blank" rel="noopener" class="brand-social-circle bsc-ig" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/918887839689" target="_blank" rel="noopener" class="brand-social-circle bsc-wa" title="WhatsApp Support">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                 </div>
 
             </div>

@@ -2689,3 +2689,278 @@ html {
     width: 320px;
     flex-shrink: 0;
 }
+
+/* ============================================================
+   EXECUTIVE DARK INSTITUTIONAL HEADER (TIER 1, 2, 3)
+   Matches Reference Design from media_1789323315348.png
+   ============================================================ */
+
+/* --- TIER 1: TOPBAR --- */
+.header-tier-topbar {
+    background-color: #060913;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+.header-tier-topbar .topbar-item,
+.header-tier-topbar .topbar-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+}
+
+.header-tier-topbar .topbar-link:hover {
+    color: #ffffff;
+}
+
+/* --- TIER 2: BRANDING HEADER --- */
+.header-tier-brand {
+    background: linear-gradient(135deg, #050811 0%, #0c1322 45%, #180910 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+.brand-header-emblem {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.brand-word-maurya {
+    font-family: 'Outfit', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #e53935;
+    letter-spacing: 0.8px;
+    line-height: 1;
+}
+
+.brand-word-tech {
+    font-family: 'Outfit', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.8px;
+    line-height: 1;
+}
+
+.brand-badge-pvt-red {
+    background-color: #d32f2f;
+    color: #ffffff;
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.brand-location-sub {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1.2px;
+}
+
+.brand-cert-line {
+    font-size: 10.5px;
+    color: #94a3b8;
+}
+
+/* Slogan Center */
+.brand-center-slogan {
+    text-align: center;
+}
+
+.slogan-line-1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 600;
+    color: #e2e8f0;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.slogan-line-2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.slogan-tricolor-curve {
+    width: 140px;
+    height: 3.5px;
+    background: linear-gradient(to right, #ff9933 33%, #ffffff 33%, #ffffff 66%, #138808 66%);
+    border-radius: 4px;
+    margin-top: 4px;
+    box-shadow: 0 0 6px rgba(255, 153, 51, 0.4);
+}
+
+/* Search Box Pill */
+.brand-search-box {
+    position: relative;
+}
+
+.brand-search-input {
+    width: 230px !important;
+    height: 38px;
+    padding-left: 18px !important;
+    padding-right: 44px !important;
+    border-radius: 25px !important;
+    border: none !important;
+    font-size: 12.5px;
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.brand-search-input:focus {
+    box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.35) !important;
+}
+
+.brand-search-btn {
+    position: absolute;
+    right: 3px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50% !important;
+    background-color: #d32f2f !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.brand-search-btn:hover {
+    background-color: #b71c1c !important;
+    transform: scale(1.05);
+}
+
+/* Social Circles */
+.brand-social-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 15px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.brand-social-circle:hover {
+    transform: translateY(-2px) scale(1.08);
+}
+
+.bsc-fb { background-color: #1877f2; }
+.bsc-in { background-color: #0a66c2; }
+.bsc-yt { background-color: #ff0000; }
+.bsc-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.bsc-wa { background-color: #25d366; }
+
+/* --- TIER 3: MAIN NAVBAR --- */
+.header-tier-navbar {
+    background-color: #04060d !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 42px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.header-nav-link {
+    color: #ffffff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    padding: 10px 8px !important;
+    text-transform: uppercase;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.header-nav-link:hover {
+    color: #ef4444 !important;
+}
+
+/* Home button red tab */
+.header-nav-home {
+    background-color: #d32f2f !important;
+    color: #ffffff !important;
+    border-radius: 6px;
+    padding: 6px 14px !important;
+    margin-right: 4px;
+    box-shadow: 0 2px 6px rgba(211, 47, 47, 0.4);
+}
+
+.header-nav-home:hover {
+    background-color: #b71c1c !important;
+    color: #ffffff !important;
+}
+
+/* Action Buttons Right */
+.header-action-register-btn {
+    background-color: #d32f2f;
+    color: #ffffff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 7px 16px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap !important;
+    box-shadow: 0 2px 8px rgba(211, 47, 47, 0.4);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.header-action-register-btn:hover {
+    background-color: #b71c1c;
+    transform: translateY(-1px);
+}
+
+.header-action-login-btn {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #ffffff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.header-action-login-btn:hover {
+    background-color: #ffffff;
+    color: #000000 !important;
+    border-color: #ffffff;
+    transform: translateY(-1px);
+}

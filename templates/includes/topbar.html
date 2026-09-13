@@ -1,49 +1,50 @@
 {% load static %}
-<!-- AKTU University Style Top Quick Links Bar -->
-<div class="aktu-topbar-wrapper py-1 border-bottom">
+<!-- Tier 1: Dark Executive Top Quick Links Bar (Matches Reference Design) -->
+<div class="header-tier-topbar py-1">
     <div class="container px-4">
-        <div class="d-flex justify-content-between align-items-center flex-wrap">
-            <!-- Left / Center Links: Separated by vertical dividers just like AKTU header -->
-            <div class="aktu-top-links-scroll d-flex align-items-center flex-wrap">
-                <a href="{% url 'student_login' %}" class="aktu-top-link"><i class="fas fa-user-lock me-1"></i> Student Login</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'job_fair' %}" class="aktu-top-link"><i class="fas fa-briefcase me-1"></i> Job Fair 2026</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'registration' %}" class="aktu-top-link"><i class="fas fa-edit me-1"></i> Register Online</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'gallery' %}" class="aktu-top-link"><i class="fas fa-images me-1"></i> Photo Gallery</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'branches' %}" class="aktu-top-link"><i class="fas fa-map-marker-alt me-1"></i> Branches</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'placements' %}" class="aktu-top-link"><i class="fas fa-award me-1"></i> Placements</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'fees' %}" class="aktu-top-link"><i class="fas fa-receipt me-1"></i> Fee Structure</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'about' %}" class="aktu-top-link"><i class="fas fa-university me-1"></i> Company Profile</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'trainings' %}" class="aktu-top-link"><i class="fas fa-book me-1"></i> Training Brochure</a>
-                <span class="aktu-top-divider">|</span>
-
-                <a href="{% url 'contact' %}" class="aktu-top-link"><i class="fas fa-envelope me-1"></i> Contact Us</a>
-            </div>
-
-            <!-- Right Helpline Contacts -->
-            <div class="d-none d-xl-flex align-items-center aktu-top-helpline ms-auto">
-                <a href="tel:+918887839689" class="aktu-top-contact-link me-3">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            
+            <!-- Left: Contact Details -->
+            <div class="topbar-contacts d-flex align-items-center flex-wrap gap-3">
+                <span class="topbar-item">
+                    <i class="fas fa-map-marker-alt text-danger me-1"></i> Alambagh, Lucknow
+                </span>
+                <a href="tel:+918887839689" class="topbar-link">
                     <i class="fas fa-phone-alt text-danger me-1"></i> +91 88878 39689
                 </a>
-                <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical%20Team" target="_blank" class="aktu-top-whatsapp-link">
-                    <i class="fab fa-whatsapp text-success me-1"></i> WhatsApp Helpline
+                <a href="mailto:info@mauryatechnical.in" class="topbar-link d-none d-sm-inline-flex">
+                    <i class="fas fa-envelope text-danger me-1"></i> info@mauryatechnical.in
                 </a>
             </div>
+
+            <!-- Right: Quick Links with Icons -->
+            <div class="topbar-quick-links d-none d-lg-flex align-items-center flex-wrap gap-3 ms-auto">
+                <a href="{% url 'student_login' %}" class="topbar-link">
+                    <i class="fas fa-user-lock me-1 text-muted"></i> Student Login
+                </a>
+                <a href="{% url 'job_fair' %}" class="topbar-link">
+                    <i class="fas fa-briefcase me-1 text-muted"></i> Job Fair 2026
+                </a>
+                <a href="{% url 'registration' %}" class="topbar-link">
+                    <i class="far fa-edit me-1 text-muted"></i> Register Online
+                </a>
+                <a href="{% url 'gallery' %}" class="topbar-link">
+                    <i class="far fa-images me-1 text-muted"></i> Photo Gallery
+                </a>
+                <a href="{% url 'branches' %}" class="topbar-link">
+                    <i class="fas fa-map-marker-alt me-1 text-muted"></i> Branches
+                </a>
+                <a href="{% url 'placements' %}" class="topbar-link">
+                    <i class="fas fa-trophy me-1 text-muted"></i> Placements
+                </a>
+                <a href="{% url 'fees' %}" class="topbar-link">
+                    <i class="fas fa-file-invoice-dollar me-1 text-muted"></i> Fee Structure
+                </a>
+                <a href="{% url 'contact' %}" class="topbar-link">
+                    <i class="fas fa-headset me-1 text-muted"></i> Contact Us
+                </a>
+            </div>
+
         </div>
     </div>
 </div>
