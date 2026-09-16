@@ -20,4 +20,10 @@ urlpatterns = [
     path('blogs/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('services/', views.services, name='services'),
     path('student-login/', views.student_login, name='student_login'),
+    path('student/dashboard/', views.student_dashboard, name='student_dashboard'),
+    path('student/logout/', views.student_logout, name='student_logout'),
+    path('faculty-login/', views.faculty_login, name='faculty_login'),
+    path('faculty/dashboard/', views.faculty_dashboard, name='faculty_dashboard'),
+    path('faculty/salary-slip/<int:slip_id>/', views.salary_slip_view, name='salary_slip_view'),
+    path('faculty/logout/', views.faculty_logout, name='faculty_logout'),
 ]

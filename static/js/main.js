@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <li>• <strong>45 Days / 6 Weeks:</strong> ₹4,000 (Vocational)</li>
                 <li>• <strong>06 Months:</strong> ₹18,000 (Internship + Job Track)</li>
             </ul>
-            <p class="small mb-2 text-muted">Includes Major Live Projects & ISO Government Registered Certificate with QR Verification.</p>
+            <p class="small mb-2 text-muted">Includes Major Live Projects & MSME Government Registered Certificate with QR Verification.</p>
             <div class="d-flex gap-2 flex-wrap">
                 <a href="/fees/" class="btn btn-sm btn-danger fw-bold"><i class="fas fa-external-link-alt me-1"></i> View Full Fee Table</a>
                 <a href="/registration/" class="btn btn-sm btn-warning fw-bold text-dark"><i class="fas fa-edit me-1"></i> Register</a>
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `,
         whatsapp: `
             <p class="fw-bold mb-1 text-success"><i class="fab fa-whatsapp me-1"></i> Direct WhatsApp Desks:</p>
-            <p class="small mb-2 text-muted">Aap seedhe hamare technical counselors se WhatsApp par baat kar sakte hain:</p>
+            <p class="small mb-2 text-muted">You can chat directly with our technical counselors on WhatsApp:</p>
             <div class="d-grid gap-2">
                 <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20need%20training%20counseling" target="_blank" class="btn btn-sm btn-success fw-bold text-start"><i class="fab fa-whatsapp me-2"></i> Director Desk (+91 88878 39689)</a>
                 <a href="https://wa.me/918858298247?text=Hello%20HR%20Desk%20/%20Maurya%20Technical,%20I%20need%20admission%20details" target="_blank" class="btn btn-sm btn-outline-success fw-bold text-start"><i class="fab fa-whatsapp me-2"></i> HR Kirti Kushwaha (+91 88582 98247)</a>
@@ -328,9 +328,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             const encodedQuery = encodeURIComponent('Hello Maurya Technical, My Question: ' + query);
             reply = `
-                <p class="mb-2">Aapke sawal ke liye hamare training counselor se direct live WhatsApp guidance le sakte hain:</p>
+                <p class="mb-2">For your query, you can get direct live guidance from our training counselor on WhatsApp:</p>
                 <a href="https://wa.me/918887839689?text=${encodedQuery}" target="_blank" class="btn btn-sm btn-success fw-bold d-inline-flex align-items-center gap-1">
-                    <i class="fab fa-whatsapp"></i> WhatsApp par Poochhein (+91 88878 39689)
+                    <i class="fab fa-whatsapp"></i> Ask on WhatsApp (+91 88878 39689)
                 </a>
             `;
         }

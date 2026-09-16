@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Faculty Portal Login - Maurya Technical{% endblock %}
+
+{% block content %}
+<div class="bg-dark text-white py-5" style="background: linear-gradient(135deg, #1e0505 0%, #3a0a0a 50%, #150303 100%);">
+    <div class="container px-4 text-center">
+        <span class="badge bg-danger px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
+            <i class="fas fa-chalkboard-teacher me-1"></i> FACULTY &amp; MENTOR PORTAL
+        </span>
+        <h1 class="fw-bold"><i class="fas fa-user-shield me-2 text-warning"></i> Faculty Dashboard Login</h1>
+        <p class="lead text-white-50">Access trainee progress, attendance logs, lab curriculum, and project grading</p>
+    </div>
+</div>
+
+<div class="container py-5 px-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+                
+                <!-- Brand Header -->
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex align-items-center gap-3">
+                        <img src="{% static 'images/maurya_official_logo.png' %}?v=2026" alt="Maurya Technical Logo" style="height: 52px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));">
+                        <div class="text-start">
+                            <div class="brand-title-wrap">
+                                <span class="brand-title-maurya">MAURYA</span>
+                                <span class="brand-title-tech">TECHNICAL</span>
+                            </div>
+                            <span class="brand-subtext-badge d-block mt-1">FACULTY PORTAL &bull; LUCKNOW</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portal Switcher Tabs (Student / Faculty) -->
+                <div class="d-flex justify-content-center gap-2 mb-4 p-1 bg-light rounded-pill border">
+                    <a href="{% url 'student_login' %}" class="btn btn-sm btn-light rounded-pill px-3 py-2 text-muted fw-semibold flex-fill text-center">
+                        <i class="fas fa-user-graduate me-1 text-success"></i> Student Login
+                    </a>
+                    <a href="{% url 'faculty_login' %}" class="btn btn-sm btn-danger rounded-pill px-3 py-2 text-white fw-bold flex-fill text-center shadow-sm">
+                        <i class="fas fa-chalkboard-teacher me-1"></i> Faculty Login
+                    </a>
+                </div>
+
+                <form method="POST" action="{% url 'faculty_login' %}">
+                    {% csrf_token %}
+                    
+                    <!-- Faculty ID / Number -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark">
+                            <i class="fas fa-id-badge text-danger me-1"></i> Faculty ID / Number
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="fas fa-user-tie text-muted"></i>
+                            </span>
+                            <input type="text" name="faculty_id" class="form-control form-control-lg border-start-0 ps-0" placeholder="Enter Faculty ID / Mobile Number" required autocomplete="username">
+                        </div>
+                        <small class="text-muted" style="font-size: 0.75rem;">Enter your assigned Maurya Technical Faculty ID (e.g. MT-FAC-2026) or registered mobile.</small>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-dark">
+                            <i class="fas fa-lock text-danger me-1"></i> Password
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="fas fa-key text-muted"></i>
+                            </span>
+                            <input type="password" name="password" class="form-control form-control-lg border-start-0 ps-0" placeholder="Enter faculty password" required autocomplete="current-password">
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-danger btn-lg fw-bold w-100 py-3 shadow">
+                        <i class="fas fa-sign-in-alt me-2"></i> Login to Faculty Portal
+                    </button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

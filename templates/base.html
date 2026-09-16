@@ -21,7 +21,7 @@
     <!-- AOS (Animate On Scroll) CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2026_executive_dark_header">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2026_clean_navbar">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -39,9 +39,16 @@
     {% if messages %}
     <div class="container mt-3" data-aos="fade-down">
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm" role="alert">
-            <i class="fas fa-info-circle me-2"></i> {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show shadow-sm d-flex align-items-center" role="alert">
+            {% if message.tags == 'success' %}
+            <i class="fas fa-check-circle me-2 fs-5"></i>
+            {% elif message.tags == 'error' %}
+            <i class="fas fa-exclamation-triangle me-2 fs-5"></i>
+            {% else %}
+            <i class="fas fa-info-circle me-2 fs-5"></i>
+            {% endif %}
+            <div class="flex-grow-1">{{ message }}</div>
+            <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endfor %}
     </div>

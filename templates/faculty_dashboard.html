@@ -1,0 +1,342 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ faculty.name }} - Faculty Dashboard | Maurya Technical{% endblock %}
+
+{% block content %}
+<!-- Executive Portal Topbar -->
+<div class="bg-dark text-white py-4" style="background: linear-gradient(135deg, #180202 0%, #300606 50%, #0d0101 100%); border-bottom: 3px solid #d32f2f;">
+    <div class="container px-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="badge bg-danger px-3 py-1 rounded-pill fw-bold">FACULTY DESK</span>
+                    <span class="badge bg-light text-dark fw-bold"><i class="fas fa-id-badge text-danger me-1"></i> {{ faculty.faculty_id }}</span>
+                    <span class="badge bg-success"><i class="fas fa-check-circle me-1"></i> Active</span>
+                </div>
+                <h2 class="fw-bold mb-0 text-white">Welcome, {{ faculty.name }}</h2>
+                <small class="text-white-50">{{ faculty.designation }} &bull; {{ faculty.department }} &bull; Maurya Technical Pvt. Ltd.</small>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <a href="{% url 'faculty_logout' %}" class="btn btn-outline-light btn-sm fw-bold px-3 py-2 rounded-pill shadow-sm">
+                    <i class="fas fa-sign-out-alt text-danger me-1"></i> Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-4 px-4">
+    <div class="row g-4">
+
+        <!-- Left Column: Faculty Identity Card -->
+        <div class="col-lg-4 col-md-5">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden sticky-top" style="top: 20px; z-index: 10;">
+                
+                <!-- Card Header Accent -->
+                <div class="p-3 text-center text-white" style="background: linear-gradient(135deg, #d32f2f, #991b1b);">
+                    <span class="small text-uppercase tracking-wider fw-bold text-white-50">Authorized Faculty Member</span>
+                </div>
+
+                <div class="card-body p-4 text-center">
+                    <!-- Profile Photo with Gold Border Ring -->
+                    <div class="position-relative d-inline-block mb-3">
+                        {% if faculty.photo %}
+                        <img src="{{ faculty.photo }}" alt="{{ faculty.name }}" class="rounded-circle shadow-lg" style="width: 140px; height: 140px; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 15px rgba(211,47,47,0.25) !important;">
+                        {% else %}
+                        <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center mx-auto shadow" style="width: 140px; height: 140px; font-size: 50px; border: 4px solid #fff;">
+                            {{ faculty.name|slice:":1" }}
+                        </div>
+                        {% endif %}
+                        <span class="position-absolute bottom-0 end-0 badge bg-success rounded-circle p-2 border border-white border-2" title="Online / Active">
+                            <span class="visually-hidden">Active</span>
+                        </span>
+                    </div>
+
+                    <h4 class="fw-bold text-dark mb-1">{{ faculty.name }}</h4>
+                    <p class="text-danger fw-semibold small mb-2">{{ faculty.designation }}</p>
+                    
+                    <div class="d-flex justify-content-center gap-1 mb-3 flex-wrap">
+                        <span class="badge bg-light text-dark border px-2 py-1 small">
+                            <i class="fas fa-graduation-cap text-danger me-1"></i> {{ faculty.qualification }}
+                        </span>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <!-- Personal & Professional Service Details -->
+                    <div class="text-start small">
+                        <div class="d-flex justify-content-between py-1 border-bottom">
+                            <span class="text-muted"><i class="fas fa-id-card me-2 text-danger"></i>Faculty ID:</span>
+                            <span class="fw-bold text-dark">{{ faculty.faculty_id }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between py-1 border-bottom">
+                            <span class="text-muted"><i class="fas fa-calendar-check me-2 text-danger"></i>Joining Date:</span>
+                            <span class="fw-bold text-dark">{{ faculty.joining_date|date:"d M Y" }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between py-1 border-bottom">
+                            <span class="text-muted"><i class="fas fa-sitemap me-2 text-danger"></i>Department:</span>
+                            <span class="fw-bold text-dark">{{ faculty.department }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between py-1 border-bottom">
+                            <span class="text-muted"><i class="fas fa-phone-alt me-2 text-danger"></i>Contact:</span>
+                            <span class="fw-bold text-dark">{{ faculty.phone }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between py-1 border-bottom">
+                            <span class="text-muted"><i class="fas fa-envelope me-2 text-danger"></i>Email:</span>
+                            <span class="fw-bold text-dark" style="word-break: break-all;">{{ faculty.email }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between py-1 border-bottom">
+                            <span class="text-muted"><i class="fas fa-tint me-2 text-danger"></i>Blood Group:</span>
+                            <span class="fw-bold text-danger">{{ faculty.blood_group }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between py-1">
+                            <span class="text-muted"><i class="fas fa-university me-2 text-danger"></i>Bank / PAN:</span>
+                            <span class="fw-bold text-dark">{{ faculty.bank_name }} ({{ faculty.pan_number }})</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-2">
+                        <a href="{% url 'contact' %}" class="btn btn-outline-danger btn-sm w-100 rounded-pill fw-bold">
+                            <i class="fas fa-headset me-1"></i> Contact HR / Helpdesk
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Attendance & Salary Section -->
+        <div class="col-lg-8 col-md-7">
+
+            <!-- Card 1: Today's Punch-In / Live Attendance -->
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                    <div>
+                        <h5 class="fw-bold text-dark mb-0">
+                            <i class="fas fa-calendar-day text-danger me-2"></i> Today's Attendance
+                        </h5>
+                        <small class="text-muted">{{ today|date:"l, d F Y" }}</small>
+                    </div>
+                    <div>
+                        <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fw-semibold">
+                            <i class="far fa-clock text-danger me-1"></i> Official Timing: 09:30 AM &ndash; 06:00 PM
+                        </span>
+                    </div>
+                </div>
+
+                {% if today_attendance %}
+                <div class="alert alert-success d-flex align-items-center justify-content-between flex-wrap gap-3 m-0 rounded-3 border-0 shadow-sm" style="background-color: #ecfdf5; border-left: 5px solid #10b981 !important;">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="badge bg-success rounded-circle p-3 fs-5">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-success mb-0">Attendance Logged for Today!</h6>
+                            <small class="text-muted">
+                                Status: <strong>{{ today_attendance.get_status_display }}</strong> &bull; 
+                                Check-in Time: <strong>{{ today_attendance.check_in|time:"h:i A" }}</strong>
+                            </small>
+                        </div>
+                    </div>
+                    <span class="badge bg-success px-3 py-2 rounded-pill fw-bold">
+                        <i class="fas fa-user-check me-1"></i> MARKED PRESENT
+                    </span>
+                </div>
+                {% else %}
+                <div class="p-3 bg-light rounded-3 d-flex align-items-center justify-content-between flex-wrap gap-3">
+                    <div>
+                        <p class="fw-bold text-dark mb-0">You haven't marked your attendance yet today.</p>
+                        <small class="text-muted">Click the button to record your check-in timestamp.</small>
+                    </div>
+                    <form method="POST" action="{% url 'faculty_dashboard' %}" class="m-0">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="punch_in">
+                        <button type="submit" class="btn btn-success btn-lg fw-bold px-4 py-2 shadow-sm rounded-pill d-inline-flex align-items-center gap-2">
+                            <i class="fas fa-fingerprint fs-5"></i> Punch In Now
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Card 2: Monthly Metrics Summary Cards (Fully Clickable) -->
+            <div class="row g-3 mb-4">
+                <div class="col-sm-4 col-6">
+                    <div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-white h-100 metric-clickable-card" onclick="switchToTab('attendance-tab')" style="cursor: pointer; transition: all 0.2s ease-in-out;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="fs-4 fw-bold text-success mb-0">{{ attendance_percentage }}%</div>
+                        <small class="text-muted fw-bold d-block">Attendance Ratio</small>
+                        <span class="badge bg-success bg-opacity-10 text-success mt-2 small"><i class="fas fa-calendar-check me-1"></i> View Log &rarr;</span>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-6">
+                    <div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-white h-100 metric-clickable-card" onclick="switchToTab('attendance-tab')" style="cursor: pointer; transition: all 0.2s ease-in-out;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="fs-4 fw-bold text-dark mb-0">{{ present_days }} Days</div>
+                        <small class="text-muted fw-bold d-block">Days Present</small>
+                        <span class="badge bg-primary bg-opacity-10 text-primary mt-2 small"><i class="fas fa-user-check me-1"></i> {{ leave_days }} Leaves</span>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-12">
+                    <div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-white h-100 metric-clickable-card" onclick="switchToTab('salary-tab')" style="cursor: pointer; transition: all 0.2s ease-in-out;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="fs-4 fw-bold text-danger mb-0">₹{{ faculty.monthly_salary|floatformat:0 }}</div>
+                        <small class="text-muted fw-bold d-block">Monthly Salary</small>
+                        <span class="badge bg-danger bg-opacity-10 text-danger mt-2 small"><i class="fas fa-file-invoice-dollar me-1"></i> Pay Slips &rarr;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Interactive Tabs (Faculty Attendance & Salary Slips ONLY) -->
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+                <div class="card-header bg-white border-bottom p-0">
+                    <ul class="nav nav-tabs card-header-tabs m-0 border-0" id="facultyTab" role="tablist">
+                        <li class="nav-item flex-fill text-center" role="presentation">
+                            <button class="nav-link py-3 fw-bold border-0 text-muted" id="attendance-tab" data-bs-toggle="tab" data-bs-target="#attendance" type="button" role="tab">
+                                <i class="fas fa-calendar-check text-success me-2"></i> Faculty Attendance (उपस्थिति)
+                            </button>
+                        </li>
+                        <li class="nav-item flex-fill text-center" role="presentation">
+                            <button class="nav-link active py-3 fw-bold border-0 text-dark border-bottom border-3 border-danger" id="salary-tab" data-bs-toggle="tab" data-bs-target="#salary" type="button" role="tab">
+                                <i class="fas fa-file-invoice-dollar text-danger me-2"></i> Faculty Salary Slips (पे-स्लिप्स)
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-body p-4">
+                    <div class="tab-content" id="facultyTabContent">
+
+                        <!-- TAB 1: FACULTY ATTENDANCE -->
+                        <div class="tab-pane fade" id="attendance" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-0">Faculty Attendance Logs &amp; Record</h6>
+                                    <small class="text-muted">Real-time Biometric &amp; Daily Punch-In History</small>
+                                </div>
+                                <span class="badge bg-success bg-opacity-10 text-success small">Real-Time Desk Attendance</span>
+                            </div>
+
+                            {% if recent_attendances %}
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr class="small text-muted text-uppercase">
+                                            <th>Date</th>
+                                            <th>Day</th>
+                                            <th>Attendance Status</th>
+                                            <th>Check-In Time</th>
+                                            <th>Check-Out Time</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for att in recent_attendances %}
+                                        <tr>
+                                            <td class="fw-bold text-dark">{{ att.date|date:"d M Y" }}</td>
+                                            <td class="small text-muted">{{ att.date|date:"l" }}</td>
+                                            <td>
+                                                {% if att.status == 'present' %}
+                                                <span class="badge bg-success rounded-pill px-3 py-1"><i class="fas fa-check-circle me-1"></i> Present</span>
+                                                {% elif att.status == 'leave' %}
+                                                <span class="badge bg-warning text-dark rounded-pill px-3 py-1"><i class="fas fa-clock me-1"></i> Approved Leave</span>
+                                                {% elif att.status == 'half_day' %}
+                                                <span class="badge bg-info text-dark rounded-pill px-3 py-1">Half Day</span>
+                                                {% elif att.status == 'holiday' %}
+                                                <span class="badge bg-secondary rounded-pill px-3 py-1">Holiday</span>
+                                                {% else %}
+                                                <span class="badge bg-danger rounded-pill px-3 py-1">Absent</span>
+                                                {% endif %}
+                                            </td>
+                                            <td class="small fw-semibold text-dark">{{ att.check_in|time:"h:i A"|default:"&ndash;" }}</td>
+                                            <td class="small text-muted">{{ att.check_out|time:"h:i A"|default:"06:00 PM" }}</td>
+                                            <td class="small text-muted">{{ att.remarks|default:"Regular Duty" }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% else %}
+                            <div class="text-center py-5 text-muted">
+                                <i class="fas fa-user-clock text-muted fs-1 mb-3 opacity-50"></i>
+                                <h6>No Attendance Records Found</h6>
+                                <p class="small mb-0">Use the "Punch In Now" button above to log today's attendance.</p>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- TAB 2: FACULTY SALARY SLIPS -->
+                        <div class="tab-pane fade show active" id="salary" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-0">Faculty Salary Statements &amp; Pay Slips</h6>
+                                    <small class="text-muted">Verified &amp; Issued by Maurya Accounts Desk</small>
+                                </div>
+                                <span class="badge bg-light text-dark border small">Click 'View / Print Slip' to open slip</span>
+                            </div>
+
+                            {% if salary_slips %}
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr class="small text-muted text-uppercase">
+                                            <th>Month &amp; Year</th>
+                                            <th>Payment Date</th>
+                                            <th>Basic Salary</th>
+                                            <th>Deductions</th>
+                                            <th>Net Salary</th>
+                                            <th>Status</th>
+                                            <th class="text-end">Payslip Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for slip in salary_slips %}
+                                        <tr>
+                                            <td class="fw-bold text-dark">
+                                                <i class="fas fa-file-invoice-dollar text-danger me-2"></i> {{ slip.month_year }}
+                                            </td>
+                                            <td class="small text-muted">{{ slip.pay_date|date:"d M Y" }}</td>
+                                            <td class="small fw-semibold">₹{{ slip.basic_salary|floatformat:0 }}</td>
+                                            <td class="small text-danger">-₹{{ slip.pf_deduction|add:slip.tds_deduction|floatformat:0 }}</td>
+                                            <td class="fw-bold text-success fs-6">₹{{ slip.net_salary|floatformat:0 }}</td>
+                                            <td>
+                                                <span class="badge bg-success rounded-pill px-3 py-1 small">
+                                                    <i class="fas fa-check-circle me-1"></i> {{ slip.get_status_display }}
+                                                </span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="{% url 'salary_slip_view' slip.id %}" target="_blank" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm">
+                                                    <i class="fas fa-print me-1"></i> View / Print Slip
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% else %}
+                            <div class="text-center py-5 text-muted">
+                                <i class="fas fa-file-invoice text-muted fs-1 mb-3 opacity-50"></i>
+                                <h6>No Salary Slips Generated Yet</h6>
+                                <p class="small mb-0">Your monthly salary slips will appear here once finalized by Maurya Accounts Desk.</p>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Switching Helper Script -->
+            <script>
+                function switchToTab(tabId) {
+                    var tabEl = document.getElementById(tabId);
+                    if (tabEl) {
+                        var tab = new bootstrap.Tab(tabEl);
+                        tab.show();
+                    }
+                }
+            </script>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

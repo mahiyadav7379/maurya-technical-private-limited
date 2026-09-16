@@ -88,7 +88,54 @@ def populate():
         image_url="/static/images/director_vivek_kushawaha.png",
         is_active=True
     )
-    print("Added Vivek Kushawaha (Founder & Director) successfully!")
+    print("Populating Branches Data...")
+    Branch.objects.all().delete()
+    branches_data = [
+        {
+            "city": "Lucknow",
+            "branch_name": "Maurya Technical Private Limited (Main Head Office)",
+            "address": "Alambagh, Lucknow, Uttar Pradesh - 226005",
+            "phone": "+91 88582 98247",
+            "email": "director@mauryatechnical.in",
+            "is_head_office": True,
+        },
+        {
+            "city": "Gorakhpur",
+            "branch_name": "Maurya Technical Private Limited (Gorakhpur Center)",
+            "address": "Civil Lines / Golghar, Near Railway Station, Gorakhpur, Uttar Pradesh - 273001",
+            "phone": "+91 88582 98247",
+            "email": "director@mauryatechnical.in",
+            "is_head_office": False,
+        },
+        {
+            "city": "Ghaziabad",
+            "branch_name": "Maurya Technical Private Limited (Ghaziabad Center)",
+            "address": "RDC Raj Nagar, Near Metro Station, Ghaziabad, Uttar Pradesh - 201001",
+            "phone": "+91 88582 98247",
+            "email": "director@mauryatechnical.in",
+            "is_head_office": False,
+        },
+        {
+            "city": "Varanasi",
+            "branch_name": "Maurya Technical Private Limited (Varanasi Center)",
+            "address": "Sigra / Rathyatra, Near Cantt Railway Station, Varanasi, Uttar Pradesh - 221002",
+            "phone": "+91 88582 98247",
+            "email": "director@mauryatechnical.in",
+            "is_head_office": False,
+        },
+        {
+            "city": "Noida",
+            "branch_name": "Maurya Technical Private Limited (Noida Center)",
+            "address": "Sector 62 / Sector 18, Near Electronic City Metro, Noida, Uttar Pradesh - 201301",
+            "phone": "+91 88582 98247",
+            "email": "director@mauryatechnical.in",
+            "is_head_office": False,
+        },
+    ]
+    for b in branches_data:
+        Branch.objects.create(**b)
+        print(f"Added Branch: {b['city']}")
+    print("Branches population completed successfully!")
 
 if __name__ == '__main__':
     populate()

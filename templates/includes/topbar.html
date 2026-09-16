@@ -6,14 +6,14 @@
             
             <!-- Left: Contact Details -->
             <div class="topbar-contacts d-flex align-items-center flex-wrap gap-3">
-                <span class="topbar-item">
+                <a href="https://maps.google.com/?q=Maurya+Technical+Private+Limited+Alambagh+Lucknow" target="_blank" rel="noopener noreferrer" class="topbar-link" title="Open Maurya Technical Location in Google Maps">
                     <i class="fas fa-map-marker-alt text-danger me-1"></i> Alambagh, Lucknow
-                </span>
-                <a href="tel:+918887839689" class="topbar-link">
-                    <i class="fas fa-phone-alt text-danger me-1"></i> +91 88878 39689
                 </a>
-                <a href="mailto:info@mauryatechnical.in" class="topbar-link d-none d-sm-inline-flex">
-                    <i class="fas fa-envelope text-danger me-1"></i> info@mauryatechnical.in
+                <a href="tel:+918858298247" class="topbar-link">
+                    <i class="fas fa-phone-alt text-danger me-1"></i> +91 88582 98247
+                </a>
+                <a href="mailto:director@mauryatechnical.in" class="topbar-link d-none d-sm-inline-flex">
+                    <i class="fas fa-envelope text-danger me-1"></i> director@mauryatechnical.in
                 </a>
             </div>
 
@@ -22,17 +22,20 @@
                 <a href="{% url 'student_login' %}" class="topbar-link">
                     <i class="fas fa-user-lock me-1 text-muted"></i> Student Login
                 </a>
+                <a href="{% url 'faculty_login' %}" class="topbar-link">
+                    <i class="fas fa-chalkboard-teacher me-1 text-muted"></i> Faculty Login
+                </a>
                 <a href="{% url 'job_fair' %}" class="topbar-link">
                     <i class="fas fa-briefcase me-1 text-muted"></i> Job Fair 2026
                 </a>
                 <a href="{% url 'registration' %}" class="topbar-link">
-                    <i class="far fa-edit me-1 text-muted"></i> Register Online
+                    <i class="far fa-edit me-1 text-muted"></i> Course Registration
                 </a>
                 <a href="{% url 'gallery' %}" class="topbar-link">
                     <i class="far fa-images me-1 text-muted"></i> Photo Gallery
                 </a>
                 <a href="{% url 'branches' %}" class="topbar-link">
-                    <i class="fas fa-map-marker-alt me-1 text-muted"></i> Branches
+                    <i class="fas fa-map-marker-alt me-1 text-muted"></i> Our Branches
                 </a>
                 <a href="{% url 'placements' %}" class="topbar-link">
                     <i class="fas fa-trophy me-1 text-muted"></i> Placements

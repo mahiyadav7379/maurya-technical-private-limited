@@ -19,6 +19,8 @@
                 </div>
                 {% if b.is_head_office %}
                 <span class="badge bg-danger mb-2 align-self-center px-3 py-1">HEAD OFFICE</span>
+                {% else %}
+                <span class="badge bg-danger mb-2 align-self-center px-3 py-1">BRANCH OFFICE</span>
                 {% endif %}
                 <h4 class="fw-bold text-dark mb-2">{{ b.city }} Center</h4>
                 <p class="text-muted small mb-3">{{ b.address }}</p>

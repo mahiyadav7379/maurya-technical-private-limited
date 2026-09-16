@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (
     TrainingCourse, Placement, TeamMember, Branch, 
-    Certificate, Registration, ContactMessage, BlogPost
+    Certificate, Registration, ContactMessage, BlogPost,
+    Faculty, FacultyAttendance, SalarySlip
 )
 
 @admin.register(TrainingCourse)
@@ -56,3 +57,25 @@ class BlogPostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'created_at')
     search_fields = ('title', 'content')
     prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(Faculty)
+class FacultyAdmin(admin.ModelAdmin):
+    list_display = ('faculty_id', 'name', 'designation', 'department', 'phone', 'joining_date', 'monthly_salary', 'is_active')
+    search_fields = ('faculty_id', 'name', 'phone', 'email', 'department')
+    list_filter = ('department', 'is_active', 'joining_date')
+
+
+@admin.register(FacultyAttendance)
+class FacultyAttendanceAdmin(admin.ModelAdmin):
+    list_display = ('faculty', 'date', 'status', 'check_in', 'check_out')
+    list_filter = ('status', 'date')
+    search_fields = ('faculty__name', 'faculty__faculty_id')
+
+
+@admin.register(SalarySlip)
+class SalarySlipAdmin(admin.ModelAdmin):
+    list_display = ('faculty', 'month_year', 'net_salary', 'pay_date', 'payment_mode', 'status')
+    list_filter = ('status', 'month_year')
+    search_fields = ('faculty__name', 'faculty__faculty_id', 'transaction_id')
+

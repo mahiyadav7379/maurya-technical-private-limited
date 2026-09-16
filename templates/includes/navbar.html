@@ -124,10 +124,10 @@
                     </a>
                 </li>
 
-                <!-- 7. BRANCHES -->
+                <!-- 7. OUR BRANCHES -->
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'branches' %}active{% endif %}" href="{% url 'branches' %}">
-                        <i class="fas fa-map-marker-alt d-xl-none me-2 text-warning"></i>BRANCHES
+                        <i class="fas fa-map-marker-alt d-xl-none me-2 text-warning"></i>OUR BRANCHES
                     </a>
                 </li>
 
@@ -170,10 +170,10 @@
                 </li>
             </ul>
 
-            <!-- Desktop Right Quick Actions (REGISTER ONLINE & LOGIN) -->
+            <!-- Desktop Right Quick Actions (COURSE REGISTRATION & LOGIN) -->
             <div class="d-none d-xl-flex align-items-center gap-2 ms-auto py-1">
                 <a href="{% url 'registration' %}" class="header-action-register-btn">
-                    <i class="far fa-edit me-1"></i> REGISTER ONLINE
+                    <i class="far fa-edit me-1"></i> COURSE REGISTRATION
                 </a>
                 <a href="{% url 'student_login' %}" class="header-action-login-btn">
                     <i class="fas fa-sign-in-alt me-1"></i> LOGIN
@@ -184,13 +184,16 @@
             <div class="d-xl-none mobile-nav-actions my-3 pt-3 border-top border-white-50">
                 <div class="d-grid gap-2">
                     <a href="{% url 'registration' %}" class="btn btn-warning fw-bold py-2 shadow-sm text-dark d-flex align-items-center justify-content-center gap-2">
-                        <i class="fas fa-edit"></i> Register For Training (2026 Batch)
+                        <i class="fas fa-edit"></i> Course Registration (2026 Batch)
                     </a>
                     <div class="d-flex gap-2">
-                        <a href="{% url 'student_login' %}" class="btn btn-light fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-2">
+                        <a href="{% url 'student_login' %}" class="btn btn-light fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small">
                             <i class="fas fa-sign-in-alt text-success"></i> Student Login
                         </a>
-                        <a href="tel:+918887839689" class="btn btn-outline-light fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-2">
+                        <a href="{% url 'faculty_login' %}" class="btn btn-dark border border-secondary fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small text-white">
+                            <i class="fas fa-chalkboard-teacher text-danger"></i> Faculty Login
+                        </a>
+                        <a href="tel:+918858298247" class="btn btn-outline-light fw-bold py-2 px-2 d-flex align-items-center justify-content-center gap-1 small">
                             <i class="fas fa-phone-alt text-warning"></i> Call
                         </a>
                     </div>
@@ -200,12 +203,4 @@
         </div>
     </div>
 
-    <!-- Multi-Color Accent Strip (Cyan, Green, Gold, Red, Orange) underneath the black bar -->
-    <div class="aktu-color-strip w-100 order-last">
-        <span class="strip-color strip-cyan"></span>
-        <span class="strip-color strip-green"></span>
-        <span class="strip-color strip-gold"></span>
-        <span class="strip-color strip-orange"></span>
-        <span class="strip-color strip-purple"></span>
-    </div>
 </nav>

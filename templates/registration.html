@@ -1,77 +1,447 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Online Registration - Maurya Technical Training 2026{% endblock %}
 
+{% block extra_css %}
+<style>
+    .registration-hero {
+        background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);
+        padding: 45px 0 35px;
+    }
+    .registration-card {
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        border: 1px solid #f0f0f0;
+    }
+    .form-section-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #8B0000;
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #FEE2E2;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .form-label {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #2b2b2b;
+        margin-bottom: 6px;
+    }
+    .form-control, .form-select {
+        border: 1.5px solid #d1d5db;
+        border-radius: 10px;
+        padding: 11px 14px;
+        font-size: 0.95rem;
+        transition: all 0.2s ease-in-out;
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: #A81B1B;
+        box-shadow: 0 0 0 3px rgba(168, 27, 27, 0.15);
+        outline: none;
+    }
+    .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+    .benefit-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #FEE2E2;
+        color: #A81B1B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+    .sidebar-card {
+        border-radius: 18px;
+        border: 1px solid #f0f0f0;
+    }
+    .whatsapp-btn {
+        background-color: #25D366;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 12px;
+        padding: 12px 20px;
+        transition: transform 0.2s;
+    }
+    .whatsapp-btn:hover {
+        background-color: #1EBE5D;
+        color: #fff;
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="py-5 text-white" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+<!-- Hero Header -->
+<div class="registration-hero text-white">
     <div class="container px-4 text-center">
-        <h1 class="fw-bold"><i class="fas fa-edit text-warning me-2"></i> Online Student Training Registration</h1>
-        <p class="lead">Book your seat for Winter / Summer Training 2026 at Maurya Technical</p>
+        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
+            <i class="fas fa-calendar-check me-1"></i> ADMISSIONS OPEN 2026 BATCH
+        </span>
+        <h1 class="fw-bold display-6 mb-2">Online Student Training Registration</h1>
+        <p class="lead fs-6 mb-3 opacity-90">Direct Seat Booking for Winter Training, Summer Training & 06 Months Industrial Training at Alambagh, Lucknow</p>
+        <div class="d-flex flex-wrap justify-content-center gap-2 text-white small">
+            <span class="badge bg-black bg-opacity-25 border border-white border-opacity-25 px-3 py-2 rounded-pill">
+                <i class="fas fa-award text-warning me-1"></i> AKTU & Govt. Recognized
+            </span>
+            <span class="badge bg-black bg-opacity-25 border border-white border-opacity-25 px-3 py-2 rounded-pill">
+                <i class="fas fa-laptop-code text-warning me-1"></i> 100% Practical & Live Project
+            </span>
+            <span class="badge bg-black bg-opacity-25 border border-white border-opacity-25 px-3 py-2 rounded-pill">
+                <i class="fas fa-briefcase text-warning me-1"></i> Placement Drive Access
+            </span>
+        </div>
     </div>
 </div>
 
 <div class="container py-5 px-4">
-    <div class="row justify-content-center">
+    <div class="row g-4">
+        
+        <!-- Left: Registration Form (8 Cols) -->
         <div class="col-lg-8">
-            <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
-                <form method="POST" action="{% url 'registration' %}">
+            <div class="registration-card p-4 p-md-5">
+
+                <!-- Success Banner if registration done -->
+                {% if messages %}
+                <div class="mb-4">
+                    {% for message in messages %}
+                    <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success border-2 border-success{% else %}alert-info{% endif %} rounded-4 p-4 shadow-sm" role="alert">
+                        <div class="d-flex align-items-start gap-3">
+                            {% if message.tags == 'success' %}
+                            <i class="fas fa-check-circle text-success fa-2x mt-1"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-success">Registration Form Submitted!</h5>
+                                <p class="mb-2">{{ message }}</p>
+                                <div class="d-flex flex-wrap gap-2 mt-3">
+                                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20have%20submitted%20my%20online%20registration%20form." target="_blank" class="btn btn-sm btn-success fw-bold rounded-pill px-3 py-2">
+                                        <i class="fab fa-whatsapp me-1"></i> Verify on WhatsApp
+                                    </a>
+                                    <a href="tel:+918887839689" class="btn btn-sm btn-outline-success fw-bold rounded-pill px-3 py-2">
+                                        <i class="fas fa-phone-alt me-1"></i> Call 8887839689
+                                    </a>
+                                </div>
+                            </div>
+                            {% else %}
+                            <i class="fas fa-exclamation-triangle text-danger fa-2x mt-1"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-danger">Please Check Form Details</h5>
+                                <p class="mb-0">{{ message }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <form method="POST" action="{% url 'registration' %}" id="studentRegistrationForm" novalidate>
                     {% csrf_token %}
                     
-                    <h4 class="fw-bold mb-4 border-bottom pb-2" style="color: var(--primary-red);">Personal & Contact Details</h4>
+                    <!-- 1. Personal Details -->
+                    <div class="form-section-title">
+                        <i class="fas fa-user-circle"></i>
+                        <span>1. Personal &amp; Contact Details</span>
+                    </div>
+
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Full Name *</label>
+                            <label class="form-label" for="id_full_name">Full Name <span class="text-danger">*</span></label>
                             {{ form.full_name }}
+                            {% if form.full_name.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.full_name.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please enter your full name.</div>
                         </div>
+
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Email Address *</label>
+                            <label class="form-label" for="id_email">Email Address <span class="text-danger">*</span></label>
                             {{ form.email }}
+                            {% if form.email.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.email.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
                         </div>
+
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Mobile Number *</label>
+                            <label class="form-label" for="id_phone">Mobile Number (Calling) <span class="text-danger">*</span></label>
                             {{ form.phone }}
+                            {% if form.phone.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.phone.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please enter your 10-digit mobile number.</div>
                         </div>
+
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">WhatsApp Number</label>
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label class="form-label mb-0" for="id_whatsapp_number">WhatsApp Number</label>
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input" type="checkbox" id="syncPhoneToWhatsApp">
+                                    <label class="form-check-label small text-muted user-select-none" for="syncPhoneToWhatsApp" style="cursor: pointer;">
+                                        Same as Mobile
+                                    </label>
+                                </div>
+                            </div>
                             {{ form.whatsapp_number }}
+                            {% if form.whatsapp_number.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.whatsapp_number.errors|striptags }}</div>
+                            {% endif %}
+                            <small class="text-muted" style="font-size: 0.78rem;">For batch updates, syllabus &amp; project notes.</small>
                         </div>
                     </div>
 
-                    <h4 class="fw-bold mb-4 border-bottom pb-2" style="color: var(--primary-red);">Academic & Course Selection</h4>
+                    <!-- 2. Academic Information -->
+                    <div class="form-section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>2. Academic Background</span>
+                    </div>
+
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">College / Institute Name *</label>
+                            <label class="form-label" for="id_college">College / Institute Name <span class="text-danger">*</span></label>
                             {{ form.college }}
+                            {% if form.college.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.college.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please enter your college or university name.</div>
                         </div>
+
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Branch / Course *</label>
+                            <label class="form-label" for="id_branch">Branch / Stream <span class="text-danger">*</span></label>
                             {{ form.branch }}
+                            {% if form.branch.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.branch.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please select your branch or stream.</div>
                         </div>
+
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Year of Study *</label>
+                            <label class="form-label" for="id_year_of_study">Year of Study <span class="text-danger">*</span></label>
                             {{ form.year_of_study }}
+                            {% if form.year_of_study.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.year_of_study.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please select your year of study.</div>
                         </div>
+
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">City / Location</label>
+                            <label class="form-label" for="id_city">City / Current Location</label>
                             {{ form.city }}
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Course Interested *</label>
-                            {{ form.course_interested }}
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Training Batch / Program *</label>
-                            {{ form.training_type }}
+                            {% if form.city.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.city.errors|striptags }}</div>
+                            {% endif %}
                         </div>
                     </div>
 
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-3 shadow">
-                            <i class="fas fa-paper-plane me-2"></i> Submit Registration
+                    <!-- 3. Course & Batch Selection -->
+                    <div class="form-section-title">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>3. Course &amp; Training Program Preference</span>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label" for="id_course_interested">Course Interested <span class="text-danger">*</span></label>
+                            {{ form.course_interested }}
+                            {% if form.course_interested.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.course_interested.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please choose the course you want to enroll in.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="id_training_type">Training Batch / Program <span class="text-danger">*</span></label>
+                            {{ form.training_type }}
+                            {% if form.training_type.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.training_type.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please choose your training duration / program.</div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button Section -->
+                    <div class="pt-2 text-center">
+                        <button type="submit" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-3 shadow-lg rounded-pill d-inline-flex align-items-center gap-2" style="font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane text-danger"></i> Submit Registration &amp; Book Seat
                         </button>
+                        <p class="small text-muted mt-3 mb-0">
+                            <i class="fas fa-lock text-success me-1"></i> <strong>100% Free Seat Booking:</strong> No registration fee is charged to fill this form. Our counselor will contact you to verify your batch timing.
+                        </p>
                     </div>
                 </form>
             </div>
         </div>
+
+        <!-- Right: Information & Helpline Sidebar (4 Cols) -->
+        <div class="col-lg-4">
+            
+            <!-- Helpline Card -->
+            <div class="card sidebar-card shadow-sm p-4 mb-4 bg-white">
+                <h5 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+                    <i class="fas fa-headset text-danger"></i> Admission Helpline
+                </h5>
+                <p class="text-muted small mb-3">Have questions about courses, fees, or batch timings? Talk directly to our admission counselors:</p>
+                
+                <div class="d-grid gap-2 mb-3">
+                    <a href="tel:+918858298247" class="btn btn-outline-danger fw-bold py-2 d-flex align-items-center justify-content-center gap-2 rounded-pill">
+                        <i class="fas fa-phone-alt"></i> +91 8858298247
+                    </a>
+                    <a href="tel:+917080838689" class="btn btn-outline-danger fw-bold py-2 d-flex align-items-center justify-content-center gap-2 rounded-pill">
+                        <i class="fas fa-phone-alt"></i> +91 7080838689
+                    </a>
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20inquire%20about%20industrial%20training%20registration." target="_blank" class="whatsapp-btn text-decoration-none text-center shadow-sm">
+                        <i class="fab fa-whatsapp me-2 fs-5"></i> Chat on WhatsApp
+                    </a>
+                </div>
+
+                <hr class="text-muted">
+                <div class="small text-muted">
+                    <p class="mb-1"><i class="fas fa-map-marker-alt text-danger me-2"></i> <strong>Campus:</strong> Sector-B, Near Alambagh Metro Station, Lucknow, UP</p>
+                    <p class="mb-0"><i class="fas fa-clock text-danger me-2"></i> <strong>Hours:</strong> Mon - Sat: 9:00 AM - 7:00 PM</p>
+                </div>
+            </div>
+
+            <!-- Training Highlights Card -->
+            <div class="card sidebar-card shadow-sm p-4 mb-4 bg-white">
+                <h5 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+                    <i class="fas fa-star text-warning"></i> Training Highlights
+                </h5>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-code"></i></div>
+                    <div>
+                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Live Major & Minor Projects</h6>
+                        <small class="text-muted">Develop industry-standard working projects for college submission.</small>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
+                    <div>
+                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Dual Industry Certificate</h6>
+                        <small class="text-muted">Govt recognized ISO &amp; AKTU approved training certificates.</small>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-user-tie"></i></div>
+                    <div>
+                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Job Fair & Placement Drive</h6>
+                        <small class="text-muted">Direct interviews with 50+ IT & core recruitment partners.</small>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-wallet"></i></div>
+                    <div>
+                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Affordable Installments</h6>
+                        <small class="text-muted">Zero percent interest installment options available for students.</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Batch Timing Note -->
+            <div class="card sidebar-card shadow-sm p-4 bg-light border-0">
+                <h6 class="fw-bold text-danger mb-2"><i class="fas fa-info-circle me-1"></i> Batch Timing Notice</h6>
+                <p class="small text-muted mb-0">
+                    New batches for <strong>Winter Training 2026</strong> start every Monday. Seats are allocated on a first-come, first-served basis due to limited workstation capacity in the labs.
+                </p>
+            </div>
+
+        </div>
+
     </div>
 </div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sync Phone to WhatsApp
+        const phoneInput = document.getElementById('id_phone');
+        const whatsappInput = document.getElementById('id_whatsapp_number');
+        const syncCheck = document.getElementById('syncPhoneToWhatsApp');
+
+        if (phoneInput && whatsappInput && syncCheck) {
+            syncCheck.addEventListener('change', function() {
+                if (this.checked) {
+                    whatsappInput.value = phoneInput.value;
+                }
+            });
+
+            phoneInput.addEventListener('input', function() {
+                if (syncCheck.checked) {
+                    whatsappInput.value = this.value;
+                }
+            });
+        }
+
+        // Smooth Form Validation UX without jarring browser popups
+        const form = document.getElementById('studentRegistrationForm');
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+                let firstInvalidEl = null;
+
+                const requiredIds = [
+                    'id_full_name',
+                    'id_email',
+                    'id_phone',
+                    'id_college',
+                    'id_branch',
+                    'id_year_of_study',
+                    'id_course_interested',
+                    'id_training_type'
+                ];
+
+                requiredIds.forEach(function(id) {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const val = el.value.trim();
+                        if (!val) {
+                            el.classList.add('is-invalid');
+                            isValid = false;
+                            if (!firstInvalidEl) firstInvalidEl = el;
+                        } else {
+                            el.classList.remove('is-invalid');
+                        }
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if (firstInvalidEl) {
+                        firstInvalidEl.focus();
+                        firstInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            });
+
+            // Remove invalid class on user typing / selection
+            form.querySelectorAll('input, select').forEach(function(input) {
+                input.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+                input.addEventListener('change', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+            });
+        }
+    });
+</script>
 {% endblock %}
