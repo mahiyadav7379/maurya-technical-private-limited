@@ -19,10 +19,34 @@ body {
     overflow-x: hidden;
 }
 
+/* --- GLOBAL CONTAINER LAYOUT OPTIMIZATION (Eliminate Empty Left/Right Spaces) --- */
+@media (min-width: 1200px) {
+    .container, 
+    .container-lg, 
+    .container-md, 
+    .container-sm, 
+    .container-xl, 
+    .container-xxl {
+        max-width: 95% !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container, 
+    .container-lg, 
+    .container-md, 
+    .container-sm, 
+    .container-xl, 
+    .container-xxl {
+        max-width: 94% !important;
+    }
+}
+
 a {
     text-decoration: none;
     transition: all 0.3s ease;
 }
+
 
 /* --- FRAMER MOTION KEYFRAME ANIMATIONS --- */
 @keyframes float {
@@ -482,14 +506,15 @@ a {
 
 .floating-bottom-right {
     position: fixed;
-    bottom: 25px;
-    right: 20px;
+    bottom: 95px;
+    right: 25px;
     z-index: 1040;
     display: flex;
     flex-direction: column;
     gap: 12px;
     align-items: flex-end;
 }
+
 
 .btn-top {
     width: 44px;
