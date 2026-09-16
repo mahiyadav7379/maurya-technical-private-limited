@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 import os
+import shutil
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -103,12 +105,28 @@ if DATABASE_URL:
             }
         }
 else:
+    # On Vercel / serverless environment where deployment directory is read-only,
+    # copy db.sqlite3 to /tmp/db.sqlite3 so database writes (logins, sessions, forms) succeed without error.
+    if os.environ.get('VERCEL') or os.environ.get('AWS_LAMBDA_FUNCTION_NAME') or os.environ.get('VERCEL_ENV'):
+        tmp_db = Path('/tmp') / 'db.sqlite3'
+        orig_db = BASE_DIR / 'db.sqlite3'
+        if orig_db.exists():
+            if not tmp_db.exists() or tmp_db.stat().st_size == 0:
+                try:
+                    shutil.copy2(orig_db, tmp_db)
+                except Exception:
+                    pass
+        db_path = tmp_db if tmp_db.exists() else orig_db
+    else:
+        db_path = BASE_DIR / 'db.sqlite3'
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'NAME': db_path,
         }
     }
+
 
 
 
