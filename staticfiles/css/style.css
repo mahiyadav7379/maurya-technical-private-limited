@@ -2924,11 +2924,24 @@ html {
     position: relative;
 }
 
+.brand-left-group {
+    min-width: 0;
+}
+
+.brand-titles-column {
+    min-width: 0;
+}
+
 .brand-header-emblem {
-    height: 70px;
+    height: 68px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    transition: height 0.25s ease;
+}
+
+.brand-title-row {
+    white-space: nowrap;
 }
 
 .brand-word-maurya {
@@ -2958,6 +2971,7 @@ html {
     border-radius: 10px;
     letter-spacing: 0.5px;
     line-height: 1.2;
+    white-space: nowrap;
 }
 
 .brand-location-sub {
@@ -2966,11 +2980,13 @@ html {
     font-weight: 700;
     color: #94a3b8;
     letter-spacing: 1.2px;
+    white-space: nowrap;
 }
 
 .brand-cert-line {
     font-size: 10.5px;
     color: #94a3b8;
+    white-space: nowrap;
 }
 
 /* Search Box Pill */
@@ -3028,6 +3044,7 @@ html {
     font-size: 15px;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    flex-shrink: 0;
 }
 
 .brand-social-circle:hover {
@@ -3039,6 +3056,102 @@ html {
 .bsc-yt { background-color: #ff0000; }
 .bsc-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 .bsc-wa { background-color: #25d366; }
+
+/* Responsive Header Branding for Mobile & Tablets */
+@media (max-width: 991.98px) {
+    .brand-header-emblem {
+        height: 52px;
+    }
+    .brand-word-maurya,
+    .brand-word-tech {
+        font-size: 20px;
+        letter-spacing: 0.5px;
+    }
+    .brand-location-sub {
+        font-size: 10px;
+        letter-spacing: 0.8px;
+    }
+    .brand-cert-line {
+        font-size: 9.5px;
+    }
+    .brand-social-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .header-tier-brand {
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+    }
+    .brand-header-emblem {
+        height: 44px;
+    }
+    .brand-word-maurya,
+    .brand-word-tech {
+        font-size: 16.5px;
+        letter-spacing: 0.3px;
+    }
+    .brand-badge-pvt-red {
+        font-size: 8px;
+        padding: 1px 5px;
+    }
+    .brand-location-sub {
+        font-size: 8.5px;
+        letter-spacing: 0.4px;
+    }
+    .brand-cert-line {
+        font-size: 8px;
+    }
+    .brand-social-circle {
+        width: 25px;
+        height: 25px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 380px) {
+    .brand-header-emblem {
+        height: 38px;
+    }
+    .brand-word-maurya,
+    .brand-word-tech {
+        font-size: 14.5px;
+        letter-spacing: 0.1px;
+    }
+    .brand-location-sub {
+        font-size: 8px;
+        letter-spacing: 0.1px;
+    }
+    .brand-social-circle {
+        width: 22px;
+        height: 22px;
+        font-size: 10px;
+    }
+}
+
+/* Mobile Navbar Brand Title Sizing */
+.mobile-navbar-brand {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 55px);
+}
+
+@media (max-width: 575.98px) {
+    .mobile-navbar-brand {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 380px) {
+    .mobile-navbar-brand {
+        font-size: 13px;
+    }
+}
 
 /* --- TIER 3: MAIN NAVBAR --- */
 .header-tier-navbar {
