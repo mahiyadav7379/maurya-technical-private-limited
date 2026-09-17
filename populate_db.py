@@ -41,7 +41,7 @@ def populate():
             "placed_year": 2026
         },
         {
-            "student_name": "Rahul Maurya",
+            "student_name": "Neha Maurya",
             "course_taken": "Python with Django",
             "company_name": "TCS (Tata Consultancy Services)",
             "designation": "Backend Engineer",
