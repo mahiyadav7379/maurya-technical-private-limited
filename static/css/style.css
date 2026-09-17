@@ -3242,3 +3242,19 @@ html {
     border-color: #ffffff;
     transform: translateY(-1px);
 }
+
+/* Medium Desktop & Phone Desktop Site Mode (992px - 1199px) Sizing */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .header-nav-link {
+        font-size: 10px !important;
+        padding: 8px 4px !important;
+    }
+    .header-nav-home {
+        padding: 5px 10px !important;
+    }
+    .header-action-register-btn,
+    .header-action-login-btn {
+        font-size: 9.5px !important;
+        padding: 5px 10px !important;
+    }
+}

@@ -1,27 +1,26 @@
 <!-- Tier 3: Sleek Navigation Bar (Matches Reference Design) -->
-<nav class="navbar navbar-expand-xl aktu-navbar header-tier-navbar sticky-top p-0">
+<nav class="navbar navbar-expand-lg aktu-navbar header-tier-navbar sticky-top p-0">
     <div class="container px-2 px-sm-3 px-md-4 position-relative">
         
-        <!-- Mobile Brand Title (Visible only on mobile toggle collapse) -->
-        <a class="navbar-brand d-xl-none text-white fw-bold py-2 d-flex align-items-center gap-1 gap-sm-2 mobile-navbar-brand" href="{% url 'home' %}">
-            <span class="fw-black text-danger">MAURYA</span>
-            <span class="fw-bold text-white">TECHNICAL</span>
-        </a>
-
-        <!-- Mobile Hamburger Toggle Button -->
-        <button class="navbar-toggler border-0 shadow-none px-2 py-2 text-white aktu-toggler" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#aktuNavbarNav" 
-                aria-controls="aktuNavbarNav" 
-                aria-expanded="false" 
-                aria-label="Toggle navigation">
-            <i class="fas fa-bars fs-5 text-white"></i>
-        </button>
+        <!-- Mobile Navigation Header Bar (Clean title replacing duplicate brand text) -->
+        <div class="d-flex justify-content-between align-items-center w-100 d-lg-none py-2">
+            <span class="text-white-50 small fw-bold tracking-wide d-flex align-items-center gap-1">
+                <i class="fas fa-bars text-danger me-1"></i> NAVIGATION MENU
+            </span>
+            <button class="navbar-toggler border-0 shadow-none px-2 py-1 text-white aktu-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#aktuNavbarNav" 
+                    aria-controls="aktuNavbarNav" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <i class="fas fa-bars fs-5 text-white"></i>
+            </button>
+        </div>
 
         <!-- Navbar Links Menu -->
         <div class="collapse navbar-collapse" id="aktuNavbarNav">
-            <ul class="navbar-nav align-items-xl-center aktu-nav-list my-2 my-xl-0">
+            <ul class="navbar-nav align-items-lg-center aktu-nav-list my-2 my-lg-0">
                 
                 <!-- 1. HOME (Red Tab Button) -->
                 <li class="nav-item">
@@ -38,7 +37,7 @@
                        role="button" 
                        data-bs-toggle="dropdown" 
                        aria-expanded="false">
-                        <i class="fas fa-university d-xl-none me-2 text-warning"></i>ABOUT US
+                        <i class="fas fa-university d-lg-none me-2 text-warning"></i>ABOUT US
                     </a>
                     <ul class="dropdown-menu aktu-dropdown-menu" aria-labelledby="aktuAboutDropdown">
                         <li>
@@ -67,7 +66,7 @@
                        role="button" 
                        data-bs-toggle="dropdown" 
                        aria-expanded="false">
-                        <i class="fas fa-graduation-cap d-xl-none me-2 text-warning"></i>TRAININGS &amp; COURSES
+                        <i class="fas fa-graduation-cap d-lg-none me-2 text-warning"></i>TRAININGS &amp; COURSES
                     </a>
                     <ul class="dropdown-menu aktu-dropdown-menu aktu-dropdown-wide" aria-labelledby="aktuTrainingsDropdown">
                         <li class="dropdown-header text-uppercase fw-bold text-danger border-bottom pb-1 mb-2">
@@ -106,28 +105,28 @@
                 <!-- 4. FEE STRUCTURE -->
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name in 'fees web_design' %}active{% endif %}" href="{% url 'fees' %}">
-                        <i class="fas fa-receipt d-xl-none me-2 text-warning"></i>FEE STRUCTURE
+                        <i class="fas fa-receipt d-lg-none me-2 text-warning"></i>FEE STRUCTURE
                     </a>
                 </li>
 
                 <!-- 5. PLACEMENTS -->
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'placements' %}active{% endif %}" href="{% url 'placements' %}">
-                        <i class="fas fa-award d-xl-none me-2 text-warning"></i>PLACEMENTS
+                        <i class="fas fa-award d-lg-none me-2 text-warning"></i>PLACEMENTS
                     </a>
                 </li>
 
                 <!-- 6. JOB FAIR -->
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'job_fair' %}active{% endif %}" href="{% url 'job_fair' %}">
-                        <i class="fas fa-briefcase d-xl-none me-2 text-warning"></i>JOB FAIR 2026
+                        <i class="fas fa-briefcase d-lg-none me-2 text-warning"></i>JOB FAIR 2026
                     </a>
                 </li>
 
                 <!-- 7. OUR BRANCHES -->
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'branches' %}active{% endif %}" href="{% url 'branches' %}">
-                        <i class="fas fa-map-marker-alt d-xl-none me-2 text-warning"></i>OUR BRANCHES
+                        <i class="fas fa-map-marker-alt d-lg-none me-2 text-warning"></i>OUR BRANCHES
                     </a>
                 </li>
 
@@ -139,7 +138,7 @@
                        role="button" 
                        data-bs-toggle="dropdown" 
                        aria-expanded="false">
-                        <i class="fas fa-project-diagram d-xl-none me-2 text-warning"></i>PROJECTS &amp; SERVICES
+                        <i class="fas fa-project-diagram d-lg-none me-2 text-warning"></i>PROJECTS &amp; SERVICES
                     </a>
                     <ul class="dropdown-menu aktu-dropdown-menu" aria-labelledby="aktuProjectsDropdown">
                         <li>
@@ -158,20 +157,20 @@
                 <!-- 9. GALLERY -->
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">
-                        <i class="fas fa-images d-xl-none me-2 text-warning"></i>GALLERY
+                        <i class="fas fa-images d-lg-none me-2 text-warning"></i>GALLERY
                     </a>
                 </li>
 
                 <!-- 10. CONTACT US -->
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">
-                        <i class="fas fa-phone-alt d-xl-none me-2 text-warning"></i>CONTACT US
+                        <i class="fas fa-phone-alt d-lg-none me-2 text-warning"></i>CONTACT US
                     </a>
                 </li>
             </ul>
 
             <!-- Desktop Right Quick Actions (COURSE REGISTRATION & LOGIN) -->
-            <div class="d-none d-xl-flex align-items-center gap-2 ms-auto py-1">
+            <div class="d-none d-lg-flex align-items-center gap-2 ms-auto py-1">
                 <a href="{% url 'registration' %}" class="header-action-register-btn">
                     <i class="far fa-edit me-1"></i> COURSE REGISTRATION
                 </a>
@@ -181,7 +180,7 @@
             </div>
 
             <!-- Mobile Drawer Quick Actions (Small screens) -->
-            <div class="d-xl-none mobile-nav-actions my-3 pt-3 border-top border-white-50">
+            <div class="d-lg-none mobile-nav-actions my-3 pt-3 border-top border-white-50">
                 <div class="d-grid gap-2">
                     <a href="{% url 'registration' %}" class="btn btn-warning fw-bold py-2 shadow-sm text-dark d-flex align-items-center justify-content-center gap-2">
                         <i class="fas fa-edit"></i> Course Registration (2026 Batch)
@@ -204,3 +203,4 @@
     </div>
 
 </nav>
+
