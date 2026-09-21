@@ -45,18 +45,18 @@
                 <form method="POST" action="{% url 'faculty_login' %}">
                     {% csrf_token %}
                     
-                    <!-- Faculty ID / Number -->
+                    <!-- Faculty ID -->
                     <div class="mb-3">
                         <label class="form-label fw-bold text-dark">
-                            <i class="fas fa-id-badge text-danger me-1"></i> Faculty ID / Number
+                            <i class="fas fa-id-badge text-danger me-1"></i> Faculty ID
                         </label>
                         <div class="input-group">
                             <span class="input-group-text bg-light border-end-0">
                                 <i class="fas fa-user-tie text-muted"></i>
                             </span>
-                            <input type="text" name="faculty_id" class="form-control form-control-lg border-start-0 ps-0" placeholder="Enter Faculty ID / Mobile Number" required autocomplete="username">
+                            <input type="text" name="faculty_id" class="form-control form-control-lg border-start-0 ps-0" placeholder="Enter Faculty ID" required autocomplete="username">
                         </div>
-                        <small class="text-muted" style="font-size: 0.75rem;">Enter your assigned Maurya Technical Faculty ID (e.g. MT-FAC-2026) or registered mobile.</small>
+                        <small class="text-muted" style="font-size: 0.75rem;">Enter your assigned Maurya Technical Faculty ID (e.g. MT-FAC-2026).</small>
                     </div>
 
                     <!-- Password -->

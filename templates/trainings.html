@@ -15,9 +15,16 @@
         <div class="col-lg-4 col-md-6">
             <div class="batch-card">
                 <div class="batch-poster">
-                    <span class="poster-header-badge">{{ course.badge_text }}</span>
-                    <h3 class="poster-title text-white mt-2">{{ course.title }}</h3>
-                    <span class="poster-duration-badge mt-2">{{ course.get_duration_display }}</span>
+                    <div>
+                        <span class="poster-header-badge">{{ course.badge_text }}</span>
+                        <h3 class="poster-title text-white mt-2">{{ course.title }}</h3>
+                        <div>
+                            <a href="{% url 'course_detail' course.slug %}" class="poster-details-btn" style="background-color: #000000 !important; background: #000000 !important; color: #ffffff !important; display: inline-block !important; padding: 5px 16px !important; border-radius: 8px !important; text-decoration: none !important; font-weight: 800 !important; font-size: 13.5px !important;">Details</a>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="poster-duration-badge mt-2">{{ course.get_duration_display }}</span>
+                    </div>
                 </div>
                 <div class="batch-card-body">
                     <p class="text-muted small mb-3">{{ course.short_description }}</p>

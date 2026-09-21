@@ -10,41 +10,20 @@
                     <i class="fas fa-map-marker-alt text-danger me-1"></i> Alambagh, Lucknow
                 </a>
                 <a href="tel:+918858298247" class="topbar-link">
-                    <i class="fas fa-phone-alt text-danger me-1"></i> +91 88582 98247
+                    <i class="fas fa-phone text-danger me-1"></i> +91 88582 98247
                 </a>
                 <a href="mailto:director@mauryatechnical.in" class="topbar-link d-none d-sm-inline-flex">
                     <i class="fas fa-envelope text-danger me-1"></i> director@mauryatechnical.in
                 </a>
             </div>
 
-            <!-- Right: Quick Links with Icons -->
+            <!-- Right: Quick Portal Links (No Duplication with Main Navbar) -->
             <div class="topbar-quick-links d-none d-lg-flex align-items-center flex-wrap gap-3 ms-auto">
-                <a href="{% url 'student_login' %}" class="topbar-link">
-                    <i class="fas fa-user-lock me-1 text-muted"></i> Student Login
+                <a href="{% url 'student_login' %}" class="topbar-link fw-bold text-white">
+                    <i class="fas fa-user-lock me-1 text-danger"></i> Student Login
                 </a>
-                <a href="{% url 'faculty_login' %}" class="topbar-link">
-                    <i class="fas fa-chalkboard-teacher me-1 text-muted"></i> Faculty Login
-                </a>
-                <a href="{% url 'job_fair' %}" class="topbar-link">
-                    <i class="fas fa-briefcase me-1 text-muted"></i> Job Fair 2026
-                </a>
-                <a href="{% url 'registration' %}" class="topbar-link">
-                    <i class="far fa-edit me-1 text-muted"></i> Course Registration
-                </a>
-                <a href="{% url 'gallery' %}" class="topbar-link">
-                    <i class="far fa-images me-1 text-muted"></i> Photo Gallery
-                </a>
-                <a href="{% url 'branches' %}" class="topbar-link">
-                    <i class="fas fa-map-marker-alt me-1 text-muted"></i> Our Branches
-                </a>
-                <a href="{% url 'placements' %}" class="topbar-link">
-                    <i class="fas fa-trophy me-1 text-muted"></i> Placements
-                </a>
-                <a href="{% url 'fees' %}" class="topbar-link">
-                    <i class="fas fa-file-invoice-dollar me-1 text-muted"></i> Fee Structure
-                </a>
-                <a href="{% url 'contact' %}" class="topbar-link">
-                    <i class="fas fa-headset me-1 text-muted"></i> Contact Us
+                <a href="{% url 'faculty_login' %}" class="topbar-link fw-bold text-white">
+                    <i class="fas fa-chalkboard-teacher me-1 text-warning"></i> Faculty Login
                 </a>
             </div>
 

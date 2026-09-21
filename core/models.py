@@ -123,12 +123,12 @@ class ContactMessage(models.Model):
     name = models.CharField(max_length=150)
     email = models.EmailField()
     phone = models.CharField(max_length=15)
-    subject = models.CharField(max_length=200)
+    subject = models.CharField(max_length=200, blank=True, null=True, default='General Inquiry')
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.subject}"
+        return f"{self.name} - {self.subject or 'General Inquiry'}"
 
 
 class BlogPost(models.Model):
@@ -232,4 +232,32 @@ class SalarySlip(models.Model):
 
     def __str__(self):
         return f"{self.faculty.name} - {self.month_year} - ₹{self.net_salary}"
+
+
+class PopUpLead(models.Model):
+    LEAD_TYPE_CHOICES = (
+        ('job_seeking', 'Job Assistance & Placement'),
+        ('btech_counselling', 'B.Tech / Diploma Counselling'),
+        ('general_training', 'General Training Inquiry'),
+    )
+    STATUS_CHOICES = (
+        ('pending', 'Pending / New'),
+        ('contacted', 'Contacted by Counselor'),
+        ('enrolled', 'Enrolled'),
+        ('closed', 'Closed'),
+    )
+    name = models.CharField(max_length=150)
+    phone = models.CharField(max_length=15)
+    email = models.EmailField(blank=True, null=True)
+    lead_type = models.CharField(max_length=30, choices=LEAD_TYPE_CHOICES, default='job_seeking')
+    branch_or_stream = models.CharField(max_length=150, blank=True, null=True)
+    college_or_city = models.CharField(max_length=150, blank=True, null=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.name} ({self.get_lead_type_display()}) - {self.phone}"
 

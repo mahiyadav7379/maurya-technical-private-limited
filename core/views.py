@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.http import JsonResponse
 from django.utils import timezone
 from django.db.models import Q
 from .models import (
     TrainingCourse, Placement, TeamMember, Branch, 
     Certificate, Registration, ContactMessage, BlogPost,
-    Faculty, FacultyAttendance, SalarySlip
+    Faculty, FacultyAttendance, SalarySlip, PopUpLead
 )
 from .forms import RegistrationForm, ContactForm, CertificateSearchForm
+from .utils import verify_recaptcha
 
 def home(request):
     courses = TrainingCourse.objects.filter(is_active=True)[:8]
@@ -243,7 +245,9 @@ def python_web_design_redirect(request):
 def registration(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-        if form.is_valid():
+        if not verify_recaptcha(request):
+            messages.error(request, "Please verify that you are not a robot (Google CAPTCHA required).")
+        elif form.is_valid():
             reg = form.save()
             messages.success(request, f"Congratulations {reg.full_name}! Your registration for {reg.course_interested} ({reg.get_training_type_display() if hasattr(reg, 'get_training_type_display') else reg.training_type}) has been received successfully. Our admission counselor will contact you shortly!")
             return redirect('registration')
@@ -281,7 +285,9 @@ def job_fair(request):
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
-        if form.is_valid():
+        if not verify_recaptcha(request):
+            messages.error(request, "Please verify that you are not a robot (Google CAPTCHA required).")
+        elif form.is_valid():
             form.save()
             messages.success(request, "Thank you for contacting Maurya Technical! We have received your query and will reply soon.")
             return redirect('contact')
@@ -418,7 +424,7 @@ def faculty_login(request):
             messages.success(request, f"Welcome to Maurya Faculty Portal, {faculty.name}!")
             return redirect('faculty_dashboard')
         else:
-            messages.error(request, "Invalid Faculty ID / Mobile Number or Password. Please try again or contact IT Admin.")
+            messages.error(request, "Invalid Faculty ID or Password. Please try again or contact IT Admin.")
 
     return render(request, 'faculty_login.html')
 
@@ -539,5 +545,34 @@ def faculty_logout(request):
     request.session.pop('faculty_name', None)
     messages.success(request, "You have been logged out of the Faculty Portal.")
     return redirect('faculty_login')
+
+
+def popup_lead_submit(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        email = request.POST.get('email', '').strip()
+        lead_type = request.POST.get('lead_type', 'job_seeking').strip()
+        branch = request.POST.get('branch_or_stream', '').strip()
+        city = request.POST.get('college_or_city', '').strip()
+
+        if not name or not phone or len(phone) < 10:
+            return JsonResponse({'status': 'error', 'message': 'Please enter your full name and valid 10-digit mobile phone number.'}, status=400)
+
+        lead = PopUpLead.objects.create(
+            name=name,
+            phone=phone,
+            email=email,
+            lead_type=lead_type,
+            branch_or_stream=branch,
+            college_or_city=city,
+        )
+
+        return JsonResponse({
+            'status': 'success',
+            'message': f"Thank you {name}! Your inquiry for {lead.get_lead_type_display()} has been registered. Our admission counselor will contact you shortly on {phone}!"
+        })
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=405)
 
 

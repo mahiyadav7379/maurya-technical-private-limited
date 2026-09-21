@@ -13,9 +13,9 @@
         <div class="row g-4 g-lg-5 align-items-center">
             <!-- Left Hero Content -->
             <div class="col-lg-6 d-flex flex-column" data-aos="fade-right">
-                <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill bg-light border border-danger-subtle shadow-sm mb-3 align-self-start max-w-100">
-                    <span class="badge bg-danger rounded-pill px-2 py-1"><i class="fas fa-shield-alt text-warning me-1"></i> MSME Registered</span>
-                    <span class="text-dark fw-bold small text-truncate">Govt. Registered Design Service Provider &amp; Training Institute</span>
+                <div class="hero-badge-pill d-inline-flex align-items-center flex-wrap gap-2 px-3 py-2 rounded-4 rounded-sm-pill bg-light border border-danger-subtle shadow-sm mb-3 align-self-start mw-100">
+                    <span class="badge bg-danger rounded-pill px-2 py-1 flex-shrink-0"><i class="fas fa-shield-alt text-warning me-1"></i> MSME Registered</span>
+                    <span class="hero-badge-text text-dark fw-bold small lh-sm">Govt. Registered Design Service Provider &amp; Training Institute</span>
                 </div>
 
                 <h1 class="fw-black text-dark mb-3 hero-headline">
@@ -180,7 +180,6 @@
                     </div>
                     <div class="card-body bg-dark text-white py-2 px-3 d-flex flex-wrap align-items-center justify-content-between gap-2 flex-shrink-0">
                         <h6 class="fw-bold mb-0 text-warning small"><i class="fas fa-door-open me-1"></i> Maurya Technical Campus &bull; Alambagh, Lucknow</h6>
-                        <span class="badge bg-danger bg-opacity-75 text-white small" style="font-size: 0.72rem;"><i class="fas fa-sync-alt me-1"></i> Auto-Scroll (Hover to Pause)</span>
                     </div>
                 </div>
 
@@ -649,14 +648,16 @@
     <div class="ticker-label">
         <i class="fas fa-bullhorn me-1"></i> LATEST UPDATES
     </div>
-    <div class="ticker-content">
-        Admissions Open for Winter & Summer Industrial Training 2026 at Maurya Technical Private Limited (Alambagh Lucknow) &nbsp;&bull;&nbsp; 
-        Under the Leadership of Founder & Director Vivek Kushawaha &nbsp;&bull;&nbsp; 
-        Follow Us on Instagram: @maurya_technical_pvt_ltd &nbsp;&bull;&nbsp; 
-        Connect on LinkedIn: Maurya Technical Private Limited &nbsp;&bull;&nbsp; 
-        Congratulations Annu Singh, Kanti Pal & Saloni Katara Placed at NIVRAJ & Vartax Global Technologies &nbsp;&bull;&nbsp; 
-        Subscribe Our Official YouTube: @maurya_technical_lucknow &nbsp;&bull;&nbsp; 
-        WhatsApp: +91 88878 39689!
+    <div class="ticker-wrap">
+        <div class="ticker-content">
+            Admissions Open for Winter &amp; Summer Industrial Training 2026 at Maurya Technical Private Limited (Alambagh Lucknow) &nbsp;&bull;&nbsp; 
+            Under the Leadership of Founder &amp; Director Vivek Kushawaha &nbsp;&bull;&nbsp; 
+            Follow Us on Instagram: @maurya_technical_pvt_ltd &nbsp;&bull;&nbsp; 
+            Connect on LinkedIn: Maurya Technical Private Limited &nbsp;&bull;&nbsp; 
+            Congratulations Annu Singh, Kanti Pal &amp; Saloni Katara Placed at NIVRAJ &amp; Vartax Global Technologies &nbsp;&bull;&nbsp; 
+            Subscribe Our Official YouTube: @maurya_technical_lucknow &nbsp;&bull;&nbsp; 
+            WhatsApp: +91 88878 39689!
+        </div>
     </div>
 </div>
 
@@ -685,7 +686,7 @@
                                 </span>
                             </div>
                             <div class="d-flex justify-content-center gap-1 flex-wrap">
-                                <a href="https://www.linkedin.com/company/maurya-technical-private-limited/home/" target="_blank" class="btn btn-linkedin btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
+                                <a href="https://www.linkedin.com/in/vivek-kushawaha-696609234?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn btn-linkedin btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
                                     <i class="fab fa-linkedin me-1"></i> LinkedIn
                                 </a>
                                 <a href="https://www.instagram.com/maurya_technical_pvt_ltd?utm_source=qr&stkn=dnV6ODdmM3MwN2pj" target="_blank" class="btn btn-instagram btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
@@ -836,7 +837,7 @@
                                     <i class="fab fa-whatsapp me-1"></i> WhatsApp
                                 </a>
                                 <a href="tel:+918887839689" class="btn btn-outline-danger btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
-                                    <i class="fas fa-phone-alt me-1"></i> Call
+                                    <i class="fas fa-phone me-1"></i> Call
                                 </a>
                             </div>
                         </div>
@@ -960,7 +961,7 @@
                                     <i class="fab fa-whatsapp me-1"></i> WhatsApp
                                 </a>
                                 <a href="tel:+918887839689" class="btn btn-outline-danger btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
-                                    <i class="fas fa-phone-alt me-1"></i> Call
+                                    <i class="fas fa-phone me-1"></i> Call
                                 </a>
                             </div>
                         </div>
@@ -1084,7 +1085,7 @@
                                     <i class="fab fa-whatsapp me-1"></i> WhatsApp
                                 </a>
                                 <a href="tel:8858298247" class="btn btn-outline-danger btn-sm fw-bold px-2 py-1 shadow-sm" style="font-size: 0.75rem;">
-                                    <i class="fas fa-phone-alt me-1"></i> Call
+                                    <i class="fas fa-phone me-1"></i> Call
                                 </a>
                             </div>
                         </div>
@@ -1824,6 +1825,9 @@
                         <div>
                             <span class="poster-header-badge">{{ course.badge_text }}</span>
                             <h3 class="poster-title text-white mt-2">{{ course.title }}</h3>
+                            <div>
+                                <a href="{% url 'course_detail' course.slug %}" class="poster-details-btn" style="background-color: #000000 !important; background: #000000 !important; color: #ffffff !important; display: inline-block !important; padding: 5px 16px !important; border-radius: 8px !important; text-decoration: none !important; font-weight: 800 !important; font-size: 13.5px !important;">Details</a>
+                            </div>
                         </div>
                         <div>
                             <p class="small text-white-50 mb-2">{{ course.category }}</p>

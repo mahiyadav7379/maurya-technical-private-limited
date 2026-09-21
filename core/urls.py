@@ -26,4 +26,5 @@ urlpatterns = [
     path('faculty/dashboard/', views.faculty_dashboard, name='faculty_dashboard'),
     path('faculty/salary-slip/<int:slip_id>/', views.salary_slip_view, name='salary_slip_view'),
     path('faculty/logout/', views.faculty_logout, name='faculty_logout'),
+    path('api/popup-lead/', views.popup_lead_submit, name='popup_lead_submit'),
 ]

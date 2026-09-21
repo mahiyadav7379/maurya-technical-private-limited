@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     TrainingCourse, Placement, TeamMember, Branch, 
     Certificate, Registration, ContactMessage, BlogPost,
-    Faculty, FacultyAttendance, SalarySlip
+    Faculty, FacultyAttendance, SalarySlip, PopUpLead
 )
 
 @admin.register(TrainingCourse)
@@ -78,4 +78,11 @@ class SalarySlipAdmin(admin.ModelAdmin):
     list_display = ('faculty', 'month_year', 'net_salary', 'pay_date', 'payment_mode', 'status')
     list_filter = ('status', 'month_year')
     search_fields = ('faculty__name', 'faculty__faculty_id', 'transaction_id')
+
+
+@admin.register(PopUpLead)
+class PopUpLeadAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'lead_type', 'branch_or_stream', 'college_or_city', 'status', 'created_at')
+    list_filter = ('lead_type', 'status', 'created_at')
+    search_fields = ('name', 'phone', 'email', 'branch_or_stream', 'college_or_city')
 
