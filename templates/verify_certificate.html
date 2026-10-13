@@ -1,218 +1,245 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Technical Job Fair 2026 - Maurya Technical Private Limited{% endblock %}
+{% block title %}Certificate Verification Portal - Maurya Technical Private Limited{% endblock %}
 
 {% block content %}
-<!-- Job Fair Hero Banner -->
-<div class="py-5 text-white" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
-    <div class="container px-4 text-center">
-        <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-3">
-            <i class="fas fa-handshake me-1"></i> MAURYA TECHNICAL MEGA PLACEMENT DRIVE 2026
+<!-- Verification Hero Header -->
+<div class="py-5 text-white position-relative overflow-hidden" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #475569 100%);">
+    <div class="container px-4 text-center py-3">
+        <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-3 shadow-sm">
+            <i class="fas fa-shield-alt me-1"></i> OFFICIAL GOVT & MSME REGISTERED VERIFICATION PORTAL
         </span>
-        <h1 class="fw-bold display-5 mb-2">
-            <i class="fas fa-briefcase text-warning me-2"></i> Technical Job Fair 2026
+        <h1 class="fw-bold display-5 mb-3 text-white">
+            <i class="fas fa-certificate text-warning me-2"></i> Online Certificate Verification
         </h1>
-        <p class="lead mb-3 opacity-90">
-            Direct Campus Placements, On-the-Spot Interviews & MNC Hiring Drives Organized at Alambagh, Lucknow
+        <p class="lead mb-4 opacity-90 mx-auto" style="max-width: 750px;">
+            Authenticate official industrial training certificates, merit awards, and course completion credentials issued by Maurya Technical Private Limited, Alambagh, Lucknow.
         </p>
-        <div class="d-flex justify-content-center gap-2 flex-wrap">
-            <span class="badge bg-dark px-3 py-2 rounded-pill"><i class="fas fa-building text-warning me-1"></i> 50+ Top IT Recruiters</span>
-            <span class="badge bg-dark px-3 py-2 rounded-pill"><i class="fas fa-user-check text-success me-1"></i> On-the-Spot Offer Letters</span>
-            <span class="badge bg-dark px-3 py-2 rounded-pill"><i class="fas fa-graduation-cap text-info me-1"></i> B.Tech, Diploma, BCA, MCA Candidates</span>
-        </div>
-    </div>
-</div>
-<!-- Job Fair Metrics Bar -->
-<div class="bg-dark text-white py-3 border-top border-warning border-3">
-    <div class="container px-4">
-        <div class="row text-center g-3">
-            <div class="col-6 col-md-3">
-                <h3 class="fw-bold text-warning mb-0">500+</h3>
-                <small class="text-light opacity-75">Trainees & Candidates</small>
-            </div>
-            <div class="col-6 col-md-3">
-                <h3 class="fw-bold text-warning mb-0">25+</h3>
-                <small class="text-light opacity-75">Corporate Interview Desks</small>
-            </div>
-            <div class="col-6 col-md-3">
-                <h3 class="fw-bold text-warning mb-0">4.5 - 8.5 LPA</h3>
-                <small class="text-light opacity-75">Salary Package Range</small>
-            </div>
-            <div class="col-6 col-md-3">
-                <h3 class="fw-bold text-success mb-0">100% Free</h3>
-                <small class="text-light opacity-75">Registration For Trainees</small>
-            </div>
-        </div>
     </div>
 </div>
 
-<!-- Main Job Fair Content -->
-<div class="container py-5 px-4">
+<!-- Main Verification Section -->
+<div class="bg-light py-5">
+    <div class="container px-3 px-md-4">
+        
+        <!-- Search Card -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 col-md-10">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="card-header bg-danger text-white p-4 text-center">
+                        <h4 class="fw-bold mb-1"><i class="fas fa-search me-2"></i> Enter Certificate Identification Number</h4>
+                        <small class="opacity-90">Enter the unique Certificate ID printed on your physical or digital certificate</small>
+                    </div>
+                    <div class="card-body p-4 p-md-5 bg-white">
+                        <form method="GET" action="{% url 'verify_certificate' %}" class="mb-3">
+                            <div class="input-group input-group-lg shadow-sm rounded-3 overflow-hidden border border-2 border-danger">
+                                <span class="input-group-text bg-white border-0 text-danger ps-3">
+                                    <i class="fas fa-id-card fs-4"></i>
+                                </span>
+                                <input type="text" 
+                                       name="certificate_number" 
+                                       class="form-control border-0 ps-2 fs-5 fw-semibold" 
+                                       placeholder="e.g. MT-2026-1001" 
+                                       value="{{ query }}" 
+                                       required 
+                                       autocomplete="off">
+                                <button type="submit" class="btn btn-danger px-4 fw-bold fs-6 d-flex align-items-center gap-2">
+                                    <i class="fas fa-check-circle"></i> VERIFY NOW
+                                </button>
+                            </div>
+                        </form>
 
-    <!-- Section Heading -->
-    <div class="section-heading-wrapper mb-5" data-aos="fade-up">
-        <span class="badge bg-danger text-white fw-bold px-3 py-2 rounded-pill mb-2">
-            <i class="fas fa-camera me-1"></i> EVENT GLIMPSES & HIGHLIGHTS
-        </span>
-        <h2 class="section-title">Technical Job Fair 2026 Photo Gallery</h2>
-        <p class="text-muted fs-6">Real moments from corporate screening desks, candidate orientation, dignitary honors & inauguration ceremony</p>
-    </div>
-
-    <!-- 4 Real Job Fair Photo Cards Grid -->
-    <div class="row g-4 mb-5">
-        <!-- Photo 1: Interview Desk -->
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="job-fair-card shadow h-100">
-                <div class="position-relative overflow-hidden">
-                    <img src="{% static 'images/job_fair_desk.jpg' %}" alt="Technical Job Fair Interview Desk - Maurya Technical" class="job-fair-img">
-                    <span class="badge bg-danger position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm">
-                        <i class="fas fa-user-tie me-1"></i> HR Desk • Kirti Kushwaha
-                    </span>
-                    <span class="badge bg-dark position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
-                        <i class="fas fa-handshake text-warning me-1"></i> Havells & Airtel Recruiters
-                    </span>
+                        <!-- Sample Quick Test IDs -->
+                        <div class="d-flex align-items-center gap-2 flex-wrap pt-2">
+                            <span class="small text-muted fw-bold me-1"><i class="fas fa-lightbulb text-warning me-1"></i> Sample IDs for Quick Test:</span>
+                            <a href="?certificate_number=MT-2026-1001" class="badge bg-secondary bg-opacity-10 text-dark border text-decoration-none px-2 py-1 rounded">MT-2026-1001</a>
+                            <a href="?certificate_number=MT-2026-1002" class="badge bg-secondary bg-opacity-10 text-dark border text-decoration-none px-2 py-1 rounded">MT-2026-1002</a>
+                            <a href="?certificate_number=MT-2026-1003" class="badge bg-secondary bg-opacity-10 text-dark border text-decoration-none px-2 py-1 rounded">MT-2026-1003</a>
+                            <a href="?certificate_number=MT-2026-1004" class="badge bg-secondary bg-opacity-10 text-dark border text-decoration-none px-2 py-1 rounded">MT-2026-1004</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-4 bg-white">
-                    <h4 class="fw-bold text-dark mb-2">Corporate HR Screening & Technical Interview Desk</h4>
+            </div>
+        </div>
+
+
+        <!-- SEARCH RESULT SECTION -->
+        {% if searched %}
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-9 col-md-11">
+                
+                {% if certificate %}
+                <!-- VERIFIED RESULT CARD -->
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-success border-5">
+                    
+                    <!-- Result Status Bar -->
+                    <div class="bg-success text-white p-3 p-md-4 d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-white text-success rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 50px; height: 50px;">
+                                <i class="fas fa-check-circle fs-2"></i>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold mb-0 text-white">AUTHENTIC & VERIFIED CERTIFICATE</h4>
+                                <small class="text-white-50">Official Record Verified from Maurya Technical Registry</small>
+                            </div>
+                        </div>
+                        <span class="badge bg-white text-success fw-bold fs-6 px-3 py-2 rounded-pill shadow-sm">
+                            <i class="fas fa-lock me-1"></i> STATUS: ACTIVE & VALID
+                        </span>
+                    </div>
+
+                    <!-- Certificate Content Details -->
+                    <div class="card-body p-4 p-md-5 bg-white position-relative">
+                        
+                        <!-- Watermark Seal Background -->
+                        <div class="position-absolute top-50 start-50 translate-middle opacity-5 pe-none">
+                            <i class="fas fa-award" style="font-size: 260px; color: #15803d;"></i>
+                        </div>
+
+                        <div class="row g-4 align-items-center mb-4 pb-4 border-bottom position-relative">
+                            <div class="col-md-8">
+                                <span class="badge bg-danger bg-opacity-10 text-danger fw-bold mb-2 px-3 py-1 rounded-pill">
+                                    <i class="fas fa-barcode me-1"></i> CERTIFICATE ID: {{ certificate.certificate_number }}
+                                </span>
+                                <h2 class="fw-bold text-dark mb-1">{{ certificate.student_name }}</h2>
+                                <p class="text-secondary fs-6 mb-0">
+                                    Has successfully completed the industrial training program at <strong>Maurya Technical Private Limited</strong>.
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <div class="d-inline-block bg-light p-3 rounded-3 border text-center">
+                                    <span class="d-block text-muted small fw-bold mb-1">PERFORMANCE GRADE</span>
+                                    <span class="badge bg-success fs-3 px-4 py-2 rounded-pill shadow-sm">{{ certificate.grade }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Details -->
+                        <div class="row g-4 mb-4 position-relative">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded-3 border h-100">
+                                    <small class="text-muted fw-bold d-block mb-1"><i class="fas fa-graduation-cap text-danger me-1"></i> Course / Program</small>
+                                    <h6 class="fw-bold text-dark mb-0">{{ certificate.course_name }}</h6>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded-3 border h-100">
+                                    <small class="text-muted fw-bold d-block mb-1"><i class="fas fa-clock text-warning me-1"></i> Duration</small>
+                                    <h6 class="fw-bold text-dark mb-0">{{ certificate.training_duration }}</h6>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded-3 border h-100">
+                                    <small class="text-muted fw-bold d-block mb-1"><i class="fas fa-calendar-alt text-primary me-1"></i> Issue Date</small>
+                                    <h6 class="fw-bold text-dark mb-0">{{ certificate.issue_date|date:"F d, Y" }}</h6>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded-3 border h-100">
+                                    <small class="text-muted fw-bold d-block mb-1"><i class="fas fa-university text-info me-1"></i> Issuing Center</small>
+                                    <h6 class="fw-bold text-dark mb-0">Alambagh, Lucknow</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Verification Seal & Footer Actions -->
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-3 border-top position-relative">
+                            <div class="d-flex align-items-center gap-2 text-success fw-bold small">
+                                <i class="fas fa-shield-alt fs-5"></i>
+                                <span>Verified by Examination Controller • Maurya Technical Pvt Ltd</span>
+                            </div>
+                            <div class="d-flex gap-2 flex-wrap">
+                                {% if certificate.pdf_file %}
+                                <a href="{{ certificate.pdf_file.url }}" target="_blank" class="btn btn-success fw-bold px-4 rounded-pill">
+                                    <i class="fas fa-file-pdf me-1"></i> Download Original PDF
+                                </a>
+                                {% endif %}
+                                <button type="button" onclick="window.print();" class="btn btn-outline-dark fw-bold px-4 rounded-pill">
+                                    <i class="fas fa-print me-1"></i> Print Record
+                                </button>
+                                <a href="{% url 'verify_certificate' %}" class="btn btn-danger fw-bold px-4 rounded-pill">
+                                    <i class="fas fa-search me-1"></i> Verify Another
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                {% else %}
+
+                <!-- NOT FOUND ALERT CARD -->
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-danger border-5">
+                    <div class="bg-danger text-white p-4 text-center">
+                        <div class="bg-white text-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" style="width: 60px; height: 60px;">
+                            <i class="fas fa-exclamation-triangle fs-2"></i>
+                        </div>
+                        <h3 class="fw-bold mb-1 text-white">Certificate Record Not Found</h3>
+                        <p class="text-white-50 mb-0">No active certificate match was found for ID <strong>"{{ query }}"</strong></p>
+                    </div>
+                    <div class="card-body p-4 p-md-5 bg-white text-center">
+                        <p class="text-muted fs-6 mb-4" style="max-width: 600px; margin: 0 auto;">
+                            Please verify that the Certificate ID was entered correctly (e.g. <code>MT-2026-1001</code>). If you believe this is an error, please contact the Maurya Technical Verification Helpdesk.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="tel:+918858298247" class="btn btn-outline-danger fw-bold px-4 py-2 rounded-pill">
+                                <i class="fas fa-phone me-1"></i> Call Support (+91 88582 98247)
+                            </a>
+                            <a href="{% url 'verify_certificate' %}" class="btn btn-dark fw-bold px-4 py-2 rounded-pill">
+                                <i class="fas fa-redo me-1"></i> Try Again
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Security & Verification Features Grid -->
+        <div class="row g-4 mt-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center bg-white">
+                    <div class="text-danger mb-3">
+                        <i class="fas fa-qrcode fs-1"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">QR Code Authentication</h5>
                     <p class="text-muted small mb-0">
-                        Company HR <strong>Kirti Kushwaha</strong> and senior technical interviewer panel screening aspiring candidates with the official Maurya Technical Job Fair recruitment rollout. Candidates undergo face-to-face technical assessments and resume evaluations.
+                        Scan the official QR code printed on physical certificates to verify record authenticity instantly online.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center bg-white">
+                    <div class="text-warning mb-3">
+                        <i class="fas fa-university fs-1"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Govt & MSME Registered</h5>
+                    <p class="text-muted small mb-0">
+                        All issued industrial training certificates carry official MSME registration validity and corporate acceptance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center bg-white">
+                    <div class="text-success mb-3">
+                        <i class="fas fa-user-shield fs-1"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Tamper-Proof Ledger</h5>
+                    <p class="text-muted small mb-0">
+                        Records are directly synchronized with the Examination Controller registry at Maurya Technical Private Limited.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Photo 2: Dignitary Welcome -->
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="job-fair-card shadow h-100">
-                <div class="position-relative overflow-hidden">
-                    <img src="{% static 'images/job_fair_guest_welcome.jpg' %}" alt="Chief Guest Welcome by Director Vivek Kushawaha" class="job-fair-img">
-                    <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm">
-                        <i class="fas fa-award me-1"></i> Dignitary Welcome
-                    </span>
-                    <span class="badge bg-success position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
-                        <i class="fas fa-user-shield me-1"></i> Director's Reception
-                    </span>
-                </div>
-                <div class="p-4 bg-white">
-                    <h4 class="fw-bold text-dark mb-2">Chief Guest & Corporate HR Reception</h4>
-                    <p class="text-muted small mb-0">
-                        Founder & Director Vivek Kushawaha presenting floral bouquet to distinguished corporate guests, industry directors, and visiting HR delegates at Maurya Technical Private Limited, Alambagh Lucknow.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Photo 3: Conference Hall Orientation -->
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="job-fair-card shadow h-100">
-                <div class="position-relative overflow-hidden">
-                    <img src="{% static 'images/job_fair_conference_hall.jpg' %}" alt="Job Fair Pre-Placement Orientation Talk" class="job-fair-img">
-                    <span class="badge bg-primary position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm">
-                        <i class="fas fa-chalkboard-teacher me-1"></i> Pre-Placement Talk
-                    </span>
-                    <span class="badge bg-dark position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
-                        <i class="fas fa-users text-info me-1"></i> 500+ Trainees Attended
-                    </span>
-                </div>
-                <div class="p-4 bg-white">
-                    <h4 class="fw-bold text-dark mb-2">Pre-Placement Presentation & Candidate Orientation</h4>
-                    <p class="text-muted small mb-0">
-                        Packed executive conference hall with engineering and diploma trainees attending the pre-interview briefing, company job role descriptions, eligibility criteria, and interview process orientation.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Photo 4: Saraswati Puja & Inauguration -->
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="job-fair-card shadow h-100">
-                <div class="position-relative overflow-hidden">
-                    <img src="{% static 'images/job_fair_inauguration.jpg' %}" alt="Saraswati Puja & Job Fair Inauguration" class="job-fair-img">
-                    <span class="badge bg-success position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm">
-                        <i class="fas fa-om me-1"></i> Auspicious Inauguration
-                    </span>
-                    <span class="badge bg-dark position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
-                        <i class="fas fa-sun text-warning me-1"></i> Saraswati Puja Ceremony
-                    </span>
-                </div>
-                <div class="p-4 bg-white">
-                    <h4 class="fw-bold text-dark mb-2">Grand Inauguration & Saraswati Puja Ceremony</h4>
-                    <p class="text-muted small mb-0">
-                        Traditional lamp lighting and Saraswati Vandana performed by company directors, distinguished professors, and corporate executives to formally inaugurate the Job Fair and Foundation Day celebrations.
-                    </p>
-                </div>
-            </div>
-        </div>
     </div>
-
-    <!-- Official Video Showcase Section -->
-    <div class="video-container-card p-4 p-md-5 my-5" data-aos="zoom-in">
-        <div class="row align-items-center g-4">
-            <!-- Video Player -->
-            <div class="col-lg-7">
-                <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg border border-2 border-danger">
-                    <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=maurya_technical_lucknow" title="Maurya Technical Job Fair & Training Video Highlights" allowfullscreen></iframe>
-                </div>
-            </div>
-            <!-- Video Info -->
-            <div class="col-lg-5 text-white">
-                <span class="badge bg-danger px-3 py-2 rounded-pill mb-3">
-                    <i class="fab fa-youtube me-1"></i> OFFICIAL EVENT VIDEO
-                </span>
-                <h3 class="fw-bold text-warning mb-2">Job Fair & Placement Drive Video Highlights</h3>
-                <p class="text-light opacity-75 fs-6 mb-4">
-                    Watch real student testimonials, HR interview sessions, award ceremonies, and campus recruitment highlights directly from Maurya Technical Private Limited (Alambagh, Lucknow).
-                </p>
-                <div class="d-flex flex-wrap gap-2 mb-4">
-                    <span class="badge bg-dark border border-secondary p-2"><i class="fas fa-check-circle text-success me-1"></i> Live Interviews</span>
-                    <span class="badge bg-dark border border-secondary p-2"><i class="fas fa-check-circle text-success me-1"></i> Offer Distribution</span>
-                    <span class="badge bg-dark border border-secondary p-2"><i class="fas fa-check-circle text-success me-1"></i> Director Address</span>
-                </div>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="https://www.youtube.com/@maurya_technical_lucknow" target="_blank" class="btn btn-danger btn-lg fw-bold px-4 shadow">
-                        <i class="fab fa-youtube me-2"></i> Subscribe on YouTube
-                    </a>
-                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20register%20for%20the%20Upcoming%20Job%20Fair%202026" target="_blank" class="btn btn-success btn-lg fw-bold px-4 shadow">
-                        <i class="fab fa-whatsapp me-2"></i> WhatsApp Support
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Participating Corporate Recruiters -->
-    <div class="section-heading-wrapper mb-4 text-center" data-aos="fade-up">
-        <h3 class="fw-bold text-dark mb-2">Top Hiring Partners & Corporate Recruiters</h3>
-        <p class="text-muted">Leading MNCs, telecom giants & software powerhouses hiring from Maurya Technical</p>
-    </div>
-
-    <div class="d-flex flex-wrap justify-content-center gap-3 mb-5" data-aos="fade-up">
-        <div class="partner-logo-chip"><i class="fas fa-bolt text-danger fs-5"></i> Havells India</div>
-        <div class="partner-logo-chip"><i class="fas fa-signal text-danger fs-5"></i> Bharti Airtel</div>
-        <div class="partner-logo-chip"><i class="fas fa-code text-primary fs-5"></i> NIVRAJ Software Solutions</div>
-        <div class="partner-logo-chip"><i class="fas fa-laptop-code text-success fs-5"></i> Vartax Global Technologies</div>
-        <div class="partner-logo-chip"><i class="fas fa-cubes text-info fs-5"></i> TCS (Tata Consultancy)</div>
-        <div class="partner-logo-chip"><i class="fas fa-microchip text-warning fs-5"></i> Wipro Technologies</div>
-        <div class="partner-logo-chip"><i class="fas fa-network-wired text-primary fs-5"></i> Infosys Limited</div>
-        <div class="partner-logo-chip"><i class="fas fa-cogs text-secondary fs-5"></i> Tech Mahindra</div>
-    </div>
-
-    <!-- Candidate Registration Box -->
-    <div class="p-5 bg-gradient rounded-4 text-white text-center shadow-lg position-relative overflow-hidden" style="background: linear-gradient(135deg, #111827 0%, #1F2937 100%); border-top: 5px solid var(--primary-red);" data-aos="zoom-in">
-        <h3 class="fw-bold text-warning mb-2">Ready to Participate in Upcoming Job Fair 2026?</h3>
-        <p class="text-light opacity-75 mb-4 fs-6 max-w-700 mx-auto">
-            Admissions and training batch registrations are currently open at Maurya Technical Private Limited. Complete your industrial training in Python, Django, Full Stack, or AI and get direct interview slots at our Job Fair!
-        </p>
-        <div class="d-flex justify-content-center gap-3 flex-wrap">
-            <a href="{% url 'registration' %}" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-3 shadow">
-                <i class="fas fa-user-plus me-2"></i> Register for 2026 Training & Job Fair
-            </a>
-            <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20register%20for%20the%20Technical%20Job%20Fair" target="_blank" class="btn btn-success btn-lg fw-bold px-4 py-3 shadow">
-                <i class="fab fa-whatsapp me-2"></i> WhatsApp Direct Inquiries
-            </a>
-        </div>
-    </div>
-
 </div>
 {% endblock %}

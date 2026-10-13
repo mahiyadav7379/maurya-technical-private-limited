@@ -62,7 +62,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label fw-bold text-dark small">Mobile / WhatsApp Number <span class="text-danger">*</span></label>
-                            <input type="tel" name="phone" maxlength="15" class="form-control rounded-3 py-2 px-3" placeholder="10-digit mobile number" required>
+                            <input type="tel" name="phone" id="popupPhoneInput" maxlength="11" class="form-control rounded-3 py-2 px-3" placeholder="10-digit mobile number" oninput="this.value = this.value.replace(/[^0-9+ ]/g, '');" required>
+                            <div id="popupPhoneError" class="text-danger small mt-1 d-none"><i class="fas fa-exclamation-circle me-1"></i><span></span></div>
                         </div>
 
                         <div class="col-md-6">
@@ -154,6 +155,47 @@
         }
     }
 
+    function isValidIndianPhone(phone) {
+        if (!phone || !phone.trim()) return { valid: false, message: "Mobile number is required." };
+        let digits = phone.replace(/\D/g, '');
+        if (digits.length === 12 && digits.startsWith('91')) {
+            digits = digits.substring(2);
+        } else if (digits.length === 11 && digits.startsWith('0')) {
+            digits = digits.substring(1);
+        }
+        
+        if (digits.length !== 10) {
+            return { valid: false, message: "Please enter a valid 10-digit mobile number." };
+        }
+        
+        if (!['6', '7', '8', '9'].includes(digits[0])) {
+            return { valid: false, message: "Mobile number must start with 6, 7, 8, or 9." };
+        }
+        
+        const uniqueDigits = new Set(digits);
+        if (uniqueDigits.size === 1) {
+            return { valid: false, message: "Dummy phone number (e.g. 9999999999) is not allowed." };
+        }
+        
+        const dummySequences = ['1234567890', '0123456789', '9876543210', '0987654321', '2345678901', '3456789012', '4567890123', '9012345678'];
+        if (dummySequences.includes(digits)) {
+            return { valid: false, message: "Dummy sequence phone number is not allowed." };
+        }
+        
+        for (let d of uniqueDigits) {
+            let count = digits.split(d).length - 1;
+            if (count >= 7) {
+                return { valid: false, message: "Dummy phone number (e.g. 9000000000) detected. Please enter your valid mobile number." };
+            }
+        }
+        
+        if (digits.substring(0,2).repeat(5) === digits || (digits.substring(0,3).repeat(3) + digits[0]) === digits) {
+            return { valid: false, message: "Repetitive dummy phone pattern is not allowed." };
+        }
+        
+        return { valid: true, cleaned: digits };
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         const popupModalEl = document.getElementById('leadPopUpModal');
         if (!popupModalEl) return;
@@ -163,6 +205,22 @@
         const form = document.getElementById('popupLeadForm');
         const alertBox = document.getElementById('popupAlertContainer');
         const submitBtn = document.getElementById('popupSubmitBtn');
+        const phoneInput = document.getElementById('popupPhoneInput');
+        const phoneError = document.getElementById('popupPhoneError');
+
+        if (phoneInput && phoneError) {
+            phoneInput.addEventListener('input', function() {
+                const check = isValidIndianPhone(this.value);
+                if (this.value.trim() && !check.valid) {
+                    phoneError.querySelector('span').textContent = check.message;
+                    phoneError.classList.remove('d-none');
+                    phoneInput.classList.add('is-invalid');
+                } else {
+                    phoneError.classList.add('d-none');
+                    phoneInput.classList.remove('is-invalid');
+                }
+            });
+        }
 
         // Check if user already dismissed or submitted lead in this session
         let isDismissed = localStorage.getItem('maurya_popup_dismissed_v2026');
@@ -206,10 +264,26 @@
                 const name = formData.get('name').trim();
                 const phone = formData.get('phone').trim();
 
-                if (!name || !phone || phone.length < 10) {
+                if (!name) {
                     alertBox.innerHTML = `
                         <div class="alert alert-danger alert-dismissible fade show rounded-3 small fw-semibold" role="alert">
-                            <i class="fas fa-exclamation-circle me-1"></i> Please enter your full name and valid 10-digit mobile phone number.
+                            <i class="fas fa-exclamation-circle me-1"></i> Please enter your full name.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>`;
+                    return;
+                }
+
+                const phoneCheck = isValidIndianPhone(phone);
+                if (!phoneCheck.valid) {
+                    if (phoneError) {
+                        phoneError.querySelector('span').textContent = phoneCheck.message;
+                        phoneError.classList.remove('d-none');
+                    }
+                    if (phoneInput) phoneInput.classList.add('is-invalid');
+
+                    alertBox.innerHTML = `
+                        <div class="alert alert-danger alert-dismissible fade show rounded-3 small fw-semibold" role="alert">
+                            <i class="fas fa-exclamation-circle me-1"></i> ${phoneCheck.message}
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>`;
                     return;

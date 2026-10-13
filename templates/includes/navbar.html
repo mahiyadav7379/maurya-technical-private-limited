@@ -32,7 +32,7 @@
 
                 <!-- 2. ABOUT US (Dropdown) -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link aktu-nav-link dropdown-toggle {% if request.resolver_match.url_name in 'about branches' %}active{% endif %}" 
+                    <a class="nav-link aktu-nav-link dropdown-toggle {% if request.resolver_match.url_name == 'about' %}active{% endif %}" 
                        href="{% url 'about' %}" 
                        id="aktuAboutDropdown" 
                        role="button" 
@@ -49,11 +49,6 @@
                         <li>
                             <a class="dropdown-item aktu-dropdown-item" href="{% url 'home' %}#director-section">
                                 <i class="fas fa-user-tie text-warning me-2"></i> Leadership &amp; Founders
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item aktu-dropdown-item {% if request.resolver_match.url_name == 'branches' %}active{% endif %}" href="{% url 'branches' %}">
-                                <i class="fas fa-map-marked-alt text-success me-2"></i> Campus Branches (Lucknow)
                             </a>
                         </li>
                     </ul>
@@ -96,7 +91,7 @@
                                     <i class="fas fa-tshirt text-danger me-2"></i> Fashion Design CAD
                                 </a>
                                 <a class="dropdown-item aktu-dropdown-item fw-bold text-danger" href="{% url 'trainings' %}">
-                                    <i class="fas fa-book-open text-danger me-2"></i> View All Courses (2026) &rarr;
+                                    <i class="fas fa-book-open text-danger me-2"></i> View All Courses &rarr;
                                 </a>
                             </div>
                         </li>
@@ -120,14 +115,7 @@
                 <!-- 6. JOB FAIR -->
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'job_fair' %}active{% endif %}" href="{% url 'job_fair' %}">
-                        <i class="fas fa-briefcase d-lg-none me-2 text-warning"></i>JOB FAIR 2026
-                    </a>
-                </li>
-
-                <!-- 7. OUR BRANCHES -->
-                <li class="nav-item">
-                    <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'branches' %}active{% endif %}" href="{% url 'branches' %}">
-                        <i class="fas fa-map-marker-alt d-lg-none me-2 text-warning"></i>OUR BRANCHES
+                        <i class="fas fa-briefcase d-lg-none me-2 text-warning"></i>JOB FAIR
                     </a>
                 </li>
 
@@ -184,17 +172,17 @@
             <div class="d-lg-none mobile-nav-actions my-3 pt-3 border-top border-white-50">
                 <div class="d-grid gap-2">
                     <a href="{% url 'registration' %}" class="btn btn-warning fw-bold py-2 shadow-sm text-dark d-flex align-items-center justify-content-center gap-2">
-                        <i class="fas fa-edit"></i> Course Registration (2026 Batch)
+                        <i class="fas fa-edit"></i> Course Registration
                     </a>
-                    <div class="d-flex gap-2">
+                    <div class="d-flex gap-2 flex-wrap">
                         <a href="{% url 'student_login' %}" class="btn btn-light fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small">
                             <i class="fas fa-sign-in-alt text-success"></i> Student Login
                         </a>
                         <a href="{% url 'faculty_login' %}" class="btn btn-dark border border-secondary fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small text-white">
                             <i class="fas fa-chalkboard-teacher text-danger"></i> Faculty Login
                         </a>
-                        <a href="tel:+918858298247" class="btn btn-outline-light fw-bold py-2 px-2 d-flex align-items-center justify-content-center gap-1 small">
-                            <i class="fas fa-phone text-warning"></i> Call
+                        <a href="/admin/" class="btn btn-primary fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small text-white" target="_blank">
+                            <i class="fas fa-user-shield"></i> Admin Login
                         </a>
                     </div>
                 </div>

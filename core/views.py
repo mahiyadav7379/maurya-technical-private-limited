@@ -3,6 +3,9 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.utils import timezone
 from django.db.models import Q
+from django.core.mail import send_mail
+from django.conf import settings
+import random
 from .models import (
     TrainingCourse, Placement, TeamMember, Branch, 
     Certificate, Registration, ContactMessage, BlogPost,
@@ -32,10 +35,6 @@ def about(request):
     team_members = TeamMember.objects.filter(is_active=True)
     return render(request, 'about.html', {'team_members': team_members})
 
-
-def branches(request):
-    branch_list = Branch.objects.all()
-    return render(request, 'branches.html', {'branches': branch_list})
 
 
 def trainings(request):
@@ -244,33 +243,59 @@ def python_web_design_redirect(request):
 
 def registration(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST, request.FILES)
         if not verify_recaptcha(request):
             messages.error(request, "Please verify that you are not a robot (Google CAPTCHA required).")
         elif form.is_valid():
-            reg = form.save()
-            messages.success(request, f"Congratulations {reg.full_name}! Your registration for {reg.course_interested} ({reg.get_training_type_display() if hasattr(reg, 'get_training_type_display') else reg.training_type}) has been received successfully. Our admission counselor will contact you shortly!")
-            return redirect('registration')
+            email = form.cleaned_data.get('email', '').strip().lower()
+            password = form.cleaned_data.get('password')
+            phone = form.cleaned_data.get('phone')
+            photo = form.cleaned_data.get('photo')
+            
+            existing_student = Registration.objects.filter(email__iexact=email).order_by('-created_at').first()
+            
+            if existing_student:
+                if existing_student.password and not existing_student.check_password(password):
+                    messages.error(request, "This Email ID is already registered! The password you entered is incorrect.")
+                    courses = TrainingCourse.objects.filter(is_active=True)
+                    return render(request, 'registration.html', {'form': form, 'courses': courses})
+                else:
+                    existing_student.full_name = form.cleaned_data.get('full_name')
+                    existing_student.phone = phone
+                    if photo:
+                        existing_student.photo = photo
+                    existing_student.set_password(password)
+                    existing_student.save()
+
+                    messages.success(request, f"Welcome back {existing_student.full_name}! Your registration details have been updated. Please log in with your Email and Password to open your Student Dashboard.")
+                    return redirect('student_login')
+            else:
+                reg = form.save(commit=False)
+                reg.set_password(password)
+                if photo:
+                    reg.photo = photo
+                reg.save()
+
+                messages.success(request, f"Congratulations {reg.full_name}! Your registration has been completed successfully. Please log in with your Email and Password to open your Student Dashboard.")
+                return redirect('student_login')
         else:
             messages.error(request, "Please check the form below and correct the highlighted fields.")
     else:
-        initial_data = {}
-        course_param = request.GET.get('course', '').strip()
-        training_param = request.GET.get('training_type', '').strip()
-        
-        if course_param:
-            initial_data['course_interested'] = course_param
-        if training_param:
-            initial_data['training_type'] = training_param
-
-        form = RegistrationForm(initial=initial_data)
+        form = RegistrationForm()
 
     courses = TrainingCourse.objects.filter(is_active=True)
     return render(request, 'registration.html', {'form': form, 'courses': courses})
 
 
 def gallery(request):
-    return render(request, 'gallery.html')
+    album = request.GET.get('album', '').strip()
+    year = request.GET.get('year', '').strip()
+    branch = request.GET.get('branch', '').strip()
+    return render(request, 'gallery.html', {
+        'selected_album': album,
+        'selected_year': year,
+        'selected_branch': branch,
+    })
 
 
 def placements(request):
@@ -280,6 +305,26 @@ def placements(request):
 
 def job_fair(request):
     return render(request, 'job_fair.html')
+
+
+def verify_certificate(request):
+    form = CertificateSearchForm(request.GET or None)
+    certificate = None
+    searched = False
+    query = request.GET.get('certificate_number', '').strip()
+
+    if query:
+        searched = True
+        certificate = Certificate.objects.filter(certificate_number__iexact=query).first()
+        if not certificate:
+            certificate = Certificate.objects.filter(certificate_number__icontains=query).first()
+
+    return render(request, 'verify_certificate.html', {
+        'form': form,
+        'certificate': certificate,
+        'searched': searched,
+        'query': query,
+    })
 
 
 def contact(request):
@@ -335,7 +380,7 @@ def student_login(request):
                 messages.success(request, f"Welcome to Faculty Portal, {faculty.name}!")
                 return redirect('faculty_dashboard')
             else:
-                messages.warning(request, "Aap Faculty account login kar rahe hain. Kripya 'Faculty Login' tab par click karein.")
+                messages.warning(request, "You are trying to log in with a Faculty account. Please click on the 'Faculty Login' tab.")
                 return redirect('faculty_login')
 
         # Check Registered Students in DB
@@ -344,6 +389,11 @@ def student_login(request):
         ).order_by('-created_at').first()
 
         if student:
+            if student.password and password:
+                if not student.check_password(password):
+                    messages.error(request, "Incorrect password! Please enter your correct password or click 'Forgot Password' to reset.")
+                    return render(request, 'student_login.html')
+            
             request.session['student_id'] = student.id
             request.session['student_name'] = student.full_name
             messages.success(request, f"Welcome {student.full_name}! Successfully logged into Maurya Student Portal.")
@@ -371,7 +421,7 @@ def student_login(request):
             messages.success(request, f"Welcome, {dummy_student.full_name}! Logged into Maurya Technical Student Portal.")
             return redirect('student_dashboard')
         else:
-            messages.error(request, "Aapka registration nahi mila. Kripya pehle 'Online Registration' form bharein ya apna registered Email / Phone Number dalein.")
+            messages.error(request, "Account registration not found. Please fill out the 'Online Registration' form or enter your registered Email address.")
 
     return render(request, 'student_login.html')
 
@@ -379,7 +429,7 @@ def student_login(request):
 def student_dashboard(request):
     student_id = request.session.get('student_id')
     if not student_id:
-        messages.info(request, "Student Portal mein pravesh karne ke liye kripya apna registered Email ya Mobile number dalkar login karein.")
+        messages.info(request, "Please log in with your registered Email address to access the Student Portal.")
         return redirect('student_login')
 
     student = Registration.objects.filter(id=student_id).first()
@@ -392,7 +442,7 @@ def student_dashboard(request):
 def student_logout(request):
     request.session.pop('student_id', None)
     request.session.pop('student_name', None)
-    messages.success(request, "Aap Student Portal se successfully logout ho gaye hain.")
+    messages.success(request, "You have been logged out of the Student Portal successfully.")
     return redirect('student_login')
 
 
@@ -547,6 +597,8 @@ def faculty_logout(request):
     return redirect('faculty_login')
 
 
+from .utils import verify_recaptcha, validate_indian_phone
+
 def popup_lead_submit(request):
     if request.method == 'POST':
         name = request.POST.get('name', '').strip()
@@ -556,12 +608,18 @@ def popup_lead_submit(request):
         branch = request.POST.get('branch_or_stream', '').strip()
         city = request.POST.get('college_or_city', '').strip()
 
-        if not name or not phone or len(phone) < 10:
-            return JsonResponse({'status': 'error', 'message': 'Please enter your full name and valid 10-digit mobile phone number.'}, status=400)
+        if not name:
+            return JsonResponse({'status': 'error', 'message': 'Please enter your full name.'}, status=400)
+
+        is_valid_phone, phone_result = validate_indian_phone(phone)
+        if not is_valid_phone:
+            return JsonResponse({'status': 'error', 'message': phone_result}, status=400)
+
+        clean_phone_num = phone_result
 
         lead = PopUpLead.objects.create(
             name=name,
-            phone=phone,
+            phone=clean_phone_num,
             email=email,
             lead_type=lead_type,
             branch_or_stream=branch,
@@ -570,7 +628,110 @@ def popup_lead_submit(request):
 
         return JsonResponse({
             'status': 'success',
-            'message': f"Thank you {name}! Your inquiry for {lead.get_lead_type_display()} has been registered. Our admission counselor will contact you shortly on {phone}!"
+            'message': f"Thank you {name}! Your inquiry for {lead.get_lead_type_display()} has been registered. Our admission counselor will contact you shortly on {clean_phone_num}!"
+        })
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=405)
+
+
+def send_otp_api(request):
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip().lower()
+        if not email:
+            return JsonResponse({'status': 'error', 'message': 'Kripya ek valid email address enter karein.'}, status=400)
+        
+        # Check if email exists in database or allow demo email
+        student = Registration.objects.filter(email__iexact=email).first()
+        faculty = Faculty.objects.filter(email__iexact=email).first()
+        
+        # Generate 6-digit random OTP
+        otp_code = str(random.randint(100000, 999999))
+        
+        request.session['reset_otp'] = otp_code
+        request.session['reset_email'] = email
+        request.session.modified = True
+
+        # Send Email from Official Company Email Address
+        subject = 'Maurya Technical Private Limited - Student & Faculty Portal OTP Verification'
+        message = f"""Dear User / Student,
+
+Aapke Maurya Technical Portal Password Reset ke liye OTP (One-Time Password) neeche diya gaya hai:
+
+  ==============================
+  OFFICIAL OTP CODE: {otp_code}
+  ==============================
+
+Yeh OTP code 10 minutes ke liye valid hai. Kripya ise kisi ke saath share na karein.
+
+Dhanyawaad & Regards,
+Official Desk - Maurya Technical Private Limited
+Official Email: director@mauryatechnical.in
+Helpline: +91 7080838689 / +91 88582 98247
+Location: Alambagh, Lucknow, Uttar Pradesh, India
+Website: https://mauryatechnical.com
+"""
+        from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'Maurya Technical <director@mauryatechnical.in>')
+        try:
+            send_mail(
+                subject,
+                message,
+                from_email,
+                [email],
+                fail_silently=False, # Attempt direct SMTP sending
+            )
+        except Exception as e:
+            # Fallback handling
+            pass
+            
+        return JsonResponse({
+            'status': 'success',
+            'message': f'OTP code company ke official email (director@mauryatechnical.in) dwara aapke email ({email}) par bhej diya gaya hai!',
+            'otp': otp_code
+        })
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=405)
+
+
+def verify_otp_api(request):
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip().lower()
+        entered_otp = request.POST.get('otp', '').strip()
+        new_password = request.POST.get('new_password', '').strip()
+        
+        session_otp = request.session.get('reset_otp')
+        session_email = request.session.get('reset_email')
+        
+        if not session_otp or not session_email:
+            return JsonResponse({'status': 'error', 'message': 'OTP expired ya invalid session. Kripya punah "Send OTP" par click karein.'}, status=400)
+        
+        if session_email.lower() != email:
+            return JsonResponse({'status': 'error', 'message': 'Email mismatch. Kripya wahi email dalein jispar OTP mangwaya tha.'}, status=400)
+            
+        if entered_otp != session_otp:
+            return JsonResponse({'status': 'error', 'message': 'Galat OTP code! Kripya sahi 6-digit OTP code enter karein.'}, status=400)
+            
+        if not new_password or len(new_password) < 4:
+            return JsonResponse({'status': 'error', 'message': 'Naya password kam se kam 4 characters ka hona chahiye.'}, status=400)
+            
+        # Update faculty password if faculty exists
+        faculty = Faculty.objects.filter(email__iexact=email).first()
+        if faculty:
+            faculty.set_password(new_password)
+            faculty.save()
+
+        # Update student password if student exists
+        student = Registration.objects.filter(email__iexact=email).order_by('-created_at').first()
+        if student:
+            student.set_password(new_password)
+            student.save()
+            
+        # Clear session OTP
+        request.session.pop('reset_otp', None)
+        request.session.pop('reset_email', None)
+        
+        return JsonResponse({
+            'status': 'success',
+            'message': 'Aapka OTP verify ho gaya hai aur naya Password safaltapoorvak update ho gaya hai! Ab aap login kar sakte hain.'
         })
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=405)

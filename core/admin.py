@@ -34,7 +34,7 @@ class BranchAdmin(admin.ModelAdmin):
 
 @admin.register(Certificate)
 class CertificateAdmin(admin.ModelAdmin):
-    list_display = ('certificate_number', 'student_name', 'course_name', 'issue_date', 'is_valid')
+    list_display = ('certificate_number', 'student_name', 'course_name', 'issue_date', 'pdf_file', 'is_valid')
     search_fields = ('certificate_number', 'student_name', 'course_name')
     list_filter = ('is_valid', 'issue_date')
 

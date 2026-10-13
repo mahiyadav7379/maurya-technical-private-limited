@@ -4,7 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('branches/', views.branches, name='branches'),
     path('trainings/', views.trainings, name='trainings'),
     path('trainings/<slug:slug>/', views.course_detail, name='course_detail'),
     path('fees/', views.fees_structure, name='fees'),
@@ -14,6 +13,7 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('placements/', views.placements, name='placements'),
     path('job-fair/', views.job_fair, name='job_fair'),
+    path('verify-certificate/', views.verify_certificate, name='verify_certificate'),
     path('contact/', views.contact, name='contact'),
     path('blogs/', views.blogs, name='blogs'),
     path('projects/', views.blogs, name='projects'),
@@ -27,4 +27,6 @@ urlpatterns = [
     path('faculty/salary-slip/<int:slip_id>/', views.salary_slip_view, name='salary_slip_view'),
     path('faculty/logout/', views.faculty_logout, name='faculty_logout'),
     path('api/popup-lead/', views.popup_lead_submit, name='popup_lead_submit'),
+    path('api/send-otp/', views.send_otp_api, name='send_otp_api'),
+    path('api/verify-otp/', views.verify_otp_api, name='verify_otp_api'),
 ]

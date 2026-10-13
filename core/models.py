@@ -88,6 +88,7 @@ class Certificate(models.Model):
     training_duration = models.CharField(max_length=100, default='6 Months')
     issue_date = models.DateField()
     grade = models.CharField(max_length=20, default='A+')
+    pdf_file = models.FileField(upload_to='certificates/', blank=True, null=True, help_text="Upload certificate PDF or auto-generated PDF path")
     is_valid = models.BooleanField(default=True)
 
     def __str__(self):
@@ -105,15 +106,29 @@ class Registration(models.Model):
 
     full_name = models.CharField(max_length=150)
     email = models.EmailField()
-    phone = models.CharField(max_length=15)
+    dob = models.CharField(max_length=50, blank=True, null=True, help_text="Date of Birth")
+    photo = models.FileField(upload_to='student_photos/', blank=True, null=True)
+    phone = models.CharField(max_length=15, blank=True, null=True)
     whatsapp_number = models.CharField(max_length=15, blank=True, null=True)
-    college = models.CharField(max_length=200)
-    branch = models.CharField(max_length=100, help_text="e.g. CS, IT, BCA, MCA, Diploma")
-    year_of_study = models.CharField(max_length=50, default='3rd Year')
-    course_interested = models.CharField(max_length=150)
-    training_type = models.CharField(max_length=50, choices=TRAINING_TYPE_CHOICES, default='winter_2026')
-    city = models.CharField(max_length=100, default='Lucknow')
+    password = models.CharField(max_length=255, blank=True, null=True)
+    college = models.CharField(max_length=200, blank=True, null=True)
+    branch = models.CharField(max_length=100, blank=True, null=True, help_text="e.g. CS, IT, BCA, MCA, Diploma")
+    year_of_study = models.CharField(max_length=50, default='3rd Year', blank=True, null=True)
+    course_interested = models.CharField(max_length=150, default='General Training', blank=True, null=True)
+    training_type = models.CharField(max_length=50, choices=TRAINING_TYPE_CHOICES, default='winter_2026', blank=True, null=True)
+    city = models.CharField(max_length=100, default='Lucknow', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def set_password(self, raw_password):
+        if raw_password:
+            self.password = make_password(raw_password)
+
+    def check_password(self, raw_password):
+        if not self.password:
+            return True
+        if self.password.startswith('pbkdf2_') or self.password.startswith('argon2') or self.password.startswith('bcrypt'):
+            return check_password(raw_password, self.password)
+        return self.password == raw_password
 
     def __str__(self):
         return f"{self.full_name} - {self.course_interested} ({self.phone})"

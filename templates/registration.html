@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Online Registration - Maurya Technical Training 2026{% endblock %}
+{% block title %}Online Registration - Maurya Technical Training{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -86,7 +86,7 @@
 <div class="registration-hero text-white">
     <div class="container px-4 text-center">
         <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
-            <i class="fas fa-calendar-check me-1"></i> ADMISSIONS OPEN 2026 BATCH
+            <i class="fas fa-calendar-check me-1"></i> ADMISSIONS OPEN
         </span>
         <h1 class="fw-bold display-6 mb-2">Online Student Training Registration</h1>
         <p class="lead fs-6 mb-3 opacity-90">Direct Seat Booking for Winter Training, Summer Training & 06 Months Industrial Training at Alambagh, Lucknow</p>
@@ -105,10 +105,10 @@
 </div>
 
 <div class="container py-5 px-4">
-    <div class="row g-4">
+    <div class="row justify-content-center">
         
-        <!-- Left: Registration Form (8 Cols) -->
-        <div class="col-lg-8">
+        <!-- Registration Form (Centered 7 Cols) -->
+        <div class="col-lg-7 col-md-9">
             <div class="registration-card p-4 p-md-5">
 
                 <!-- Success Banner if registration done -->
@@ -120,14 +120,11 @@
                             {% if message.tags == 'success' %}
                             <i class="fas fa-check-circle text-success fa-2x mt-1"></i>
                             <div>
-                                <h5 class="fw-bold mb-1 text-success">Registration Form Submitted!</h5>
+                                <h5 class="fw-bold mb-1 text-success">User Registration Successful!</h5>
                                 <p class="mb-2">{{ message }}</p>
                                 <div class="d-flex flex-wrap gap-2 mt-3">
-                                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20have%20submitted%20my%20online%20registration%20form." target="_blank" class="btn btn-sm btn-success fw-bold rounded-pill px-3 py-2">
-                                        <i class="fab fa-whatsapp me-1"></i> Verify on WhatsApp
-                                    </a>
-                                    <a href="tel:+918887839689" class="btn btn-sm btn-outline-success fw-bold rounded-pill px-3 py-2">
-                                        <i class="fas fa-phone me-1"></i> Call 8887839689
+                                    <a href="{% url 'student_login' %}" class="btn btn-sm btn-success fw-bold rounded-pill px-3 py-2">
+                                        <i class="fas fa-sign-in-alt me-1"></i> Student Portal Login
                                     </a>
                                 </div>
                             </div>
@@ -144,13 +141,12 @@
                 </div>
                 {% endif %}
 
-                <form method="POST" action="{% url 'registration' %}" id="studentRegistrationForm" novalidate>
+                <form method="POST" action="{% url 'registration' %}" id="studentRegistrationForm" enctype="multipart/form-data" novalidate>
                     {% csrf_token %}
                     
-                    <!-- 1. Personal Details -->
                     <div class="form-section-title">
                         <i class="fas fa-user-circle"></i>
-                        <span>1. Personal &amp; Contact Details</span>
+                        <span>Student Registration Details</span>
                     </div>
 
                     <div class="row g-3 mb-4">
@@ -164,6 +160,15 @@
                         </div>
 
                         <div class="col-md-6">
+                            <label class="form-label" for="id_phone">Mobile Number <span class="text-danger">*</span></label>
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.phone.errors|striptags }}</div>
+                            {% endif %}
+                            <div class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
+                        </div>
+
+                        <div class="col-md-6">
                             <label class="form-label" for="id_email">Email Address <span class="text-danger">*</span></label>
                             {{ form.email }}
                             {% if form.email.errors %}
@@ -173,98 +178,40 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="id_phone">Mobile Number (Calling) <span class="text-danger">*</span></label>
-                            {{ form.phone }}
-                            {% if form.phone.errors %}
-                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.phone.errors|striptags }}</div>
+                            <label class="form-label" for="id_photo">Upload Photo</label>
+                            {{ form.photo }}
+                            {% if form.photo.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.photo.errors|striptags }}</div>
                             {% endif %}
-                            <div class="invalid-feedback">Please enter your 10-digit mobile number.</div>
+                            <small class="text-muted" style="font-size: 0.78rem;">Upload passport size photo (JPG/PNG).</small>
                         </div>
 
                         <div class="col-md-6">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <label class="form-label mb-0" for="id_whatsapp_number">WhatsApp Number</label>
-                                <div class="form-check mb-0">
-                                    <input class="form-check-input" type="checkbox" id="syncPhoneToWhatsApp">
-                                    <label class="form-check-label small text-muted user-select-none" for="syncPhoneToWhatsApp" style="cursor: pointer;">
-                                        Same as Mobile
-                                    </label>
-                                </div>
+                            <label class="form-label" for="id_password">Create Account Password <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                {{ form.password }}
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('id_password', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
                             </div>
-                            {{ form.whatsapp_number }}
-                            {% if form.whatsapp_number.errors %}
-                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.whatsapp_number.errors|striptags }}</div>
+                            {% if form.password.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.password.errors|striptags }}</div>
                             {% endif %}
-                            <small class="text-muted" style="font-size: 0.78rem;">For batch updates, syllabus &amp; project notes.</small>
-                        </div>
-                    </div>
-
-                    <!-- 2. Academic Information -->
-                    <div class="form-section-title">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>2. Academic Background</span>
-                    </div>
-
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-6">
-                            <label class="form-label" for="id_college">College / Institute Name <span class="text-danger">*</span></label>
-                            {{ form.college }}
-                            {% if form.college.errors %}
-                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.college.errors|striptags }}</div>
-                            {% endif %}
-                            <div class="invalid-feedback">Please enter your college or university name.</div>
+                            <div class="invalid-feedback">Please enter a password (minimum 4 characters).</div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="id_branch">Branch / Stream <span class="text-danger">*</span></label>
-                            {{ form.branch }}
-                            {% if form.branch.errors %}
-                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.branch.errors|striptags }}</div>
+                            <label class="form-label" for="id_confirm_password">Confirm Password <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                {{ form.confirm_password }}
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('id_confirm_password', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            {% if form.confirm_password.errors %}
+                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.confirm_password.errors|striptags }}</div>
                             {% endif %}
-                            <div class="invalid-feedback">Please select your branch or stream.</div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="id_year_of_study">Year of Study <span class="text-danger">*</span></label>
-                            {{ form.year_of_study }}
-                            {% if form.year_of_study.errors %}
-                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.year_of_study.errors|striptags }}</div>
-                            {% endif %}
-                            <div class="invalid-feedback">Please select your year of study.</div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="id_city">City / Current Location</label>
-                            {{ form.city }}
-                            {% if form.city.errors %}
-                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.city.errors|striptags }}</div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <!-- 3. Course & Batch Selection -->
-                    <div class="form-section-title">
-                        <i class="fas fa-laptop-code"></i>
-                        <span>3. Course &amp; Training Program Preference</span>
-                    </div>
-
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-6">
-                            <label class="form-label" for="id_course_interested">Course Interested <span class="text-danger">*</span></label>
-                            {{ form.course_interested }}
-                            {% if form.course_interested.errors %}
-                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.course_interested.errors|striptags }}</div>
-                            {% endif %}
-                            <div class="invalid-feedback">Please choose the course you want to enroll in.</div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="id_training_type">Training Batch / Program <span class="text-danger">*</span></label>
-                            {{ form.training_type }}
-                            {% if form.training_type.errors %}
-                            <div class="text-danger small mt-1"><i class="fas fa-exclamation-circle me-1"></i>{{ form.training_type.errors|striptags }}</div>
-                            {% endif %}
-                            <div class="invalid-feedback">Please choose your training duration / program.</div>
+                            <div class="invalid-feedback" id="confirmPasswordError">Passwords do not match.</div>
                         </div>
                     </div>
 
@@ -276,92 +223,14 @@
                     <!-- Submit Button Section -->
                     <div class="pt-2 text-center">
                         <button type="submit" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-3 shadow-lg rounded-pill d-inline-flex align-items-center gap-2" style="font-size: 1.1rem;">
-                            <i class="fas fa-paper-plane text-danger"></i> Submit Registration &amp; Book Seat
+                            <i class="fas fa-user-plus text-danger"></i> Complete Registration
                         </button>
                         <p class="small text-muted mt-3 mb-0">
-                            <i class="fas fa-lock text-success me-1"></i> <strong>100% Free Seat Booking:</strong> No registration fee is charged to fill this form. Our counselor will contact you to verify your batch timing.
+                            Already have an account? <a href="{% url 'student_login' %}" class="fw-bold text-danger text-decoration-none">Login to Student Portal</a>
                         </p>
                     </div>
                 </form>
             </div>
-        </div>
-
-        <!-- Right: Information & Helpline Sidebar (4 Cols) -->
-        <div class="col-lg-4">
-            
-            <!-- Helpline Card -->
-            <div class="card sidebar-card shadow-sm p-4 mb-4 bg-white">
-                <h5 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
-                    <i class="fas fa-headset text-danger"></i> Admission Helpline
-                </h5>
-                <p class="text-muted small mb-3">Have questions about courses, fees, or batch timings? Talk directly to our admission counselors:</p>
-                
-                <div class="d-grid gap-2 mb-3">
-                    <a href="tel:+918858298247" class="btn btn-outline-danger fw-bold py-2 d-flex align-items-center justify-content-center gap-2 rounded-pill">
-                        <i class="fas fa-phone"></i> +91 8858298247
-                    </a>
-                    <a href="tel:+917080838689" class="btn btn-outline-danger fw-bold py-2 d-flex align-items-center justify-content-center gap-2 rounded-pill">
-                        <i class="fas fa-phone"></i> +91 7080838689
-                    </a>
-                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20want%20to%20inquire%20about%20industrial%20training%20registration." target="_blank" class="whatsapp-btn text-decoration-none text-center shadow-sm">
-                        <i class="fab fa-whatsapp me-2 fs-5"></i> Chat on WhatsApp
-                    </a>
-                </div>
-
-                <hr class="text-muted">
-                <div class="small text-muted">
-                    <p class="mb-1"><i class="fas fa-map-marker-alt text-danger me-2"></i> <strong>Campus:</strong> Sector-B, Near Alambagh Metro Station, Lucknow, UP</p>
-                    <p class="mb-0"><i class="fas fa-clock text-danger me-2"></i> <strong>Hours:</strong> Mon - Sat: 9:00 AM - 7:00 PM</p>
-                </div>
-            </div>
-
-            <!-- Training Highlights Card -->
-            <div class="card sidebar-card shadow-sm p-4 mb-4 bg-white">
-                <h5 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
-                    <i class="fas fa-star text-warning"></i> Training Highlights
-                </h5>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon"><i class="fas fa-code"></i></div>
-                    <div>
-                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Live Major & Minor Projects</h6>
-                        <small class="text-muted">Develop industry-standard working projects for college submission.</small>
-                    </div>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
-                    <div>
-                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Dual Industry Certificate</h6>
-                        <small class="text-muted">Govt recognized ISO &amp; AKTU approved training certificates.</small>
-                    </div>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon"><i class="fas fa-user-tie"></i></div>
-                    <div>
-                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Job Fair & Placement Drive</h6>
-                        <small class="text-muted">Direct interviews with 50+ IT & core recruitment partners.</small>
-                    </div>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon"><i class="fas fa-wallet"></i></div>
-                    <div>
-                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Affordable Installments</h6>
-                        <small class="text-muted">Zero percent interest installment options available for students.</small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Batch Timing Note -->
-            <div class="card sidebar-card shadow-sm p-4 bg-light border-0">
-                <h6 class="fw-bold text-danger mb-2"><i class="fas fa-info-circle me-1"></i> Batch Timing Notice</h6>
-                <p class="small text-muted mb-0">
-                    New batches for <strong>Winter Training 2026</strong> start every Monday. Seats are allocated on a first-come, first-served basis due to limited workstation capacity in the labs.
-                </p>
-            </div>
-
         </div>
 
     </div>
@@ -372,6 +241,66 @@
 {% block extra_js %}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
+    function isValidIndianPhone(phone) {
+        if (!phone || !phone.trim()) return { valid: false, message: "Mobile number is required." };
+        let digits = phone.replace(/\D/g, '');
+        if (digits.length === 12 && digits.startsWith('91')) {
+            digits = digits.substring(2);
+        } else if (digits.length === 11 && digits.startsWith('0')) {
+            digits = digits.substring(1);
+        }
+        
+        if (digits.length !== 10) {
+            return { valid: false, message: "Please enter a valid 10-digit mobile number." };
+        }
+        
+        if (!['6', '7', '8', '9'].includes(digits[0])) {
+            return { valid: false, message: "Mobile number must start with 6, 7, 8, or 9." };
+        }
+        
+        const uniqueDigits = new Set(digits);
+        if (uniqueDigits.size === 1) {
+            return { valid: false, message: "Dummy phone number (e.g. 9999999999) is not allowed." };
+        }
+        
+        const dummySequences = ['1234567890', '0123456789', '9876543210', '0987654321', '2345678901', '3456789012', '4567890123', '9012345678'];
+        if (dummySequences.includes(digits)) {
+            return { valid: false, message: "Dummy sequence phone number is not allowed." };
+        }
+        
+        for (let d of uniqueDigits) {
+            let count = digits.split(d).length - 1;
+            if (count >= 7) {
+                return { valid: false, message: "Dummy phone number (e.g. 9000000000) detected. Please enter your valid mobile number." };
+            }
+        }
+        
+        if (digits.substring(0,2).repeat(5) === digits || (digits.substring(0,3).repeat(3) + digits[0]) === digits) {
+            return { valid: false, message: "Repetitive dummy phone pattern is not allowed." };
+        }
+        
+        return { valid: true, cleaned: digits };
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+        const icon = btn.querySelector('i');
+        if (input.type === 'password') {
+            input.type = 'text';
+            if (icon) {
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        } else {
+            input.type = 'password';
+            if (icon) {
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
 
         // Sync Phone to WhatsApp
@@ -393,7 +322,7 @@
             });
         }
 
-        // Smooth Form Validation UX without jarring browser popups
+        // Smooth Form Validation UX
         const form = document.getElementById('studentRegistrationForm');
         if (form) {
             form.addEventListener('submit', function(event) {
@@ -402,13 +331,10 @@
 
                 const requiredIds = [
                     'id_full_name',
-                    'id_email',
                     'id_phone',
-                    'id_college',
-                    'id_branch',
-                    'id_year_of_study',
-                    'id_course_interested',
-                    'id_training_type'
+                    'id_email',
+                    'id_password',
+                    'id_confirm_password'
                 ];
 
                 requiredIds.forEach(function(id) {
@@ -424,6 +350,19 @@
                         }
                     }
                 });
+
+                // Password Matching Check
+                const passEl = document.getElementById('id_password');
+                const confirmPassEl = document.getElementById('id_confirm_password');
+                if (passEl && confirmPassEl) {
+                    if (passEl.value && confirmPassEl.value && passEl.value !== confirmPassEl.value) {
+                        confirmPassEl.classList.add('is-invalid');
+                        const confirmErr = document.getElementById('confirmPasswordError');
+                        if (confirmErr) confirmErr.textContent = "Passwords do not match.";
+                        isValid = false;
+                        if (!firstInvalidEl) firstInvalidEl = confirmPassEl;
+                    }
+                }
 
                 if (!isValid) {
                     event.preventDefault();
