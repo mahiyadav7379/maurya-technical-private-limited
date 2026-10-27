@@ -1,0 +1,336 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Jobs for Freshers 2026 - Maurya Technical{% endblock %}
+
+{% block content %}
+<!-- Red Hero Banner (Same as Admission Page) -->
+<div class="py-4 text-white text-center" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-3">
+        <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill mb-2">
+            <i class="fas fa-fire me-1"></i> ACTIVE FRESHER HIRING DRIVE 2026
+        </span>
+        <h1 class="h2 fw-bold mb-1">
+            <i class="fas fa-briefcase text-warning me-2"></i> Jobs for Freshers 2026
+        </h1>
+        <p class="text-white-50 mb-0 small">
+            Direct Campus Placements &bull; 100% Placement Assistance &bull; MSME Govt. Registered &bull; Alambagh, Lucknow
+        </p>
+        <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+            <span class="badge bg-black bg-opacity-25 border border-white border-opacity-25 px-3 py-1 rounded-pill small">
+                <i class="fas fa-user-graduate text-warning me-1"></i> 2024 / 2025 / 2026 Batches
+            </span>
+            <span class="badge bg-black bg-opacity-25 border border-white border-opacity-25 px-3 py-1 rounded-pill small">
+                <i class="fas fa-wallet text-success me-1"></i> ₹2.4 - ₹5.0 LPA Package
+            </span>
+            <span class="badge bg-black bg-opacity-25 border border-white border-opacity-25 px-3 py-1 rounded-pill small">
+                <i class="fas fa-certificate text-info me-1"></i> 0 Experience Required
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Area -->
+<div class="container py-4 px-3 px-md-4" style="max-width: 1100px;">
+
+    <!-- Alert / Messages Container -->
+    {% if messages %}
+        <div class="mb-4">
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show shadow-sm" role="alert">
+                    <i class="fas {% if message.tags == 'error' %}fa-exclamation-circle{% else %}fa-check-circle{% endif %} me-2"></i>
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Metrics Bar -->
+    <div class="card border rounded-3 shadow-sm mb-4 bg-white overflow-hidden">
+        <div class="card-body p-3">
+            <div class="row text-center g-2">
+                <div class="col-6 col-md-3 border-end">
+                    <span class="h4 fw-black text-danger d-block mb-0">450+</span>
+                    <small class="text-muted fw-semibold">Freshers Placed</small>
+                </div>
+                <div class="col-6 col-md-3 border-end-md">
+                    <span class="h4 fw-black text-danger d-block mb-0">50+</span>
+                    <small class="text-muted fw-semibold">Hiring Partners</small>
+                </div>
+                <div class="col-6 col-md-3 border-end">
+                    <span class="h4 fw-black text-success d-block mb-0">₹3.8 LPA</span>
+                    <small class="text-muted fw-semibold">Avg. Package</small>
+                </div>
+                <div class="col-6 col-md-3">
+                    <span class="h4 fw-black text-warning d-block mb-0">100% Free</span>
+                    <small class="text-muted fw-semibold">Placement Support</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Heading -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h4 class="fw-bold text-dark mb-0">
+                <i class="fas fa-list-check text-danger me-2"></i> Current Fresher Openings
+            </h4>
+            <p class="text-muted small mb-0">Explore verified entry-level job vacancies and apply directly</p>
+        </div>
+        <a href="#fresherApplicationForm" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm d-none d-sm-inline-flex align-items-center gap-1">
+            <i class="fas fa-paper-plane"></i> Quick Apply
+        </a>
+    </div>
+
+    <!-- 6 Fresher Job Cards Grid -->
+    <div class="row g-3 mb-4">
+        {% for job in fresher_jobs %}
+        <div class="col-lg-6">
+            <div class="card h-100 border rounded-3 shadow-sm hover-shadow transition job-opening-card" id="job-card-{{ job.id }}">
+                <div class="card-body p-4 d-flex flex-column">
+                    <!-- Top Badge & Package -->
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge bg-danger-subtle text-danger fw-bold px-2 py-1">
+                            <i class="fas {{ job.icon }} me-1"></i> {{ job.category }}
+                        </span>
+                        <span class="badge bg-success-subtle text-success fw-bold px-2 py-1">
+                            {{ job.experience }}
+                        </span>
+                    </div>
+
+                    <!-- Job Title -->
+                    <h5 class="fw-bold text-dark mb-1">{{ job.title }}</h5>
+                    <p class="text-muted small mb-3">
+                        <i class="fas fa-graduation-cap me-1 text-danger"></i> <strong>Eligibility:</strong> {{ job.eligibility }}
+                    </p>
+
+                    <!-- Package & Location Box -->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center p-2 px-3 rounded-2 bg-light border mb-3">
+                        <div>
+                            <small class="text-muted d-block" style="font-size: 11px;">Expected Package</small>
+                            <span class="h5 fw-bold text-danger mb-0">{{ job.package }}</span>
+                        </div>
+                        <div class="text-end">
+                            <small class="text-muted d-block" style="font-size: 11px;"><i class="fas fa-map-marker-alt text-danger me-1"></i> Location</small>
+                            <span class="fw-bold text-dark small">{{ job.location }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Skills Tags -->
+                    <div class="mb-3 flex-grow-1">
+                        <small class="fw-bold text-muted d-block mb-1" style="font-size: 11.5px;">Skills / Topics Required:</small>
+                        <div class="d-flex flex-wrap gap-1">
+                            {% for skill in job.skills %}
+                                <span class="badge bg-white text-dark border small py-1 px-2">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Card Actions -->
+                    <div class="pt-2 border-top d-flex justify-content-between align-items-center gap-2">
+                        <small class="text-muted">
+                            <i class="fas fa-clock text-warning me-1"></i> {{ job.vacancies }} Vacancies
+                        </small>
+                        <button type="button" class="btn btn-danger btn-sm fw-bold px-3 py-2 rounded-2 apply-role-btn" 
+                                data-role="{{ job.title }}" data-qualification="{{ job.eligibility }}">
+                            <i class="fas fa-paper-plane me-1"></i> Apply for this Job
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Direct Application Form Section -->
+    <div class="card border border-danger-subtle rounded-3 shadow-sm mb-4 bg-white overflow-hidden" id="fresherApplicationForm">
+        <div class="card-header bg-gradient text-white p-3 px-4" style="background: linear-gradient(135deg, #7A0C0C 0%, #A81B1B 100%);">
+            <h5 class="fw-bold mb-0">
+                <i class="fas fa-user-plus text-warning me-2"></i> Apply for Fresher Placement Drive 2026
+            </h5>
+            <small class="text-white-50">Fill the simple form below. Our placement officer will schedule your interview call.</small>
+        </div>
+        <div class="card-body p-4">
+            <form method="POST" action="{% url 'jobs_for_freshers' %}" id="fresherForm">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold small text-dark">Full Name <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fas fa-user text-muted"></i></span>
+                            <input type="text" name="name" id="inputName" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold small text-dark">Mobile / WhatsApp Number <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fas fa-phone-alt text-muted"></i></span>
+                            <input type="tel" name="phone" id="inputPhone" class="form-control" placeholder="10-digit mobile number" maxlength="10" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold small text-dark">Email Address (Optional)</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fas fa-envelope text-muted"></i></span>
+                            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="example@gmail.com">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold small text-dark">Highest Qualification <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fas fa-graduation-cap text-muted"></i></span>
+                            <select name="qualification" id="selectQualification" class="form-select" required>
+                                <option value="B.Tech">B.Tech / B.E</option>
+                                <option value="Diploma">Diploma / Polytechnic</option>
+                                <option value="BCA">BCA</option>
+                                <option value="MCA">MCA</option>
+                                <option value="B.Sc / M.Sc">B.Sc / M.Sc (IT / CS)</option>
+                                <option value="MBA / PGDM">MBA / PGDM</option>
+                                <option value="Other">Other Graduate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold small text-dark">Branch / Stream <span class="text-danger">*</span></label>
+                        <input type="text" name="branch" id="inputBranch" class="form-control" placeholder="e.g. CS, IT, Mechanical, Civil, EC" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold small text-dark">Passing Year <span class="text-danger">*</span></label>
+                        <select name="passing_year" id="selectPassingYear" class="form-select" required>
+                            <option value="2026" selected>2026 (Final Year)</option>
+                            <option value="2025">2025 Passout</option>
+                            <option value="2024">2024 Passout</option>
+                            <option value="2027">2027 (Pre-Final Year)</option>
+                            <option value="Earlier">2023 or Earlier</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold small text-dark">College Name / City</label>
+                        <input type="text" name="college_or_city" id="inputCollege" class="form-control" placeholder="e.g. Lucknow, Kanpur, etc.">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-bold small text-dark">Job Role You are Applying For <span class="text-danger">*</span></label>
+                        <select name="job_role" id="selectJobRole" class="form-select" required>
+                            <option value="Junior Python / Full Stack Web Developer">Junior Python / Full Stack Web Developer</option>
+                            <option value="Junior CAD / Mechanical Design Engineer">Junior CAD / Mechanical Design Engineer</option>
+                            <option value="Civil BIM & Interior Design Trainee">Civil BIM & Interior Design Trainee</option>
+                            <option value="Embedded Systems & Circuit Design Trainee">Embedded Systems & Circuit Design Trainee</option>
+                            <option value="Digital Textile & Fashion CAD Designer">Digital Textile & Fashion CAD Designer</option>
+                            <option value="IT Technical Support & Operations Trainee">IT Technical Support & Operations Trainee</option>
+                            <option value="Any Suitable Fresher Engineering Opening">Any Suitable Fresher Engineering Opening</option>
+                        </select>
+                    </div>
+                    <div class="col-12 pt-2">
+                        <button type="submit" class="btn btn-danger fw-bold w-100 py-3 rounded-2 shadow-sm fs-6" id="submitBtn">
+                            <i class="fas fa-check-circle me-2"></i> Submit Fresher Job Application (100% Free)
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4 Step Placement Process -->
+    <div class="card border rounded-3 shadow-sm mb-4 bg-white p-4">
+        <h5 class="fw-bold text-dark text-center mb-3">
+            <i class="fas fa-road text-danger me-2"></i> Fresher Hiring &amp; Selection Process
+        </h5>
+        <div class="row text-center g-3">
+            <div class="col-6 col-md-3">
+                <div class="p-3 rounded-3 bg-light h-100 border">
+                    <span class="badge bg-danger text-white rounded-circle p-2 mb-2" style="width: 36px; height: 36px; line-height: 20px;">1</span>
+                    <h6 class="fw-bold mb-1">Apply Online</h6>
+                    <small class="text-muted">Submit your application above with your branch &amp; passing year.</small>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 rounded-3 bg-light h-100 border">
+                    <span class="badge bg-danger text-white rounded-circle p-2 mb-2" style="width: 36px; height: 36px; line-height: 20px;">2</span>
+                    <h6 class="fw-bold mb-1">Skill Screening</h6>
+                    <small class="text-muted">Technical evaluation &amp; resume enhancement by our experts.</small>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 rounded-3 bg-light h-100 border">
+                    <span class="badge bg-danger text-white rounded-circle p-2 mb-2" style="width: 36px; height: 36px; line-height: 20px;">3</span>
+                    <h6 class="fw-bold mb-1">Interview Round</h6>
+                    <small class="text-muted">Direct interview scheduling with top recruiting companies.</small>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 rounded-3 bg-light h-100 border">
+                    <span class="badge bg-success text-white rounded-circle p-2 mb-2" style="width: 36px; height: 36px; line-height: 20px;">4</span>
+                    <h6 class="fw-bold mb-1">Offer Letter</h6>
+                    <small class="text-muted">Receive your appointment letter and begin your professional career.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placement Help & WhatsApp Contact (Matches Admission Page) -->
+    <div class="card border-0 bg-light rounded-3 p-3 text-center mb-4 shadow-sm">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <div class="text-md-start">
+                <h6 class="fw-bold mb-1 text-dark">
+                    <i class="fas fa-headset text-danger me-2"></i> Have questions about Fresher Openings or Interviews?
+                </h6>
+                <p class="text-muted small mb-0">Speak directly with our Fresher Placement Coordinator or inquire on WhatsApp.</p>
+            </div>
+            <div class="d-flex gap-2 flex-wrap justify-content-center">
+                <a href="https://wa.me/918858298247?text=Hello%20Maurya%20Technical,%20I%20am%20a%20fresher%20looking%20for%20job%20placements" target="_blank" class="btn btn-success fw-bold px-3">
+                    <i class="fab fa-whatsapp me-1"></i> WhatsApp Placement Cell
+                </a>
+                <a href="tel:+918858298247" class="btn btn-outline-danger fw-bold px-3">
+                    <i class="fas fa-phone-alt me-1"></i> +91 88582 98247
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .hover-shadow:hover {
+        box-shadow: 0 8px 24px rgba(211, 47, 47, 0.15) !important;
+        transform: translateY(-2px);
+    }
+    .transition {
+        transition: all 0.25s ease;
+    }
+    .fw-black {
+        font-weight: 900;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // When click on Apply for this Job button on any card
+    const applyButtons = document.querySelectorAll('.apply-role-btn');
+    const roleSelect = document.getElementById('selectJobRole');
+    const formSection = document.getElementById('fresherApplicationForm');
+    const nameInput = document.getElementById('inputName');
+
+    applyButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const role = this.getAttribute('data-role');
+            if (roleSelect && role) {
+                // Find matching option
+                for (let i = 0; i < roleSelect.options.length; i++) {
+                    if (roleSelect.options[i].value === role) {
+                        roleSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                    if (nameInput) nameInput.focus();
+                }, 500);
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

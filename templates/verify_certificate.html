@@ -62,13 +62,10 @@
                 </div>
             </div>
         </div>
-
-
         <!-- SEARCH RESULT SECTION -->
         {% if searched %}
         <div class="row justify-content-center mb-5">
             <div class="col-lg-9 col-md-11">
-                
                 {% if certificate %}
                 <!-- VERIFIED RESULT CARD -->
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden border-top border-success border-5">
@@ -196,50 +193,9 @@
                     </div>
                 </div>
                 {% endif %}
-
             </div>
         </div>
         {% endif %}
-
-        <!-- Security & Verification Features Grid -->
-        <div class="row g-4 mt-4">
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center bg-white">
-                    <div class="text-danger mb-3">
-                        <i class="fas fa-qrcode fs-1"></i>
-                    </div>
-                    <h5 class="fw-bold text-dark mb-2">QR Code Authentication</h5>
-                    <p class="text-muted small mb-0">
-                        Scan the official QR code printed on physical certificates to verify record authenticity instantly online.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center bg-white">
-                    <div class="text-warning mb-3">
-                        <i class="fas fa-university fs-1"></i>
-                    </div>
-                    <h5 class="fw-bold text-dark mb-2">Govt & MSME Registered</h5>
-                    <p class="text-muted small mb-0">
-                        All issued industrial training certificates carry official MSME registration validity and corporate acceptance.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center bg-white">
-                    <div class="text-success mb-3">
-                        <i class="fas fa-user-shield fs-1"></i>
-                    </div>
-                    <h5 class="fw-bold text-dark mb-2">Tamper-Proof Ledger</h5>
-                    <p class="text-muted small mb-0">
-                        Records are directly synchronized with the Examination Controller registry at Maurya Technical Private Limited.
-                    </p>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 {% endblock %}

@@ -95,6 +95,16 @@
                                 </a>
                             </div>
                         </li>
+                        <li class="border-top border-secondary border-opacity-25 mt-2 pt-2 px-2">
+                            <div class="d-flex gap-2 flex-wrap">
+                                <a class="dropdown-item aktu-dropdown-item fw-bold text-success flex-fill rounded-2 py-1 px-2" href="{% url 'training_brochure' %}" target="_blank">
+                                    <i class="fa-solid fa-file-pdf text-success me-1"></i> Training Brochure (PDF)
+                                </a>
+                                <a class="dropdown-item aktu-dropdown-item fw-bold text-info flex-fill rounded-2 py-1 px-2" href="{% url 'btech_aiml_notes' %}" target="_blank">
+                                    <i class="fa-solid fa-file-pdf text-warning me-1"></i> B.Tech AI &amp; ML Notes (50 Pgs)
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                 </li>
 
@@ -116,6 +126,13 @@
                 <li class="nav-item">
                     <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'job_fair' %}active{% endif %}" href="{% url 'job_fair' %}">
                         <i class="fas fa-briefcase d-lg-none me-2 text-warning"></i>JOB FAIR
+                    </a>
+                </li>
+
+                <!-- 7. RESUME BUILDER (FREE) -->
+                <li class="nav-item">
+                    <a class="nav-link aktu-nav-link {% if request.resolver_match.url_name == 'resume_builder' %}active{% endif %}" href="{% url 'resume_builder' %}">
+                        <i class="fas fa-file-invoice d-lg-none me-2 text-warning"></i>RESUME BUILDER <span class="badge bg-warning text-dark px-1 py-0 ms-1 fw-bold" style="font-size: 0.65rem;">NEW</span>
                     </a>
                 </li>
 
@@ -174,6 +191,18 @@
                     <a href="{% url 'registration' %}" class="btn btn-warning fw-bold py-2 shadow-sm text-dark d-flex align-items-center justify-content-center gap-2">
                         <i class="fas fa-edit"></i> Course Registration
                     </a>
+                    <a href="{% url 'resume_builder' %}" class="btn btn-danger fw-bold py-2 shadow-sm text-white d-flex align-items-center justify-content-center gap-2">
+                        <i class="fas fa-file-invoice"></i> Free Resume Builder (New)
+                    </a>
+                    <!-- Mobile Brochure Downloads -->
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="{% url 'training_brochure' %}" target="_blank" class="btn btn-outline-light fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small text-white border-secondary">
+                            <i class="fa-solid fa-file-pdf text-success"></i> Training Brochure
+                        </a>
+                        <a href="{% url 'placement_brochure' %}" target="_blank" class="btn btn-outline-light fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small text-white border-secondary">
+                            <i class="fa-solid fa-file-pdf text-success"></i> Placement Brochure
+                        </a>
+                    </div>
                     <div class="d-flex gap-2 flex-wrap">
                         <a href="{% url 'student_login' %}" class="btn btn-light fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small">
                             <i class="fas fa-sign-in-alt text-success"></i> Student Login

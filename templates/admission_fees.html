@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}B.Tech, M.Tech & MBA Admission & Fees 2026 - Maurya Technical{% endblock %}
+
+{% block content %}
+<!-- Simple Clean Hero Banner -->
+<div class="py-4 text-white text-center" style="background: linear-gradient(135deg, #500707 0%, #A81B1B 50%, #7A0C0C 100%);">
+    <div class="container px-3">
+        <h1 class="h2 fw-bold mb-1">
+            <i class="fas fa-graduation-cap text-warning me-2"></i> B.Tech, M.Tech &amp; MBA Admission &amp; Fees
+        </h1>
+        <p class="text-white-50 mb-0 small">
+            Affordable Industrial Training &bull; MSME Govt. Registered &bull; Alambagh, Lucknow
+        </p>
+        <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+            <a href="{% url 'training_brochure' %}" target="_blank" class="btn btn-warning btn-sm fw-bold shadow-sm text-dark px-3 rounded-pill">
+                <i class="fa-solid fa-file-pdf text-danger me-1"></i> Download Training Brochure (PDF)
+            </a>
+            <a href="{% url 'btech_aiml_notes' %}" target="_blank" class="btn btn-light btn-sm fw-bold shadow-sm text-dark px-3 rounded-pill">
+                <i class="fa-solid fa-file-pdf text-success me-1"></i> B.Tech AI &amp; ML Data Structures Notes (50 Pgs)
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Area -->
+<div class="container py-4 px-3 px-md-4" style="max-width: 1100px;">
+
+    <!-- 3 Simple Degree Pricing Cards -->
+    <div class="row g-3 justify-content-center mb-4">
+        
+        <!-- B.Tech Card -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border rounded-3 shadow-sm hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-primary-subtle text-primary fw-bold">B.Tech / Diploma</span>
+                        <span class="badge bg-success-subtle text-success small">Popular</span>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-1">B.Tech Training</h4>
+                    <p class="text-muted small mb-3">Summer / Winter Industrial Training</p>
+                    
+                    <div class="mb-3 pb-3 border-bottom">
+                        <span class="h2 fw-black text-primary">₹4,000</span>
+                        <span class="text-muted small">/ one-time all-inclusive</span>
+                    </div>
+
+                    <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4 flex-grow-1">
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success"></i> <span><strong>Duration:</strong> 45 Days / 6 Weeks</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success"></i> <span>1 Major Live Capstone Project</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success"></i> <span>MSME Govt. Registered Certificate</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success"></i> <span>College Training Letter &amp; Report</span>
+                        </li>
+                    </ul>
+
+                    <a href="{% url 'registration' %}" class="btn btn-primary fw-bold w-100 py-2 rounded-2">
+                        <i class="fas fa-user-plus me-1"></i> Apply for B.Tech (₹4,000)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- M.Tech Card -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border border-danger-subtle rounded-3 shadow-sm hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-danger-subtle text-danger fw-bold">M.Tech / M.E</span>
+                        <span class="badge bg-danger text-white small">Research</span>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-1">M.Tech Training</h4>
+                    <p class="text-muted small mb-3">Thesis &amp; Advanced Simulation</p>
+                    
+                    <div class="mb-3 pb-3 border-bottom">
+                        <span class="h2 fw-black text-danger">₹5,000</span>
+                        <span class="text-muted small">/ one-time all-inclusive</span>
+                    </div>
+
+                    <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4 flex-grow-1">
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-danger"></i> <span><strong>Duration:</strong> 45 Days to Semester</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-danger"></i> <span>MATLAB / ANSYS / AI Simulation</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-danger"></i> <span>MSME Govt. Recognized Certificate</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-danger"></i> <span>1-on-1 Faculty Dissertation Support</span>
+                        </li>
+                    </ul>
+
+                    <a href="{% url 'registration' %}" class="btn btn-danger fw-bold w-100 py-2 rounded-2">
+                        <i class="fas fa-user-plus me-1"></i> Apply for M.Tech (₹5,000)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MBA Card -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border rounded-3 shadow-sm hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-warning-subtle text-dark fw-bold">MBA / PGDM</span>
+                        <span class="badge bg-info-subtle text-info small">Corporate SIP</span>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-1">MBA Training</h4>
+                    <p class="text-muted small mb-3">Summer Internship Project (SIP)</p>
+                    
+                    <div class="mb-3 pb-3 border-bottom">
+                        <span class="h2 fw-black text-dark">₹5,000</span>
+                        <span class="text-muted small">/ one-time all-inclusive</span>
+                    </div>
+
+                    <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4 flex-grow-1">
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success"></i> <span><strong>Duration:</strong> 45 Days / 6-8 Weeks</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success"></i> <span>Corporate SIP Project &amp; Analytics</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success"></i> <span>MSME Internship Certificate</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success"></i> <span>Official Project Report Signing</span>
+                        </li>
+                    </ul>
+
+                    <a href="{% url 'registration' %}" class="btn btn-warning fw-bold text-dark w-100 py-2 rounded-2">
+                        <i class="fas fa-user-plus me-1"></i> Apply for MBA (₹5,000)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Admission Help & WhatsApp Inquiry -->
+    <div class="card border-0 bg-light rounded-3 p-3 text-center mb-4 shadow-sm">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <div class="text-md-start">
+                <h6 class="fw-bold mb-1 text-dark">
+                    <i class="fas fa-headset text-danger me-2"></i> Need help with Admission or Seat Booking?
+                </h6>
+                <p class="text-muted small mb-0">Speak directly with our training counselor or inquire on WhatsApp for fee details.</p>
+            </div>
+            <div class="d-flex gap-2 flex-wrap justify-content-center">
+                <a href="https://wa.me/918858298247?text=Hello%20Maurya%20Technical,%20I%20have%20an%20inquiry%20regarding%20admission%20fees" target="_blank" class="btn btn-success fw-bold px-3">
+                    <i class="fab fa-whatsapp me-1"></i> WhatsApp Inquiry
+                </a>
+                <a href="tel:+918858298247" class="btn btn-outline-danger fw-bold px-3">
+                    <i class="fas fa-phone-alt me-1"></i> +91 88582 98247
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .hover-shadow:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+        transform: translateY(-2px);
+    }
+    .transition {
+        transition: all 0.25s ease;
+    }
+</style>
+{% endblock %}

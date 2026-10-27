@@ -1,0 +1,1811 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Free Online Resume Builder - 4 Professional ATS Templates | Maurya Technical{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* ===================================================
+       RESUME BUILDER ROOT VARIABLES & GLOBAL STYLES
+       =================================================== */
+    :root {
+        --resume-accent: #800000;
+        --resume-accent-light: #fdf2f2;
+        --resume-accent-dark: #5a0000;
+        --resume-text-dark: #1e293b;
+        --resume-text-muted: #64748b;
+        --resume-border: #e2e8f0;
+    }
+
+    body {
+        background-color: #f8fafc;
+    }
+
+    .builder-hero {
+        background: linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #800000 100%);
+        color: #ffffff;
+        padding: 2.5rem 0 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .builder-hero::after {
+        content: '';
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    /* Template Selection Cards */
+    .template-card-option {
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border: 2px solid transparent;
+        background: #ffffff;
+    }
+
+    .template-card-option:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .template-card-option.active {
+        border-color: #800000;
+        background: #fff5f5;
+        box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.15);
+    }
+
+    /* Color Swatches */
+    .color-swatch {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: inline-block;
+        border: 2px solid #ffffff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
+    }
+    .color-swatch:hover, .color-swatch.active {
+        transform: scale(1.2);
+        outline: 2px solid #1e293b;
+    }
+
+    /* Form Accordion & Cards */
+    .editor-section-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #ffffff;
+        margin-bottom: 1.25rem;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .editor-section-header {
+        background: #f8fafc;
+        padding: 0.9rem 1.25rem;
+        font-weight: 700;
+        color: #1e293b;
+        border-bottom: 1px solid #e2e8f0;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+    }
+
+    .editor-section-header:hover {
+        background: #f1f5f9;
+    }
+
+    .editor-section-body {
+        padding: 1.25rem;
+    }
+
+    .repeater-item {
+        background: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .remove-repeater-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 0.8rem;
+    }
+
+    /* Live Preview A4 Paper Canvas */
+    .preview-canvas-wrapper {
+        position: sticky;
+        top: 85px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding-right: 6px;
+    }
+
+    /* Custom scrollbar for preview */
+    .preview-canvas-wrapper::-webkit-scrollbar {
+        width: 6px;
+    }
+    .preview-canvas-wrapper::-webkit-scrollbar-thumb {
+        background-color: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    /* The Resume Sheet - Standardized A4 Aspect Ratio */
+    .resume-sheet {
+        background: #ffffff;
+        width: 100%;
+        max-width: 800px;
+        min-height: 1100px;
+        margin: 0 auto 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0,0,0,0.08);
+        border-radius: 4px;
+        overflow: hidden;
+        color: #1e293b;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        line-height: 1.5;
+        transition: all 0.3s ease;
+    }
+
+    /* ===================================================
+       TEMPLATE 1: MODERN CORPORATE (Clean ATS Header)
+       =================================================== */
+    .template-modern {
+        padding: 35px 40px;
+    }
+    .template-modern .t1-accent-top {
+        height: 6px;
+        background: var(--resume-accent);
+        margin: -35px -40px 25px -40px;
+    }
+    .template-modern .t1-name {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--resume-accent);
+        letter-spacing: -0.5px;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+    }
+    .template-modern .t1-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--resume-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+    .template-modern .t1-contacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 12px;
+        color: #475569;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1.5px solid #e2e8f0;
+    }
+    .template-modern .t1-contacts span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .template-modern .t1-contacts i {
+        color: var(--resume-accent);
+    }
+    .template-modern .t1-section-heading {
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--resume-accent);
+        border-bottom: 2px solid var(--resume-accent);
+        padding-bottom: 4px;
+        margin-top: 18px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .template-modern .t1-item {
+        margin-bottom: 12px;
+    }
+    .template-modern .t1-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    .template-modern .t1-item-title {
+        font-weight: 700;
+        color: #0f172a;
+        font-size: 13.5px;
+    }
+    .template-modern .t1-item-sub {
+        color: #475569;
+        font-weight: 600;
+        font-size: 12.5px;
+    }
+    .template-modern .t1-item-date {
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .template-modern .t1-item-desc {
+        color: #334155;
+        font-size: 12.5px;
+        margin-top: 4px;
+        white-space: pre-line;
+    }
+    .template-modern .skill-chip {
+        display: inline-block;
+        background: var(--resume-accent-light);
+        color: var(--resume-accent-dark);
+        border: 1px solid rgba(0,0,0,0.06);
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 11.5px;
+        font-weight: 600;
+        margin: 2px 3px 2px 0;
+    }
+
+    /* ===================================================
+       TEMPLATE 2: TECH EXECUTIVE (2-Column Sidebar Layout)
+       =================================================== */
+    .template-sidebar {
+        display: flex;
+        min-height: 1100px;
+    }
+    .template-sidebar .t2-sidebar {
+        width: 34%;
+        background: #1e293b;
+        color: #f8fafc;
+        padding: 30px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .template-sidebar .t2-main {
+        width: 66%;
+        padding: 35px 30px;
+        background: #ffffff;
+    }
+    .template-sidebar .t2-avatar-box {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .template-sidebar .t2-avatar-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--resume-accent);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .template-sidebar .t2-avatar-placeholder {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: var(--resume-accent);
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: bold;
+    }
+    .template-sidebar .t2-side-heading {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #f1f5f9;
+        border-bottom: 2px solid var(--resume-accent);
+        padding-bottom: 4px;
+        margin-bottom: 10px;
+    }
+    .template-sidebar .t2-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 11.5px;
+        color: #cbd5e1;
+        margin-bottom: 8px;
+        word-break: break-word;
+    }
+    .template-sidebar .t2-contact-item i {
+        color: #94a3b8;
+        margin-top: 3px;
+    }
+    .template-sidebar .t2-name {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--resume-accent);
+        line-height: 1.1;
+        margin-bottom: 4px;
+    }
+    .template-sidebar .t2-role {
+        font-size: 14px;
+        font-weight: 600;
+        color: #64748b;
+        letter-spacing: 0.5px;
+        margin-bottom: 18px;
+    }
+    .template-sidebar .t2-main-heading {
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #0f172a;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--resume-accent);
+        padding-bottom: 3px;
+        margin-top: 18px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .template-sidebar .t2-side-chip {
+        display: inline-block;
+        background: rgba(255,255,255,0.1);
+        color: #f8fafc;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        margin: 2px;
+    }
+
+    /* ===================================================
+       TEMPLATE 3: MINIMALIST CLASSIC (Timeless Serif Header)
+       =================================================== */
+    .template-minimal {
+        padding: 40px 45px;
+        font-family: 'Outfit', serif, sans-serif;
+    }
+    .template-minimal .t3-header {
+        text-align: center;
+        border-bottom: 2px solid #0f172a;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+    .template-minimal .t3-name {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        color: #0f172a;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+    .template-minimal .t3-role {
+        font-size: 14px;
+        color: var(--resume-accent);
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    .template-minimal .t3-contacts {
+        font-size: 12px;
+        color: #475569;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .template-minimal .t3-section-title {
+        font-size: 13.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #0f172a;
+        border-bottom: 1px solid #cbd5e1;
+        padding-bottom: 3px;
+        margin-top: 18px;
+        margin-bottom: 10px;
+    }
+    .template-minimal .t3-item {
+        margin-bottom: 10px;
+    }
+
+    /* ===================================================
+       TEMPLATE 4: DEVELOPER & TECH STACK COMPACT
+       =================================================== */
+    .template-dev {
+        padding: 30px 35px;
+    }
+    .template-dev .t4-header-box {
+        background: #0f172a;
+        color: #ffffff;
+        padding: 22px 25px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 6px solid var(--resume-accent);
+    }
+    .template-dev .t4-name {
+        font-size: 24px;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+        margin-bottom: 2px;
+    }
+    .template-dev .t4-role {
+        font-size: 13px;
+        color: #38bdf8;
+        font-family: monospace;
+        letter-spacing: 0.5px;
+    }
+    .template-dev .t4-contacts {
+        font-size: 11.5px;
+        color: #cbd5e1;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+    .template-dev .t4-section-heading {
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #0f172a;
+        background: #f1f5f9;
+        padding: 5px 10px;
+        border-left: 4px solid var(--resume-accent);
+        border-radius: 0 4px 4px 0;
+        margin-top: 16px;
+        margin-bottom: 10px;
+    }
+    .template-dev .t4-project-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+    }
+
+    /* ===================================================
+       MOBILE & TAB SWITCHER BAR
+       =================================================== */
+    .mobile-tab-nav {
+        display: none;
+    }
+    @media (max-width: 991.98px) {
+        .mobile-tab-nav {
+            display: flex;
+            position: sticky;
+            top: 70px;
+            z-index: 1020;
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 8px;
+            gap: 8px;
+        }
+        .preview-canvas-wrapper {
+            position: relative;
+            top: 0;
+            max-height: none;
+            overflow-y: visible;
+        }
+    }
+
+    /* ===================================================
+       PRINT MEDIA QUERY (Clean A4 Paper Export)
+       =================================================== */
+    @media print {
+        body, html {
+            background: #ffffff !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            font-size: 12pt;
+        }
+        /* Hide all website chrome */
+        header, nav, footer, .builder-hero, .editor-col, .preview-toolbar, 
+        .aktu-topbar, .aktu-navbar, .header-tier-navbar, .floating-widgets,
+        .chatbot-container, #popupLeadModal, .mobile-tab-nav, .no-print {
+            display: none !important;
+        }
+        .main, .container, .row, .col-lg-7, .preview-canvas-wrapper {
+            display: block !important;
+            width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            max-height: none !important;
+            overflow: visible !important;
+            position: static !important;
+        }
+        .resume-sheet {
+            box-shadow: none !important;
+            margin: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 0 !important;
+            page-break-after: avoid;
+            page-break-inside: avoid;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- 1. HERO HEADER BAR -->
+<div class="builder-hero no-print">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <span class="badge bg-warning text-dark fw-bold px-3 py-1 mb-2 rounded-pill">
+                    <i class="fas fa-sparkles me-1"></i> FREE ATS RESUME BUILDER
+                </span>
+                <h1 class="fw-black display-6 text-white mb-2">
+                    Professional Resume Builder <span class="text-warning">(मौर्य टेक्निकल)</span>
+                </h1>
+                <p class="text-white-50 mb-3 fs-6">
+                    Aapka data, hamare 4 modern formats! Apna details bhariye, template chuniye aur bina kisi watermark ke 1-Click mein High-Quality PDF download karein.
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="button" class="btn btn-warning fw-bold px-3 shadow-sm text-dark" id="btnLoadSample">
+                        <i class="fas fa-magic me-1"></i> Load Sample Data (डेमो भरें)
+                    </button>
+                    <button type="button" class="btn btn-outline-light px-3" id="btnClearForm">
+                        <i class="fas fa-trash-alt me-1"></i> Clear Form
+                    </button>
+                    <button type="button" class="btn btn-success fw-bold px-3 shadow" id="btnDownloadPdf">
+                        <i class="fas fa-file-pdf me-1"></i> Download PDF
+                    </button>
+                    <button type="button" class="btn btn-light fw-bold px-3 text-dark shadow-sm" id="btnPrint">
+                        <i class="fas fa-print me-1"></i> Print / Save
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block text-end">
+                <div class="p-3 bg-white bg-opacity-10 rounded-4 border border-white border-opacity-25 d-inline-block text-start text-white shadow-lg">
+                    <div class="fw-bold fs-6 mb-2 text-warning d-flex align-items-center gap-2">
+                        <i class="fas fa-shield-alt"></i> 100% ATS-Friendly Resumes
+                    </div>
+                    <ul class="list-unstyled mb-0 small text-white-50">
+                        <li><i class="fas fa-check text-success me-2"></i> 4 Industry-Tested Templates</li>
+                        <li><i class="fas fa-check text-success me-2"></i> Live Real-Time Side Preview</li>
+                        <li><i class="fas fa-check text-success me-2"></i> Instant Download (No Sign-Up)</li>
+                        <li><i class="fas fa-check text-success me-2"></i> Ideal for Freshers, B.Tech &amp; CAD Students</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Tab Navigation Bar -->
+<div class="mobile-tab-nav no-print">
+    <button class="btn btn-primary flex-fill fw-bold active" id="tabMobileEditor" onclick="switchMobileView('editor')">
+        <i class="fas fa-pen-nib me-1"></i> 1. Edit Details
+    </button>
+    <button class="btn btn-outline-primary flex-fill fw-bold" id="tabMobilePreview" onclick="switchMobileView('preview')">
+        <i class="fas fa-eye me-1"></i> 2. View Resume Preview
+    </button>
+</div>
+
+<!-- 2. MAIN CONTAINER -->
+<div class="container py-4">
+    <!-- TEMPLATE & COLOR PICKER TOOLBAR -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4 p-3 bg-white no-print">
+        <div class="row align-items-center g-3">
+            <!-- Template Selector -->
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="fw-bold text-dark small text-uppercase tracking-wider">
+                        <i class="fas fa-layer-group text-danger me-1"></i> Select Template:
+                    </span>
+                </div>
+                <div class="row g-2">
+                    <div class="col-6 col-md-3">
+                        <div class="template-card-option p-2 rounded-3 text-center active" data-template="modern">
+                            <i class="fas fa-file-invoice text-primary fs-4 mb-1"></i>
+                            <div class="fw-bold small text-dark">1. Corporate</div>
+                            <span class="badge bg-secondary-subtle text-secondary" style="font-size: 0.65rem;">ATS Clean</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="template-card-option p-2 rounded-3 text-center" data-template="sidebar">
+                            <i class="fas fa-id-card-alt text-success fs-4 mb-1"></i>
+                            <div class="fw-bold small text-dark">2. Executive</div>
+                            <span class="badge bg-success-subtle text-success" style="font-size: 0.65rem;">Sidebar 2-Col</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="template-card-option p-2 rounded-3 text-center" data-template="minimal">
+                            <i class="fas fa-feather-alt text-warning fs-4 mb-1"></i>
+                            <div class="fw-bold small text-dark">3. Minimalist</div>
+                            <span class="badge bg-warning-subtle text-dark" style="font-size: 0.65rem;">Classic Serif</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="template-card-option p-2 rounded-3 text-center" data-template="dev">
+                            <i class="fas fa-laptop-code text-danger fs-4 mb-1"></i>
+                            <div class="fw-bold small text-dark">4. Developer</div>
+                            <span class="badge bg-danger-subtle text-danger" style="font-size: 0.65rem;">Tech &amp; CAD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accent Color Picker -->
+            <div class="col-lg-4 border-start-lg ps-lg-4">
+                <span class="fw-bold text-dark small text-uppercase tracking-wider d-block mb-2">
+                    <i class="fas fa-palette text-danger me-1"></i> Accent Theme Color:
+                </span>
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <span class="color-swatch active" data-color="#800000" style="background: #800000;" title="Maurya Crimson"></span>
+                    <span class="color-swatch" data-color="#1e3a8a" style="background: #1e3a8a;" title="Navy Blue"></span>
+                    <span class="color-swatch" data-color="#065f46" style="background: #065f46;" title="Emerald Green"></span>
+                    <span class="color-swatch" data-color="#4f46e5" style="background: #4f46e5;" title="Tech Indigo"></span>
+                    <span class="color-swatch" data-color="#1e293b" style="background: #1e293b;" title="Slate Charcoal"></span>
+                    <input type="color" id="customColorPicker" value="#800000" class="form-control form-control-color border-0 p-0 rounded-circle" style="width: 32px; height: 32px; cursor: pointer;" title="Custom Color">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN TWO-COLUMN SPLIT: FORM EDITOR & LIVE PREVIEW -->
+    <div class="row g-4">
+        
+        <!-- LEFT COLUMN: FORM EDITOR (col-lg-5) -->
+        <div class="col-lg-5 editor-col" id="editorCol">
+            
+            <!-- SECTION 1: PERSONAL DETAILS -->
+            <div class="editor-section-card">
+                <div class="editor-section-header" onclick="toggleSection('bodyPersonal', this)">
+                    <span><i class="fas fa-user-circle text-danger me-2"></i> 1. Personal Information</span>
+                    <i class="fas fa-chevron-down text-muted"></i>
+                </div>
+                <div class="editor-section-body" id="bodyPersonal">
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <label class="form-label small fw-bold mb-1">Full Name *</label>
+                            <input type="text" class="form-control form-control-sm resume-input" id="inpFullName" placeholder="e.g. Rahul Maurya">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold mb-1">Professional Title / Headline *</label>
+                            <input type="text" class="form-control form-control-sm resume-input" id="inpRole" placeholder="e.g. Full Stack Developer | CAD Engineer">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold mb-1">Email Address *</label>
+                            <input type="email" class="form-control form-control-sm resume-input" id="inpEmail" placeholder="rahul@example.com">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold mb-1">Phone Number *</label>
+                            <input type="text" class="form-control form-control-sm resume-input" id="inpPhone" placeholder="+91 9876543210">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold mb-1">City, State / Country</label>
+                            <input type="text" class="form-control form-control-sm resume-input" id="inpLocation" placeholder="Lucknow, UP, India">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold mb-1">LinkedIn Profile</label>
+                            <input type="text" class="form-control form-control-sm resume-input" id="inpLinkedin" placeholder="linkedin.com/in/rahul-maurya">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold mb-1">GitHub / Portfolio</label>
+                            <input type="text" class="form-control form-control-sm resume-input" id="inpGithub" placeholder="github.com/rahulmaurya">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold mb-1">Profile Photo (Optional)</label>
+                            <input type="file" class="form-control form-control-sm" id="inpPhoto" accept="image/*">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold mb-1">Professional Summary / Objective</label>
+                            <textarea class="form-control form-control-sm resume-input" id="inpSummary" rows="3" placeholder="Brief 2-3 line summary highlighting your education, technical interests, and career goals..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: EDUCATION -->
+            <div class="editor-section-card">
+                <div class="editor-section-header" onclick="toggleSection('bodyEducation', this)">
+                    <span><i class="fas fa-graduation-cap text-warning me-2"></i> 2. Education Details</span>
+                    <i class="fas fa-chevron-down text-muted"></i>
+                </div>
+                <div class="editor-section-body" id="bodyEducation">
+                    <div id="educationContainer"></div>
+                    <button type="button" class="btn btn-sm btn-outline-danger w-100 fw-bold" onclick="addEducationRow()">
+                        <i class="fas fa-plus me-1"></i> Add Another Education (डिग्री/डिप्लोमा जोड़ें)
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECTION 3: SKILLS -->
+            <div class="editor-section-card">
+                <div class="editor-section-header" onclick="toggleSection('bodySkills', this)">
+                    <span><i class="fas fa-tools text-primary me-2"></i> 3. Technical &amp; Soft Skills</span>
+                    <i class="fas fa-chevron-down text-muted"></i>
+                </div>
+                <div class="editor-section-body" id="bodySkills">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold mb-1">Technical Skills (Comma Separated)</label>
+                        <input type="text" class="form-control form-control-sm resume-input" id="inpTechSkills" placeholder="Python, Django, JavaScript, React, MySQL, AutoCAD, Git, HTML/CSS">
+                        <div class="form-text small">Skills ke beech comma lagayein (jaise: Python, C++, Django, SQL)</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold mb-1">Soft Skills / Core Competencies</label>
+                        <input type="text" class="form-control form-control-sm resume-input" id="inpSoftSkills" placeholder="Problem Solving, Team Work, Fast Learner, Communication">
+                    </div>
+                    <div>
+                        <label class="form-label small fw-bold mb-1">Languages Known</label>
+                        <input type="text" class="form-control form-control-sm resume-input" id="inpLanguages" placeholder="English (Proficient), Hindi (Native)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: WORK EXPERIENCE / INTERNSHIPS -->
+            <div class="editor-section-card">
+                <div class="editor-section-header" onclick="toggleSection('bodyExperience', this)">
+                    <span><i class="fas fa-briefcase text-success me-2"></i> 4. Work Experience &amp; Internships</span>
+                    <i class="fas fa-chevron-down text-muted"></i>
+                </div>
+                <div class="editor-section-body" id="bodyExperience">
+                    <div id="experienceContainer"></div>
+                    <button type="button" class="btn btn-sm btn-outline-success w-100 fw-bold" onclick="addExperienceRow()">
+                        <i class="fas fa-plus me-1"></i> Add Experience / Internship (अनुभव जोड़ें)
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECTION 5: PROJECTS -->
+            <div class="editor-section-card">
+                <div class="editor-section-header" onclick="toggleSection('bodyProjects', this)">
+                    <span><i class="fas fa-project-diagram text-info me-2"></i> 5. Academic &amp; Live Projects</span>
+                    <i class="fas fa-chevron-down text-muted"></i>
+                </div>
+                <div class="editor-section-body" id="bodyProjects">
+                    <div id="projectsContainer"></div>
+                    <button type="button" class="btn btn-sm btn-outline-info w-100 fw-bold" onclick="addProjectRow()">
+                        <i class="fas fa-plus me-1"></i> Add Project (प्रोजेक्ट जोड़ें)
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECTION 6: CERTIFICATIONS & ACHIEVEMENTS -->
+            <div class="editor-section-card">
+                <div class="editor-section-header" onclick="toggleSection('bodyCerts', this)">
+                    <span><i class="fas fa-certificate text-warning me-2"></i> 6. Certifications &amp; Achievements</span>
+                    <i class="fas fa-chevron-down text-muted"></i>
+                </div>
+                <div class="editor-section-body" id="bodyCerts">
+                    <div id="certsContainer"></div>
+                    <button type="button" class="btn btn-sm btn-outline-warning text-dark w-100 fw-bold" onclick="addCertRow()">
+                        <i class="fas fa-plus me-1"></i> Add Certification (सर्टिफिकेट जोड़ें)
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: LIVE REAL-TIME PREVIEW (col-lg-7) -->
+        <div class="col-lg-7 preview-col" id="previewCol">
+            
+            <div class="preview-toolbar d-flex justify-content-between align-items-center mb-2 px-1 no-print">
+                <span class="fw-bold text-muted small">
+                    <i class="fas fa-eye text-success me-1"></i> LIVE REAL-TIME PREVIEW (A4)
+                </span>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-success fw-bold" onclick="triggerDownloadPdf()">
+                        <i class="fas fa-download me-1"></i> Download PDF
+                    </button>
+                    <button class="btn btn-sm btn-dark" onclick="window.print()">
+                        <i class="fas fa-print me-1"></i> Print
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sticky Wrapper for the Canvas -->
+            <div class="preview-canvas-wrapper">
+                
+                <!-- THE RESUME SHEET CANVAS -->
+                <div id="resumePreview" class="resume-sheet template-modern">
+                    <!-- Rendered dynamically by JavaScript -->
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- html2pdf.js CDN for direct client-side PDF downloads -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+    /* ===================================================
+       RESUME BUILDER CORE ENGINE (JAVASCRIPT)
+       =================================================== */
+
+    // Global State
+    let currentTemplate = 'modern';
+    let currentAccentColor = '#800000';
+    let profilePhotoDataUrl = '';
+
+    // Sample Data Set (Maurya Technical Student Profile)
+    const sampleData = {
+        fullName: "Rahul Maurya",
+        role: "Full Stack Python Developer & CAD Engineer",
+        email: "rahul.maurya.tech@gmail.com",
+        phone: "+91 98765 43210",
+        location: "Lucknow, Uttar Pradesh, India",
+        linkedin: "linkedin.com/in/rahul-maurya-dev",
+        github: "github.com/rahulmaurya-code",
+        summary: "Passionate and detail-oriented Software Engineering graduate trained in Industrial Python Web Development and Machine CAD at Maurya Technical Private Limited. Proven track record in building full-stack web applications, REST APIs, and database-driven solutions. Seeking an entry-level software developer role in a forward-thinking engineering team.",
+        techSkills: "Python, Django, Django REST Framework, JavaScript, HTML5/CSS3, Bootstrap 5, PostgreSQL, SQLite, Git & GitHub, AutoCAD, RESTful APIs",
+        softSkills: "Problem Solving, Analytical Thinking, Agile Teamwork, Code Review, Effective Communication",
+        languages: "English (Professional Working), Hindi (Native)",
+        education: [
+            {
+                degree: "B.Tech in Computer Science & Engineering",
+                institution: "Dr. A.P.J. Abdul Kalam Technical University (AKTU), Lucknow",
+                year: "2021 - 2025",
+                grade: "8.4 CGPA (First Class with Distinction)"
+            },
+            {
+                degree: "Senior Secondary (12th - PCM)",
+                institution: "Government Jubilee Inter College, Lucknow",
+                year: "2020 - 2021",
+                grade: "84.2%"
+            }
+        ],
+        experience: [
+            {
+                title: "Python Web Development Intern",
+                company: "Maurya Technical Private Limited, Lucknow",
+                duration: "Jul 2024 - Dec 2024",
+                description: "• Engineered 4+ responsive web application modules using Django and PostgreSQL.\n• Integrated secure OTP-based authentication, student fee inquiry, and dynamic certificate generation modules.\n• Optimized SQL queries to reduce page load latency by 35% across high-traffic landing pages."
+            }
+        ],
+        projects: [
+            {
+                name: "Online Examination & Verification Portal",
+                tech: "Django, Python, PostgreSQL, Bootstrap 5",
+                link: "github.com/rahulmaurya-code/cert-verify",
+                desc: "• Designed and deployed an automated student certificate verification engine with cryptographic QR code validation.\n• Handled 10,000+ verification requests with 99.9% uptime and zero unauthorized credential breaches."
+            },
+            {
+                name: "Industrial CAD Machine Component Model",
+                tech: "AutoCAD 3D, SolidWorks, Technical Drawing",
+                link: "",
+                desc: "• Formulated precise 3D engineering blueprints and tolerance specifications for gearbox assemblies under certified engineering mentorship."
+            }
+        ],
+        certifications: [
+            {
+                name: "Advanced Python Web Design & Backend Certification",
+                issuer: "Maurya Technical Private Limited",
+                year: "2024"
+            },
+            {
+                name: "Machine Design CAD Certified Professional",
+                issuer: "National Skill Development Council (NSDC)",
+                year: "2024"
+            }
+        ]
+    };
+
+    // DOM Ready Initialization
+    document.addEventListener('DOMContentLoaded', function () {
+        // Load default sample data on first visit
+        loadDataToForm(sampleData);
+
+        // Attach live input listeners to all text fields
+        document.querySelectorAll('.resume-input').forEach(input => {
+            input.addEventListener('input', renderResume);
+        });
+
+        // Photo upload handler
+        document.getElementById('inpPhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    profilePhotoDataUrl = evt.target.result;
+                    renderResume();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                profilePhotoDataUrl = '';
+                renderResume();
+            }
+        });
+
+        // Template Selector Clicks
+        document.querySelectorAll('.template-card-option').forEach(card => {
+            card.addEventListener('click', function () {
+                document.querySelectorAll('.template-card-option').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                currentTemplate = this.getAttribute('data-template');
+                renderResume();
+            });
+        });
+
+        // Color Swatch Clicks
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.addEventListener('click', function () {
+                document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                currentAccentColor = this.getAttribute('data-color');
+                applyAccentColor(currentAccentColor);
+            });
+        });
+
+        // Custom Color Picker
+        document.getElementById('customColorPicker').addEventListener('input', function (e) {
+            currentAccentColor = e.target.value;
+            applyAccentColor(currentAccentColor);
+        });
+
+        // Action Buttons
+        document.getElementById('btnLoadSample').addEventListener('click', function () {
+            loadDataToForm(sampleData);
+        });
+
+        document.getElementById('btnClearForm').addEventListener('click', function () {
+            if (confirm("Kya aap saara data clear karke fresh form bharna chahte hain?")) {
+                clearAllFields();
+            }
+        });
+
+        document.getElementById('btnDownloadPdf').addEventListener('click', triggerDownloadPdf);
+        document.getElementById('btnPrint').addEventListener('click', function() {
+            window.print();
+        });
+
+        // Initial Render
+        applyAccentColor(currentAccentColor);
+        renderResume();
+    });
+
+    // Toggle Form Accordion
+    function toggleSection(bodyId, headerElem) {
+        const body = document.getElementById(bodyId);
+        const icon = headerElem.querySelector('.fa-chevron-down, .fa-chevron-up');
+        if (body.style.display === 'none') {
+            body.style.display = 'block';
+            if (icon) {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        } else {
+            body.style.display = 'none';
+            if (icon) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+    }
+
+    // Apply CSS Variable for Color
+    function applyAccentColor(color) {
+        document.documentElement.style.setProperty('--resume-accent', color);
+        // Light tint for badges
+        document.documentElement.style.setProperty('--resume-accent-light', color + '18');
+        document.documentElement.style.setProperty('--resume-accent-dark', color);
+    }
+
+    // Switch between Mobile View (Editor vs Preview)
+    function switchMobileView(view) {
+        const editorCol = document.getElementById('editorCol');
+        const previewCol = document.getElementById('previewCol');
+        const tabEditor = document.getElementById('tabMobileEditor');
+        const tabPreview = document.getElementById('tabMobilePreview');
+
+        if (view === 'editor') {
+            editorCol.style.display = 'block';
+            previewCol.style.display = 'none';
+            tabEditor.classList.add('btn-primary', 'active');
+            tabEditor.classList.remove('btn-outline-primary');
+            tabPreview.classList.add('btn-outline-primary');
+            tabPreview.classList.remove('btn-primary', 'active');
+        } else {
+            editorCol.style.display = 'none';
+            previewCol.style.display = 'block';
+            tabPreview.classList.add('btn-primary', 'active');
+            tabPreview.classList.remove('btn-outline-primary');
+            tabEditor.classList.add('btn-outline-primary');
+            tabEditor.classList.remove('btn-primary', 'active');
+            renderResume();
+        }
+    }
+
+    /* ===================================================
+       REPEATER HELPERS (Add & Remove Rows)
+       =================================================== */
+
+    // 1. Education
+    function addEducationRow(data = {}) {
+        const container = document.getElementById('educationContainer');
+        const id = 'edu_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+        const html = `
+            <div class="repeater-item" id="${id}">
+                <button type="button" class="btn btn-outline-danger btn-sm remove-repeater-btn" onclick="removeRow('${id}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <div class="row g-2">
+                    <div class="col-12">
+                        <label class="form-label small fw-bold mb-1">Degree / Course</label>
+                        <input type="text" class="form-control form-control-sm resume-input edu-degree" value="${data.degree || ''}" placeholder="e.g. B.Tech in CSE / Diploma in Mechanical">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small fw-bold mb-1">College / University</label>
+                        <input type="text" class="form-control form-control-sm resume-input edu-inst" value="${data.institution || ''}" placeholder="e.g. AKTU / Lucknow University">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold mb-1">Year / Duration</label>
+                        <input type="text" class="form-control form-control-sm resume-input edu-year" value="${data.year || ''}" placeholder="e.g. 2021 - 2025">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold mb-1">Percentage / CGPA</label>
+                        <input type="text" class="form-control form-control-sm resume-input edu-grade" value="${data.grade || ''}" placeholder="e.g. 8.5 CGPA / 82%">
+                    </div>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+        attachRepeaterListeners(id);
+    }
+
+    // 2. Experience
+    function addExperienceRow(data = {}) {
+        const container = document.getElementById('experienceContainer');
+        const id = 'exp_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+        const html = `
+            <div class="repeater-item" id="${id}">
+                <button type="button" class="btn btn-outline-danger btn-sm remove-repeater-btn" onclick="removeRow('${id}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold mb-1">Role / Job Title</label>
+                        <input type="text" class="form-control form-control-sm resume-input exp-title" value="${data.title || ''}" placeholder="e.g. Python Developer Intern">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold mb-1">Company / Organization</label>
+                        <input type="text" class="form-control form-control-sm resume-input exp-company" value="${data.company || ''}" placeholder="e.g. Maurya Technical Pvt. Ltd.">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small fw-bold mb-1">Duration / Dates</label>
+                        <input type="text" class="form-control form-control-sm resume-input exp-duration" value="${data.duration || ''}" placeholder="e.g. Jul 2024 - Dec 2024">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small fw-bold mb-1">Key Responsibilities / Achievements (Bullets)</label>
+                        <textarea class="form-control form-control-sm resume-input exp-desc" rows="3" placeholder="• Work detail 1&#10;• Work detail 2">${data.description || ''}</textarea>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+        attachRepeaterListeners(id);
+    }
+
+    // 3. Projects
+    function addProjectRow(data = {}) {
+        const container = document.getElementById('projectsContainer');
+        const id = 'proj_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+        const html = `
+            <div class="repeater-item" id="${id}">
+                <button type="button" class="btn btn-outline-danger btn-sm remove-repeater-btn" onclick="removeRow('${id}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold mb-1">Project Name</label>
+                        <input type="text" class="form-control form-control-sm resume-input proj-name" value="${data.name || ''}" placeholder="e.g. Student Portal">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold mb-1">Technologies Used</label>
+                        <input type="text" class="form-control form-control-sm resume-input proj-tech" value="${data.tech || ''}" placeholder="e.g. Django, Python, Bootstrap">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small fw-bold mb-1">Project Link / GitHub (Optional)</label>
+                        <input type="text" class="form-control form-control-sm resume-input proj-link" value="${data.link || ''}" placeholder="e.g. github.com/username/project">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small fw-bold mb-1">Description / Key Features</label>
+                        <textarea class="form-control form-control-sm resume-input proj-desc" rows="2" placeholder="• Feature 1&#10;• Feature 2">${data.desc || ''}</textarea>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+        attachRepeaterListeners(id);
+    }
+
+    // 4. Certifications
+    function addCertRow(data = {}) {
+        const container = document.getElementById('certsContainer');
+        const id = 'cert_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+        const html = `
+            <div class="repeater-item" id="${id}">
+                <button type="button" class="btn btn-outline-danger btn-sm remove-repeater-btn" onclick="removeRow('${id}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <div class="row g-2">
+                    <div class="col-md-8">
+                        <label class="form-label small fw-bold mb-1">Certificate / Award Title</label>
+                        <input type="text" class="form-control form-control-sm resume-input cert-name" value="${data.name || ''}" placeholder="e.g. Python Industrial Training">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold mb-1">Year</label>
+                        <input type="text" class="form-control form-control-sm resume-input cert-year" value="${data.year || ''}" placeholder="e.g. 2024">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small fw-bold mb-1">Issuing Body / Organization</label>
+                        <input type="text" class="form-control form-control-sm resume-input cert-issuer" value="${data.issuer || ''}" placeholder="e.g. Maurya Technical Private Limited">
+                    </div>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+        attachRepeaterListeners(id);
+    }
+
+    function removeRow(id) {
+        const elem = document.getElementById(id);
+        if (elem) {
+            elem.remove();
+            renderResume();
+        }
+    }
+
+    function attachRepeaterListeners(rowId) {
+        const row = document.getElementById(rowId);
+        if (row) {
+            row.querySelectorAll('.resume-input').forEach(input => {
+                input.addEventListener('input', renderResume);
+            });
+        }
+    }
+
+    /* ===================================================
+       DATA GETTER FROM FORM
+       =================================================== */
+    function getFormData() {
+        // Collect Educations
+        const educations = [];
+        document.querySelectorAll('#educationContainer .repeater-item').forEach(item => {
+            const degree = item.querySelector('.edu-degree')?.value.trim();
+            const institution = item.querySelector('.edu-inst')?.value.trim();
+            const year = item.querySelector('.edu-year')?.value.trim();
+            const grade = item.querySelector('.edu-grade')?.value.trim();
+            if (degree || institution) {
+                educations.push({ degree, institution, year, grade });
+            }
+        });
+
+        // Collect Experiences
+        const experiences = [];
+        document.querySelectorAll('#experienceContainer .repeater-item').forEach(item => {
+            const title = item.querySelector('.exp-title')?.value.trim();
+            const company = item.querySelector('.exp-company')?.value.trim();
+            const duration = item.querySelector('.exp-duration')?.value.trim();
+            const description = item.querySelector('.exp-desc')?.value.trim();
+            if (title || company) {
+                experiences.push({ title, company, duration, description });
+            }
+        });
+
+        // Collect Projects
+        const projects = [];
+        document.querySelectorAll('#projectsContainer .repeater-item').forEach(item => {
+            const name = item.querySelector('.proj-name')?.value.trim();
+            const tech = item.querySelector('.proj-tech')?.value.trim();
+            const link = item.querySelector('.proj-link')?.value.trim();
+            const desc = item.querySelector('.proj-desc')?.value.trim();
+            if (name) {
+                projects.push({ name, tech, link, desc });
+            }
+        });
+
+        // Collect Certifications
+        const certs = [];
+        document.querySelectorAll('#certsContainer .repeater-item').forEach(item => {
+            const name = item.querySelector('.cert-name')?.value.trim();
+            const issuer = item.querySelector('.cert-issuer')?.value.trim();
+            const year = item.querySelector('.cert-year')?.value.trim();
+            if (name) {
+                certs.push({ name, issuer, year });
+            }
+        });
+
+        return {
+            fullName: document.getElementById('inpFullName').value.trim() || 'Your Name',
+            role: document.getElementById('inpRole').value.trim() || 'Your Professional Title',
+            email: document.getElementById('inpEmail').value.trim(),
+            phone: document.getElementById('inpPhone').value.trim(),
+            location: document.getElementById('inpLocation').value.trim(),
+            linkedin: document.getElementById('inpLinkedin').value.trim(),
+            github: document.getElementById('inpGithub').value.trim(),
+            summary: document.getElementById('inpSummary').value.trim(),
+            techSkills: document.getElementById('inpTechSkills').value.trim(),
+            softSkills: document.getElementById('inpSoftSkills').value.trim(),
+            languages: document.getElementById('inpLanguages').value.trim(),
+            educations,
+            experiences,
+            projects,
+            certs,
+            photo: profilePhotoDataUrl
+        };
+    }
+
+    /* ===================================================
+       LOAD DATA / POPULATE FORM
+       =================================================== */
+    function loadDataToForm(data) {
+        document.getElementById('inpFullName').value = data.fullName || '';
+        document.getElementById('inpRole').value = data.role || '';
+        document.getElementById('inpEmail').value = data.email || '';
+        document.getElementById('inpPhone').value = data.phone || '';
+        document.getElementById('inpLocation').value = data.location || '';
+        document.getElementById('inpLinkedin').value = data.linkedin || '';
+        document.getElementById('inpGithub').value = data.github || '';
+        document.getElementById('inpSummary').value = data.summary || '';
+        document.getElementById('inpTechSkills').value = data.techSkills || '';
+        document.getElementById('inpSoftSkills').value = data.softSkills || '';
+        document.getElementById('inpLanguages').value = data.languages || '';
+
+        // Clear containers
+        document.getElementById('educationContainer').innerHTML = '';
+        document.getElementById('experienceContainer').innerHTML = '';
+        document.getElementById('projectsContainer').innerHTML = '';
+        document.getElementById('certsContainer').innerHTML = '';
+
+        // Add Education rows
+        if (data.education && data.education.length > 0) {
+            data.education.forEach(edu => addEducationRow(edu));
+        } else {
+            addEducationRow();
+        }
+
+        // Add Experience rows
+        if (data.experience && data.experience.length > 0) {
+            data.experience.forEach(exp => addExperienceRow(exp));
+        } else {
+            addExperienceRow();
+        }
+
+        // Add Projects rows
+        if (data.projects && data.projects.length > 0) {
+            data.projects.forEach(proj => addProjectRow(proj));
+        } else {
+            addProjectRow();
+        }
+
+        // Add Certifications rows
+        if (data.certifications && data.certifications.length > 0) {
+            data.certifications.forEach(cert => addCertRow(cert));
+        }
+
+        renderResume();
+    }
+
+    function clearAllFields() {
+        document.querySelectorAll('.resume-input').forEach(input => input.value = '');
+        document.getElementById('educationContainer').innerHTML = '';
+        document.getElementById('experienceContainer').innerHTML = '';
+        document.getElementById('projectsContainer').innerHTML = '';
+        document.getElementById('certsContainer').innerHTML = '';
+        profilePhotoDataUrl = '';
+        document.getElementById('inpPhoto').value = '';
+        addEducationRow();
+        addExperienceRow();
+        addProjectRow();
+        renderResume();
+    }
+
+    /* ===================================================
+       MAIN RENDER ENGINE: LIVE PREVIEW DISPATCHER
+       =================================================== */
+    function renderResume() {
+        const preview = document.getElementById('resumePreview');
+        const data = getFormData();
+
+        // Update classes
+        preview.className = 'resume-sheet template-' + currentTemplate;
+
+        if (currentTemplate === 'modern') {
+            preview.innerHTML = renderModernTemplate(data);
+        } else if (currentTemplate === 'sidebar') {
+            preview.innerHTML = renderSidebarTemplate(data);
+        } else if (currentTemplate === 'minimal') {
+            preview.innerHTML = renderMinimalTemplate(data);
+        } else if (currentTemplate === 'dev') {
+            preview.innerHTML = renderDevTemplate(data);
+        }
+    }
+
+    /* ---------------------------------------------------
+       TEMPLATE 1: MODERN CORPORATE
+       --------------------------------------------------- */
+    function renderModernTemplate(d) {
+        // Tech Skills Chips
+        const techSkillsHtml = d.techSkills
+            ? d.techSkills.split(',').map(s => s.trim()).filter(Boolean).map(s => `<span class="skill-chip">${s}</span>`).join('')
+            : '';
+
+        // Contacts list
+        const contactsList = [];
+        if (d.phone) contactsList.push(`<span><i class="fas fa-phone-alt"></i> ${d.phone}</span>`);
+        if (d.email) contactsList.push(`<span><i class="fas fa-envelope"></i> ${d.email}</span>`);
+        if (d.location) contactsList.push(`<span><i class="fas fa-map-marker-alt"></i> ${d.location}</span>`);
+        if (d.linkedin) contactsList.push(`<span><i class="fab fa-linkedin"></i> ${d.linkedin}</span>`);
+        if (d.github) contactsList.push(`<span><i class="fab fa-github"></i> ${d.github}</span>`);
+
+        return `
+            <div class="t1-accent-top"></div>
+            
+            <!-- Header -->
+            <div class="t1-header">
+                <div class="t1-name">${d.fullName}</div>
+                <div class="t1-title">${d.role}</div>
+                <div class="t1-contacts">${contactsList.join('')}</div>
+            </div>
+
+            <!-- Summary -->
+            ${d.summary ? `
+                <div class="t1-section">
+                    <div class="t1-section-heading"><i class="fas fa-user"></i> Professional Summary</div>
+                    <div class="t1-item-desc">${d.summary}</div>
+                </div>
+            ` : ''}
+
+            <!-- Technical & Core Skills -->
+            ${(techSkillsHtml || d.softSkills) ? `
+                <div class="t1-section">
+                    <div class="t1-section-heading"><i class="fas fa-tools"></i> Skills &amp; Competencies</div>
+                    ${techSkillsHtml ? `<div class="mb-2"><strong>Technical Skills:</strong> <div class="mt-1">${techSkillsHtml}</div></div>` : ''}
+                    ${d.softSkills ? `<div class="small text-secondary"><strong>Core Strengths:</strong> ${d.softSkills}</div>` : ''}
+                    ${d.languages ? `<div class="small text-secondary mt-1"><strong>Languages:</strong> ${d.languages}</div>` : ''}
+                </div>
+            ` : ''}
+
+            <!-- Work Experience -->
+            ${d.experiences.length > 0 ? `
+                <div class="t1-section">
+                    <div class="t1-section-heading"><i class="fas fa-briefcase"></i> Experience &amp; Internships</div>
+                    ${d.experiences.map(exp => `
+                        <div class="t1-item">
+                            <div class="t1-item-header">
+                                <span class="t1-item-title">${exp.title}</span>
+                                <span class="t1-item-date">${exp.duration}</span>
+                            </div>
+                            <div class="t1-item-sub">${exp.company}</div>
+                            ${exp.description ? `<div class="t1-item-desc">${exp.description}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Projects -->
+            ${d.projects.length > 0 ? `
+                <div class="t1-section">
+                    <div class="t1-section-heading"><i class="fas fa-project-diagram"></i> Key Projects</div>
+                    ${d.projects.map(proj => `
+                        <div class="t1-item">
+                            <div class="t1-item-header">
+                                <span class="t1-item-title">${proj.name}</span>
+                                ${proj.link ? `<span class="t1-item-date"><a href="#" style="color: inherit; text-decoration: none;">${proj.link}</a></span>` : ''}
+                            </div>
+                            ${proj.tech ? `<div class="t1-item-sub"><small><strong>Technologies:</strong> ${proj.tech}</small></div>` : ''}
+                            ${proj.desc ? `<div class="t1-item-desc">${proj.desc}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Education -->
+            ${d.educations.length > 0 ? `
+                <div class="t1-section">
+                    <div class="t1-section-heading"><i class="fas fa-graduation-cap"></i> Education</div>
+                    ${d.educations.map(edu => `
+                        <div class="t1-item">
+                            <div class="t1-item-header">
+                                <span class="t1-item-title">${edu.degree}</span>
+                                <span class="t1-item-date">${edu.year}</span>
+                            </div>
+                            <div class="t1-item-sub">${edu.institution}</div>
+                            ${edu.grade ? `<div class="small text-muted">Score / Division: ${edu.grade}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Certifications -->
+            ${d.certs.length > 0 ? `
+                <div class="t1-section">
+                    <div class="t1-section-heading"><i class="fas fa-certificate"></i> Certifications &amp; Training</div>
+                    ${d.certs.map(c => `
+                        <div class="d-flex justify-content-between mb-1 small">
+                            <span><strong>${c.name}</strong> - <em>${c.issuer}</em></span>
+                            <span class="text-muted">${c.year}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+        `;
+    }
+
+    /* ---------------------------------------------------
+       TEMPLATE 2: TECH EXECUTIVE (2-COLUMN SIDEBAR)
+       --------------------------------------------------- */
+    function renderSidebarTemplate(d) {
+        // Tech Skills Badges
+        const techSkillsHtml = d.techSkills
+            ? d.techSkills.split(',').map(s => s.trim()).filter(Boolean).map(s => `<span class="t2-side-chip">${s}</span>`).join('')
+            : '';
+
+        // Initials or Photo
+        let avatarHtml = '';
+        if (d.photo) {
+            avatarHtml = `<img src="${d.photo}" class="t2-avatar-img" alt="${d.fullName}">`;
+        } else {
+            const initials = d.fullName.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase() || 'M';
+            avatarHtml = `<div class="t2-avatar-placeholder">${initials}</div>`;
+        }
+
+        return `
+            <!-- Left Sidebar -->
+            <div class="t2-sidebar">
+                <div class="t2-avatar-box">
+                    ${avatarHtml}
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <div class="t2-side-heading">Contact</div>
+                    ${d.phone ? `<div class="t2-contact-item"><i class="fas fa-phone-alt"></i> <span>${d.phone}</span></div>` : ''}
+                    ${d.email ? `<div class="t2-contact-item"><i class="fas fa-envelope"></i> <span>${d.email}</span></div>` : ''}
+                    ${d.location ? `<div class="t2-contact-item"><i class="fas fa-map-marker-alt"></i> <span>${d.location}</span></div>` : ''}
+                    ${d.linkedin ? `<div class="t2-contact-item"><i class="fab fa-linkedin"></i> <span>${d.linkedin}</span></div>` : ''}
+                    ${d.github ? `<div class="t2-contact-item"><i class="fab fa-github"></i> <span>${d.github}</span></div>` : ''}
+                </div>
+
+                <!-- Skills -->
+                ${techSkillsHtml ? `
+                    <div>
+                        <div class="t2-side-heading">Technical Skills</div>
+                        <div class="d-flex flex-wrap">${techSkillsHtml}</div>
+                    </div>
+                ` : ''}
+
+                <!-- Education (in Sidebar) -->
+                ${d.educations.length > 0 ? `
+                    <div>
+                        <div class="t2-side-heading">Education</div>
+                        ${d.educations.map(edu => `
+                            <div class="mb-2">
+                                <div class="fw-bold text-white small">${edu.degree}</div>
+                                <div class="text-white-50" style="font-size: 11px;">${edu.institution}</div>
+                                <div class="text-warning" style="font-size: 10.5px;">${edu.year} | ${edu.grade}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                <!-- Languages & Soft Skills -->
+                ${(d.languages || d.softSkills) ? `
+                    <div>
+                        <div class="t2-side-heading">Expertise</div>
+                        ${d.languages ? `<div class="text-white-50 small mb-1"><strong>Languages:</strong> ${d.languages}</div>` : ''}
+                        ${d.softSkills ? `<div class="text-white-50 small"><strong>Soft Skills:</strong> ${d.softSkills}</div>` : ''}
+                    </div>
+                ` : ''}
+            </div>
+
+            <!-- Right Main Area -->
+            <div class="t2-main">
+                <div class="t2-name">${d.fullName}</div>
+                <div class="t2-role">${d.role}</div>
+
+                <!-- Summary -->
+                ${d.summary ? `
+                    <div class="mb-3">
+                        <div class="t2-main-heading"><i class="fas fa-user-circle"></i> Profile Summary</div>
+                        <div style="font-size: 12.5px; color: #334155;">${d.summary}</div>
+                    </div>
+                ` : ''}
+
+                <!-- Experience -->
+                ${d.experiences.length > 0 ? `
+                    <div class="mb-3">
+                        <div class="t2-main-heading"><i class="fas fa-briefcase"></i> Work Experience</div>
+                        ${d.experiences.map(exp => `
+                            <div class="mb-2">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <strong class="text-dark" style="font-size: 13px;">${exp.title}</strong>
+                                    <span class="text-muted" style="font-size: 11.5px;">${exp.duration}</span>
+                                </div>
+                                <div class="text-secondary small fw-semibold">${exp.company}</div>
+                                ${exp.description ? `<div style="font-size: 12px; color: #475569; margin-top: 3px;">${exp.description}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                <!-- Projects -->
+                ${d.projects.length > 0 ? `
+                    <div class="mb-3">
+                        <div class="t2-main-heading"><i class="fas fa-laptop-code"></i> Key Projects</div>
+                        ${d.projects.map(proj => `
+                            <div class="mb-2">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <strong class="text-dark" style="font-size: 13px;">${proj.name}</strong>
+                                    ${proj.link ? `<span class="text-muted" style="font-size: 11px;">${proj.link}</span>` : ''}
+                                </div>
+                                ${proj.tech ? `<div class="text-muted" style="font-size: 11.5px;"><em>Tech: ${proj.tech}</em></div>` : ''}
+                                ${proj.desc ? `<div style="font-size: 12px; color: #475569; margin-top: 2px;">${proj.desc}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                <!-- Certifications -->
+                ${d.certs.length > 0 ? `
+                    <div>
+                        <div class="t2-main-heading"><i class="fas fa-award"></i> Certifications</div>
+                        ${d.certs.map(c => `
+                            <div class="d-flex justify-content-between mb-1" style="font-size: 12px;">
+                                <span><strong>${c.name}</strong> (${c.issuer})</span>
+                                <span class="text-muted">${c.year}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+
+    /* ---------------------------------------------------
+       TEMPLATE 3: MINIMALIST CLASSIC
+       --------------------------------------------------- */
+    function renderMinimalTemplate(d) {
+        const contacts = [];
+        if (d.phone) contacts.push(d.phone);
+        if (d.email) contacts.push(d.email);
+        if (d.location) contacts.push(d.location);
+        if (d.linkedin) contacts.push(d.linkedin);
+        if (d.github) contacts.push(d.github);
+
+        return `
+            <div class="t3-header">
+                <div class="t3-name">${d.fullName}</div>
+                <div class="t3-role">${d.role}</div>
+                <div class="t3-contacts">${contacts.join(' • ')}</div>
+            </div>
+
+            <!-- Summary -->
+            ${d.summary ? `
+                <div class="mb-3">
+                    <div class="t3-section-title">Professional Statement</div>
+                    <div style="font-size: 12.5px; color: #334155; line-height: 1.6;">${d.summary}</div>
+                </div>
+            ` : ''}
+
+            <!-- Education -->
+            ${d.educations.length > 0 ? `
+                <div class="mb-3">
+                    <div class="t3-section-title">Education &amp; Academic Qualifications</div>
+                    ${d.educations.map(edu => `
+                        <div class="t3-item">
+                            <div class="d-flex justify-content-between">
+                                <strong class="text-dark">${edu.degree}</strong>
+                                <span class="text-muted small">${edu.year}</span>
+                            </div>
+                            <div class="text-secondary small">${edu.institution} ${edu.grade ? `— <em>Grade: ${edu.grade}</em>` : ''}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Experience -->
+            ${d.experiences.length > 0 ? `
+                <div class="mb-3">
+                    <div class="t3-section-title">Professional Experience &amp; Internships</div>
+                    ${d.experiences.map(exp => `
+                        <div class="t3-item">
+                            <div class="d-flex justify-content-between">
+                                <strong class="text-dark">${exp.title} | ${exp.company}</strong>
+                                <span class="text-muted small">${exp.duration}</span>
+                            </div>
+                            ${exp.description ? `<div style="font-size: 12px; color: #475569; margin-top: 2px;">${exp.description}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Projects -->
+            ${d.projects.length > 0 ? `
+                <div class="mb-3">
+                    <div class="t3-section-title">Projects &amp; Technical Initiatives</div>
+                    ${d.projects.map(proj => `
+                        <div class="t3-item">
+                            <div class="d-flex justify-content-between">
+                                <strong class="text-dark">${proj.name}</strong>
+                                ${proj.link ? `<span class="text-muted small">${proj.link}</span>` : ''}
+                            </div>
+                            ${proj.tech ? `<div class="text-muted small"><em>Tools: ${proj.tech}</em></div>` : ''}
+                            ${proj.desc ? `<div style="font-size: 12px; color: #475569; margin-top: 2px;">${proj.desc}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Skills -->
+            ${(d.techSkills || d.softSkills) ? `
+                <div class="mb-3">
+                    <div class="t3-section-title">Skills &amp; Competencies</div>
+                    ${d.techSkills ? `<div class="small mb-1"><strong>Technical:</strong> ${d.techSkills}</div>` : ''}
+                    ${d.softSkills ? `<div class="small mb-1"><strong>Core Strengths:</strong> ${d.softSkills}</div>` : ''}
+                    ${d.languages ? `<div class="small"><strong>Languages:</strong> ${d.languages}</div>` : ''}
+                </div>
+            ` : ''}
+
+            <!-- Certifications -->
+            ${d.certs.length > 0 ? `
+                <div>
+                    <div class="t3-section-title">Certifications &amp; Accreditations</div>
+                    ${d.certs.map(c => `
+                        <div class="d-flex justify-content-between small mb-1">
+                            <span>${c.name} — <em>${c.issuer}</em></span>
+                            <span class="text-muted">${c.year}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+        `;
+    }
+
+    /* ---------------------------------------------------
+       TEMPLATE 4: DEVELOPER & CAD COMPACT
+       --------------------------------------------------- */
+    function renderDevTemplate(d) {
+        const techSkillsBadges = d.techSkills
+            ? d.techSkills.split(',').map(s => s.trim()).filter(Boolean).map(s => `<span class="badge bg-dark text-warning border border-secondary me-1 mb-1">${s}</span>`).join('')
+            : '';
+
+        return `
+            <div class="t4-header-box">
+                <div>
+                    <div class="t4-name">${d.fullName}</div>
+                    <div class="t4-role">&lt;${d.role} /&gt;</div>
+                </div>
+                <div class="t4-contacts">
+                    ${d.email ? `<span><i class="fas fa-envelope text-warning me-1"></i> ${d.email}</span>` : ''}
+                    ${d.phone ? `<span><i class="fas fa-phone-alt text-warning me-1"></i> ${d.phone}</span>` : ''}
+                    ${d.location ? `<span><i class="fas fa-map-marker-alt text-warning me-1"></i> ${d.location}</span>` : ''}
+                    ${d.github ? `<span><i class="fab fa-github text-warning me-1"></i> ${d.github}</span>` : ''}
+                    ${d.linkedin ? `<span><i class="fab fa-linkedin text-warning me-1"></i> ${d.linkedin}</span>` : ''}
+                </div>
+            </div>
+
+            <!-- Summary -->
+            ${d.summary ? `
+                <div class="mb-3">
+                    <div class="t4-section-heading">// ABOUT &amp; MISSION</div>
+                    <div style="font-size: 12.5px; color: #334155;">${d.summary}</div>
+                </div>
+            ` : ''}
+
+            <!-- Tech Stack -->
+            ${techSkillsBadges ? `
+                <div class="mb-3">
+                    <div class="t4-section-heading">// TECH STACK &amp; TOOLS</div>
+                    <div class="mt-1">${techSkillsBadges}</div>
+                    ${d.softSkills ? `<div class="small text-muted mt-2"><strong>Core Abilities:</strong> ${d.softSkills}</div>` : ''}
+                    ${d.languages ? `<div class="small text-muted"><strong>Languages:</strong> ${d.languages}</div>` : ''}
+                </div>
+            ` : ''}
+
+            <!-- Projects -->
+            ${d.projects.length > 0 ? `
+                <div class="mb-3">
+                    <div class="t4-section-heading">// FEATURED PROJECTS</div>
+                    ${d.projects.map(proj => `
+                        <div class="t4-project-card">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <span class="fw-bold text-dark" style="font-size: 13px;"><i class="fas fa-code-branch text-danger me-1"></i> ${proj.name}</span>
+                                ${proj.link ? `<small class="text-primary">${proj.link}</small>` : ''}
+                            </div>
+                            ${proj.tech ? `<div class="text-secondary small mb-1"><code>[Stack: ${proj.tech}]</code></div>` : ''}
+                            ${proj.desc ? `<div style="font-size: 12px; color: #475569;">${proj.desc}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Experience -->
+            ${d.experiences.length > 0 ? `
+                <div class="mb-3">
+                    <div class="t4-section-heading">// WORK EXPERIENCE</div>
+                    ${d.experiences.map(exp => `
+                        <div class="mb-2 pb-2 border-bottom border-light">
+                            <div class="d-flex justify-content-between">
+                                <strong class="text-dark">${exp.title} — <span class="text-danger">${exp.company}</span></strong>
+                                <span class="text-muted small">${exp.duration}</span>
+                            </div>
+                            ${exp.description ? `<div style="font-size: 12px; color: #475569; margin-top: 2px;">${exp.description}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Education -->
+            ${d.educations.length > 0 ? `
+                <div class="mb-3">
+                    <div class="t4-section-heading">// EDUCATION &amp; CREDENTIALS</div>
+                    ${d.educations.map(edu => `
+                        <div class="d-flex justify-content-between mb-1 small">
+                            <span><strong>${edu.degree}</strong> | ${edu.institution}</span>
+                            <span class="text-muted">${edu.year} (${edu.grade})</span>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+
+            <!-- Certifications -->
+            ${d.certs.length > 0 ? `
+                <div>
+                    <div class="t4-section-heading">// CERTIFICATIONS</div>
+                    ${d.certs.map(c => `
+                        <div class="d-flex justify-content-between small mb-1">
+                            <span><i class="fas fa-check-circle text-success me-1"></i> ${c.name} — ${c.issuer}</span>
+                            <span class="text-muted">${c.year}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+        `;
+    }
+
+    /* ===================================================
+       PDF GENERATION & DOWNLOAD
+       =================================================== */
+    function triggerDownloadPdf() {
+        const resumeElement = document.getElementById('resumePreview');
+        const data = getFormData();
+        const safeName = (data.fullName || 'Resume').replace(/[^a-zA-Z0-9_-]/g, '_');
+        const fileName = `${safeName}_Resume_Maurya_Technical.pdf`;
+
+        // Configure html2pdf options for sharp A4 output
+        const opt = {
+            margin: [8, 8, 8, 8],
+            filename: fileName,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, logging: false },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // UI Feedback
+        const btn = document.getElementById('btnDownloadPdf');
+        const origText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Generating PDF...';
+        btn.disabled = true;
+
+        html2pdf().set(opt).from(resumeElement).save().then(() => {
+            btn.innerHTML = origText;
+            btn.disabled = false;
+        }).catch(err => {
+            console.error("PDF generation error, falling back to print dialog:", err);
+            btn.innerHTML = origText;
+            btn.disabled = false;
+            window.print();
+        });
+    }
+</script>
+{% endblock %}

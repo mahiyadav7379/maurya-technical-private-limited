@@ -1,6 +1,7 @@
+import os
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse, Http404
 from django.utils import timezone
 from django.db.models import Q
 from django.core.mail import send_mail
@@ -235,6 +236,224 @@ def fees_structure(request):
 
 
 web_design_hub = fees_structure
+
+
+def admission_fees(request):
+    """
+    Dedicated Admission & Fee Structure page for B.Tech (Rs 4,000),
+    M.Tech (Rs 5,000), and MBA (Rs 5,000) Practical Industrial Training 2026.
+    Supports both direct form POST and AJAX inquiries.
+    """
+    courses = TrainingCourse.objects.filter(is_active=True).order_by('id')
+
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        email = request.POST.get('email', '').strip()
+        degree = request.POST.get('degree', 'B.Tech').strip()
+        branch = request.POST.get('branch', '').strip()
+        college_or_city = request.POST.get('college_or_city', '').strip()
+        course_interest = request.POST.get('course_interest', '').strip()
+
+        is_ajax = (request.headers.get('x-requested-with') == 'XMLHttpRequest' or 
+                   request.POST.get('is_ajax') == '1')
+
+        if not name:
+            msg = "Kripya apna poora naam (Full Name) enter karein."
+            if is_ajax:
+                return JsonResponse({'status': 'error', 'message': msg}, status=400)
+            messages.error(request, msg)
+            return render(request, 'admission_fees.html', {'courses': courses, 'selected_degree': degree})
+
+        is_valid_phone, phone_result = validate_indian_phone(phone)
+        if not is_valid_phone:
+            if is_ajax:
+                return JsonResponse({'status': 'error', 'message': phone_result}, status=400)
+            messages.error(request, phone_result)
+            return render(request, 'admission_fees.html', {'courses': courses, 'selected_degree': degree})
+
+        if 'M.Tech' in degree:
+            fee_amount = "₹5,000"
+        elif 'MBA' in degree:
+            fee_amount = "₹5,000"
+        else:
+            fee_amount = "₹4,000"
+
+        stream_desc = f"Degree: {degree} (Fees: {fee_amount})"
+        if branch:
+            stream_desc += f" | Branch: {branch}"
+        if course_interest:
+            stream_desc += f" | Course: {course_interest}"
+
+        PopUpLead.objects.create(
+            name=name,
+            phone=phone_result,
+            email=email,
+            lead_type='btech_counselling',
+            branch_or_stream=stream_desc,
+            college_or_city=college_or_city,
+        )
+
+        success_msg = f"Dhanyawaad {name}! Aapka {degree} (Fees: {fee_amount}) ke liye admission inquiry safaltapoorvak receive ho gaya hai. Maurya Technical Counselor aapse jald hi call ({phone_result}) par sampark karenge."
+
+        if is_ajax:
+            return JsonResponse({'status': 'success', 'message': success_msg})
+
+        messages.success(request, success_msg)
+        return redirect('admission_fees')
+
+    selected_degree = request.GET.get('degree', 'B.Tech').strip()
+    return render(request, 'admission_fees.html', {
+        'courses': courses,
+        'selected_degree': selected_degree,
+    })
+
+
+def jobs_for_freshers(request):
+    """
+    Dedicated Jobs for Freshers 2026 page.
+    Displays curated fresher job openings across CS/IT, Mechanical, Civil/Interior,
+    Electronics and Fashion/Textile with direct online application support.
+    """
+    fresher_jobs = [
+        {
+            'id': 'web-dev',
+            'title': 'Junior Python / Full Stack Web Developer',
+            'category': 'IT & Software',
+            'eligibility': 'B.Tech (CS/IT), BCA, MCA, B.Sc (CS)',
+            'passing_years': '2024, 2025, 2026',
+            'experience': 'Fresher (0 - 1 Yr)',
+            'package': '₹3.2 - ₹5.0 LPA',
+            'location': 'Lucknow / Hybrid / Noida',
+            'skills': ['Python', 'Django / Flask', 'HTML5 & CSS3', 'JavaScript', 'REST APIs', 'SQL Database'],
+            'vacancies': 12,
+            'badge_color': 'danger',
+            'icon': 'fa-code'
+        },
+        {
+            'id': 'cad-mech',
+            'title': 'Junior CAD / Mechanical Design Engineer',
+            'category': 'Mechanical CAD',
+            'eligibility': 'B.Tech Mechanical / Diploma Mechanical',
+            'passing_years': '2024, 2025, 2026',
+            'experience': 'Fresher (0 - 1 Yr)',
+            'package': '₹2.8 - ₹4.5 LPA',
+            'location': 'Lucknow Industrial Area / Kanpur',
+            'skills': ['AutoCAD 2D/3D', 'SolidWorks', 'CATIA', 'Engineering Drawings', 'GD&T Basics'],
+            'vacancies': 8,
+            'badge_color': 'danger',
+            'icon': 'fa-cogs'
+        },
+        {
+            'id': 'civil-interior',
+            'title': 'Civil BIM & Interior Design Trainee',
+            'category': 'Civil & Architecture',
+            'eligibility': 'B.Tech Civil / Architecture / Diploma Civil',
+            'passing_years': '2024, 2025, 2026',
+            'experience': 'Fresher (0 - 1 Yr)',
+            'package': '₹2.6 - ₹4.2 LPA',
+            'location': 'Lucknow / Delhi NCR',
+            'skills': ['AutoCAD Civil', 'Revit Architecture', 'SketchUp / V-Ray', '2D Plans', '3D Elevation'],
+            'vacancies': 10,
+            'badge_color': 'danger',
+            'icon': 'fa-city'
+        },
+        {
+            'id': 'circuit-embedded',
+            'title': 'Embedded Systems & Circuit Design Trainee',
+            'category': 'Electronics & Hardware',
+            'eligibility': 'B.Tech / Diploma in EC, EN, Electrical',
+            'passing_years': '2024, 2025, 2026',
+            'experience': 'Fresher (0 - 1 Yr)',
+            'package': '₹3.0 - ₹4.8 LPA',
+            'location': 'Lucknow / Noida',
+            'skills': ['Basic Electronics', 'PCB Design', 'Proteus / KiCad', 'Arduino & Microcontrollers', 'Circuit Debugging'],
+            'vacancies': 6,
+            'badge_color': 'danger',
+            'icon': 'fa-microchip'
+        },
+        {
+            'id': 'fashion-textile',
+            'title': 'Digital Textile & Fashion CAD Designer',
+            'category': 'Design & Fashion',
+            'eligibility': 'Diploma / Degree in Fashion or Textile Design',
+            'passing_years': '2024, 2025, 2026',
+            'experience': 'Fresher (0 - 1 Yr)',
+            'package': '₹2.4 - ₹3.8 LPA',
+            'location': 'Lucknow / Kanpur / Delhi NCR',
+            'skills': ['CorelDRAW', 'Adobe Photoshop', 'Pattern Making', 'Digital Textile Printing', 'Fabric Knowledge'],
+            'vacancies': 5,
+            'badge_color': 'danger',
+            'icon': 'fa-tshirt'
+        },
+        {
+            'id': 'tech-support',
+            'title': 'IT Technical Support & Operations Trainee',
+            'category': 'IT Infrastructure',
+            'eligibility': 'Any Graduate / B.Tech / BCA / Diploma',
+            'passing_years': '2024, 2025, 2026',
+            'experience': 'Fresher (0 - 1 Yr)',
+            'package': '₹2.4 - ₹3.6 LPA',
+            'location': 'Lucknow / Remote',
+            'skills': ['Basic Computer Hardware', 'Networking Basics', 'Windows / Linux OS', 'Troubleshooting', 'Communication'],
+            'vacancies': 15,
+            'badge_color': 'danger',
+            'icon': 'fa-headset'
+        },
+    ]
+
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        email = request.POST.get('email', '').strip()
+        qualification = request.POST.get('qualification', 'B.Tech').strip()
+        branch = request.POST.get('branch', '').strip()
+        passing_year = request.POST.get('passing_year', '2026').strip()
+        job_role = request.POST.get('job_role', 'Fresher Job Application').strip()
+        college_or_city = request.POST.get('college_or_city', '').strip()
+
+        is_ajax = (request.headers.get('x-requested-with') == 'XMLHttpRequest' or 
+                   request.POST.get('is_ajax') == '1')
+
+        if not name:
+            msg = "Kripya apna poora naam (Full Name) enter karein."
+            if is_ajax:
+                return JsonResponse({'status': 'error', 'message': msg}, status=400)
+            messages.error(request, msg)
+            return render(request, 'jobs_for_freshers.html', {'fresher_jobs': fresher_jobs})
+
+        is_valid_phone, phone_result = validate_indian_phone(phone)
+        if not is_valid_phone:
+            if is_ajax:
+                return JsonResponse({'status': 'error', 'message': phone_result}, status=400)
+            messages.error(request, phone_result)
+            return render(request, 'jobs_for_freshers.html', {'fresher_jobs': fresher_jobs})
+
+        stream_desc = f"Fresher Job: {job_role} | {qualification} ({branch}) - Passout: {passing_year}"
+
+        PopUpLead.objects.create(
+            name=name,
+            phone=phone_result,
+            email=email,
+            lead_type='job_seeking',
+            branch_or_stream=stream_desc,
+            college_or_city=college_or_city,
+        )
+
+        success_msg = f"Badhai ho {name}! Aapka Fresher Job application ({job_role}) ke liye safaltapoorvak submit ho gaya hai. Maurya Technical Placement Cell aapse jald hi call ({phone_result}) par sampark karegi."
+
+        if is_ajax:
+            return JsonResponse({'status': 'success', 'message': success_msg})
+
+        messages.success(request, success_msg)
+        return redirect('jobs_for_freshers')
+
+    selected_role = request.GET.get('role', '').strip()
+    return render(request, 'jobs_for_freshers.html', {
+        'fresher_jobs': fresher_jobs,
+        'selected_role': selected_role,
+    })
+
 
 
 def python_web_design_redirect(request):
@@ -735,5 +954,50 @@ def verify_otp_api(request):
         })
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'}, status=405)
+
+def training_brochure(request):
+    """
+    Serves the official Maurya Technical Industrial Training Brochure / Course Notes PDF.
+    """
+    pdf_path = os.path.join(settings.BASE_DIR, 'static', 'brochures', 'BTech_AIML_Data_Structures_Exam_Notes.pdf')
+    if not os.path.exists(pdf_path):
+        pdf_path = os.path.join(settings.BASE_DIR, 'static', 'brochures', 'Maurya_Technical_Training_Brochure_2026.pdf')
+    if not os.path.exists(pdf_path):
+        pdf_path = os.path.join(settings.BASE_DIR, 'staticfiles', 'brochures', 'Maurya_Technical_Training_Brochure_2026.pdf')
+    if os.path.exists(pdf_path):
+        return FileResponse(open(pdf_path, 'rb'), content_type='application/pdf', filename='Maurya_Technical_Training_Brochure_2026.pdf')
+    raise Http404("Maurya Technical Training Brochure not found")
+
+
+def placement_brochure(request):
+    """
+    Serves the official Maurya Technical Placement & Corporate Recruitment Brochure 2026 PDF.
+    """
+    pdf_path = os.path.join(settings.BASE_DIR, 'static', 'brochures', 'Maurya_Technical_Placement_Brochure_2026.pdf')
+    if not os.path.exists(pdf_path):
+        pdf_path = os.path.join(settings.BASE_DIR, 'staticfiles', 'brochures', 'Maurya_Technical_Placement_Brochure_2026.pdf')
+    if os.path.exists(pdf_path):
+        return FileResponse(open(pdf_path, 'rb'), content_type='application/pdf', filename='Maurya_Technical_Placement_Brochure_2026.pdf')
+    raise Http404("Maurya Technical Placement Brochure 2026 not found")
+
+
+def btech_aiml_notes(request):
+    """
+    Serves the B.Tech AI & ML - Data Structures 50-Page Detailed Exam Notes PDF.
+    """
+    pdf_path = os.path.join(settings.BASE_DIR, 'static', 'brochures', 'BTech_AIML_Data_Structures_Exam_Notes.pdf')
+    if not os.path.exists(pdf_path):
+        pdf_path = os.path.join(settings.BASE_DIR, 'staticfiles', 'brochures', 'BTech_AIML_Data_Structures_Exam_Notes.pdf')
+    if os.path.exists(pdf_path):
+        return FileResponse(open(pdf_path, 'rb'), content_type='application/pdf', filename='BTech_AIML_Data_Structures_Exam_Notes.pdf')
+    raise Http404("B.Tech AI & ML Notes not found")
+
+
+def resume_builder(request):
+    """
+    Interactive Online Resume Builder with 4 ATS-friendly templates,
+    live real-time preview, and PDF/Print export for Maurya Technical students and job seekers.
+    """
+    return render(request, 'resume_builder.html')
 
 
