@@ -17,23 +17,24 @@
                 </a>
             </div>
 
-            <!-- Center / Prominent: Brochures & B.Tech Study Material (Matches Exact Reference) -->
-            <div class="topbar-brochures d-flex align-items-center flex-wrap gap-2 gap-sm-3 ms-auto ms-lg-0">
-                <a href="{% url 'training_brochure' %}" target="_blank" class="topbar-brochure-link" title="Download Official Training Brochure &amp; Syllabus (PDF)">
-                    <i class="fa-solid fa-file-pdf brochure-pdf-icon"></i>
-                    <span>Training Brochure</span>
-                </a>
-                <a href="{% url 'placement_brochure' %}" target="_blank" class="topbar-brochure-link" title="Download Official Placement &amp; Recruitment Brochure 2026 (PDF)">
-                    <i class="fa-solid fa-file-pdf brochure-pdf-icon"></i>
-                    <span>Placement Brochure</span>
-                </a>
-            </div>
+            <!-- Right: Brochures & Quick Portal Links -->
+            <div class="d-flex align-items-center flex-wrap gap-3 ms-auto">
+                <div class="topbar-brochures d-flex align-items-center flex-wrap gap-2 gap-sm-3">
+                    <a href="{% url 'training_brochure' %}" target="_blank" class="topbar-brochure-link" title="Download Official Training Brochure &amp; Syllabus (PDF)">
+                        <i class="fa-solid fa-file-pdf brochure-pdf-icon"></i>
+                        <span>Training Brochure</span>
+                    </a>
+                    <a href="{% url 'placement_brochure' %}" target="_blank" class="topbar-brochure-link" title="Download Official Placement &amp; Recruitment Brochure 2026 (PDF)">
+                        <i class="fa-solid fa-file-pdf brochure-pdf-icon"></i>
+                        <span>Placement Brochure</span>
+                    </a>
+                </div>
 
-            <!-- Right: Quick Portal Links (No Duplication with Main Navbar) -->
-            <div class="topbar-quick-links d-none d-lg-flex align-items-center flex-wrap gap-3 ms-auto">
-                <a href="{% url 'verify_certificate' %}" class="topbar-link fw-bold text-warning">
-                    <i class="fas fa-certificate me-1 text-warning"></i> Verify Certificate
-                </a>
+                <div class="topbar-quick-links d-none d-lg-flex align-items-center flex-wrap gap-3">
+                    <a href="{% url 'verify_certificate' %}" class="topbar-link fw-bold text-warning">
+                        <i class="fas fa-certificate me-1 text-warning"></i> Verify Certificate
+                    </a>
+                </div>
             </div>
 
         </div>

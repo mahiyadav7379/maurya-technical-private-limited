@@ -187,12 +187,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (chatLauncher) chatLauncher.addEventListener('click', () => toggleChatbot());
     if (chatCloseBtn) chatCloseBtn.addEventListener('click', () => toggleChatbot(false));
     if (chatMinimizeBtn) chatMinimizeBtn.addEventListener('click', () => toggleChatbot(false));
-    if (externalLiveChatBtn) {
-        externalLiveChatBtn.addEventListener('click', function(e) {
+
+    // Global triggers for Tawk.to Live Auto Chat
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('#liveChatBtn, [data-open-chat], .open-tawk-chat, a[href="#livechat"], a[href="#chat"]');
+        if (target) {
             e.preventDefault();
-            toggleChatbot(true);
-        });
-    }
+            if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
+                window.Tawk_API.maximize();
+            } else if (chatWindow) {
+                toggleChatbot(true);
+            }
+        }
+    });
 
     function scrollChatToBottom() {
         if (chatMessagesArea) {

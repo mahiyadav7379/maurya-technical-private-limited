@@ -503,36 +503,124 @@
     /* ===================================================
        PRINT MEDIA QUERY (Clean A4 Paper Export)
        =================================================== */
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
     @media print {
-        body, html {
+        html, body {
             background: #ffffff !important;
             padding: 0 !important;
             margin: 0 !important;
-            font-size: 12pt;
+            width: 100% !important;
+            height: auto !important;
+            font-size: 11pt;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
-        /* Hide all website chrome */
-        header, nav, footer, .builder-hero, .editor-col, .preview-toolbar, 
-        .aktu-topbar, .aktu-navbar, .header-tier-navbar, .floating-widgets,
-        .chatbot-container, #popupLeadModal, .mobile-tab-nav, .no-print {
+
+        /* 1. Hide ALL website chrome, headers, navbars, footers, floating widgets, and editor */
+        .header-tier-topbar,
+        .header-tier-brand,
+        .header-tier-navbar,
+        header,
+        nav,
+        footer,
+        .main-footer,
+        .builder-hero,
+        .mobile-tab-nav,
+        .card.no-print,
+        .editor-col,
+        #editorCol,
+        .preview-toolbar,
+        .floating-side-portal-left,
+        .floating-side-portal-right,
+        .floating-bottom-left,
+        .floating-bottom-right,
+        .floating-action-icon,
+        .maurya-chatbot-wrapper,
+        #mauryaChatbotContainer,
+        #popupLeadModal,
+        #galleryLightboxModal,
+        .modal,
+        .modal-backdrop,
+        .no-print {
             display: none !important;
+            height: 0 !important;
+            max-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
         }
-        .main, .container, .row, .col-lg-7, .preview-canvas-wrapper {
+
+        /* 2. Flatten all layout wrapper containers so they take 0 extra space at top */
+        main,
+        .main,
+        .container,
+        .container-fluid,
+        .py-4,
+        .row,
+        .g-4,
+        .preview-col,
+        #previewCol,
+        .col-lg-7,
+        .preview-canvas-wrapper {
             display: block !important;
             width: 100% !important;
-            padding: 0 !important;
+            max-width: 100% !important;
             margin: 0 !important;
+            padding: 0 !important;
             max-height: none !important;
             overflow: visible !important;
             position: static !important;
+            border: none !important;
+            box-shadow: none !important;
+            transform: none !important;
         }
+
+        /* 3. The Resume Sheet styling for crisp, full-bleed A4 output */
         .resume-sheet {
             box-shadow: none !important;
             margin: 0 !important;
             width: 100% !important;
             max-width: 100% !important;
+            min-height: auto !important;
+            border: none !important;
             border-radius: 0 !important;
-            page-break-after: avoid;
-            page-break-inside: avoid;
+            page-break-after: auto;
+            page-break-inside: auto;
+            background: #ffffff !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* Template Specific Print Normalizations */
+        .template-modern {
+            padding: 24px 32px !important;
+        }
+        .template-modern .t1-accent-top {
+            margin: -24px -32px 20px -32px !important;
+            height: 6px !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        .template-sidebar {
+            min-height: 100vh !important;
+        }
+        .template-sidebar .t2-sidebar {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        .template-dev .t4-header-box {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .t1-section, .t2-section, .t3-section, .t4-section,
+        .t1-item, .t2-exp-item, .t3-item, .t4-project-card {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
         }
     }
 </style>
@@ -543,12 +631,12 @@
 <div class="builder-hero no-print">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-7">
+            <div class="col-12">
                 <span class="badge bg-warning text-dark fw-bold px-3 py-1 mb-2 rounded-pill">
                     <i class="fas fa-sparkles me-1"></i> FREE ATS RESUME BUILDER
                 </span>
                 <h1 class="fw-black display-6 text-white mb-2">
-                    Professional Resume Builder <span class="text-warning">(मौर्य टेक्निकल)</span>
+                    Professional Resume Builder
                 </h1>
                 <p class="text-white-50 mb-3 fs-6">
                     Aapka data, hamare 4 modern formats! Apna details bhariye, template chuniye aur bina kisi watermark ke 1-Click mein High-Quality PDF download karein.
@@ -566,19 +654,6 @@
                     <button type="button" class="btn btn-light fw-bold px-3 text-dark shadow-sm" id="btnPrint">
                         <i class="fas fa-print me-1"></i> Print / Save
                     </button>
-                </div>
-            </div>
-            <div class="col-lg-5 d-none d-lg-block text-end">
-                <div class="p-3 bg-white bg-opacity-10 rounded-4 border border-white border-opacity-25 d-inline-block text-start text-white shadow-lg">
-                    <div class="fw-bold fs-6 mb-2 text-warning d-flex align-items-center gap-2">
-                        <i class="fas fa-shield-alt"></i> 100% ATS-Friendly Resumes
-                    </div>
-                    <ul class="list-unstyled mb-0 small text-white-50">
-                        <li><i class="fas fa-check text-success me-2"></i> 4 Industry-Tested Templates</li>
-                        <li><i class="fas fa-check text-success me-2"></i> Live Real-Time Side Preview</li>
-                        <li><i class="fas fa-check text-success me-2"></i> Instant Download (No Sign-Up)</li>
-                        <li><i class="fas fa-check text-success me-2"></i> Ideal for Freshers, B.Tech &amp; CAD Students</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -802,7 +877,7 @@
                     <button class="btn btn-sm btn-success fw-bold" onclick="triggerDownloadPdf()">
                         <i class="fas fa-download me-1"></i> Download PDF
                     </button>
-                    <button class="btn btn-sm btn-dark" onclick="window.print()">
+                    <button class="btn btn-sm btn-dark" onclick="triggerPrintResume()">
                         <i class="fas fa-print me-1"></i> Print
                     </button>
                 </div>
@@ -963,9 +1038,7 @@
         });
 
         document.getElementById('btnDownloadPdf').addEventListener('click', triggerDownloadPdf);
-        document.getElementById('btnPrint').addEventListener('click', function() {
-            window.print();
-        });
+        document.getElementById('btnPrint').addEventListener('click', triggerPrintResume);
 
         // Initial Render
         applyAccentColor(currentAccentColor);
@@ -1774,38 +1847,103 @@
     }
 
     /* ===================================================
-       PDF GENERATION & DOWNLOAD
+       PRINT & PDF GENERATION / DOWNLOAD
        =================================================== */
+    function triggerPrintResume() {
+        const previewCol = document.getElementById('previewCol');
+        if (previewCol) {
+            previewCol.style.display = 'block';
+        }
+        window.print();
+    }
+
     function triggerDownloadPdf() {
         const resumeElement = document.getElementById('resumePreview');
         const data = getFormData();
         const safeName = (data.fullName || 'Resume').replace(/[^a-zA-Z0-9_-]/g, '_');
         const fileName = `${safeName}_Resume_Maurya_Technical.pdf`;
 
-        // Configure html2pdf options for sharp A4 output
-        const opt = {
-            margin: [8, 8, 8, 8],
-            filename: fileName,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, logging: false },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
+        const wrapper = document.querySelector('.preview-canvas-wrapper');
+        const prevWrapperScroll = wrapper ? wrapper.scrollTop : 0;
+        const prevWindowScroll = window.scrollY;
 
         // UI Feedback
         const btn = document.getElementById('btnDownloadPdf');
-        const origText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Generating PDF...';
-        btn.disabled = true;
+        const origText = btn ? btn.innerHTML : '';
+        if (btn) {
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Generating PDF...';
+            btn.disabled = true;
+        }
 
-        html2pdf().set(opt).from(resumeElement).save().then(() => {
-            btn.innerHTML = origText;
-            btn.disabled = false;
-        }).catch(err => {
-            console.error("PDF generation error, falling back to print dialog:", err);
-            btn.innerHTML = origText;
-            btn.disabled = false;
-            window.print();
-        });
+        // Save inline styles so we can temporarily remove max-height / overflow restrictions
+        // This ensures html2canvas captures 100% of the resume, not just the scrolled viewport
+        const origWrapperMaxHeight = wrapper ? wrapper.style.maxHeight : '';
+        const origWrapperOverflow = wrapper ? wrapper.style.overflow : '';
+        const origWrapperHeight = wrapper ? wrapper.style.height : '';
+        const origWrapperPosition = wrapper ? wrapper.style.position : '';
+
+        const origSheetOverflow = resumeElement.style.overflow;
+        const origSheetHeight = resumeElement.style.height;
+        const origSheetMinHeight = resumeElement.style.minHeight;
+
+        // Temporarily expand container to full natural height
+        if (wrapper) {
+            wrapper.style.maxHeight = 'none';
+            wrapper.style.height = 'auto';
+            wrapper.style.overflow = 'visible';
+            wrapper.style.position = 'static';
+            wrapper.scrollTop = 0;
+        }
+        resumeElement.style.overflow = 'visible';
+        resumeElement.style.height = 'auto';
+        resumeElement.style.minHeight = 'auto';
+
+        // Reset window scroll to 0
+        window.scrollTo(0, 0);
+
+        const restoreStyles = () => {
+            if (wrapper) {
+                wrapper.style.maxHeight = origWrapperMaxHeight;
+                wrapper.style.height = origWrapperHeight;
+                wrapper.style.overflow = origWrapperOverflow;
+                wrapper.style.position = origWrapperPosition;
+                wrapper.scrollTop = prevWrapperScroll;
+            }
+            resumeElement.style.overflow = origSheetOverflow;
+            resumeElement.style.height = origSheetHeight;
+            resumeElement.style.minHeight = origSheetMinHeight;
+            window.scrollTo(0, prevWindowScroll);
+
+            if (btn) {
+                btn.innerHTML = origText;
+                btn.disabled = false;
+            }
+        };
+
+        // Allow DOM to repaint in fully expanded unclipped state before capturing
+        setTimeout(() => {
+            const opt = {
+                margin: [0, 0, 0, 0],
+                filename: fileName,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    scrollY: 0
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(resumeElement).save().then(() => {
+                restoreStyles();
+            }).catch(err => {
+                console.error("PDF generation error, falling back to print dialog:", err);
+                restoreStyles();
+                triggerPrintResume();
+            });
+        }, 150);
     }
 </script>
 {% endblock %}
