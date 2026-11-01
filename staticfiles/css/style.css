@@ -1404,7 +1404,7 @@ img, video, canvas, svg {
     }
 
     .floating-bottom-right {
-        bottom: 16px !important;
+        bottom: 82px !important;
         right: 14px !important;
         gap: 10px !important;
     }
