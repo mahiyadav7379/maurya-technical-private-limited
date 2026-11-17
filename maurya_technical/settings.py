@@ -43,6 +43,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
     'http://localhost',
     'https://*.vercel.app',
+    'https://*.mauryatechnical.in',
+    'https://mauryatechnical.in',
 ]
 
 
@@ -177,7 +179,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Enable WhiteNoise to find files in STATICFILES_DIRS directly
 WHITENOISE_USE_FINDERS = True
-
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
@@ -186,7 +187,6 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

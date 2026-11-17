@@ -188,22 +188,20 @@ document.addEventListener('DOMContentLoaded', function() {
     if (chatCloseBtn) chatCloseBtn.addEventListener('click', () => toggleChatbot(false));
     if (chatMinimizeBtn) chatMinimizeBtn.addEventListener('click', () => toggleChatbot(false));
 
-    function openTawkLiveChat() {
-        if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
-            window.Tawk_API.maximize();
-        } else if (window.Tawk_API && typeof window.Tawk_API.toggle === 'function') {
-            window.Tawk_API.toggle();
-        } else {
-            window.open('https://tawk.to/chat/6ae739da0026503c3601acc3/1k6bjjvne', '_blank');
-        }
+    function openCounselorDesk() {
+        window.open('https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20need%20training%20counseling', '_blank');
     }
 
-    // Global triggers for Tawk.to Live Auto Chat
+    // Global triggers for Live Counselor Desk
     document.addEventListener('click', function(e) {
-        const target = e.target.closest('#liveChatBtn, [data-open-chat], .open-tawk-chat, .trigger-tawk-live-action, #chatDirectTawkTrigger, #chatSwitchToTawkBtn, a[href="#livechat"], a[href="#chat"]');
+        const target = e.target.closest('#liveChatBtn, [data-open-chat], a[href="#livechat"], a[href="#chat"]');
         if (target) {
             e.preventDefault();
-            openTawkLiveChat();
+            if (chatWindow && chatWindow.classList.contains('d-none')) {
+                toggleChatbot(true);
+            } else {
+                openCounselorDesk();
+            }
         }
     });
 
@@ -299,15 +297,18 @@ document.addEventListener('DOMContentLoaded', function() {
             <p class="small mb-2 text-dark"><strong>Maurya Technical Private Limited</strong><br>Alambagh, Lucknow, Uttar Pradesh, India.<br>Helpline: <a href="tel:+918887839689">+91 88878 39689</a></p>
             <a href="/contact/" class="btn btn-sm btn-outline-danger fw-bold">View Location Map</a>
         `,
-        tawk: `
-            <p class="fw-bold mb-1 text-danger"><i class="fas fa-headset me-1"></i> Maurya Technical Live Counselor Desk (Tawk.to):</p>
-            <p class="small mb-2 text-muted">Aap hamare training counselor se directly live chat kar sakte hain:</p>
+        counselor: `
+            <p class="fw-bold mb-1 text-success"><i class="fab fa-whatsapp me-1"></i> Maurya Technical Live Counselor Desk:</p>
+            <p class="small mb-2 text-muted">Aap hamare training counselor se directly connect kar sakte hain:</p>
             <div class="d-grid gap-2">
-                <button type="button" class="btn btn-sm btn-danger fw-bold text-white trigger-tawk-live-action">
-                    <i class="fas fa-comments me-2"></i> Start Live Chat Window
-                </button>
-                <a href="https://tawk.to/chat/6ae739da0026503c3601acc3/1k6bjjvne" target="_blank" class="btn btn-sm btn-outline-danger fw-bold text-center">
-                    <i class="fas fa-external-link-alt me-2"></i> Open Tawk.to in New Tab
+                <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20I%20need%20training%20counseling" target="_blank" class="btn btn-sm btn-success fw-bold text-start">
+                    <i class="fab fa-whatsapp me-2"></i> Director Desk (+91 88878 39689)
+                </a>
+                <a href="https://wa.me/918858298247?text=Hello%20Maurya%20Technical,%20I%20need%20admission%20details" target="_blank" class="btn btn-sm btn-outline-success fw-bold text-start">
+                    <i class="fab fa-whatsapp me-2"></i> Admission Desk (+91 88582 98247)
+                </a>
+                <a href="tel:+918887839689" class="btn btn-sm btn-outline-danger fw-bold text-start">
+                    <i class="fas fa-phone-alt me-2"></i> Call Directly (+91 88878 39689)
                 </a>
             </div>
         `
@@ -338,11 +339,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const q = query.toLowerCase().trim();
         let reply = '';
 
-        if (q.includes('tawk') || q.includes('live') || q.includes('counselor') || q.includes('human') || q.includes('agent') || q.includes('baat') || q.includes('support')) {
-            reply = botAnswers.tawk;
-            setTimeout(() => {
-                openTawkLiveChat();
-            }, 600);
+        if (q.includes('counselor') || q.includes('human') || q.includes('agent') || q.includes('baat') || q.includes('support') || q.includes('madad')) {
+            reply = botAnswers.counselor;
         } else if (q.includes('fee') || q.includes('cost') || q.includes('charge') || q.includes('price') || q.includes('paisa') || q.includes('kitna')) {
             reply = botAnswers.fees;
         } else if (q.includes('course') || q.includes('python') || q.includes('cad') || q.includes('web') || q.includes('syllabus') || q.includes('subject') || q.includes('design')) {
@@ -358,13 +356,13 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             const encodedQuery = encodeURIComponent('Hello Maurya Technical, My Question: ' + query);
             reply = `
-                <p class="mb-2">Aapke sawal ke liye hamare live counselor se directly baat karein ya WhatsApp karein:</p>
+                <p class="mb-2">Aapke sawal ke liye hamare live counselor se directly baat ya WhatsApp karein:</p>
                 <div class="d-flex flex-wrap gap-2">
-                    <button type="button" class="btn btn-sm btn-danger fw-bold trigger-tawk-live-action">
-                        <i class="fas fa-headset me-1"></i> Live Chat (Tawk.to)
-                    </button>
                     <a href="https://wa.me/918887839689?text=${encodedQuery}" target="_blank" class="btn btn-sm btn-success fw-bold d-inline-flex align-items-center gap-1">
                         <i class="fab fa-whatsapp"></i> WhatsApp Desk
+                    </a>
+                    <a href="tel:+918858298247" class="btn btn-sm btn-outline-danger fw-bold d-inline-flex align-items-center gap-1">
+                        <i class="fas fa-phone-alt"></i> Call Helpline
                     </a>
                 </div>
             `;
