@@ -276,3 +276,71 @@ class PopUpLead(models.Model):
     def __str__(self):
         return f"{self.name} ({self.get_lead_type_display()}) - {self.phone}"
 
+
+class BreakingNews(models.Model):
+    CATEGORY_CHOICES = (
+        ('all', 'Polytechnic & B.Tech (Common)'),
+        ('polytechnic', 'Polytechnic (BTEUP / Diploma)'),
+        ('btech', 'B.Tech (AKTU / Engineering)'),
+        ('exam_result', 'Exam Datesheet & Result'),
+        ('job_internship', 'Job Fair & Placement'),
+        ('scholarship', 'Scholarship & Admission'),
+    )
+
+    BADGE_COLOR_CHOICES = (
+        ('danger', 'Red (Breaking / Urgent)'),
+        ('warning', 'Yellow / Gold (Attention)'),
+        ('primary', 'Blue (Official Notice)'),
+        ('success', 'Green (Result / Jobs)'),
+        ('dark', 'Dark (Important)'),
+    )
+
+    title = models.CharField(max_length=350, help_text="Breaking News Heading (मोटे अक्षरों में दिखेगा)")
+    slug = models.SlugField(max_length=400, unique=True, blank=True)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='polytechnic')
+    badge_text = models.CharField(max_length=60, default='BREAKING NEWS', help_text="e.g. BREAKING NEWS, RESULT OUT, DATE SHEET, ADMISSION 2026")
+    badge_color = models.CharField(max_length=30, choices=BADGE_COLOR_CHOICES, default='danger')
+    
+    short_description = models.TextField(help_text="Short Summary / संक्षिप्त विवरण (शीर्षक के नीचे दिखने वाली मुख्य जानकारी)")
+    full_content = models.TextField(help_text="Full Detailed Information (Read More / 'रीड मोर' करने पर खुलने वाली पूरी जानकारी)")
+    
+    official_link = models.URLField(max_length=500, blank=True, null=True, help_text="Official Website or Direct Portal Link (e.g. https://bteup.ac.in, https://aktu.ac.in)")
+    official_link_label = models.CharField(max_length=150, default='ऑफिशियल वेबसाइट / लिंक पर जाएं', blank=True)
+    attachment_file = models.FileField(upload_to='breaking_news_docs/', blank=True, null=True, help_text="Official Notice PDF / Circular File (Optional)")
+    
+    image = models.FileField(upload_to='breaking_news_images/', blank=True, null=True, help_text="Upload News Image / Banner (Optional)")
+    image_url = models.CharField(max_length=500, blank=True, null=True, help_text="Or Image URL")
+    
+    author_or_source = models.CharField(max_length=150, default='BTEUP & AKTU News Desk', help_text="e.g. BTEUP Lucknow, AKTU Portal, Maurya Technical")
+    
+    is_breaking = models.BooleanField(default=True, help_text="Show in Top Flashing Breaking Bar & Pulsing Tag")
+    is_pinned = models.BooleanField(default=False, help_text="Pin to top of the page")
+    is_active = models.BooleanField(default=True, help_text="Active / Visible on website")
+    
+    views_count = models.PositiveIntegerField(default=150, help_text="Number of reads / views")
+    published_date = models.DateTimeField(default=timezone.now, help_text="News announcement date & time")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Polytechnic & B.Tech Breaking News'
+        verbose_name_plural = 'Polytechnic & B.Tech Breaking News'
+        ordering = ['-is_pinned', '-published_date', '-created_at']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.title)[:80]
+            if not base_slug:
+                base_slug = f"news-{int(timezone.now().timestamp())}"
+            slug_candidate = base_slug
+            count = 1
+            while BreakingNews.objects.filter(slug=slug_candidate).exclude(pk=self.pk).exists():
+                slug_candidate = f"{base_slug}-{count}"
+                count += 1
+            self.slug = slug_candidate
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"[{self.get_category_display()}] {self.title[:60]}"
+
+

@@ -10,7 +10,8 @@ import random
 from .models import (
     TrainingCourse, Placement, TeamMember, Branch, 
     Certificate, Registration, ContactMessage, BlogPost,
-    Faculty, FacultyAttendance, SalarySlip, PopUpLead
+    Faculty, FacultyAttendance, SalarySlip, PopUpLead,
+    BreakingNews
 )
 from .forms import RegistrationForm, ContactForm, CertificateSearchForm
 from .utils import verify_recaptcha
@@ -999,5 +1000,139 @@ def resume_builder(request):
     live real-time preview, and PDF/Print export for Maurya Technical students and job seekers.
     """
     return render(request, 'resume_builder.html')
+
+
+def polytechnic_news(request):
+    """
+    Dedicated view for Polytechnic (Diploma / BTEUP) breaking news, circulars & exam updates.
+    """
+    return breaking_news(request, forced_category='polytechnic')
+
+
+def btech_news(request):
+    """
+    Dedicated view for B.Tech (AKTU / Engineering) breaking news, circulars & exam updates.
+    """
+    return breaking_news(request, forced_category='btech')
+
+
+def breaking_news(request, forced_category=None):
+    """
+    Polytechnic & B.Tech Breaking News and Exam/Result Updates Page.
+    Allows students to browse urgent bulletins, read bold headlines,
+    see summary previews, and expand full details via 'Read More'.
+    Supports dedicated Polytechnic & B.Tech views.
+    """
+    category_filter = (forced_category or request.GET.get('category', 'all')).strip().lower()
+    search_query = request.GET.get('q', '').strip()
+
+    news_queryset = BreakingNews.objects.filter(is_active=True)
+
+    if category_filter and category_filter != 'all':
+        if category_filter in ['polytechnic', 'diploma']:
+            category_filter = 'polytechnic'
+            news_queryset = news_queryset.filter(
+                (Q(category='polytechnic') | Q(category='all') | Q(title__icontains='bteup') | Q(title__icontains='polytechnic') | Q(title__icontains='पॉलिटेक्निक') | Q(title__icontains='डिप्लोमा'))
+                & ~Q(category='btech')
+            )
+        elif category_filter in ['btech', 'aktu', 'engineering']:
+            category_filter = 'btech'
+            news_queryset = news_queryset.filter(
+                (Q(category='btech') | Q(category='all') | Q(title__icontains='aktu') | Q(title__icontains='b.tech') | Q(title__icontains='बी.टेक') | Q(title__icontains='btech'))
+                & ~Q(category='polytechnic')
+            )
+        else:
+            news_queryset = news_queryset.filter(category=category_filter)
+
+    if search_query:
+        news_queryset = news_queryset.filter(
+            Q(title__icontains=search_query) |
+            Q(short_description__icontains=search_query) |
+            Q(full_content__icontains=search_query) |
+            Q(author_or_source__icontains=search_query)
+        )
+
+    # All news items
+    news_items = news_queryset.order_by('-is_pinned', '-published_date', '-created_at')
+
+    # Top breaking items for marquee / ticker
+    breaking_tickers = news_queryset.filter(is_breaking=True).order_by('-published_date')[:8]
+    if not breaking_tickers.exists():
+        breaking_tickers = BreakingNews.objects.filter(is_active=True, is_breaking=True).order_by('-published_date')[:8]
+    if not breaking_tickers.exists():
+        breaking_tickers = news_queryset[:5]
+
+    # Category counts for tabs
+    total_count = BreakingNews.objects.filter(is_active=True).count()
+    polytechnic_count = BreakingNews.objects.filter(is_active=True).filter(
+        (Q(category='polytechnic') | Q(category='all') | Q(title__icontains='bteup') | Q(title__icontains='polytechnic') | Q(title__icontains='पॉलिटेक्निक') | Q(title__icontains='डिप्लोमा'))
+        & ~Q(category='btech')
+    ).distinct().count()
+    btech_count = BreakingNews.objects.filter(is_active=True).filter(
+        (Q(category='btech') | Q(category='all') | Q(title__icontains='aktu') | Q(title__icontains='b.tech') | Q(title__icontains='बी.टेक') | Q(title__icontains='btech'))
+        & ~Q(category='polytechnic')
+    ).distinct().count()
+    exam_count = BreakingNews.objects.filter(is_active=True, category='exam_result').count()
+    job_count = BreakingNews.objects.filter(is_active=True, category='job_internship').count()
+
+    # Dynamic headings & contextual text based on mode
+    if category_filter == 'polytechnic':
+        page_mode = 'polytechnic'
+        page_heading = 'पॉलिटेक्निक (डिप्लोमा) ब्रेकिंग न्यूज़ 2026'
+        page_subheading = 'प्राविधिक शिक्षा परिषद (BTEUP लखनऊ), पॉलिटेक्निक 1st, 3rd, 5th सेमेस्टर परीक्षा टाइम-टेबल, स्क्रूटनी रिजल्ट, एडमिट कार्ड व डिप्लोमा आधिकारिक सूचनाएं।'
+        active_hub = 'polytechnic'
+    elif category_filter == 'btech':
+        page_mode = 'btech'
+        page_heading = 'बी.टेक (B.Tech) ब्रेकिंग न्यूज़ 2026'
+        page_subheading = 'डॉ. एपीजे अब्दुल कलाम प्राविधिक विश्वविद्यालय (AKTU लखनऊ), बी.टेक सेमेस्टर परीक्षा, कैरी ओवर (COP), परीक्षा केंद्र सूची, ईआरपी रिजल्ट व नोटिस।'
+        active_hub = 'btech'
+    else:
+        page_mode = 'all'
+        page_heading = 'Polytechnic & B.Tech Breaking News 2026'
+        page_subheading = 'प्राविधिक शिक्षा परिषद (BTEUP), डॉ. एपीजे अब्दुल कलाम प्राविधिक विश्वविद्यालय (AKTU), परीक्षा समय-सारिणी (Date Sheet), रिजल्ट्स, स्कॉलरशिप व प्लेसमेंट अपडेट्स।'
+        active_hub = 'all'
+
+    context = {
+        'news_items': news_items,
+        'breaking_tickers': breaking_tickers,
+        'selected_category': category_filter,
+        'search_query': search_query,
+        'total_count': total_count,
+        'polytechnic_count': polytechnic_count,
+        'btech_count': btech_count,
+        'exam_count': exam_count,
+        'job_count': job_count,
+        'page_mode': page_mode,
+        'page_heading': page_heading,
+        'page_subheading': page_subheading,
+        'active_hub': active_hub,
+    }
+    return render(request, 'breaking_news.html', context)
+
+
+def breaking_news_detail(request, slug):
+    """
+    Dedicated permalink page for individual breaking news item.
+    Increments view count and provides social sharing links.
+    """
+    news = get_object_or_404(BreakingNews, slug=slug, is_active=True)
+    
+    # Increment views count
+    news.views_count += 1
+    news.save(update_fields=['views_count'])
+
+    related_news = BreakingNews.objects.filter(is_active=True).exclude(pk=news.pk).filter(
+        Q(category=news.category) | Q(category='all')
+    ).order_by('-published_date')[:4]
+
+    breaking_tickers = BreakingNews.objects.filter(is_active=True, is_breaking=True).order_by('-published_date')[:6]
+
+    context = {
+        'news': news,
+        'related_news': related_news,
+        'breaking_tickers': breaking_tickers,
+    }
+    return render(request, 'breaking_news_detail.html', context)
+
 
 

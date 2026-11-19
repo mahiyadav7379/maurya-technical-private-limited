@@ -136,6 +136,48 @@
                     </a>
                 </li>
 
+                <!-- 7.5 BREAKING NEWS (SEPARATE POLYTECHNIC & B.TECH LINKS) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link aktu-nav-link dropdown-toggle {% if request.resolver_match.url_name in 'breaking_news polytechnic_news diploma_news btech_news aktu_news breaking_news_detail polytechnic_btech_news' %}active{% endif %}" 
+                       href="{% url 'breaking_news' %}" 
+                       id="aktuNewsDropdown" 
+                       role="button" 
+                       data-bs-toggle="dropdown" 
+                       aria-expanded="false">
+                        <i class="fas fa-bolt text-danger me-1"></i>BREAKING NEWS <span class="badge bg-danger text-white px-1 py-0 ms-1 fw-bold" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                    <ul class="dropdown-menu aktu-dropdown-menu shadow-lg py-2" aria-labelledby="aktuNewsDropdown" style="min-width: 270px;">
+                        <li>
+                            <a class="dropdown-item aktu-dropdown-item py-2 d-flex align-items-center {% if request.resolver_match.url_name in 'polytechnic_news diploma_news' or selected_category == 'polytechnic' %}active{% endif %}" href="{% url 'polytechnic_news' %}">
+                                <i class="fas fa-graduation-cap text-warning fs-5 me-2"></i>
+                                <div>
+                                    <strong class="d-block text-white">Polytechnic (Diploma) News</strong>
+                                    <span class="text-white-50 small" style="font-size: 0.75rem;">BTEUP टाइम-टेबल, रिजल्ट व नोटिस</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item aktu-dropdown-item py-2 d-flex align-items-center {% if request.resolver_match.url_name in 'btech_news aktu_news' or selected_category == 'btech' %}active{% endif %}" href="{% url 'btech_news' %}">
+                                <i class="fas fa-laptop-code text-info fs-5 me-2"></i>
+                                <div>
+                                    <strong class="d-block text-white">B.Tech (AKTU) News</strong>
+                                    <span class="text-white-50 small" style="font-size: 0.75rem;">AKTU परीक्षा, COP व नोटिस</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider bg-secondary opacity-50 my-1"></li>
+                        <li>
+                            <a class="dropdown-item aktu-dropdown-item py-2 d-flex align-items-center {% if request.resolver_match.url_name == 'breaking_news' and selected_category == 'all' %}active{% endif %}" href="{% url 'breaking_news' %}">
+                                <i class="fas fa-newspaper text-danger fs-5 me-2"></i>
+                                <div>
+                                    <strong class="d-block text-white">All Breaking News (सभी खबरें)</strong>
+                                    <span class="text-white-50 small" style="font-size: 0.75rem;">पॉलिटेक्निक व B.Tech संयुक्त बुलेटिन</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <!-- 8. PROJECTS & SERVICES (Dropdown) -->
                 <li class="nav-item dropdown">
                     <a class="nav-link aktu-nav-link dropdown-toggle {% if request.resolver_match.url_name in 'blogs blog_detail projects services' %}active{% endif %}" 
@@ -194,6 +236,15 @@
                     <a href="{% url 'resume_builder' %}" class="btn btn-danger fw-bold py-2 shadow-sm text-white d-flex align-items-center justify-content-center gap-2">
                         <i class="fas fa-file-invoice"></i> Free Resume Builder (New)
                     </a>
+                    <!-- Mobile Separate News Links -->
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="{% url 'polytechnic_news' %}" class="btn btn-dark border border-warning text-warning fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small shadow-sm">
+                            <i class="fas fa-graduation-cap"></i> Polytechnic News
+                        </a>
+                        <a href="{% url 'btech_news' %}" class="btn btn-dark border border-info text-info fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small shadow-sm">
+                            <i class="fas fa-laptop-code"></i> B.Tech News
+                        </a>
+                    </div>
                     <!-- Mobile Brochure Downloads -->
                     <div class="d-flex gap-2 flex-wrap">
                         <a href="{% url 'training_brochure' %}" target="_blank" class="btn btn-outline-light fw-bold py-2 flex-fill d-flex align-items-center justify-content-center gap-1 small text-white border-secondary">

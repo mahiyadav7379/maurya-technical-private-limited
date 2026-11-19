@@ -1,0 +1,972 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_heading|default:"पॉलिटेक्निक एवं B.Tech ब्रेकिंग न्यूज़ 2026" }} - BTEUP & AKTU Updates | Maurya Technical Lucknow{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Premium Polytechnic & B.Tech Breaking News Page Styling */
+    .news-hero-banner {
+        background: linear-gradient(135deg, #3d0303 0%, #8b0000 50%, #5a0000 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    .news-hero-banner::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: radial-gradient(circle at 80% 20%, rgba(255, 193, 7, 0.15) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    /* Dual Hub Switcher Cards (Polytechnic vs B.Tech) */
+    .news-hub-card {
+        display: block;
+        padding: 22px 24px;
+        border-radius: 16px;
+        background: #ffffff;
+        border: 2px solid #e2e8f0;
+        text-decoration: none !important;
+        transition: all 0.28s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        height: 100%;
+    }
+    .news-hub-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px -4px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* Polytechnic Card Variant */
+    .polytechnic-hub-card {
+        border-top: 6px solid #d97706; /* Amber/Gold accent */
+    }
+    .polytechnic-hub-card:hover {
+        border-color: #d97706;
+    }
+    .polytechnic-hub-card.active-hub {
+        border-color: #dc3545;
+        border-top: 6px solid #dc3545;
+        background: linear-gradient(180deg, #fff9f9 0%, #ffffff 100%);
+        box-shadow: 0 10px 25px rgba(220, 53, 69, 0.16);
+    }
+
+    /* B.Tech Card Variant */
+    .btech-hub-card {
+        border-top: 6px solid #0284c7; /* Sky/Blue accent */
+    }
+    .btech-hub-card:hover {
+        border-color: #0284c7;
+    }
+    .btech-hub-card.active-hub {
+        border-color: #0284c7;
+        border-top: 6px solid #0284c7;
+        background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+        box-shadow: 0 10px 25px rgba(2, 132, 199, 0.16);
+    }
+
+    .hub-pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+    .hub-card-title {
+        font-size: 1.35rem;
+        font-weight: 850;
+        line-height: 1.3;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    .hub-card-desc {
+        font-size: 0.88rem;
+        line-height: 1.55;
+    }
+    .hub-action-btn {
+        display: inline-flex;
+        align-items: center;
+        font-weight: 800;
+        font-size: 0.88rem;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: #f1f5f9;
+        color: #334155;
+        transition: all 0.2s ease;
+    }
+    .polytechnic-hub-card:hover .hub-action-btn,
+    .polytechnic-hub-card.active-hub .hub-action-btn {
+        background: #dc3545;
+        color: #ffffff;
+    }
+    .btech-hub-card:hover .hub-action-btn,
+    .btech-hub-card.active-hub .hub-action-btn {
+        background: #0284c7;
+        color: #ffffff;
+    }
+
+    /* Active Hub Status Badge */
+    .active-hub-indicator {
+        position: absolute;
+        top: 0;
+        right: 18px;
+        background: #10b981;
+        color: #ffffff;
+        font-size: 0.7rem;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Live Flashing Pulse Badge */
+    .pulse-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(220, 53, 69, 0.2);
+        color: #ff4d4d;
+        border: 1px solid rgba(220, 53, 69, 0.4);
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    .pulse-dot {
+        width: 9px;
+        height: 9px;
+        background-color: #ff3333;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7);
+        animation: pulseAnimation 1.5s infinite;
+    }
+    @keyframes pulseAnimation {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.8); }
+        70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 51, 51, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+    }
+
+    /* Breaking News Live Scrolling Ticker */
+    .live-ticker-container {
+        background: #111827;
+        border-bottom: 2px solid #b80000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        height: 44px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .live-ticker-label {
+        background: #dc3545;
+        color: #fff;
+        padding: 0 16px;
+        font-weight: 800;
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        height: 100%;
+        z-index: 2;
+        box-shadow: 3px 0 10px rgba(0,0,0,0.3);
+    }
+    .live-ticker-track-wrap {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .live-ticker-track {
+        display: flex;
+        white-space: nowrap;
+        animation: liveTickerScroll 28s linear infinite;
+    }
+    .live-ticker-track:hover {
+        animation-play-state: paused;
+    }
+    @keyframes liveTickerScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .live-ticker-item {
+        color: #f3f4f6;
+        text-decoration: none;
+        padding: 0 20px;
+        font-size: 0.86rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.2s;
+    }
+    .live-ticker-item:hover {
+        color: #ffc107;
+        text-decoration: underline;
+    }
+
+    /* Category Filter Pills */
+    .category-pill-btn {
+        border-radius: 50px;
+        padding: 8px 18px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        border: 1px solid #dee2e6;
+        background: #fff;
+        color: #334155;
+        transition: all 0.25s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+    }
+    .category-pill-btn:hover {
+        background: #f8fafc;
+        border-color: #dc3545;
+        color: #dc3545;
+        transform: translateY(-1px);
+    }
+    .category-pill-btn.active {
+        background: #dc3545;
+        border-color: #dc3545;
+        color: #fff !important;
+        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+    }
+
+    /* Breaking News Cards */
+    .news-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        background: #ffffff;
+        transition: all 0.25s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .news-card:hover {
+        border-color: #cbd5e1;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+    .news-card.is-pinned {
+        border: 2px solid #f59e0b;
+        background: linear-gradient(to bottom, #fffdf8, #ffffff);
+    }
+    .news-card.is-pinned::before {
+        content: "PINNED NOTICE";
+        position: absolute;
+        top: 0;
+        right: 20px;
+        background: #f59e0b;
+        color: #111827;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        padding: 2px 10px 4px 10px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        z-index: 2;
+    }
+
+    /* Mote Akshar Bold Title */
+    .news-bold-title {
+        font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+        font-size: 1.35rem;
+        font-weight: 850;
+        line-height: 1.4;
+        color: #0f172a;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        border-left: 4px solid #dc3545;
+        padding-left: 12px;
+        transition: color 0.2s;
+    }
+    @media (min-width: 768px) {
+        .news-bold-title {
+            font-size: 1.48rem;
+        }
+    }
+    .news-card:hover .news-bold-title {
+        color: #b80000;
+    }
+
+    /* Excerpt Information */
+    .news-excerpt-text {
+        color: #475569;
+        font-size: 0.98rem;
+        line-height: 1.65;
+        margin-bottom: 14px;
+        padding-left: 16px;
+    }
+
+    /* Red Mor Button */
+    .btn-red-more {
+        background: linear-gradient(135deg, #dc3545 0%, #b80000 100%);
+        color: #fff !important;
+        border: none;
+        border-radius: 8px;
+        padding: 9px 20px;
+        font-weight: 700;
+        font-size: 0.92rem;
+        letter-spacing: 0.3px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 10px rgba(220, 53, 69, 0.25);
+    }
+    .btn-red-more:hover {
+        background: linear-gradient(135deg, #c82333 0%, #900000 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 14px rgba(220, 53, 69, 0.35);
+    }
+
+    /* Expanded Details Box */
+    .news-expanded-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 16px;
+        animation: fadeInDetails 0.3s ease-in-out;
+    }
+    @keyframes fadeInDetails {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .news-full-content {
+        color: #1e293b;
+        font-size: 0.96rem;
+        line-height: 1.8;
+        white-space: pre-line;
+    }
+
+    /* Admin Add Callout */
+    .admin-callout-strip {
+        background: #0f172a;
+        color: #e2e8f0;
+        border-radius: 12px;
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: gap-3;
+        border-left: 4px solid #f59e0b;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- 1. Top Live Scrolling Breaking News Ticker -->
+<div class="live-ticker-container">
+    <div class="live-ticker-label">
+        <i class="fas fa-bolt me-1 text-warning"></i> ब्रेकिंग नोटिस
+    </div>
+    <div class="live-ticker-track-wrap">
+        <div class="live-ticker-track">
+            {% for ticker in breaking_tickers %}
+                <a href="#news-item-{{ ticker.id }}" class="live-ticker-item">
+                    <span class="badge bg-{{ ticker.badge_color }} me-2 py-1 px-2">{{ ticker.badge_text }}</span>
+                    {{ ticker.title }}
+                    <span class="mx-3 text-secondary">&bull;</span>
+                </a>
+            {% empty %}
+                <span class="live-ticker-item">पॉलिटेक्निक (BTEUP) व B.Tech (AKTU) की नई सूचनाएं यहाँ लाइव प्रसारित की जाती हैं।</span>
+            {% endfor %}
+            <!-- Duplicate for seamless loop -->
+            {% for ticker in breaking_tickers %}
+                <a href="#news-item-{{ ticker.id }}" class="live-ticker-item">
+                    <span class="badge bg-{{ ticker.badge_color }} me-2 py-1 px-2">{{ ticker.badge_text }}</span>
+                    {{ ticker.title }}
+                    <span class="mx-3 text-secondary">&bull;</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- 2. Hero Header Banner -->
+<div class="news-hero-banner py-4 text-white text-center">
+    <div class="container px-3">
+        <div class="d-flex justify-content-center mb-2">
+            <span class="pulse-badge">
+                <span class="pulse-dot"></span>
+                <span>
+                    {% if selected_category == 'polytechnic' %}
+                        <i class="fas fa-graduation-cap me-1"></i> BTEUP DIPLOMA UPDATES 2026
+                    {% elif selected_category == 'btech' %}
+                        <i class="fas fa-laptop-code me-1"></i> AKTU B.TECH UPDATES 2026
+                    {% else %}
+                        LIVE UPDATES &bull; आधिकारिक बुलेटिन 2026
+                    {% endif %}
+                </span>
+            </span>
+        </div>
+        <h1 class="h2 fw-black mb-2 text-white">
+            {% if selected_category == 'polytechnic' %}
+                <i class="fas fa-graduation-cap text-warning me-2"></i> {{ page_heading|default:"पॉलिटेक्निक (डिप्लोमा) ब्रेकिंग न्यूज़ 2026" }}
+            {% elif selected_category == 'btech' %}
+                <i class="fas fa-laptop-code text-info me-2"></i> {{ page_heading|default:"बी.टेक (B.Tech) ब्रेकिंग न्यूज़ 2026" }}
+            {% else %}
+                <i class="fas fa-newspaper text-warning me-2"></i> {{ page_heading|default:"Polytechnic & B.Tech Breaking News 2026" }}
+            {% endif %}
+        </h1>
+        <p class="text-white-50 mb-0 small mx-auto" style="max-width: 820px;">
+            {{ page_subheading|default:"प्राविधिक शिक्षा परिषद (BTEUP), डॉ. एपीजे अब्दुल कलाम प्राविधिक विश्वविद्यालय (AKTU), परीक्षा समय-सारिणी (Date Sheet), रिजल्ट्स, स्कॉलरशिप व प्लेसमेंट अपडेट्स।" }}
+        </p>
+
+        <!-- Quick Summary Stats Badges / Top Direct Switchers -->
+        <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+            <a href="{% url 'polytechnic_news' %}" 
+               class="badge {% if selected_category == 'polytechnic' %}bg-warning text-dark border-warning fw-bold shadow-sm{% else %}bg-black bg-opacity-25 border border-white border-opacity-25 text-white{% endif %} px-3 py-2 rounded-pill small text-decoration-none">
+                <i class="fas fa-graduation-cap {% if selected_category == 'polytechnic' %}text-dark{% else %}text-warning{% endif %} me-1"></i> BTEUP Polytechnic ({{ polytechnic_count }})
+            </a>
+            <a href="{% url 'btech_news' %}" 
+               class="badge {% if selected_category == 'btech' %}bg-info text-dark border-info fw-bold shadow-sm{% else %}bg-black bg-opacity-25 border border-white border-opacity-25 text-white{% endif %} px-3 py-2 rounded-pill small text-decoration-none">
+                <i class="fas fa-laptop-code {% if selected_category == 'btech' %}text-dark{% else %}text-info{% endif %} me-1"></i> AKTU B.Tech ({{ btech_count }})
+            </a>
+            <a href="{% url 'breaking_news' %}" 
+               class="badge {% if selected_category == 'all' or not selected_category %}bg-danger text-white border-danger fw-bold shadow-sm{% else %}bg-black bg-opacity-25 border border-white border-opacity-25 text-white{% endif %} px-3 py-2 rounded-pill small text-decoration-none">
+                <i class="fas fa-bolt text-warning me-1"></i> All Updates ({{ total_count }})
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 3. Main Content Container -->
+<div class="container py-4 px-3 px-md-4" style="max-width: 1140px;">
+
+    <!-- 3.1 DUAL SECTION HUB: POLYTECHNIC VS B.TECH SEPARATE CLICKABLE PORTALS -->
+    <div class="row g-3 mb-4">
+        <!-- 1. POLYTECHNIC (DIPLOMA) PORTAL LINK CARD -->
+        <div class="col-12 col-md-6">
+            <a href="{% url 'polytechnic_news' %}" 
+               class="news-hub-card polytechnic-hub-card {% if selected_category == 'polytechnic' %}active-hub{% endif %}"
+               id="hubPolytechnicLink"
+               title="पॉलिटेक्निक (BTEUP / Diploma) ब्रेकिंग न्यूज़ खोलें">
+                {% if selected_category == 'polytechnic' %}
+                <span class="active-hub-indicator">
+                    <i class="fas fa-check-circle me-1"></i> सक्रिय (ACTIVE PORTAL)
+                </span>
+                {% endif %}
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span class="hub-pill bg-warning text-dark">
+                        <i class="fas fa-graduation-cap me-1"></i> DIPLOMA / BTEUP LUCKNOW
+                    </span>
+                    <span class="badge bg-danger rounded-pill px-2 py-1">{{ polytechnic_count }} अपडेट्स</span>
+                </div>
+                <h3 class="hub-card-title text-dark">
+                    🎓 पॉलिटेक्निक (Polytechnic) न्यूज़
+                </h3>
+                <p class="hub-card-desc text-muted mb-3">
+                    BTEUP लखनऊ विषम व सम सेमेस्टर परीक्षा टाइम-टेबल, स्क्रूटनी व री-इवैल्युएशन रिजल्ट, बैक पेपर, U-Rise एडमिट कार्ड व डिप्लोमा इंडस्ट्रियल ट्रेनिंग।
+                </p>
+                <div class="hub-card-footer d-flex align-items-center justify-content-between pt-2 border-top border-light">
+                    <span class="hub-action-btn">
+                        {% if selected_category == 'polytechnic' %}
+                            <i class="fas fa-check-circle text-success me-1"></i> पॉलिटेक्निक न्यूज़ खुली है
+                        {% else %}
+                            पॉलिटेक्निक न्यूज़ खोलें <i class="fas fa-arrow-right ms-1"></i>
+                        {% endif %}
+                    </span>
+                    <span class="text-secondary small fw-bold">1st, 3rd, 5th Sem</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- 2. B.TECH (AKTU) PORTAL LINK CARD -->
+        <div class="col-12 col-md-6">
+            <a href="{% url 'btech_news' %}" 
+               class="news-hub-card btech-hub-card {% if selected_category == 'btech' %}active-hub{% endif %}"
+               id="hubBtechLink"
+               title="बी.टेक (AKTU / Engineering) ब्रेकिंग न्यूज़ खोलें">
+                {% if selected_category == 'btech' %}
+                <span class="active-hub-indicator">
+                    <i class="fas fa-check-circle me-1"></i> सक्रिय (ACTIVE PORTAL)
+                </span>
+                {% endif %}
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span class="hub-pill bg-info text-white">
+                        <i class="fas fa-laptop-code me-1"></i> B.TECH / AKTU LUCKNOW
+                    </span>
+                    <span class="badge bg-primary rounded-pill px-2 py-1">{{ btech_count }} अपडेट्स</span>
+                </div>
+                <h3 class="hub-card-title text-dark">
+                    💻 बी.टेक (B.Tech) न्यूज़
+                </h3>
+                <p class="hub-card-desc text-muted mb-3">
+                    AKTU लखनऊ सेमेस्टर परीक्षा फॉर्म, कैरी ओवर (COP) परीक्षा केंद्र सूची, ईआरपी वन-व्यू रिजल्ट, चुनौती मूल्यांकन व इंजीनियरिंग प्लेसमेंट ड्राइव।
+                </p>
+                <div class="hub-card-footer d-flex align-items-center justify-content-between pt-2 border-top border-light">
+                    <span class="hub-action-btn">
+                        {% if selected_category == 'btech' %}
+                            <i class="fas fa-check-circle text-success me-1"></i> बी.टेक न्यूज़ खुली है
+                        {% else %}
+                            बी.टेक न्यूज़ खोलें <i class="fas fa-arrow-right ms-1"></i>
+                        {% endif %}
+                    </span>
+                    <span class="text-secondary small fw-bold">CS, IT, ME, EC, Civil, EE</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 3.2 ACTIVE PORTAL CONTEXTUAL BANNER (Shows current mode & switch prompt) -->
+    {% if selected_category == 'polytechnic' %}
+    <div class="alert alert-warning border-0 rounded-4 shadow-sm d-flex align-items-center justify-content-between flex-wrap gap-2 py-2 px-3 mb-4">
+        <div class="d-flex align-items-center gap-2">
+            <i class="fas fa-graduation-cap text-warning fs-4"></i>
+            <div>
+                <strong class="d-block text-dark small">आप अभी पॉलिटेक्निक (BTEUP / डिप्लोमा) सूचना केंद्र देख रहे हैं।</strong>
+                <span class="text-muted small" style="font-size: 0.78rem;">नीचे केवल डिप्लोमा, BTEUP बोर्ड परीक्षा व स्क्रूटनी से संबंधित खबरें प्रदर्शित हैं।</span>
+            </div>
+        </div>
+        <a href="{% url 'btech_news' %}" class="btn btn-sm btn-dark text-info fw-bold px-3 py-1 rounded-pill">
+            <i class="fas fa-laptop-code me-1"></i> बी.टेक (AKTU) न्यूज़ पर स्विच करें &rarr;
+        </a>
+    </div>
+    {% elif selected_category == 'btech' %}
+    <div class="alert alert-info border-0 rounded-4 shadow-sm d-flex align-items-center justify-content-between flex-wrap gap-2 py-2 px-3 mb-4">
+        <div class="d-flex align-items-center gap-2">
+            <i class="fas fa-laptop-code text-info fs-4"></i>
+            <div>
+                <strong class="d-block text-dark small">आप अभी बी.टेक (AKTU / इंजीनियरिंग) सूचना केंद्र देख रहे हैं।</strong>
+                <span class="text-muted small" style="font-size: 0.78rem;">नीचे केवल AKTU B.Tech परीक्षा, COP व इंजीनियरिंग संबंधित खबरें प्रदर्शित हैं।</span>
+            </div>
+        </div>
+        <a href="{% url 'polytechnic_news' %}" class="btn btn-sm btn-dark text-warning fw-bold px-3 py-1 rounded-pill">
+            <i class="fas fa-graduation-cap me-1"></i> पॉलिटेक्निक (BTEUP) न्यूज़ पर स्विच करें &rarr;
+        </a>
+    </div>
+    {% endif %}
+
+    <!-- Backend Data Management Callout (Admin link) -->
+    <div class="admin-callout-strip mb-4 shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+            <i class="fas fa-database text-warning fs-4"></i>
+            <div>
+                <strong class="text-white d-block small">डेटा बैकएंड से सीधे प्रबंधित (Backend Powered News Portal)</strong>
+                <span class="text-white-50 small" style="font-size: 0.78rem;">
+                    यह पेज Django डेटाबेस से रीयल-टाइम डेटा लोड करता है। एडमिन पैनल से आप नई न्यूज़ जोड़ व संपादित कर सकते हैं।
+                </span>
+            </div>
+        </div>
+        <div class="mt-2 mt-md-0 d-flex gap-2">
+            <a href="/admin/core/breakingnews/add/" target="_blank" class="btn btn-warning btn-sm fw-bold px-3 py-1 text-dark shadow-sm">
+                <i class="fas fa-plus-circle me-1"></i> नई न्यूज़ जोड़ें (Admin)
+            </a>
+            <a href="/admin/core/breakingnews/" target="_blank" class="btn btn-outline-light btn-sm fw-bold px-3 py-1">
+                <i class="fas fa-sliders-h me-1"></i> न्यूज़ मैनेज करें
+            </a>
+        </div>
+    </div>
+
+    <!-- 4. Real-time Search & Filter Toolbar -->
+    <div class="card border-0 rounded-4 shadow-sm mb-4 bg-white p-3">
+        <div class="row g-3 align-items-center">
+            
+            <!-- Real-time Live Search Input -->
+            <div class="col-12 col-md-5">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0 text-muted">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" 
+                           id="newsLiveSearchInput" 
+                           class="form-control bg-light border-start-0" 
+                           placeholder="शीर्षक, BTEUP, AKTU, रिजल्ट सर्च करें..." 
+                           value="{{ search_query }}">
+                    <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn" title="Clear Search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Pills / Filter Links -->
+            <div class="col-12 col-md-7">
+                <div class="d-flex gap-2 flex-wrap justify-content-md-end align-items-center">
+                    <a href="{% url 'breaking_news' %}" class="category-pill-btn {% if selected_category == 'all' or not selected_category %}active{% endif %}" data-cat="all">
+                        <span>सभी (All)</span>
+                        <span class="badge bg-secondary rounded-pill">{{ total_count }}</span>
+                    </a>
+                    <a href="{% url 'polytechnic_news' %}" class="category-pill-btn {% if selected_category == 'polytechnic' %}active{% endif %}" data-cat="polytechnic">
+                        <i class="fas fa-graduation-cap text-warning"></i>
+                        <span>Polytechnic</span>
+                        <span class="badge bg-secondary rounded-pill">{{ polytechnic_count }}</span>
+                    </a>
+                    <a href="{% url 'btech_news' %}" class="category-pill-btn {% if selected_category == 'btech' %}active{% endif %}" data-cat="btech">
+                        <i class="fas fa-laptop-code text-info"></i>
+                        <span>B.Tech</span>
+                        <span class="badge bg-secondary rounded-pill">{{ btech_count }}</span>
+                    </a>
+                    <a href="{% url 'breaking_news' %}?category=exam_result" class="category-pill-btn {% if selected_category == 'exam_result' %}active{% endif %}" data-cat="exam_result">
+                        <i class="fas fa-check-circle text-success"></i>
+                        <span>Result &amp; Exam</span>
+                        <span class="badge bg-secondary rounded-pill">{{ exam_count }}</span>
+                    </a>
+                    <a href="{% url 'breaking_news' %}?category=job_internship" class="category-pill-btn {% if selected_category == 'job_internship' %}active{% endif %}" data-cat="job_internship">
+                        <i class="fas fa-briefcase text-danger"></i>
+                        <span>Job &amp; Placement</span>
+                        <span class="badge bg-secondary rounded-pill">{{ job_count }}</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 5. News List Section -->
+    <div id="newsListContainer" class="d-flex flex-column gap-4">
+        {% for item in news_items %}
+        <div class="news-card p-3 p-md-4 shadow-sm {% if item.is_pinned %}is-pinned{% endif %}" 
+             id="news-item-{{ item.id }}" 
+             data-category="{{ item.category }}" 
+             data-keywords="{{ item.title|lower }} {{ item.short_description|lower }} {{ item.author_or_source|lower }}">
+            
+            <!-- Meta Bar: Category, Urgent Badge, Date, Views -->
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2 pb-2 border-bottom border-light">
+                <div class="d-flex align-items-center flex-wrap gap-2">
+                    <span class="badge bg-{{ item.badge_color }} fw-bold px-2 py-1 text-uppercase small">
+                        {% if item.is_breaking %}<i class="fas fa-bolt text-warning me-1"></i>{% endif %}
+                        {{ item.badge_text }}
+                    </span>
+                    <span class="badge bg-light text-dark border px-2 py-1 small">
+                        <i class="fas fa-tag text-danger me-1"></i> {{ item.get_category_display }}
+                    </span>
+                    <span class="text-muted small d-inline-flex align-items-center">
+                        <i class="fas fa-university text-secondary me-1"></i> {{ item.author_or_source }}
+                    </span>
+                </div>
+                
+                <div class="d-flex align-items-center gap-3 text-muted small">
+                    <span title="प्रकाशन तिथि"><i class="far fa-calendar-alt text-danger me-1"></i> {{ item.published_date|date:"d M Y, h:i A" }}</span>
+                    <span class="d-none d-sm-inline" title="व्यूज"><i class="far fa-eye text-primary me-1"></i> {{ item.views_count }}+ देखा गया</span>
+                </div>
+            </div>
+
+            <!-- A) MOTE AKSHAR MAIN HEADLINE (मोटे अक्षरों में शीर्षक) -->
+            <h2 class="news-bold-title">
+                {{ item.title }}
+            </h2>
+
+            <!-- B) NICHE SARA INFORMATION PREVIEW (नीचे सारी जानकारी / संक्षेप) -->
+            <div class="news-excerpt-text">
+                <p class="mb-2 text-secondary fw-semibold">
+                    {{ item.short_description }}
+                </p>
+                <div class="d-flex align-items-center gap-2 flex-wrap small text-muted">
+                    <span class="badge bg-light text-muted border">
+                        <i class="fas fa-check text-success me-1"></i> आधिकारिक रूप से सत्यापित
+                    </span>
+                    {% if item.official_link %}
+                    <span class="badge bg-light text-muted border">
+                        <i class="fas fa-external-link-alt text-primary me-1"></i> सीधा लिंक उपलब्ध
+                    </span>
+                    {% endif %}
+                    {% if item.attachment_file %}
+                    <span class="badge bg-light text-muted border">
+                        <i class="fas fa-file-pdf text-danger me-1"></i> PDF नोटिफिकेशन संलग्न
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- C) ACTION BAR WITH "RED MOR" (READ MORE) BUTTON -->
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top border-light">
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                    
+                    <!-- 1. The Red More (Read More) Button to Expand Inline -->
+                    <button class="btn btn-red-more" 
+                            type="button" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#newsDetails-{{ item.id }}" 
+                            aria-expanded="false" 
+                            aria-controls="newsDetails-{{ item.id }}"
+                            onclick="toggleReadMoreText(this)">
+                        <i class="fas fa-book-open"></i>
+                        <span class="btn-text">पूरा विवरण पढ़ें (Read More)</span>
+                        <i class="fas fa-chevron-down transition-arrow ms-1"></i>
+                    </button>
+
+                    <!-- 2. Fast Modal Popup Reader Option -->
+                    <button type="button" 
+                            class="btn btn-outline-secondary btn-sm fw-bold px-3 py-2" 
+                            onclick="openNewsModal('{{ item.id }}', '{{ item.title|escapejs }}', '{{ item.badge_text|escapejs }}', '{{ item.badge_color|escapejs }}', '{{ item.get_category_display|escapejs }}', '{{ item.author_or_source|escapejs }}', '{{ item.published_date|date:"d M Y, h:i A" }}', '{{ item.official_link|default:''|escapejs }}', '{{ item.official_link_label|default:'ऑफिशियल लिंक'|escapejs }}', '{{ item.slug|escapejs }}')">
+                        <i class="fas fa-expand me-1 text-primary"></i> पॉपअप व्यू
+                    </button>
+
+                    <!-- 3. Direct Share on WhatsApp -->
+                    <a href="https://api.whatsapp.com/send?text={{ item.title|urlencode }}%0A%0Aपूरी%20खबर%20पढ़ें:%20{{ request.build_absolute_uri }}{% url 'breaking_news_detail' item.slug %}" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="btn btn-outline-success btn-sm fw-bold px-3 py-2" 
+                       title="व्हाट्सएप पर शेयर करें">
+                        <i class="fab fa-whatsapp me-1"></i> शेयर करें
+                    </a>
+                </div>
+
+                <!-- Direct Permalink Link -->
+                <div>
+                    <a href="{% url 'breaking_news_detail' item.slug %}" class="text-decoration-none small text-muted fw-semibold">
+                        डायरेक्ट लिंक <i class="fas fa-arrow-right ms-1 text-danger"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- D) EXPANDED AREA ("red mor karne per Sara information kholen") -->
+            <div class="collapse" id="newsDetails-{{ item.id }}">
+                <div class="news-expanded-box shadow-sm">
+                    <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+                        <h5 class="fw-bold text-dark mb-0 d-flex align-items-center">
+                            <i class="fas fa-file-alt text-danger me-2"></i> पूरी अधिसूचना व विस्तृत जानकारी
+                        </h5>
+                        <button class="btn btn-light btn-sm text-secondary py-0 px-2" 
+                                type="button" 
+                                data-bs-toggle="collapse" 
+                                data-bs-target="#newsDetails-{{ item.id }}" 
+                                title="विवरण समेटें">
+                            <i class="fas fa-times me-1"></i> बंद करें
+                        </button>
+                    </div>
+
+                    <!-- Full Body Information -->
+                    <div class="news-full-content" id="fullContent-{{ item.id }}">
+                        {{ item.full_content }}
+                    </div>
+
+                    <!-- Direct Official Circular / Web Links -->
+                    <div class="mt-4 pt-3 border-top d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                        <div class="d-flex flex-wrap gap-2">
+                            {% if item.official_link %}
+                            <a href="{{ item.official_link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm fw-bold px-3 py-2">
+                                <i class="fas fa-external-link-alt me-1"></i> {{ item.official_link_label|default:"ऑफिशियल वेबसाइट लिंक खोलें" }}
+                            </a>
+                            {% endif %}
+                            {% if item.attachment_file %}
+                            <a href="{{ item.attachment_file.url }}" target="_blank" class="btn btn-danger btn-sm fw-bold px-3 py-2">
+                                <i class="fas fa-file-pdf me-1"></i> आधिकारिक नोटिस PDF डाउनलोड करें
+                            </a>
+                            {% endif %}
+                            <a href="tel:+918858298247" class="btn btn-outline-dark btn-sm fw-bold px-3 py-2">
+                                <i class="fas fa-phone-alt me-1 text-danger"></i> छात्र हेल्पडेस्क: 88582 98247
+                            </a>
+                        </div>
+                        
+                        <div>
+                            <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#newsDetails-{{ item.id }}">
+                                <i class="fas fa-chevron-up me-1"></i> ऊपर समेटें (Collapse)
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        {% empty %}
+        <div class="text-center py-5 bg-white rounded-4 shadow-sm">
+            <i class="fas fa-info-circle text-muted fa-3x mb-3"></i>
+            <h5 class="fw-bold text-dark">कोई ब्रेकिंग न्यूज़ उपलब्ध नहीं है</h5>
+            <p class="text-muted small">कृपया कोई अन्य कैटेगरी चुनें अथवा बाद में पुनः चेक करें।</p>
+            <a href="{% url 'breaking_news' %}" class="btn btn-danger btn-sm px-4 py-2 fw-bold">सभी न्यूज़ देखें</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Hidden No Search Results Box -->
+    <div id="noSearchResultsBox" class="text-center py-5 bg-white rounded-4 shadow-sm d-none mt-3">
+        <i class="fas fa-search-minus text-warning fa-3x mb-3"></i>
+        <h5 class="fw-bold text-dark">आपके खोजे गए शब्द से कोई न्यूज़ नहीं मिली</h5>
+        <p class="text-muted small">कृपया कोई दूसरा कीवर्ड (जैसे: BTEUP, AKTU, Exam, Result) खोजें।</p>
+        <button class="btn btn-danger btn-sm px-4 py-2 fw-bold" onclick="resetLiveSearch()">सर्च रीसेट करें</button>
+    </div>
+
+    <!-- Bottom Help & Guidance Card -->
+    <div class="card border-0 rounded-4 shadow-sm mt-5 text-white overflow-hidden" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+        <div class="card-body p-4 p-md-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge bg-danger px-3 py-1 rounded-pill fw-bold mb-2">
+                        <i class="fas fa-headset me-1"></i> POLYTECHNIC &amp; B.TECH ADMISSION / EXAM HELPDESK
+                    </span>
+                    <h3 class="fw-bold text-white mb-2">
+                        परीक्षा, रिजल्ट या प्रोजेक्ट ट्रेनिंग से संबंधित कोई प्रश्न है?
+                    </h3>
+                    <p class="text-light text-opacity-75 mb-0">
+                        मौर्य टेक्निकल प्राइवेट लिमिटेड (आलमबाग, लखनऊ) की विशेष करियर व टेक्निकल टीम से सीधे संपर्क करें।
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="https://wa.me/918887839689?text=Hello%20Maurya%20Technical,%20mujhe%20Polytechnic/B.Tech%20breaking%20news%20aur%20training%20ke%20baare%20mein%20jaankari%20chahiye." target="_blank" class="btn btn-success fw-bold px-4 py-2 me-2 mb-2">
+                        <i class="fab fa-whatsapp me-1"></i> WhatsApp पर पूछें
+                    </a>
+                    <a href="tel:+918858298247" class="btn btn-warning fw-bold px-4 py-2 mb-2 text-dark">
+                        <i class="fas fa-phone-alt me-1"></i> 88582 98247
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- 6. Dedicated Interactive Reader Modal Popup -->
+<div class="modal fade" id="breakingNewsReaderModal" tabindex="-1" aria-labelledby="modalNewsTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-danger text-white border-0 py-3 px-4">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-warning text-dark fw-bold" id="modalBadgeText">BREAKING NEWS</span>
+                    <span class="small opacity-75" id="modalCategoryText">Polytechnic</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <!-- Large Bold Title in Modal -->
+                <h4 class="fw-bolder text-dark mb-3 border-start border-4 border-danger ps-3" id="modalNewsTitle">
+                    Headline
+                </h4>
+                
+                <div class="d-flex align-items-center gap-3 text-muted small pb-3 mb-3 border-bottom flex-wrap">
+                    <span><i class="fas fa-university text-danger me-1"></i> <span id="modalSourceText">BTEUP</span></span>
+                    <span><i class="far fa-calendar-alt text-danger me-1"></i> <span id="modalDateText">Date</span></span>
+                </div>
+
+                <!-- Full Detailed Content in Modal -->
+                <div class="p-3 bg-light rounded-3 text-dark mb-3" style="font-size: 1rem; line-height: 1.8; white-space: pre-line;" id="modalFullContent">
+                    Loading full description...
+                </div>
+
+                <!-- Modal Actions -->
+                <div class="d-flex flex-wrap gap-2 pt-2 border-top justify-content-between align-items-center">
+                    <div class="d-flex gap-2 flex-wrap" id="modalButtonsContainer">
+                        <a href="#" id="modalOfficialLinkBtn" target="_blank" class="btn btn-primary btn-sm fw-bold">
+                            <i class="fas fa-external-link-alt me-1"></i> <span id="modalOfficialLinkLabel">ऑफिशियल वेबसाइट</span>
+                        </a>
+                        <a href="#" id="modalWhatsAppShareBtn" target="_blank" class="btn btn-success btn-sm fw-bold">
+                            <i class="fab fa-whatsapp me-1"></i> व्हाट्सएप पर शेयर
+                        </a>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">बंद करें</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // 1. Toggle Read More Button Text and Chevron on Click
+    function toggleReadMoreText(button) {
+        const textSpan = button.querySelector('.btn-text');
+        const icon = button.querySelector('.transition-arrow');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        // Note: Bootstrap toggles aria-expanded right after click
+        setTimeout(() => {
+            const nowExpanded = button.getAttribute('aria-expanded') === 'true';
+            if (nowExpanded) {
+                textSpan.textContent = 'विवरण समेटें (Read Less)';
+                if (icon) icon.className = 'fas fa-chevron-up transition-arrow ms-1';
+            } else {
+                textSpan.textContent = 'पूरा विवरण पढ़ें (Read More)';
+                if (icon) icon.className = 'fas fa-chevron-down transition-arrow ms-1';
+            }
+        }, 50);
+    }
+
+    // 2. Open Dedicated Reader Modal with Full News Content
+    function openNewsModal(newsId, title, badgeText, badgeColor, categoryDisplay, source, dateStr, officialLink, officialLabel, slug) {
+        document.getElementById('modalNewsTitle').textContent = title;
+        document.getElementById('modalBadgeText').textContent = badgeText;
+        document.getElementById('modalBadgeText').className = `badge bg-${badgeColor} text-white fw-bold`;
+        document.getElementById('modalCategoryText').textContent = categoryDisplay;
+        document.getElementById('modalSourceText').textContent = source;
+        document.getElementById('modalDateText').textContent = dateStr;
+
+        // Fetch full content from the on-page pre-rendered DOM element
+        const fullContentElement = document.getElementById(`fullContent-${newsId}`);
+        if (fullContentElement) {
+            document.getElementById('modalFullContent').textContent = fullContentElement.textContent.trim();
+        }
+
+        // Setup Official Link button
+        const linkBtn = document.getElementById('modalOfficialLinkBtn');
+        const labelSpan = document.getElementById('modalOfficialLinkLabel');
+        if (officialLink && officialLink.trim() !== '') {
+            linkBtn.href = officialLink;
+            linkBtn.style.display = 'inline-flex';
+            labelSpan.textContent = officialLabel || 'ऑफिशियल वेबसाइट पर जाएं';
+        } else {
+            linkBtn.style.display = 'none';
+        }
+
+        // Setup WhatsApp Share button
+        const currentUrl = window.location.origin + `/breaking-news/${slug}/`;
+        const waBtn = document.getElementById('modalWhatsAppShareBtn');
+        waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(title + '\n\nपूरी खबर पढ़ें:\n' + currentUrl)}`;
+
+        // Show Modal
+        const modal = new bootstrap.Modal(document.getElementById('breakingNewsReaderModal'));
+        modal.show();
+    }
+
+    // 3. Client-Side Instant Live Search Filtering
+    const searchInput = document.getElementById('newsLiveSearchInput');
+    const clearBtn = document.getElementById('clearSearchBtn');
+    const newsCards = document.querySelectorAll('.news-card');
+    const noResultsBox = document.getElementById('noSearchResultsBox');
+
+    function performLiveFilter() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        newsCards.forEach(card => {
+            const keywords = card.getAttribute('data-keywords') || '';
+            if (!query || keywords.includes(query)) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (visibleCount === 0) {
+            noResultsBox.classList.remove('d-none');
+        } else {
+            noResultsBox.classList.add('d-none');
+        }
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', performLiveFilter);
+    }
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            performLiveFilter();
+            searchInput.focus();
+        });
+    }
+
+    function resetLiveSearch() {
+        if (searchInput) {
+            searchInput.value = '';
+            performLiveFilter();
+        }
+    }
+</script>
+{% endblock %}

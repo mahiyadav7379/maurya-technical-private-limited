@@ -30,8 +30,16 @@
                     </a>
                 </div>
 
-                <div class="topbar-quick-links d-none d-lg-flex align-items-center flex-wrap gap-3">
-                    <a href="{% url 'verify_certificate' %}" class="topbar-link fw-bold text-warning">
+                <div class="topbar-quick-links d-none d-lg-flex align-items-center flex-wrap gap-2">
+                    <a href="{% url 'polytechnic_news' %}" class="topbar-link fw-bold text-warning" title="Polytechnic (BTEUP / Diploma) Breaking News">
+                        <i class="fas fa-graduation-cap me-1 text-warning"></i> Polytechnic News
+                    </a>
+                    <span class="text-white-50 small opacity-50">&bull;</span>
+                    <a href="{% url 'btech_news' %}" class="topbar-link fw-bold text-info" title="B.Tech (AKTU / Engineering) Breaking News">
+                        <i class="fas fa-laptop-code me-1 text-info"></i> B.Tech News
+                    </a>
+                    <span class="text-white-50 small opacity-50">&bull;</span>
+                    <a href="{% url 'verify_certificate' %}" class="topbar-link fw-bold text-light">
                         <i class="fas fa-certificate me-1 text-warning"></i> Verify Certificate
                     </a>
                 </div>

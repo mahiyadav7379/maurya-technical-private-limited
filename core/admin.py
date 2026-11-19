@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import (
     TrainingCourse, Placement, TeamMember, Branch, 
     Certificate, Registration, ContactMessage, BlogPost,
-    Faculty, FacultyAttendance, SalarySlip, PopUpLead
+    Faculty, FacultyAttendance, SalarySlip, PopUpLead,
+    BreakingNews
 )
 
 @admin.register(TrainingCourse)
@@ -85,4 +86,29 @@ class PopUpLeadAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone', 'lead_type', 'branch_or_stream', 'college_or_city', 'status', 'created_at')
     list_filter = ('lead_type', 'status', 'created_at')
     search_fields = ('name', 'phone', 'email', 'branch_or_stream', 'college_or_city')
+
+
+@admin.register(BreakingNews)
+class BreakingNewsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'badge_text', 'is_breaking', 'is_pinned', 'is_active', 'published_date', 'views_count')
+    list_filter = ('category', 'is_breaking', 'is_pinned', 'is_active', 'published_date')
+    search_fields = ('title', 'short_description', 'full_content', 'author_or_source')
+    list_editable = ('is_breaking', 'is_pinned', 'is_active')
+    prepopulated_fields = {'slug': ('title',)}
+    date_hierarchy = 'published_date'
+    fieldsets = (
+        ('Breaking News Headline & Category', {
+            'fields': ('title', 'slug', 'category', 'badge_text', 'badge_color', 'is_breaking', 'is_pinned', 'is_active')
+        }),
+        ('Content & Descriptions', {
+            'fields': ('short_description', 'full_content', 'author_or_source')
+        }),
+        ('Links, Files & Media', {
+            'fields': ('official_link', 'official_link_label', 'attachment_file', 'image', 'image_url')
+        }),
+        ('Publication & Metrics', {
+            'fields': ('published_date', 'views_count')
+        }),
+    )
+
 

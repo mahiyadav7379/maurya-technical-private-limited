@@ -43,4 +43,11 @@ urlpatterns = [
     path('notes/btech-ai-ml-data-structures/', views.btech_aiml_notes, name='btech_ds_notes'),
     path('resume-builder/', views.resume_builder, name='resume_builder'),
     path('free-resume-builder/', views.resume_builder, name='free_resume_builder_alias'),
+    path('breaking-news/', views.breaking_news, name='breaking_news'),
+    path('polytechnic-news/', views.polytechnic_news, name='polytechnic_news'),
+    path('diploma-news/', views.polytechnic_news, name='diploma_news'),
+    path('btech-news/', views.btech_news, name='btech_news'),
+    path('aktu-news/', views.btech_news, name='aktu_news'),
+    path('polytechnic-btech-news/', views.breaking_news, name='polytechnic_btech_news'),
+    path('breaking-news/<slug:slug>/', views.breaking_news_detail, name='breaking_news_detail'),
 ]
