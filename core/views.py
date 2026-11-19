@@ -1032,15 +1032,21 @@ def breaking_news(request, forced_category=None):
         if category_filter in ['polytechnic', 'diploma']:
             category_filter = 'polytechnic'
             news_queryset = news_queryset.filter(
-                (Q(category='polytechnic') | Q(category='all') | Q(title__icontains='bteup') | Q(title__icontains='polytechnic') | Q(title__icontains='पॉलिटेक्निक') | Q(title__icontains='डिप्लोमा'))
-                & ~Q(category='btech')
-            )
+                Q(category='polytechnic') | 
+                Q(title__icontains='bteup') | 
+                Q(title__icontains='polytechnic') | 
+                Q(title__icontains='पॉलिटेक्निक') | 
+                Q(title__icontains='डिप्लोमा')
+            ).exclude(category='btech')
         elif category_filter in ['btech', 'aktu', 'engineering']:
             category_filter = 'btech'
             news_queryset = news_queryset.filter(
-                (Q(category='btech') | Q(category='all') | Q(title__icontains='aktu') | Q(title__icontains='b.tech') | Q(title__icontains='बी.टेक') | Q(title__icontains='btech'))
-                & ~Q(category='polytechnic')
-            )
+                Q(category='btech') | 
+                Q(title__icontains='aktu') | 
+                Q(title__icontains='b.tech') | 
+                Q(title__icontains='बी.टेक') | 
+                Q(title__icontains='btech')
+            ).exclude(category='polytechnic')
         else:
             news_queryset = news_queryset.filter(category=category_filter)
 
@@ -1065,13 +1071,11 @@ def breaking_news(request, forced_category=None):
     # Category counts for tabs
     total_count = BreakingNews.objects.filter(is_active=True).count()
     polytechnic_count = BreakingNews.objects.filter(is_active=True).filter(
-        (Q(category='polytechnic') | Q(category='all') | Q(title__icontains='bteup') | Q(title__icontains='polytechnic') | Q(title__icontains='पॉलिटेक्निक') | Q(title__icontains='डिप्लोमा'))
-        & ~Q(category='btech')
-    ).distinct().count()
+        Q(category='polytechnic') | Q(title__icontains='bteup') | Q(title__icontains='polytechnic') | Q(title__icontains='पॉलिटेक्निक') | Q(title__icontains='डिप्लोमा')
+    ).exclude(category='btech').distinct().count()
     btech_count = BreakingNews.objects.filter(is_active=True).filter(
-        (Q(category='btech') | Q(category='all') | Q(title__icontains='aktu') | Q(title__icontains='b.tech') | Q(title__icontains='बी.टेक') | Q(title__icontains='btech'))
-        & ~Q(category='polytechnic')
-    ).distinct().count()
+        Q(category='btech') | Q(title__icontains='aktu') | Q(title__icontains='b.tech') | Q(title__icontains='बी.टेक') | Q(title__icontains='btech')
+    ).exclude(category='polytechnic').distinct().count()
     exam_count = BreakingNews.objects.filter(is_active=True, category='exam_result').count()
     job_count = BreakingNews.objects.filter(is_active=True, category='job_internship').count()
 

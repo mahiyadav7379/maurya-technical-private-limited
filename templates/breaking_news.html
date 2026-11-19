@@ -426,18 +426,34 @@
 
         <!-- Quick Summary Stats Badges / Top Direct Switchers -->
         <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
-            <a href="{% url 'polytechnic_news' %}" 
-               class="badge {% if selected_category == 'polytechnic' %}bg-warning text-dark border-warning fw-bold shadow-sm{% else %}bg-black bg-opacity-25 border border-white border-opacity-25 text-white{% endif %} px-3 py-2 rounded-pill small text-decoration-none">
-                <i class="fas fa-graduation-cap {% if selected_category == 'polytechnic' %}text-dark{% else %}text-warning{% endif %} me-1"></i> BTEUP Polytechnic ({{ polytechnic_count }})
+            {% if selected_category == 'polytechnic' %}
+            <span class="badge bg-warning text-dark border-warning fw-bold shadow-sm px-3 py-2 rounded-pill small">
+                <i class="fas fa-graduation-cap me-1"></i> केवल पॉलिटेक्निक सूचनाएं ({{ polytechnic_count }})
+            </span>
+            <span class="badge bg-black bg-opacity-25 border border-white border-opacity-25 text-white px-3 py-2 rounded-pill small">
+                <i class="far fa-calendar-alt text-warning me-1"></i> BTEUP परीक्षा व टाइम-टेबल 2026
+            </span>
+            <a href="{% url 'btech_news' %}" class="badge bg-black bg-opacity-25 border border-info text-info fw-bold px-3 py-2 rounded-pill small text-decoration-none">
+                <i class="fas fa-laptop-code me-1"></i> बी.टेक न्यूज़ पोर्टल खोलें &rarr;
             </a>
-            <a href="{% url 'btech_news' %}" 
-               class="badge {% if selected_category == 'btech' %}bg-info text-dark border-info fw-bold shadow-sm{% else %}bg-black bg-opacity-25 border border-white border-opacity-25 text-white{% endif %} px-3 py-2 rounded-pill small text-decoration-none">
-                <i class="fas fa-laptop-code {% if selected_category == 'btech' %}text-dark{% else %}text-info{% endif %} me-1"></i> AKTU B.Tech ({{ btech_count }})
+            {% elif selected_category == 'btech' %}
+            <span class="badge bg-info text-dark border-info fw-bold shadow-sm px-3 py-2 rounded-pill small">
+                <i class="fas fa-laptop-code me-1"></i> केवल बी.टेक सूचनाएं ({{ btech_count }})
+            </span>
+            <span class="badge bg-black bg-opacity-25 border border-white border-opacity-25 text-white px-3 py-2 rounded-pill small">
+                <i class="far fa-calendar-alt text-info me-1"></i> AKTU सेमेस्टर परीक्षा व COP
+            </span>
+            <a href="{% url 'polytechnic_news' %}" class="badge bg-black bg-opacity-25 border border-warning text-warning fw-bold px-3 py-2 rounded-pill small text-decoration-none">
+                <i class="fas fa-graduation-cap me-1"></i> पॉलिटेक्निक न्यूज़ पोर्टल खोलें &rarr;
             </a>
-            <a href="{% url 'breaking_news' %}" 
-               class="badge {% if selected_category == 'all' or not selected_category %}bg-danger text-white border-danger fw-bold shadow-sm{% else %}bg-black bg-opacity-25 border border-white border-opacity-25 text-white{% endif %} px-3 py-2 rounded-pill small text-decoration-none">
-                <i class="fas fa-bolt text-warning me-1"></i> All Updates ({{ total_count }})
+            {% else %}
+            <a href="{% url 'polytechnic_news' %}" class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill small text-decoration-none shadow-sm">
+                <i class="fas fa-graduation-cap me-1"></i> 🎓 केवल पॉलिटेक्निक ({{ polytechnic_count }})
             </a>
+            <a href="{% url 'btech_news' %}" class="badge bg-info text-dark fw-bold px-3 py-2 rounded-pill small text-decoration-none shadow-sm">
+                <i class="fas fa-laptop-code me-1"></i> 💻 केवल बी.टेक ({{ btech_count }})
+            </a>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -445,107 +461,84 @@
 <!-- 3. Main Content Container -->
 <div class="container py-4 px-3 px-md-4" style="max-width: 1140px;">
 
-    <!-- 3.1 DUAL SECTION HUB: POLYTECHNIC VS B.TECH SEPARATE CLICKABLE PORTALS -->
-    <div class="row g-3 mb-4">
-        <!-- 1. POLYTECHNIC (DIPLOMA) PORTAL LINK CARD -->
-        <div class="col-12 col-md-6">
-            <a href="{% url 'polytechnic_news' %}" 
-               class="news-hub-card polytechnic-hub-card {% if selected_category == 'polytechnic' %}active-hub{% endif %}"
-               id="hubPolytechnicLink"
-               title="पॉलिटेक्निक (BTEUP / Diploma) ब्रेकिंग न्यूज़ खोलें">
-                {% if selected_category == 'polytechnic' %}
-                <span class="active-hub-indicator">
-                    <i class="fas fa-check-circle me-1"></i> सक्रिय (ACTIVE PORTAL)
-                </span>
-                {% endif %}
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="hub-pill bg-warning text-dark">
-                        <i class="fas fa-graduation-cap me-1"></i> DIPLOMA / BTEUP LUCKNOW
-                    </span>
-                    <span class="badge bg-danger rounded-pill px-2 py-1">{{ polytechnic_count }} अपडेट्स</span>
-                </div>
-                <h3 class="hub-card-title text-dark">
-                    🎓 पॉलिटेक्निक (Polytechnic) न्यूज़
-                </h3>
-                <p class="hub-card-desc text-muted mb-3">
-                    BTEUP लखनऊ विषम व सम सेमेस्टर परीक्षा टाइम-टेबल, स्क्रूटनी व री-इवैल्युएशन रिजल्ट, बैक पेपर, U-Rise एडमिट कार्ड व डिप्लोमा इंडस्ट्रियल ट्रेनिंग।
-                </p>
-                <div class="hub-card-footer d-flex align-items-center justify-content-between pt-2 border-top border-light">
-                    <span class="hub-action-btn">
-                        {% if selected_category == 'polytechnic' %}
-                            <i class="fas fa-check-circle text-success me-1"></i> पॉलिटेक्निक न्यूज़ खुली है
-                        {% else %}
-                            पॉलिटेक्निक न्यूज़ खोलें <i class="fas fa-arrow-right ms-1"></i>
-                        {% endif %}
-                    </span>
-                    <span class="text-secondary small fw-bold">1st, 3rd, 5th Sem</span>
-                </div>
-            </a>
-        </div>
-
-        <!-- 2. B.TECH (AKTU) PORTAL LINK CARD -->
-        <div class="col-12 col-md-6">
-            <a href="{% url 'btech_news' %}" 
-               class="news-hub-card btech-hub-card {% if selected_category == 'btech' %}active-hub{% endif %}"
-               id="hubBtechLink"
-               title="बी.टेक (AKTU / Engineering) ब्रेकिंग न्यूज़ खोलें">
-                {% if selected_category == 'btech' %}
-                <span class="active-hub-indicator">
-                    <i class="fas fa-check-circle me-1"></i> सक्रिय (ACTIVE PORTAL)
-                </span>
-                {% endif %}
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="hub-pill bg-info text-white">
-                        <i class="fas fa-laptop-code me-1"></i> B.TECH / AKTU LUCKNOW
-                    </span>
-                    <span class="badge bg-primary rounded-pill px-2 py-1">{{ btech_count }} अपडेट्स</span>
-                </div>
-                <h3 class="hub-card-title text-dark">
-                    💻 बी.टेक (B.Tech) न्यूज़
-                </h3>
-                <p class="hub-card-desc text-muted mb-3">
-                    AKTU लखनऊ सेमेस्टर परीक्षा फॉर्म, कैरी ओवर (COP) परीक्षा केंद्र सूची, ईआरपी वन-व्यू रिजल्ट, चुनौती मूल्यांकन व इंजीनियरिंग प्लेसमेंट ड्राइव।
-                </p>
-                <div class="hub-card-footer d-flex align-items-center justify-content-between pt-2 border-top border-light">
-                    <span class="hub-action-btn">
-                        {% if selected_category == 'btech' %}
-                            <i class="fas fa-check-circle text-success me-1"></i> बी.टेक न्यूज़ खुली है
-                        {% else %}
-                            बी.टेक न्यूज़ खोलें <i class="fas fa-arrow-right ms-1"></i>
-                        {% endif %}
-                    </span>
-                    <span class="text-secondary small fw-bold">CS, IT, ME, EC, Civil, EE</span>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <!-- 3.2 ACTIVE PORTAL CONTEXTUAL BANNER (Shows current mode & switch prompt) -->
+    <!-- 3.1 DEDICATED SEPARATE PORTAL HERO (NEVER OPEN BOTH TOGETHER) -->
     {% if selected_category == 'polytechnic' %}
-    <div class="alert alert-warning border-0 rounded-4 shadow-sm d-flex align-items-center justify-content-between flex-wrap gap-2 py-2 px-3 mb-4">
-        <div class="d-flex align-items-center gap-2">
-            <i class="fas fa-graduation-cap text-warning fs-4"></i>
+    <!-- DEDICATED 100% POLYTECHNIC PORTAL CARD (NO B.TECH SHOWN) -->
+    <div class="p-3 p-md-4 rounded-4 mb-4 shadow-sm" style="background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #450a0a 100%); color: #ffffff; border-left: 6px solid #f59e0b;">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div>
-                <strong class="d-block text-dark small">आप अभी पॉलिटेक्निक (BTEUP / डिप्लोमा) सूचना केंद्र देख रहे हैं।</strong>
-                <span class="text-muted small" style="font-size: 0.78rem;">नीचे केवल डिप्लोमा, BTEUP बोर्ड परीक्षा व स्क्रूटनी से संबंधित खबरें प्रदर्शित हैं।</span>
+                <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                    <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill">
+                        <i class="fas fa-graduation-cap me-1"></i> BTEUP DIPLOMA PORTAL
+                    </span>
+                    <span class="badge bg-success text-white fw-bold px-3 py-1 rounded-pill">
+                        <i class="fas fa-check-circle me-1"></i> केवल पॉलिटेक्निक न्यूज़ खुली है
+                    </span>
+                    <span class="badge bg-white text-dark px-2 py-1 fw-bold rounded-pill">{{ news_items|length }} अपडेट्स</span>
+                </div>
+                <h2 class="h3 fw-black text-white mb-2">
+                    🎓 पॉलिटेक्निक (डिप्लोमा / BTEUP) आधिकारिक सूचना केंद्र
+                </h2>
+                <p class="text-white-50 mb-0 small" style="max-width: 780px;">
+                    प्राविधिक शिक्षा परिषद उत्तर प्रदेश (BTEUP लखनऊ) द्वारा जारी 1st, 3rd, 5th सेमेस्टर परीक्षा टाइम-टेबल, स्क्रूटनी व री-इवैल्युएशन परिणाम, U-Rise एडमिट कार्ड व डिप्लोमा इंडस्ट्रियल ट्रेनिंग।
+                </p>
+            </div>
+            <div>
+                <a href="{% url 'btech_news' %}" class="btn btn-outline-light btn-sm fw-bold px-3 py-2 shadow-sm rounded-pill" style="border-width: 2px;">
+                    <i class="fas fa-laptop-code text-info me-1"></i> बी.टेक न्यूज़ खोलें &rarr;
+                </a>
             </div>
         </div>
-        <a href="{% url 'btech_news' %}" class="btn btn-sm btn-dark text-info fw-bold px-3 py-1 rounded-pill">
-            <i class="fas fa-laptop-code me-1"></i> बी.टेक (AKTU) न्यूज़ पर स्विच करें &rarr;
-        </a>
     </div>
+
     {% elif selected_category == 'btech' %}
-    <div class="alert alert-info border-0 rounded-4 shadow-sm d-flex align-items-center justify-content-between flex-wrap gap-2 py-2 px-3 mb-4">
-        <div class="d-flex align-items-center gap-2">
-            <i class="fas fa-laptop-code text-info fs-4"></i>
+    <!-- DEDICATED 100% B.TECH PORTAL CARD (NO POLYTECHNIC SHOWN) -->
+    <div class="p-3 p-md-4 rounded-4 mb-4 shadow-sm" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #082f49 100%); color: #ffffff; border-left: 6px solid #38bdf8;">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div>
-                <strong class="d-block text-dark small">आप अभी बी.टेक (AKTU / इंजीनियरिंग) सूचना केंद्र देख रहे हैं।</strong>
-                <span class="text-muted small" style="font-size: 0.78rem;">नीचे केवल AKTU B.Tech परीक्षा, COP व इंजीनियरिंग संबंधित खबरें प्रदर्शित हैं।</span>
+                <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                    <span class="badge bg-info text-white fw-bold px-3 py-1 rounded-pill">
+                        <i class="fas fa-laptop-code me-1"></i> AKTU B.TECH PORTAL
+                    </span>
+                    <span class="badge bg-success text-white fw-bold px-3 py-1 rounded-pill">
+                        <i class="fas fa-check-circle me-1"></i> केवल बी.टेक न्यूज़ खुली है
+                    </span>
+                    <span class="badge bg-white text-dark px-2 py-1 fw-bold rounded-pill">{{ news_items|length }} अपडेट्स</span>
+                </div>
+                <h2 class="h3 fw-black text-white mb-2">
+                    💻 बी.टेक (B.Tech / AKTU) आधिकारिक सूचना केंद्र
+                </h2>
+                <p class="text-white-50 mb-0 small" style="max-width: 780px;">
+                    डॉ. एपीजे अब्दुल कलाम प्राविधिक विश्वविद्यालय (AKTU लखनऊ) - B.Tech सेमेस्टर परीक्षा फॉर्म, कैरी ओवर (COP), परीक्षा केंद्र सूची, ईआरपी वन-व्यू रिजल्ट व कोर इंजीनियरिंग प्लेसमेंट ड्राइव।
+                </p>
+            </div>
+            <div>
+                <a href="{% url 'polytechnic_news' %}" class="btn btn-outline-light btn-sm fw-bold px-3 py-2 shadow-sm rounded-pill" style="border-width: 2px;">
+                    <i class="fas fa-graduation-cap text-warning me-1"></i> पॉलिटेक्निक न्यूज़ खोलें &rarr;
+                </a>
             </div>
         </div>
-        <a href="{% url 'polytechnic_news' %}" class="btn btn-sm btn-dark text-warning fw-bold px-3 py-1 rounded-pill">
-            <i class="fas fa-graduation-cap me-1"></i> पॉलिटेक्निक (BTEUP) न्यूज़ पर स्विच करें &rarr;
-        </a>
+    </div>
+
+    {% else %}
+    <!-- 3.1 GENERAL SELECTION PORTAL (SEPARATE DIRECT CARDS) -->
+    <div class="p-3 p-md-4 rounded-4 mb-4 shadow-sm bg-white border">
+        <div class="text-center mb-3">
+            <h3 class="h4 fw-bold text-dark mb-1">आप किसकी ब्रेकिंग न्यूज़ देखना चाहते हैं?</h3>
+            <p class="text-muted small mb-0">अलग-अलग देखने के लिए कृपया अपना वर्ग चुनें (दोनों अलग-अलग खुलेंगे):</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-12 col-md-6">
+                <a href="{% url 'polytechnic_news' %}" class="btn btn-warning w-100 py-3 fw-bold text-dark shadow-sm rounded-3 d-flex align-items-center justify-content-center gap-2 fs-5">
+                    <i class="fas fa-graduation-cap"></i> 🎓 केवल पॉलिटेक्निक (Diploma) न्यूज़ खोलें &rarr;
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a href="{% url 'btech_news' %}" class="btn btn-primary w-100 py-3 fw-bold text-white shadow-sm rounded-3 d-flex align-items-center justify-content-center gap-2 fs-5">
+                    <i class="fas fa-laptop-code"></i> 💻 केवल बी.टेक (B.Tech) न्यूज़ खोलें &rarr;
+                </a>
+            </div>
+        </div>
     </div>
     {% endif %}
 
@@ -583,7 +576,13 @@
                     <input type="text" 
                            id="newsLiveSearchInput" 
                            class="form-control bg-light border-start-0" 
+                           {% if selected_category == 'polytechnic' %}
+                           placeholder="पॉलिटेक्निक, BTEUP, टाइम-टेबल, रिजल्ट सर्च करें..." 
+                           {% elif selected_category == 'btech' %}
+                           placeholder="बी.टेक, AKTU, COP, परीक्षा, रिजल्ट सर्च करें..." 
+                           {% else %}
                            placeholder="शीर्षक, BTEUP, AKTU, रिजल्ट सर्च करें..." 
+                           {% endif %}
                            value="{{ search_query }}">
                     <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn" title="Clear Search">
                         <i class="fas fa-times"></i>
@@ -594,30 +593,54 @@
             <!-- Category Pills / Filter Links -->
             <div class="col-12 col-md-7">
                 <div class="d-flex gap-2 flex-wrap justify-content-md-end align-items-center">
-                    <a href="{% url 'breaking_news' %}" class="category-pill-btn {% if selected_category == 'all' or not selected_category %}active{% endif %}" data-cat="all">
-                        <span>सभी (All)</span>
-                        <span class="badge bg-secondary rounded-pill">{{ total_count }}</span>
-                    </a>
-                    <a href="{% url 'polytechnic_news' %}" class="category-pill-btn {% if selected_category == 'polytechnic' %}active{% endif %}" data-cat="polytechnic">
-                        <i class="fas fa-graduation-cap text-warning"></i>
-                        <span>Polytechnic</span>
-                        <span class="badge bg-secondary rounded-pill">{{ polytechnic_count }}</span>
-                    </a>
-                    <a href="{% url 'btech_news' %}" class="category-pill-btn {% if selected_category == 'btech' %}active{% endif %}" data-cat="btech">
-                        <i class="fas fa-laptop-code text-info"></i>
-                        <span>B.Tech</span>
-                        <span class="badge bg-secondary rounded-pill">{{ btech_count }}</span>
-                    </a>
-                    <a href="{% url 'breaking_news' %}?category=exam_result" class="category-pill-btn {% if selected_category == 'exam_result' %}active{% endif %}" data-cat="exam_result">
-                        <i class="fas fa-check-circle text-success"></i>
-                        <span>Result &amp; Exam</span>
-                        <span class="badge bg-secondary rounded-pill">{{ exam_count }}</span>
-                    </a>
-                    <a href="{% url 'breaking_news' %}?category=job_internship" class="category-pill-btn {% if selected_category == 'job_internship' %}active{% endif %}" data-cat="job_internship">
-                        <i class="fas fa-briefcase text-danger"></i>
-                        <span>Job &amp; Placement</span>
-                        <span class="badge bg-secondary rounded-pill">{{ job_count }}</span>
-                    </a>
+                    {% if selected_category == 'polytechnic' %}
+                        <button type="button" class="category-pill-btn active" onclick="filterBySubTopic('')">
+                            <i class="fas fa-graduation-cap text-warning"></i>
+                            <span>सभी पॉलिटेक्निक ({{ polytechnic_count }})</span>
+                        </button>
+                        <button type="button" class="category-pill-btn" onclick="filterBySubTopic('टाइम-टेबल')">
+                            <i class="far fa-calendar-alt text-danger"></i>
+                            <span>टाइम-टेबल</span>
+                        </button>
+                        <button type="button" class="category-pill-btn" onclick="filterBySubTopic('रिजल्ट')">
+                            <i class="fas fa-check-circle text-success"></i>
+                            <span>स्क्रूटनी व रिजल्ट</span>
+                        </button>
+                        <button type="button" class="category-pill-btn" onclick="filterBySubTopic('बैक पेपर')">
+                            <i class="fas fa-file-alt text-warning"></i>
+                            <span>बैक पेपर</span>
+                        </button>
+                        <a href="{% url 'btech_news' %}" class="btn btn-outline-primary btn-sm fw-bold px-3 py-1 rounded-pill ms-md-2" title="Switch to B.Tech">
+                            <i class="fas fa-laptop-code me-1"></i> बी.टेक न्यूज़ खोलें &rarr;
+                        </a>
+                    {% elif selected_category == 'btech' %}
+                        <button type="button" class="category-pill-btn active" onclick="filterBySubTopic('')">
+                            <i class="fas fa-laptop-code text-info"></i>
+                            <span>सभी बी.टेक ({{ btech_count }})</span>
+                        </button>
+                        <button type="button" class="category-pill-btn" onclick="filterBySubTopic('परीक्षा')">
+                            <i class="far fa-calendar-alt text-danger"></i>
+                            <span>सेमेस्टर परीक्षा व केंद्र</span>
+                        </button>
+                        <button type="button" class="category-pill-btn" onclick="filterBySubTopic('cop')">
+                            <i class="fas fa-file-alt text-warning"></i>
+                            <span>कैरी ओवर (COP)</span>
+                        </button>
+                        <button type="button" class="category-pill-btn" onclick="filterBySubTopic('मूल्यांकन')">
+                            <i class="fas fa-check-circle text-success"></i>
+                            <span>चुनौती मूल्यांकन / रिजल्ट</span>
+                        </button>
+                        <a href="{% url 'polytechnic_news' %}" class="btn btn-outline-danger btn-sm fw-bold px-3 py-1 rounded-pill ms-md-2" title="Switch to Polytechnic">
+                            <i class="fas fa-graduation-cap me-1"></i> पॉलिटेक्निक न्यूज़ खोलें &rarr;
+                        </a>
+                    {% else %}
+                        <a href="{% url 'polytechnic_news' %}" class="btn btn-outline-danger btn-sm fw-bold px-3 py-1 rounded-pill">
+                            <i class="fas fa-graduation-cap me-1"></i> केवल पॉलिटेक्निक ({{ polytechnic_count }}) &rarr;
+                        </a>
+                        <a href="{% url 'btech_news' %}" class="btn btn-outline-primary btn-sm fw-bold px-3 py-1 rounded-pill">
+                            <i class="fas fa-laptop-code me-1"></i> केवल बी.टेक ({{ btech_count }}) &rarr;
+                        </a>
+                    {% endif %}
                 </div>
             </div>
 
@@ -967,6 +990,23 @@
             searchInput.value = '';
             performLiveFilter();
         }
+    }
+
+    // 4. Client-Side SubTopic Pill Filtering
+    function filterBySubTopic(keyword) {
+        if (searchInput) {
+            searchInput.value = keyword;
+            performLiveFilter();
+        }
+        const pillButtons = document.querySelectorAll('.category-pill-btn');
+        pillButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (!keyword && btn.textContent.includes('सभी')) {
+                btn.classList.add('active');
+            } else if (keyword && btn.textContent.toLowerCase().includes(keyword.toLowerCase())) {
+                btn.classList.add('active');
+            }
+        });
     }
 </script>
 {% endblock %}

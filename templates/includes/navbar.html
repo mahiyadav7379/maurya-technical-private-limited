@@ -1,4 +1,24 @@
 {% load static %}
+<style>
+    .dropdown-item.active-portal-item-poly {
+        background-color: #fff1f2 !important;
+        border-left: 4px solid #dc3545 !important;
+    }
+    .dropdown-item.active-portal-item-poly strong {
+        color: #dc3545 !important;
+    }
+    .dropdown-item.active-portal-item-btech {
+        background-color: #f0f9ff !important;
+        border-left: 4px solid #0284c7 !important;
+    }
+    .dropdown-item.active-portal-item-btech strong {
+        color: #0284c7 !important;
+    }
+    .dropdown-item.active-portal-item-all {
+        background-color: #f8fafc !important;
+        border-left: 4px solid #475569 !important;
+    }
+</style>
 <!-- Tier 3: Sleek Navigation Bar (Matches Reference Design) -->
 <nav class="navbar navbar-expand-lg aktu-navbar header-tier-navbar sticky-top p-0">
     <div class="container px-2 px-sm-3 px-md-4 position-relative">
@@ -146,32 +166,38 @@
                        aria-expanded="false">
                         <i class="fas fa-bolt text-danger me-1"></i>BREAKING NEWS <span class="badge bg-danger text-white px-1 py-0 ms-1 fw-bold" style="font-size: 0.65rem;">LIVE</span>
                     </a>
-                    <ul class="dropdown-menu aktu-dropdown-menu shadow-lg py-2" aria-labelledby="aktuNewsDropdown" style="min-width: 270px;">
+                    <ul class="dropdown-menu shadow-lg py-2" aria-labelledby="aktuNewsDropdown" style="min-width: 285px; background: #ffffff !important; border: 1px solid #e2e8f0; border-top: 3px solid #dc3545; border-radius: 8px;">
                         <li>
-                            <a class="dropdown-item aktu-dropdown-item py-2 d-flex align-items-center {% if request.resolver_match.url_name in 'polytechnic_news diploma_news' or selected_category == 'polytechnic' %}active{% endif %}" href="{% url 'polytechnic_news' %}">
-                                <i class="fas fa-graduation-cap text-warning fs-5 me-2"></i>
+                            <a class="dropdown-item py-2 px-3 d-flex align-items-center {% if request.resolver_match.url_name in 'polytechnic_news diploma_news' or selected_category == 'polytechnic' %}active-portal-item-poly{% endif %}" 
+                               href="{% url 'polytechnic_news' %}"
+                               style="transition: all 0.2s;">
+                                <div class="me-3 fs-4 text-warning"><i class="fas fa-graduation-cap"></i></div>
                                 <div>
-                                    <strong class="d-block text-white">Polytechnic (Diploma) News</strong>
-                                    <span class="text-white-50 small" style="font-size: 0.75rem;">BTEUP टाइम-टेबल, रिजल्ट व नोटिस</span>
+                                    <strong class="d-block text-dark fw-bold" style="font-size: 0.94rem;">Polytechnic (Diploma) News</strong>
+                                    <span class="d-block text-muted small" style="font-size: 0.76rem;">BTEUP टाइम-टेबल, रिजल्ट व नोटिस</span>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item aktu-dropdown-item py-2 d-flex align-items-center {% if request.resolver_match.url_name in 'btech_news aktu_news' or selected_category == 'btech' %}active{% endif %}" href="{% url 'btech_news' %}">
-                                <i class="fas fa-laptop-code text-info fs-5 me-2"></i>
+                            <a class="dropdown-item py-2 px-3 d-flex align-items-center {% if request.resolver_match.url_name in 'btech_news aktu_news' or selected_category == 'btech' %}active-portal-item-btech{% endif %}" 
+                               href="{% url 'btech_news' %}"
+                               style="transition: all 0.2s;">
+                                <div class="me-3 fs-4 text-info"><i class="fas fa-laptop-code"></i></div>
                                 <div>
-                                    <strong class="d-block text-white">B.Tech (AKTU) News</strong>
-                                    <span class="text-white-50 small" style="font-size: 0.75rem;">AKTU परीक्षा, COP व नोटिस</span>
+                                    <strong class="d-block text-dark fw-bold" style="font-size: 0.94rem;">B.Tech (AKTU) News</strong>
+                                    <span class="d-block text-muted small" style="font-size: 0.76rem;">AKTU परीक्षा, COP व नोटिस</span>
                                 </div>
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider bg-secondary opacity-50 my-1"></li>
+                        <li><hr class="dropdown-divider my-1" style="border-color: #e2e8f0;"></li>
                         <li>
-                            <a class="dropdown-item aktu-dropdown-item py-2 d-flex align-items-center {% if request.resolver_match.url_name == 'breaking_news' and selected_category == 'all' %}active{% endif %}" href="{% url 'breaking_news' %}">
-                                <i class="fas fa-newspaper text-danger fs-5 me-2"></i>
+                            <a class="dropdown-item py-2 px-3 d-flex align-items-center {% if request.resolver_match.url_name == 'breaking_news' and selected_category == 'all' %}active-portal-item-all{% endif %}" 
+                               href="{% url 'breaking_news' %}"
+                               style="transition: all 0.2s;">
+                                <div class="me-3 fs-4 text-danger"><i class="fas fa-newspaper"></i></div>
                                 <div>
-                                    <strong class="d-block text-white">All Breaking News (सभी खबरें)</strong>
-                                    <span class="text-white-50 small" style="font-size: 0.75rem;">पॉलिटेक्निक व B.Tech संयुक्त बुलेटिन</span>
+                                    <strong class="d-block text-dark fw-bold" style="font-size: 0.94rem;">All Breaking News</strong>
+                                    <span class="d-block text-muted small" style="font-size: 0.76rem;">पॉलिटेक्निक व B.Tech दोनों</span>
                                 </div>
                             </a>
                         </li>
