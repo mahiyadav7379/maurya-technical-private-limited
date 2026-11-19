@@ -1023,32 +1023,36 @@ def breaking_news(request, forced_category=None):
     see summary previews, and expand full details via 'Read More'.
     Supports dedicated Polytechnic & B.Tech views.
     """
-    category_filter = (forced_category or request.GET.get('category', 'all')).strip().lower()
+    category_filter = (forced_category or request.GET.get('category', '')).strip().lower()
+
+    # If no category specified or 'all', redirect directly to dedicated polytechnic news
+    if not category_filter or category_filter == 'all':
+        return redirect('polytechnic_news')
+
     search_query = request.GET.get('q', '').strip()
 
     news_queryset = BreakingNews.objects.filter(is_active=True)
 
-    if category_filter and category_filter != 'all':
-        if category_filter in ['polytechnic', 'diploma']:
-            category_filter = 'polytechnic'
-            news_queryset = news_queryset.filter(
-                Q(category='polytechnic') | 
-                Q(title__icontains='bteup') | 
-                Q(title__icontains='polytechnic') | 
-                Q(title__icontains='पॉलिटेक्निक') | 
-                Q(title__icontains='डिप्लोमा')
-            ).exclude(category='btech')
-        elif category_filter in ['btech', 'aktu', 'engineering']:
-            category_filter = 'btech'
-            news_queryset = news_queryset.filter(
-                Q(category='btech') | 
-                Q(title__icontains='aktu') | 
-                Q(title__icontains='b.tech') | 
-                Q(title__icontains='बी.टेक') | 
-                Q(title__icontains='btech')
-            ).exclude(category='polytechnic')
-        else:
-            news_queryset = news_queryset.filter(category=category_filter)
+    if category_filter in ['polytechnic', 'diploma']:
+        category_filter = 'polytechnic'
+        news_queryset = news_queryset.filter(
+            Q(category='polytechnic') | 
+            Q(title__icontains='bteup') | 
+            Q(title__icontains='polytechnic') | 
+            Q(title__icontains='पॉलिटेक्निक') | 
+            Q(title__icontains='डिप्लोमा')
+        ).exclude(category='btech')
+    elif category_filter in ['btech', 'aktu', 'engineering']:
+        category_filter = 'btech'
+        news_queryset = news_queryset.filter(
+            Q(category='btech') | 
+            Q(title__icontains='aktu') | 
+            Q(title__icontains='b.tech') | 
+            Q(title__icontains='बी.टेक') | 
+            Q(title__icontains='btech')
+        ).exclude(category='polytechnic')
+    else:
+        news_queryset = news_queryset.filter(category=category_filter)
 
     if search_query:
         news_queryset = news_queryset.filter(
